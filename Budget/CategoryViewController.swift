@@ -31,12 +31,21 @@ class CategoryViewController: UITableViewController, SubCategoryHeaderViewDelega
         }
     }
     
+    deinit {
+        category.getDatabaseReference()?.child("expenses").removeAllObservers()
+        if let subCategories = category.subCategories {
+            for item in subCategories {
+                item.getDatabaseReference()?.child("expenses").removeAllObservers()
+            }
+        }
+    }
+    
     func updateBalanceNavView() {
         o_balanceNavView.populate(amount: category.calculatedAmount, totalSpent: category.calculatedTotalSpent, title: category.title)
     }
     
     func registerToUpdates(expensesRef: FIRDatabaseReference?, section: Int) {
-        expensesRef?.observe(.childAdded, with: { snapshot in
+        expensesRef?.observe(.childAdded, with: { [unowned self] snapshot in
             let category = section == 0 ? self.category : self.category.subCategories![section - 1]
             if category!.expenses == nil {
                 category!.expenses = []
@@ -49,7 +58,7 @@ class CategoryViewController: UITableViewController, SubCategoryHeaderViewDelega
             }
         })
         
-        expensesRef?.observe(.childChanged, with: { snapshot in
+        expensesRef?.observe(.childChanged, with: { [unowned self] snapshot in
             let category = section == 0 ? self.category : self.category.subCategories![section - 1]
             let expense = Expense(snapshot: snapshot)
             if let index = category?.expenses?.index(where: { $0.id == expense.id } ) {
@@ -60,7 +69,7 @@ class CategoryViewController: UITableViewController, SubCategoryHeaderViewDelega
             }
         })
         
-        expensesRef?.observe(.childRemoved, with: { snapshot in
+        expensesRef?.observe(.childRemoved, with: { [unowned self] snapshot in
             let category = section == 0 ? self.category : self.category.subCategories![section - 1]
             let expense = Expense(snapshot: snapshot)
             if let index = category?.expenses?.index(where: { $0.id == expense.id }) {
@@ -161,7 +170,7 @@ class CategoryViewController: UITableViewController, SubCategoryHeaderViewDelega
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+        let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { [unowned self] (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
             self.expense(for: indexPath)?.delete()
         })
         return [delete]

@@ -18,7 +18,7 @@ extension CategoriesViewController {
     }
     
     func observeChildAdd(on budgetRef: FIRDatabaseReference) {
-        budgetRef.observe(.childAdded, with: { snapshot in
+        budgetRef.observe(.childAdded, with: { [unowned self] snapshot in
             let category = Category(snapshot: snapshot)
             
             if let parent = category.parent {
@@ -53,7 +53,7 @@ extension CategoriesViewController {
     }
     
     func observeChildDelete(on budgetRef: FIRDatabaseReference) {
-        budgetRef.observe(.childRemoved, with: { snapshot in
+        budgetRef.observe(.childRemoved, with: { [unowned self] snapshot in
             let category = Category(snapshot: snapshot)
             if let index = self.categories.index(where: { $0.id == category.id }) {
                 self.categories.remove(at: index)
@@ -79,7 +79,7 @@ extension CategoriesViewController {
     }
     
     func observeChildUpdate(on budgetRef: FIRDatabaseReference) {
-        budgetRef.observe(.childChanged, with: { snapshot in
+        budgetRef.observe(.childChanged, with: { [unowned self] snapshot in
             let category = Category(snapshot: snapshot)
             
             if let origCategory = self.categories.filter({ $0.id == category.id }).first {

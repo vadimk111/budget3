@@ -76,7 +76,7 @@ class AddEditExpenseViewController: UIViewController {
     @IBAction func didTapDate(_ sender: UITapGestureRecognizer) {
         becomeFirstResponder()
         
-        let newConstraintValue: CGFloat = self.o_dateViewConstraint.constant == 44 ? 260 : 44
+        let newConstraintValue: CGFloat = o_dateViewConstraint.constant == 44 ? 260 : 44
         
         UIView.animate(withDuration: 0.3, animations: {
             self.o_dateViewConstraint.constant = newConstraintValue

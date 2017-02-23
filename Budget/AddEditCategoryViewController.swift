@@ -69,7 +69,7 @@ class AddEditCategoryViewController: UIViewController, UIPickerViewDelegate, UIP
             }
         }
         
-        let newConstraintValue: CGFloat = self.o_parentHeightConstraint.constant == 44 ? 260 : 44
+        let newConstraintValue: CGFloat = o_parentHeightConstraint.constant == 44 ? 260 : 44
         
         UIView.animate(withDuration: 0.3, animations: {
             self.o_parentHeightConstraint.constant = newConstraintValue

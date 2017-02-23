@@ -13,7 +13,7 @@ extension CategoriesViewController : CategoryTableViewCellDelegate, CategoriesHe
     //MARK: CategoryTableViewCellDelegate
     func categoryTableViewCellDidExpand(_ cell: CategoryTableViewCell) {
         if let indexPath = tableView.indexPath(for: cell) {
-            self.expandedIndexes[indexPath.row] = true
+            expandedIndexes[indexPath.row] = true
             let category = categories[indexPath.row]
             if let subCategories = category.subCategories {
                 categories.insert(contentsOf: subCategories, at: indexPath.row + 1)
@@ -24,7 +24,7 @@ extension CategoriesViewController : CategoryTableViewCellDelegate, CategoriesHe
     
     func categoryTableViewCellDidCollapse(_ cell: CategoryTableViewCell) {
         if let indexPath = tableView.indexPath(for: cell) {
-            self.expandedIndexes[indexPath.row] = false
+            expandedIndexes[indexPath.row] = false
             let category = categories[indexPath.row]
             if let subCategories = category.subCategories {
                 categories.removeSubrange(indexPath.row + 1..<indexPath.row + 1 + subCategories.count)

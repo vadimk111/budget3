@@ -30,7 +30,7 @@ class Category: ModelBaseObject {
         var m_amount: Float = 0.0
         
         guard (subCategories != nil) else {
-            if let amount = self.amount {
+            if let amount = amount {
                 return amount
             }
             return m_amount
@@ -46,7 +46,7 @@ class Category: ModelBaseObject {
     var calculatedTotalSpent: Float {
         var totalSpent: Float = 0.0
         
-        if let expenses = self.expenses {
+        if let expenses = expenses {
             for item in expenses {
                 if let amount = item.amount {
                     totalSpent += amount
@@ -93,10 +93,10 @@ class Category: ModelBaseObject {
     
     func makeCopy() -> Category {
         let copy = Category()
-        copy.title = self.title
-        copy.amount = self.amount
-        copy.order = self.order
-        copy.parent = self.parent
+        copy.title = title
+        copy.amount = amount
+        copy.order = order
+        copy.parent = parent
         return copy
     }
     

@@ -26,11 +26,11 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(forName: logoutNotification, object: nil, queue: nil, using: { notification in
+        NotificationCenter.default.addObserver(forName: logoutNotification, object: nil, queue: nil, using: { [unowned self] notification in
             self.closestBudget = nil
             self.date = Date()
         })
-        NotificationCenter.default.addObserver(forName: loginNotification, object: nil, queue: nil, using: { notification in
+        NotificationCenter.default.addObserver(forName: loginNotification, object: nil, queue: nil, using: { [unowned self] notification in
             self.reload()
         })
         
@@ -39,12 +39,16 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
         view.fill(with: availableParents, date: date)
         tableView.tableHeaderView = view
     }
-        
+    
+    deinit {
+        budgetRef?.removeAllObservers()
+    }
+    
     func reload() {
         let ref = FIRDatabase.database().reference().child("budgets")
         if let budgetId = ModelHelper.budgetId(for: date) {
             budgetRef = ref.child(budgetId)
-            budgetRef!.observeSingleEvent(of: .value, with: { snapshot in
+            budgetRef!.observeSingleEvent(of: .value, with: { [unowned self] snapshot in
                 let budgetExist = self.prepareBudget(from: snapshot)
                 if budgetExist {
                     self.registerToUpdates(budgetRef: self.budgetRef!)
@@ -62,7 +66,7 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
     }
     
     func prepareBudget(from snapshot: FIRDataSnapshot) -> Bool {
-        self.categories = []
+        categories = []
         var subCategories: [String : [Category]] = [:]
         var budgetExist = false
         
@@ -78,17 +82,17 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
                 mutableArr.append(category)
                 subCategories[parent] = mutableArr
             } else {
-                self.categories.append(category)
+                categories.append(category)
             }
         }
         
         if budgetExist {
-            self.categories.sort(by: { (item1: Category, item2: Category) -> Bool in
+            categories.sort(by: { (item1: Category, item2: Category) -> Bool in
                 return item1.order < item2.order
             })
             
             for key in subCategories.keys {
-                if let parentCategory = self.categories.filter({ $0.id == key }).first {
+                if let parentCategory = categories.filter({ $0.id == key }).first {
                     parentCategory.subCategories = subCategories[key]?.sorted(by: { (item1: Category, item2: Category) -> Bool in
                         return item1.order < item2.order
                     })
@@ -100,7 +104,7 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
     }
     
     func copyClosestBudget() {
-        if let closestBudget = self.closestBudget, let budgetRef = self.budgetRef {
+        if let closestBudget = closestBudget, let budgetRef = budgetRef {
             for category in closestBudget {
                 let newCategory = category.makeCopy()
                 let newCategoryId = newCategory.insert(into: budgetRef)

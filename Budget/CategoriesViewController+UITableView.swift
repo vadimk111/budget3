@@ -16,7 +16,7 @@ extension CategoriesViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCells", for: indexPath) as! CategoryTableViewCell
         var isExpanded = false
-        if let isExpandedValue = self.expandedIndexes[indexPath.row] {
+        if let isExpandedValue = expandedIndexes[indexPath.row] {
             isExpanded = isExpandedValue
         }
         cell.populate(with: categories[indexPath.row], isExpanded: isExpanded, mainColor: colors[indexPath.row % colors.count])
@@ -25,12 +25,12 @@ extension CategoriesViewController {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let edit = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Edit", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+        let edit = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Edit", handler: { [unowned self] (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
             self.performSegue(withIdentifier: "editCategory", sender: indexPath)
         })
-        let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+        let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { [unowned self] (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
             let a = UIAlertController(title: "Remove category and all its sub categories ?", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            a.addAction(UIAlertAction(title: "Remove", style: .default) { action -> Void in
+            a.addAction(UIAlertAction(title: "Remove", style: .default) { [unowned self] action -> Void in
                 self.categories[indexPath.row].delete()
             })
             a.addAction(UIAlertAction(title: "Cancel", style: .default) { action -> Void in })
@@ -56,7 +56,7 @@ extension CategoriesViewController {
         let hasParent = category.parent != nil
         
         if hasParent {
-            if let parentCategory = self.categories.filter({ $0.id == category.parent! }).first {
+            if let parentCategory = categories.filter({ $0.id == category.parent! }).first {
                 if let subSourceIndex = parentCategory.subCategories?.index(of: category) {
                     parentCategory.subCategories?.remove(at: subSourceIndex)
                     parentCategory.subCategories?.insert(category, at: subSourceIndex + destinationIndexPath.row - sourceIndexPath.row)

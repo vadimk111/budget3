@@ -38,7 +38,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapForgot(_ sender: UIButton) {
-        FIRAuth.auth()?.sendPasswordReset(withEmail: o_email.text!) { (error) in
+        FIRAuth.auth()?.sendPasswordReset(withEmail: o_email.text!) { [unowned self] (error) in
             if let error = error {
                 self.loginFailed(with: error)
             } else {
@@ -51,7 +51,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapCreate(_ sender: UIButton) {
-        FIRAuth.auth()?.createUser(withEmail: o_email.text!, password: o_password.text!) { (user, error) in
+        FIRAuth.auth()?.createUser(withEmail: o_email.text!, password: o_password.text!) { [unowned self] (user, error) in
             if let error = error {
                 self.loginFailed(with: error)
             } else if let user = user {
@@ -61,7 +61,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapSignIn(_ sender: UIButton) {
-        FIRAuth.auth()?.signIn(withEmail: o_email.text!, password: o_password.text!) { (user, error) in
+        FIRAuth.auth()?.signIn(withEmail: o_email.text!, password: o_password.text!) { [unowned self] (user, error) in
             if let error = error {
                 self.loginFailed(with: error)
             } else if let user = user {
@@ -74,14 +74,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let a = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
         a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in
         })
-        self.present(a, animated: true, completion: nil)
+        present(a, animated: true, completion: nil)
     }
     
     func loginSuccessed(with user: FIRUser) {
         APP.user = user
-        UserDefaults.standard.set(self.o_email.text!, forKey: "email")
-        UserDefaults.standard.set(self.o_password.text!, forKey: "password")
+        UserDefaults.standard.set(o_email.text!, forKey: "email")
+        UserDefaults.standard.set(o_password.text!, forKey: "password")
         UserDefaults.standard.synchronize()
-        self.dismiss(animated: true, completion: completion)
+        dismiss(animated: true, completion: completion)
     }
 }

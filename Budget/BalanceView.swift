@@ -20,7 +20,7 @@ class BalanceView: CustomView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let viewHeight = self.frame.height
+        let viewHeight = frame.height
         o_amount.font = UIFont(name: o_amount.font.fontName, size: viewHeight / 3)
         o_amountLeft.font = UIFont(name: o_amountLeft.font.fontName, size: viewHeight / 3)
         o_amountSpent.font = UIFont(name: o_amountSpent.font.fontName, size: viewHeight / 3)

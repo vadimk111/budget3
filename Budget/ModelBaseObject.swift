@@ -33,12 +33,12 @@ class ModelBaseObject : NSObject {
     @discardableResult
     func insert(into parent: FIRDatabaseReference) -> String {
         let child = parent.childByAutoId()
-        child.setValue(self.toValues())
+        child.setValue(toValues())
         return child.key
     }
     
     func update() {
-        ref?.updateChildValues(self.toValues())
+        ref?.updateChildValues(toValues())
     }
 
     func removeChild(path: String) {
