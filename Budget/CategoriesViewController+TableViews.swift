@@ -80,6 +80,8 @@ extension CategoriesViewController : CategoryTableViewCellDelegate, CategoriesHe
         
         date = calendar.date(from: comp)!
         closestBudget = categories
+        
+        unregisterFromUpdates(budgetRef: budgetRef)
         reload()
 
     }

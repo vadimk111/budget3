@@ -11,14 +11,18 @@ import FirebaseDatabase
 
 extension CategoriesViewController {
     
-    func registerToUpdates(budgetRef: FIRDatabaseReference) {
+    func unregisterFromUpdates(budgetRef: FIRDatabaseReference?) {
+        budgetRef?.removeAllObservers()
+    }
+    
+    func registerToUpdates(budgetRef: FIRDatabaseReference?) {
         observeChildAdd(on: budgetRef)
         observeChildDelete(on: budgetRef)
         observeChildUpdate(on: budgetRef)
     }
     
-    func observeChildAdd(on budgetRef: FIRDatabaseReference) {
-        budgetRef.observe(.childAdded, with: { [unowned self] snapshot in
+    func observeChildAdd(on budgetRef: FIRDatabaseReference?) {
+        budgetRef?.observe(.childAdded, with: { [unowned self] snapshot in
             let category = Category(snapshot: snapshot)
             
             if let parent = category.parent {
@@ -52,8 +56,8 @@ extension CategoriesViewController {
         })
     }
     
-    func observeChildDelete(on budgetRef: FIRDatabaseReference) {
-        budgetRef.observe(.childRemoved, with: { [unowned self] snapshot in
+    func observeChildDelete(on budgetRef: FIRDatabaseReference?) {
+        budgetRef?.observe(.childRemoved, with: { [unowned self] snapshot in
             let category = Category(snapshot: snapshot)
             if let index = self.categories.index(where: { $0.id == category.id }) {
                 self.categories.remove(at: index)
@@ -78,8 +82,8 @@ extension CategoriesViewController {
         })
     }
     
-    func observeChildUpdate(on budgetRef: FIRDatabaseReference) {
-        budgetRef.observe(.childChanged, with: { [unowned self] snapshot in
+    func observeChildUpdate(on budgetRef: FIRDatabaseReference?) {
+        budgetRef?.observe(.childChanged, with: { [unowned self] snapshot in
             let category = Category(snapshot: snapshot)
             
             if let origCategory = self.categories.filter({ $0.id == category.id }).first {

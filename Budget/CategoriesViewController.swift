@@ -41,20 +41,18 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
     }
     
     deinit {
-        budgetRef?.removeAllObservers()
+        unregisterFromUpdates(budgetRef: budgetRef)
     }
     
     func reload() {
         let ref = FIRDatabase.database().reference().child("budgets")
         if let budgetId = ModelHelper.budgetId(for: date) {
             budgetRef = ref.child(budgetId)
-            budgetRef!.observeSingleEvent(of: .value, with: { [unowned self] snapshot in
-                let budgetExist = self.prepareBudget(from: snapshot)
-                if budgetExist {
-                    self.registerToUpdates(budgetRef: self.budgetRef!)
-                } else {
+            budgetRef?.observeSingleEvent(of: .value, with: { [unowned self] snapshot in
+                if !self.prepareBudget(from: snapshot) {
                     self.copyClosestBudget()
                 }
+                self.registerToUpdates(budgetRef: self.budgetRef)
                 self.tableView.reloadData()
                 self.updateHeaderView()
             })
