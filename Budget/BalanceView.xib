@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BalanceView" customModule="Budget" customModuleProvider="target">
+            <connections>
+                <outlet property="o_amount" destination="8cZ-J3-Twc" id="vMD-fr-nr2"/>
+                <outlet property="o_amountLeft" destination="Ukj-1T-hF2" id="87q-gx-yn0"/>
+                <outlet property="o_amountSpent" destination="rdI-kQ-NGk" id="tiq-og-gNR"/>
+                <outlet property="o_barHeightConstraint" destination="VVu-LC-vHF" id="GkW-0V-Aat"/>
+                <outlet property="o_progressBar" destination="okr-EM-3HU" id="mqc-JR-01K"/>
+                <outlet property="o_title" destination="Wuv-a9-Djp" id="k0B-a1-V5F"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wuv-a9-Djp">
+                    <rect key="frame" x="0.0" y="-1" width="34.5" height="17"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdI-kQ-NGk">
+                    <rect key="frame" x="330.5" y="0.5" width="13.5" height="14"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                    <color key="textColor" red="0.34901960780000002" green="0.72941176470000002" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" / 200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cZ-J3-Twc">
+                    <rect key="frame" x="344" y="0.0" width="31" height="14"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="okr-EM-3HU" customClass="ProgressBar" customModule="Budget" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="16" width="375" height="4"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="4" id="VVu-LC-vHF"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="90" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ukj-1T-hF2">
+                    <rect key="frame" x="361.5" y="22" width="13.5" height="14"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Ukj-1T-hF2" firstAttribute="top" secondItem="okr-EM-3HU" secondAttribute="bottom" constant="2" id="IQV-iD-YZq"/>
+                <constraint firstItem="Wuv-a9-Djp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="IbF-5V-Qmo"/>
+                <constraint firstAttribute="trailing" secondItem="okr-EM-3HU" secondAttribute="trailing" id="LAK-pv-boD"/>
+                <constraint firstItem="rdI-kQ-NGk" firstAttribute="centerY" secondItem="8cZ-J3-Twc" secondAttribute="centerY" id="LYo-ZB-clp"/>
+                <constraint firstAttribute="trailing" secondItem="8cZ-J3-Twc" secondAttribute="trailing" id="ZgQ-sB-VF4"/>
+                <constraint firstItem="Ukj-1T-hF2" firstAttribute="trailing" secondItem="8cZ-J3-Twc" secondAttribute="trailing" id="geG-co-agM"/>
+                <constraint firstItem="8cZ-J3-Twc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nxa-he-fxR"/>
+                <constraint firstItem="okr-EM-3HU" firstAttribute="top" secondItem="8cZ-J3-Twc" secondAttribute="bottom" constant="2" id="pFI-h1-xp1"/>
+                <constraint firstItem="Wuv-a9-Djp" firstAttribute="centerY" secondItem="rdI-kQ-NGk" secondAttribute="centerY" id="rDY-qv-mlX"/>
+                <constraint firstItem="okr-EM-3HU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wNT-Y8-MQv"/>
+                <constraint firstItem="8cZ-J3-Twc" firstAttribute="leading" secondItem="rdI-kQ-NGk" secondAttribute="trailing" id="yql-tQ-ctY"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="33.5" y="63.5"/>
+        </view>
+    </objects>
+</document>

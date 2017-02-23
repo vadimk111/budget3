@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProgressBar" customModule="Budget" customModuleProvider="target">
+            <connections>
+                <outlet property="o_blueConstraint" destination="v41-hJ-2X6" id="Gw9-49-hXx"/>
+                <outlet property="o_redConstraint" destination="tPw-wd-MUp" id="y8h-G2-BXQ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffu-98-fQJ" userLabel="Blue">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                    <color key="backgroundColor" red="0.34901960780000002" green="0.72941176470000002" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lV-sB-dOm" userLabel="Red">
+                    <rect key="frame" x="344" y="0.0" width="375" height="50"/>
+                    <color key="backgroundColor" red="0.83921568627450982" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.88627450980392153" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ffu-98-fQJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6pE-OW-bMO"/>
+                <constraint firstAttribute="bottom" secondItem="0lV-sB-dOm" secondAttribute="bottom" id="Aic-aX-6TM"/>
+                <constraint firstAttribute="bottom" secondItem="ffu-98-fQJ" secondAttribute="bottom" id="S8L-Te-lQv"/>
+                <constraint firstItem="0lV-sB-dOm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" constant="-31" id="tPw-wd-MUp"/>
+                <constraint firstItem="ffu-98-fQJ" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="uDw-K7-ZiS"/>
+                <constraint firstItem="0lV-sB-dOm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="uag-Bu-z5D"/>
+                <constraint firstItem="ffu-98-fQJ" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="leading" constant="375" id="v41-hJ-2X6"/>
+                <constraint firstItem="0lV-sB-dOm" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="vFE-IU-HaA"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-22" y="97"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Profile-->
+        <scene sceneID="dVf-bb-fNh">
+            <objects>
+                <viewController id="Ccc-68-1aU" customClass="SettingsViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qo1-rg-su0"/>
+                        <viewControllerLayoutGuide type="bottom" id="zZw-rP-nze"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Spc-KW-1Y6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You logged-in as:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leL-7E-eSd">
+                                <rect key="frame" x="117" y="108" width="140.5" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user@domain.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdD-gy-6s8">
+                                <rect key="frame" x="112.5" y="149" width="149.5" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRl-RU-w6Z">
+                                <rect key="frame" x="158.5" y="190" width="57" height="33"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="didTapLogout:" destination="Ccc-68-1aU" eventType="touchUpInside" id="4uo-fe-gwF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZRl-RU-w6Z" firstAttribute="top" secondItem="sdD-gy-6s8" secondAttribute="bottom" constant="20" id="6hh-3k-bBA"/>
+                            <constraint firstItem="leL-7E-eSd" firstAttribute="centerX" secondItem="Spc-KW-1Y6" secondAttribute="centerX" id="CTd-Gp-4E1"/>
+                            <constraint firstItem="sdD-gy-6s8" firstAttribute="centerX" secondItem="leL-7E-eSd" secondAttribute="centerX" id="aQY-Xc-HEy"/>
+                            <constraint firstItem="leL-7E-eSd" firstAttribute="top" secondItem="Qo1-rg-su0" secondAttribute="bottom" constant="44" id="fcz-39-3Mc"/>
+                            <constraint firstItem="ZRl-RU-w6Z" firstAttribute="centerX" secondItem="sdD-gy-6s8" secondAttribute="centerX" id="k7q-im-HEP"/>
+                            <constraint firstItem="sdD-gy-6s8" firstAttribute="top" secondItem="leL-7E-eSd" secondAttribute="bottom" constant="20" id="zTJ-vr-5Zm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" id="XTL-Gq-bYx"/>
+                    <connections>
+                        <outlet property="o_userEmail" destination="sdD-gy-6s8" id="qkZ-Cp-tb6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hhe-tY-U1k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-108" y="66.11694152923539"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="sxj-YV-V3V">
+            <objects>
+                <navigationController storyboardIdentifier="Settings" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="etI-nN-NDf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="user" id="f3l-ZL-PLN"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8f6-0y-fp3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ccc-68-1aU" kind="relationship" relationship="rootViewController" id="lnD-l3-bEn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WU7-tN-80C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1047.2" y="66.11694152923539"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="user" width="16" height="16"/>
+    </resources>
+</document>
