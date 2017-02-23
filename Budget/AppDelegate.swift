@@ -4,7 +4,7 @@
 //
 //  Created by Vadim Kononov on 20/12/2016.
 //  Copyright © 2016 Vadim Kononov. All rights reserved.
-//--
+//
 
 import UIKit
 import Firebase
