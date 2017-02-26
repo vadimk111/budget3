@@ -14,6 +14,7 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
     var budgetRef: FIRDatabaseReference?
     var categories: [Category] = []
     var date: Date = Date()
+    var dateChanged = false
     var closestBudget: [Category]?
     var expandedCategories: [String : Bool] = [:]
     
@@ -50,7 +51,9 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
             budgetRef = ref.child(budgetId)
             budgetRef?.observeSingleEvent(of: .value, with: { [unowned self] snapshot in
                 if !self.prepareBudget(from: snapshot) {
-                    self.copyClosestBudget()
+                    if !self.copyClosestBudget() && !self.dateChanged {
+                        self.tryPrevBudgetAndCopy()
+                    }
                 }
                 self.registerToUpdates(budgetRef: self.budgetRef)
                 self.tableView.reloadData()
@@ -101,7 +104,8 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
         return budgetExist
     }
     
-    func copyClosestBudget() {
+    @discardableResult
+    func copyClosestBudget() -> Bool {
         if let closestBudget = closestBudget, let budgetRef = budgetRef {
             for category in closestBudget {
                 let newCategory = category.makeCopy()
@@ -115,6 +119,40 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
                     }
                 }
             }
+            return true
+        }
+        return false
+    }
+    
+    func tryPrevBudgetAndCopy() {
+        let calendar = Calendar.current
+        var year = calendar.component(.year, from: date)
+        var month = calendar.component(.month, from: date)
+        
+        var comp = DateComponents()
+        if month == 1 {
+            year -= 1
+            month = 12
+        } else {
+            month -= 1
+        }
+        
+        comp.day = 1
+        comp.month = month
+        comp.year = year
+        
+        let prevDate = calendar.date(from: comp)!
+        
+        let ref = FIRDatabase.database().reference().child("budgets")
+        if let budgetId = ModelHelper.budgetId(for: prevDate) {
+            let prevBudgetRef = ref.child(budgetId)
+            prevBudgetRef.observeSingleEvent(of: .value, with: { [unowned self] snapshot in
+                if self.prepareBudget(from: snapshot) {
+                    self.closestBudget = self.categories
+                    self.categories = []
+                    self.copyClosestBudget()
+                }
+            })
         }
     }
     

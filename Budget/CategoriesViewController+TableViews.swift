@@ -79,6 +79,7 @@ extension CategoriesViewController : CategoryTableViewCellDelegate, CategoriesHe
         comp.year = year
         
         date = calendar.date(from: comp)!
+        dateChanged = true
         closestBudget = categories
         expandedCategories = [:]
         
