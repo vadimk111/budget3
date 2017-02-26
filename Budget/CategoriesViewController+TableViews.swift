@@ -13,8 +13,8 @@ extension CategoriesViewController : CategoryTableViewCellDelegate, CategoriesHe
     //MARK: CategoryTableViewCellDelegate
     func categoryTableViewCellDidExpand(_ cell: CategoryTableViewCell) {
         if let indexPath = tableView.indexPath(for: cell) {
-            expandedIndexes[indexPath.row] = true
             let category = categories[indexPath.row]
+            expandedCategories[category.id!] = true
             if let subCategories = category.subCategories {
                 categories.insert(contentsOf: subCategories, at: indexPath.row + 1)
                 tableView.insertRows(at: buildChildIndexPaths(from: indexPath, count: subCategories.count), with: .fade)
@@ -24,8 +24,8 @@ extension CategoriesViewController : CategoryTableViewCellDelegate, CategoriesHe
     
     func categoryTableViewCellDidCollapse(_ cell: CategoryTableViewCell) {
         if let indexPath = tableView.indexPath(for: cell) {
-            expandedIndexes[indexPath.row] = false
             let category = categories[indexPath.row]
+            expandedCategories.removeValue(forKey: category.id!)
             if let subCategories = category.subCategories {
                 categories.removeSubrange(indexPath.row + 1..<indexPath.row + 1 + subCategories.count)
                 tableView.deleteRows(at: buildChildIndexPaths(from: indexPath, count: subCategories.count), with: .fade)
@@ -80,7 +80,7 @@ extension CategoriesViewController : CategoryTableViewCellDelegate, CategoriesHe
         
         date = calendar.date(from: comp)!
         closestBudget = categories
-        expandedIndexes = [:]
+        expandedCategories = [:]
         
         unregisterFromUpdates(budgetRef: budgetRef)
         reload()

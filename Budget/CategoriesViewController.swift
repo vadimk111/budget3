@@ -15,7 +15,7 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
     var categories: [Category] = []
     var date: Date = Date()
     var closestBudget: [Category]?
-    var expandedIndexes: [Int : Bool] = [:]
+    var expandedCategories: [String : Bool] = [:]
     
     @IBOutlet weak var o_editButton: UIBarButtonItem!
     

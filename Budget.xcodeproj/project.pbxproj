@@ -35,7 +35,6 @@
 		BF37924A1E09633C0060445D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3792491E09633C0060445D /* SettingsViewController.swift */; };
 		BF3FFBED1E4BC90300559134 /* AddEditCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF3FFBEC1E4BC90300559134 /* AddEditCategory.storyboard */; };
 		BF3FFBEF1E4BC9E200559134 /* AddEditCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3FFBEE1E4BC9E200559134 /* AddEditCategoryViewController.swift */; };
-		BF4172D01E6313F600C06AA6 /* GenericHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4172CF1E6313F600C06AA6 /* GenericHelper.swift */; };
 		BF6BC8551E5ADA4E0052F4E8 /* CategoriesViewController+TableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BC8541E5ADA4E0052F4E8 /* CategoriesViewController+TableViews.swift */; };
 		BF6BC85C1E5B280C0052F4E8 /* SubCategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BC85B1E5B280C0052F4E8 /* SubCategoryHeaderView.swift */; };
 		BF6BC85E1E5B28240052F4E8 /* SubCategoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF6BC85D1E5B28240052F4E8 /* SubCategoryHeaderView.xib */; };
@@ -82,7 +81,6 @@
 		BF3792491E09633C0060445D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BF3FFBEC1E4BC90300559134 /* AddEditCategory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddEditCategory.storyboard; sourceTree = "<group>"; };
 		BF3FFBEE1E4BC9E200559134 /* AddEditCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditCategoryViewController.swift; sourceTree = "<group>"; };
-		BF4172CF1E6313F600C06AA6 /* GenericHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericHelper.swift; sourceTree = "<group>"; };
 		BF6BC8541E5ADA4E0052F4E8 /* CategoriesViewController+TableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoriesViewController+TableViews.swift"; sourceTree = "<group>"; };
 		BF6BC85B1E5B280C0052F4E8 /* SubCategoryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCategoryHeaderView.swift; sourceTree = "<group>"; };
 		BF6BC85D1E5B28240052F4E8 /* SubCategoryHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubCategoryHeaderView.xib; sourceTree = "<group>"; };
@@ -257,7 +255,6 @@
 			children = (
 				BFD5AA8B1E52FDBC00DE10E3 /* Consts.swift */,
 				BF00F4891E4D1F7000D5D743 /* CustomView.swift */,
-				BF4172CF1E6313F600C06AA6 /* GenericHelper.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -435,7 +432,6 @@
 				BFD5AA8A1E52E16100DE10E3 /* Extensions.swift in Sources */,
 				BF9687BD1E58CF1F001CD715 /* CategoriesViewController+UITableView.swift in Sources */,
 				BF37922E1E0933D00060445D /* AppDelegate.swift in Sources */,
-				BF4172D01E6313F600C06AA6 /* GenericHelper.swift in Sources */,
 				BF25146F1E46612200042FEF /* Category.swift in Sources */,
 				BF6BC8601E5DC8450052F4E8 /* CategoriesViewController+Firebase.swift in Sources */,
 				BF00F48A1E4D1F7000D5D743 /* CustomView.swift in Sources */,

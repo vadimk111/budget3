@@ -15,7 +15,8 @@ extension CategoriesViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCells", for: indexPath) as! CategoryTableViewCell
-        cell.populate(with: categories[indexPath.row], isExpanded: GenericHelper.valueIsTrue(in: expandedIndexes, for: indexPath.row), mainColor: colors[indexPath.row % colors.count])
+        let category = categories[indexPath.row]
+        cell.populate(with: category, isExpanded: expandedCategories.keys.index(of: category.id!) != nil, mainColor: colors[indexPath.row % colors.count])
         cell.delegate = self
         return cell
     }
@@ -44,50 +45,34 @@ extension CategoriesViewController {
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let category = categories[sourceIndexPath.row]
-         
-        categories.remove(at: sourceIndexPath.row)
-        categories.insert(category, at: destinationIndexPath.row)
-        
-        let hasParent = category.parent != nil
-        
-        if hasParent {
-            if let parentCategory = categories.filter({ $0.id == category.parent! }).first {
-                if let subSourceIndex = parentCategory.subCategories?.index(of: category) {
-                    parentCategory.subCategories?.remove(at: subSourceIndex)
-                    parentCategory.subCategories?.insert(category, at: subSourceIndex + destinationIndexPath.row - sourceIndexPath.row)
+        if sourceIndexPath.row != destinationIndexPath.row {
+            let category = categories[sourceIndexPath.row]
+            
+            categories.remove(at: sourceIndexPath.row)
+            categories.insert(category, at: destinationIndexPath.row)
+            
+            let hasParent = category.parent != nil
+            
+            if hasParent {
+                if let parentCategory = categories.filter({ $0.id == category.parent! }).first {
+                    if let subSourceIndex = parentCategory.subCategories?.index(of: category) {
+                        parentCategory.subCategories?.remove(at: subSourceIndex)
+                        parentCategory.subCategories?.insert(category, at: subSourceIndex + destinationIndexPath.row - sourceIndexPath.row)
+                    }
                 }
             }
-        }
-        
-        if isFirstInRow(dest: destinationIndexPath, hasParent: hasParent) {
-            category.order = categories[destinationIndexPath.row + 1].order - 100
-        } else if isLastInRow(dest: destinationIndexPath, hasParent: hasParent) {
-            category.order = categories[destinationIndexPath.row - 1].order + 100
-        } else {
-            let prev = categories[destinationIndexPath.row - 1]
-            let next = categories[destinationIndexPath.row + 1]
-            category.order = prev.order + (next.order - prev.order) / 2
-        }
-        
-        category.update()
-        
-        //update expanded indexes
-        var shift = 1
-        var start = destinationIndexPath.row
-        var finish = sourceIndexPath.row
-        
-        if sourceIndexPath.row < destinationIndexPath.row {
-            shift = -1
-            start = sourceIndexPath.row
-            finish = destinationIndexPath.row
-        }
-        
-        while start < finish {
-            if GenericHelper.valueIsTrue(in: expandedIndexes, for: start) {
-                expandedIndexes[start + shift] = true
+            
+            if isFirstInRow(dest: destinationIndexPath, hasParent: hasParent) {
+                category.order = categories[destinationIndexPath.row + 1].order - 100
+            } else if isLastInRow(dest: destinationIndexPath, hasParent: hasParent) {
+                category.order = categories[destinationIndexPath.row - 1].order + 100
+            } else {
+                let prev = categories[destinationIndexPath.row - 1]
+                let next = categories[destinationIndexPath.row + 1]
+                category.order = prev.order + (next.order - prev.order) / 2
             }
-            start += 1
+            
+            category.update()
         }
     }
     
@@ -107,12 +92,29 @@ extension CategoriesViewController {
     
     override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
         
-        if GenericHelper.valueIsTrue(in: expandedIndexes, for: sourceIndexPath.row) {
+        let categoryOnSource = categories[sourceIndexPath.row]
+        let categoryOnDest = categories[proposedDestinationIndexPath.row]
+
+        //do not allow to drag expanded category
+        if expandedCategories.keys.index(of: categoryOnSource.id!) != nil {
             return sourceIndexPath
         }
         
-        if categories[sourceIndexPath.row].parent == categories[proposedDestinationIndexPath.row].parent  {
-            return proposedDestinationIndexPath
+        let parentOnSource = categoryOnSource.parent
+        let parentOnDest = categoryOnDest.parent
+        
+        //do not allow drag sub category outside its parent
+        if parentOnSource != nil && parentOnDest != nil {
+            return parentOnDest == parentOnSource ? proposedDestinationIndexPath : sourceIndexPath
+        }
+        
+        if parentOnSource == nil && parentOnDest == nil {
+            if proposedDestinationIndexPath.row == categories.count - 1 {
+                return proposedDestinationIndexPath
+            } else {
+                let nextToDestCategory = categories[proposedDestinationIndexPath.row + 1]
+                return nextToDestCategory.parent != nil ? sourceIndexPath : proposedDestinationIndexPath
+            }
         }
 
         return sourceIndexPath
