@@ -15,11 +15,7 @@ extension CategoriesViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCells", for: indexPath) as! CategoryTableViewCell
-        var isExpanded = false
-        if let isExpandedValue = expandedIndexes[indexPath.row] {
-            isExpanded = isExpandedValue
-        }
-        cell.populate(with: categories[indexPath.row], isExpanded: isExpanded, mainColor: colors[indexPath.row % colors.count])
+        cell.populate(with: categories[indexPath.row], isExpanded: GenericHelper.valueIsTrue(in: expandedIndexes, for: indexPath.row), mainColor: colors[indexPath.row % colors.count])
         cell.delegate = self
         return cell
     }
@@ -75,6 +71,24 @@ extension CategoriesViewController {
         }
         
         category.update()
+        
+        //update expanded indexes
+        var shift = 1
+        var start = destinationIndexPath.row
+        var finish = sourceIndexPath.row
+        
+        if sourceIndexPath.row < destinationIndexPath.row {
+            shift = -1
+            start = sourceIndexPath.row
+            finish = destinationIndexPath.row
+        }
+        
+        while start < finish {
+            if GenericHelper.valueIsTrue(in: expandedIndexes, for: start) {
+                expandedIndexes[start + shift] = true
+            }
+            start += 1
+        }
     }
     
     func isFirstInRow(dest: IndexPath, hasParent: Bool) -> Bool {
@@ -92,9 +106,15 @@ extension CategoriesViewController {
     }
     
     override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
-        if categories[sourceIndexPath.row].parent == categories[proposedDestinationIndexPath.row].parent {
+        
+        if GenericHelper.valueIsTrue(in: expandedIndexes, for: sourceIndexPath.row) {
+            return sourceIndexPath
+        }
+        
+        if categories[sourceIndexPath.row].parent == categories[proposedDestinationIndexPath.row].parent  {
             return proposedDestinationIndexPath
         }
+
         return sourceIndexPath
     }
 }
