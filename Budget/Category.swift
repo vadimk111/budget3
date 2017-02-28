@@ -93,10 +93,12 @@ class Category: ModelBaseObject {
     
     func makeCopy() -> Category {
         let copy = Category()
+        copy.id = id
         copy.title = title
         copy.amount = amount
         copy.order = order
         copy.parent = parent
+        copy.expenses = expenses
         return copy
     }
     
@@ -114,16 +116,21 @@ class Category: ModelBaseObject {
         }
         result[orderKey] = order
         
+        var expensesObj = [String : [AnyHashable : Any]]()
+        if let expenses = expenses {
+            for expense in expenses {
+                if let id = expense.id {
+                    expensesObj[id] = expense.toValues()
+                }
+            }
+            if expensesObj.keys.count > 0 {
+                result[expensesKey] = expensesObj
+            }
+        }
+        
         return result
     }
     
-    override func update() {
-        super.update()
-        
-        if parent == nil {
-            removeChild(path: parentKey)
-        }
-    }
 
     override func delete() {
         super.delete()

@@ -38,7 +38,7 @@ class ModelBaseObject : NSObject {
     }
     
     func update() {
-        ref?.updateChildValues(toValues())
+        ref?.setValue(toValues())
     }
 
     func removeChild(path: String) {

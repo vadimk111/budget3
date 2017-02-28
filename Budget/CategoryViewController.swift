@@ -60,10 +60,7 @@ class CategoryViewController: UITableViewController, SubCategoryHeaderViewDelega
         
         expensesRef?.observe(.childChanged, with: { [unowned self] snapshot in
             let category = section == 0 ? self.category : self.category.subCategories![section - 1]
-            let expense = Expense(snapshot: snapshot)
-            if let index = category?.expenses?.index(where: { $0.id == expense.id } ) {
-                category?.expenses?.remove(at: index)
-                category?.expenses?.insert(expense, at: index)
+            if let index = category?.expenses?.index(where: { $0.id == snapshot.key } ) {
                 self.tableView.reloadRows(at: [IndexPath.init(row: index, section: section)], with: .none)
                 self.updateBalanceNavView()
             }

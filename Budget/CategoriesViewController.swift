@@ -17,6 +17,7 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
     var dateChanged = false
     var closestBudget: [Category]?
     var expandedCategories: [String : Bool] = [:]
+    var categoryBeforeUpdate: Category?
     
     @IBOutlet weak var o_editButton: UIBarButtonItem!
     
@@ -109,11 +110,15 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
         if let closestBudget = closestBudget, let budgetRef = budgetRef {
             for category in closestBudget {
                 let newCategory = category.makeCopy()
+                newCategory.id = nil
+                newCategory.expenses = nil
                 let newCategoryId = newCategory.insert(into: budgetRef)
                 
                 if let subCategories = category.subCategories {
                     for subCategory in subCategories {
                         let newSubCategory = subCategory.makeCopy()
+                        newSubCategory.id = nil
+                        newSubCategory.expenses = nil
                         newSubCategory.parent = newCategoryId
                         newSubCategory.insert(into: budgetRef)
                     }
@@ -176,9 +181,13 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
             vc?.budgetRef = budgetRef
         } else if segue.identifier == "editCategory" {
             if let index = sender as? IndexPath {
-                let vc = addEditController(from: segue)
                 let category = categories[index.row]
+                
+                categoryBeforeUpdate = category.makeCopy()
+                
+                let vc = addEditController(from: segue)
                 vc?.category = category
+                
                 if category.subCategories == nil {
                     vc?.parents = availableParents.filter({ $0.id != category.id })
                 }
