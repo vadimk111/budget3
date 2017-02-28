@@ -14,63 +14,49 @@
         <scene sceneID="n5p-HO-83E">
             <objects>
                 <tableViewController id="fZg-EQ-ps6" customClass="CategoriesViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" id="t5z-BU-lfP">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" id="t5z-BU-lfP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="categoryCells" id="AZM-S2-L9f" customClass="CategoryTableViewCell" customModule="Budget" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="64"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AZM-S2-L9f" id="WBD-OU-8bc">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="54"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbP-D6-hrI">
-                                            <rect key="frame" x="-21" y="-2.6666666666666661" width="32" height="32.333333333333336"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="32" id="LK6-3z-bKm"/>
-                                                <constraint firstAttribute="height" constant="32" id="OnF-Am-LWP"/>
-                                            </constraints>
-                                            <state key="normal" image="arrow_down"/>
-                                            <connections>
-                                                <action selector="didTapExpand:" destination="AZM-S2-L9f" eventType="touchUpInside" id="QNi-gl-YuX"/>
-                                            </connections>
-                                        </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BG5-NG-FJr">
-                                            <rect key="frame" x="15" y="4" width="384" height="19"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7u7-vh-vLL" customClass="BalanceView" customModule="Budget" customModuleProvider="target">
-                                            <rect key="frame" x="15" y="23" width="384" height="36"/>
+                                            <rect key="frame" x="15" y="7" width="384" height="40"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="36" id="CH8-Ol-3vs"/>
+                                                <constraint firstAttribute="height" constant="40" id="CH8-Ol-3vs"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
+                                                    <real key="value" value="18"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="amountSize">
+                                                    <real key="value" value="12"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="progressBarSize">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="pbP-D6-hrI" firstAttribute="centerY" secondItem="BG5-NG-FJr" secondAttribute="centerY" id="2Og-kp-cpW"/>
-                                        <constraint firstItem="pbP-D6-hrI" firstAttribute="leading" secondItem="WBD-OU-8bc" secondAttribute="leadingMargin" constant="-29" id="V4A-9h-ZFC"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="BG5-NG-FJr" secondAttribute="trailing" constant="7" id="hzb-sy-Hvf"/>
+                                        <constraint firstItem="7u7-vh-vLL" firstAttribute="centerY" secondItem="WBD-OU-8bc" secondAttribute="centerY" id="VmG-za-nij"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="7u7-vh-vLL" secondAttribute="trailing" constant="7" id="lJj-h4-FLY"/>
                                         <constraint firstItem="7u7-vh-vLL" firstAttribute="leading" secondItem="WBD-OU-8bc" secondAttribute="leadingMargin" constant="7" id="mrJ-M2-fm2"/>
-                                        <constraint firstItem="7u7-vh-vLL" firstAttribute="top" secondItem="BG5-NG-FJr" secondAttribute="bottom" id="pjU-tj-Lov"/>
-                                        <constraint firstItem="BG5-NG-FJr" firstAttribute="top" secondItem="WBD-OU-8bc" secondAttribute="top" constant="4" id="t3b-zn-AgL"/>
-                                        <constraint firstItem="BG5-NG-FJr" firstAttribute="leading" secondItem="pbP-D6-hrI" secondAttribute="trailing" constant="4" id="wCR-vV-csh"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="o_balanceLeadingConstraint" destination="mrJ-M2-fm2" id="YA1-RD-nbz"/>
                                     <outlet property="o_balanceView" destination="7u7-vh-vLL" id="z0G-Zo-LoU"/>
-                                    <outlet property="o_expandButton" destination="pbP-D6-hrI" id="ct1-SM-cR1"/>
-                                    <outlet property="o_expandLeadingConstraint" destination="V4A-9h-ZFC" id="MfT-JA-7xb"/>
-                                    <outlet property="o_title" destination="BG5-NG-FJr" id="bbC-xT-Xei"/>
                                     <segue destination="9cW-o7-bCD" kind="show" identifier="drillDown" id="vDe-5L-uY5"/>
                                 </connections>
                             </tableViewCell>
@@ -177,9 +163,20 @@
                     <navigationItem key="navigationItem" id="NJG-fc-3vP">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="hlI-H8-20r" customClass="BalanceView" customModule="Budget" customModuleProvider="target">
-                            <rect key="frame" x="87" y="6" width="240" height="33"/>
+                            <rect key="frame" x="87" y="6" width="240" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
+                                    <real key="value" value="14"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="amountSize">
+                                    <real key="value" value="11"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="progressBarSize">
+                                    <real key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                         </view>
                         <barButtonItem key="rightBarButtonItem" image="plus" id="6kb-g8-73K">
                             <connections>
@@ -225,7 +222,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow_down" width="10" height="6"/>
         <image name="edit-tool" width="16" height="16"/>
         <image name="list" width="24" height="24"/>
         <image name="plus" width="16" height="16"/>

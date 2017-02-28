@@ -13,19 +13,16 @@ protocol CategoryTableViewCellDelegate: class {
     func categoryTableViewCellDidCollapse(_ cell: CategoryTableViewCell)
 }
 
-class CategoryTableViewCell: UITableViewCell {
+class CategoryTableViewCell: UITableViewCell, BalanceViewDelegate {
 
     @IBOutlet weak var o_balanceView: BalanceView!
-    @IBOutlet weak var o_title: UILabel!
-    @IBOutlet weak var o_expandLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var o_expandButton: UIButton!
     @IBOutlet weak var o_balanceLeadingConstraint: NSLayoutConstraint!
     
     weak var delegate: CategoryTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        o_balanceView.delegate = self
     }
    
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -35,48 +32,19 @@ class CategoryTableViewCell: UITableViewCell {
     }
 
     func populate(with data: Category, isExpanded: Bool, mainColor: UIColor) {
-        o_title.text = data.title
-        o_title.textColor = mainColor
-        
-        if let _ = data.subCategories {
-            o_expandLeadingConstraint.constant = 0
-            o_balanceLeadingConstraint.constant = 7
-            o_expandButton.isHidden = false
-            setExpanded(isExpanded)
-        } else {
-            if let _ = data.parent {
-                o_expandLeadingConstraint.constant = 16
-                o_balanceLeadingConstraint.constant = 52
-            } else {
-                o_expandLeadingConstraint.constant = -29
-                o_balanceLeadingConstraint.constant = 7
-            }
-            o_expandButton.isHidden = true
-        }
-       
-        o_balanceView.populate(amount: data.calculatedAmount, totalSpent: data.calculatedTotalSpent)
+        o_balanceLeadingConstraint.constant = data.parent != nil ? 52 : 7
+        o_balanceView.populate(amount: data.calculatedAmount, totalSpent: data.calculatedTotalSpent, title: data.title, titleColor: mainColor, showExpand: data.subCategories != nil, isExpanded: isExpanded)
     }
-    
-    @IBAction func didTapExpand(_ sender: UIButton) {
-        setExpanded(o_expandButton.tag == 1)
-        if o_expandButton.tag == 2 {
-            delegate?.categoryTableViewCellDidExpand(self)
-        } else {
-            delegate?.categoryTableViewCellDidCollapse(self)
-        }
-    }
-    
-    func setExpanded(_ isExpanded: Bool) {
-        if isExpanded {
-            o_expandButton.tag = 2
-            o_expandButton.setImage(UIImage.init(named: "arrow_up"), for: .normal)
-        } else {
-            o_expandButton.tag = 1
-            o_expandButton.setImage(UIImage.init(named: "arrow_down"), for: .normal)
-        }
-    }
-    
+
     func isExpanded() -> Bool {
-        return o_expandButton.tag == 2
+        return o_balanceView.isExpanded()
+    }
+    
+    func balanceViewDidExpand(_ view: BalanceView) {
+        delegate?.categoryTableViewCellDidExpand(self)
+    }
+    
+    func balanceViewDidCollapse(_ view: BalanceView) {
+        delegate?.categoryTableViewCellDidCollapse(self)
     }
 }
