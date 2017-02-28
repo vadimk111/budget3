@@ -17,6 +17,7 @@ class AddEditCategoryViewController: UIViewController, UIPickerViewDelegate, UIP
     var highestOrder: Float = 0
     var initialParentSelected = false
     
+    @IBOutlet weak var o_billSwitch: UISwitch!
     @IBOutlet weak var o_titleField: UITextField!
     @IBOutlet weak var o_amountField: UITextField!
     @IBOutlet weak var o_pickerView: UIPickerView!
@@ -38,6 +39,10 @@ class AddEditCategoryViewController: UIViewController, UIPickerViewDelegate, UIP
         if let amount = category?.amount {
             o_amountField.text = String(amount)
         }
+        if let isBillValue = category?.isBill {
+            o_billSwitch.isOn = isBillValue
+        }
+        
         if let parent = category?.parent {
             o_parentLabel.text = parents.filter({ $0.id == parent }).first?.title
             o_parentLabel.textColor = UIColor.black
@@ -54,6 +59,10 @@ class AddEditCategoryViewController: UIViewController, UIPickerViewDelegate, UIP
         if o_titleField.text?.characters.count == 0 {
             o_titleField.becomeFirstResponder()
         }
+    }
+    
+    @IBAction func didChangeIsBill(_ sender: UISwitch) {
+        category?.isBill = sender.isOn
     }
     
     @IBAction func didTapParent(_ sender: UITapGestureRecognizer) {

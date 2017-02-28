@@ -22,9 +22,42 @@ extension CategoriesViewController {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        var actions = [UITableViewRowAction]()
+        
         let edit = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Edit", handler: { [unowned self] (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
             self.performSegue(withIdentifier: "editCategory", sender: indexPath)
         })
+        actions.append(edit)
+        
+        if categories[indexPath.row].isBill == true {
+            let pay = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Pay", handler: { [unowned self] (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+                let categoryToPay = self.categories[indexPath.row]
+                let expense = Expense()
+                expense.amount = categoryToPay.amount
+                expense.date = Date()
+                if let title = categoryToPay.title {
+                    expense.title = "\(title) - payment"
+                } else {
+                    expense.title = "Payment"
+                }
+                if let expensesRef = categoryToPay.getDatabaseReference()?.child("expenses") {
+                    expensesRef.observe(.childAdded, with: { snapshot in
+                        if categoryToPay.expenses == nil {
+                            categoryToPay.expenses = []
+                        }
+                        let expense = Expense(snapshot: snapshot)
+                        if !categoryToPay.expenses!.contains(where: { $0.id == expense.id } ) {
+                            categoryToPay.expenses!.append(expense)
+                        }
+                        expensesRef.removeAllObservers()
+                    })
+
+                    expense.insert(into: expensesRef)
+                }
+            })
+            actions.insert(pay, at: 0)
+        }
+        
         let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { [unowned self] (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
             let a = UIAlertController(title: "Remove category and all its sub categories ?", message: "", preferredStyle: UIAlertControllerStyle.alert)
             a.addAction(UIAlertAction(title: "Remove", style: .default) { [unowned self] action -> Void in
@@ -33,7 +66,9 @@ extension CategoriesViewController {
             a.addAction(UIAlertAction(title: "Cancel", style: .default) { action -> Void in })
             self.present(a, animated: true, completion: nil)
         })
-        return [delete, edit]
+        actions.insert(delete, at: 0)
+        
+        return actions
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

@@ -78,8 +78,43 @@
                                     <constraint firstItem="J1g-mB-mkb" firstAttribute="centerY" secondItem="2lh-aW-ZVR" secondAttribute="centerY" id="kxo-12-ELr"/>
                                 </constraints>
                             </view>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMU-Ij-kOj">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sOa-d2-Bbt">
                                 <rect key="frame" x="16" y="162" width="343" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is Bill" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ot5-eQ-wBZ">
+                                        <rect key="frame" x="0.0" y="11" width="43" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xox-Nm-PNE">
+                                        <rect key="frame" x="294" y="6" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="didChangeIsBill:" destination="VQH-T7-fbB" eventType="valueChanged" id="Zfi-o7-0X1"/>
+                                        </connections>
+                                    </switch>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lAS-b7-UMh">
+                                        <rect key="frame" x="0.0" y="43" width="343" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="M5e-ba-SV1"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="lAS-b7-UMh" secondAttribute="bottom" id="7od-5V-kJp"/>
+                                    <constraint firstAttribute="trailing" secondItem="xox-Nm-PNE" secondAttribute="trailing" id="HDl-Bj-DYo"/>
+                                    <constraint firstAttribute="trailing" secondItem="lAS-b7-UMh" secondAttribute="trailing" id="Ju9-Pr-xjW"/>
+                                    <constraint firstItem="lAS-b7-UMh" firstAttribute="leading" secondItem="sOa-d2-Bbt" secondAttribute="leading" id="PcX-eO-c3X"/>
+                                    <constraint firstItem="xox-Nm-PNE" firstAttribute="centerY" secondItem="sOa-d2-Bbt" secondAttribute="centerY" id="d3R-l4-xIb"/>
+                                    <constraint firstItem="ot5-eQ-wBZ" firstAttribute="centerY" secondItem="sOa-d2-Bbt" secondAttribute="centerY" id="f12-Tq-F5W"/>
+                                    <constraint firstItem="ot5-eQ-wBZ" firstAttribute="leading" secondItem="sOa-d2-Bbt" secondAttribute="leading" id="h64-v3-DnE"/>
+                                    <constraint firstAttribute="height" constant="44" id="wx1-ak-pZO"/>
+                                </constraints>
+                            </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMU-Ij-kOj">
+                                <rect key="frame" x="16" y="206" width="343" height="44"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5fy-e2-hl9">
                                         <rect key="frame" x="0.0" y="-173" width="343" height="216"/>
@@ -136,14 +171,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="feu-CJ-PBu" firstAttribute="top" secondItem="O8C-CC-Arw" secondAttribute="bottom" constant="10" id="2bc-1C-JHV"/>
+                            <constraint firstItem="sOa-d2-Bbt" firstAttribute="leading" secondItem="Ha3-xl-3Fo" secondAttribute="leadingMargin" id="3rs-Mt-peB"/>
                             <constraint firstItem="2lh-aW-ZVR" firstAttribute="leading" secondItem="Ha3-xl-3Fo" secondAttribute="leadingMargin" id="5lQ-66-h40"/>
+                            <constraint firstItem="bMU-Ij-kOj" firstAttribute="top" secondItem="sOa-d2-Bbt" secondAttribute="bottom" id="81u-A7-f0W"/>
+                            <constraint firstItem="sOa-d2-Bbt" firstAttribute="top" secondItem="2lh-aW-ZVR" secondAttribute="bottom" id="ECd-CE-xAh"/>
                             <constraint firstItem="2lh-aW-ZVR" firstAttribute="top" secondItem="feu-CJ-PBu" secondAttribute="bottom" id="MEa-NP-9GY"/>
                             <constraint firstItem="feu-CJ-PBu" firstAttribute="leading" secondItem="Ha3-xl-3Fo" secondAttribute="leadingMargin" id="SKD-9V-RLQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2lh-aW-ZVR" secondAttribute="trailing" id="YBu-Ls-pTD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bMU-Ij-kOj" secondAttribute="trailing" id="hcV-bY-uen"/>
                             <constraint firstAttribute="trailingMargin" secondItem="feu-CJ-PBu" secondAttribute="trailing" id="l9M-0Z-m3O"/>
-                            <constraint firstItem="bMU-Ij-kOj" firstAttribute="top" secondItem="2lh-aW-ZVR" secondAttribute="bottom" id="tP6-kW-qkT"/>
                             <constraint firstItem="bMU-Ij-kOj" firstAttribute="leading" secondItem="Ha3-xl-3Fo" secondAttribute="leadingMargin" id="vIN-ZM-t4V"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sOa-d2-Bbt" secondAttribute="trailing" id="whh-p7-Huq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Category" id="ELz-TG-3gM">
@@ -160,6 +198,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="o_amountField" destination="J1g-mB-mkb" id="lvL-dP-0Kb"/>
+                        <outlet property="o_billSwitch" destination="xox-Nm-PNE" id="hWG-Sa-nYQ"/>
                         <outlet property="o_parentHeightConstraint" destination="dRt-4M-Huw" id="baq-U2-hVx"/>
                         <outlet property="o_parentLabel" destination="FHB-aV-MLw" id="Ecs-5Q-vOM"/>
                         <outlet property="o_pickerView" destination="5fy-e2-hl9" id="DX9-vC-BWU"/>

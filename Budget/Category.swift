@@ -16,12 +16,14 @@ class Category: ModelBaseObject {
     private let parentKey = "parent"
     private let expensesKey = "expenses"
     private let orderKey = "order"
+    private let isBillKey = "isBill"
     
     var id: String?
     var title: String?
     var parent: String?
     var amount: Float?
     var order: Float = 0.0
+    var isBill: Bool?
     var expenses: [Expense]?
     
     var subCategories: [Category]?
@@ -79,7 +81,8 @@ class Category: ModelBaseObject {
         amount = snapshotValue[amountKey] as? Float
         parent = snapshotValue[parentKey] as? String
         order = snapshotValue[orderKey] as! Float
-        
+        isBill = snapshotValue[isBillKey] as? Bool
+
         for child in snapshot.children {
             let childSnapshot = child as! FIRDataSnapshot
             if childSnapshot.key == expensesKey {
@@ -98,6 +101,7 @@ class Category: ModelBaseObject {
         copy.amount = amount
         copy.order = order
         copy.parent = parent
+        copy.isBill = isBill
         copy.expenses = expenses
         return copy
     }
@@ -115,6 +119,9 @@ class Category: ModelBaseObject {
             result[parentKey] = parent!
         }
         result[orderKey] = order
+        if let _ = isBill {
+            result[isBillKey] = isBill
+        }
         
         var expensesObj = [String : [AnyHashable : Any]]()
         if let expenses = expenses {
