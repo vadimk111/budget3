@@ -15,6 +15,7 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
     var categories: [Category] = []
     var date: Date = Date()
     var dateChanged = false
+    var isRefreshing = false
     var closestBudget: [Category]?
     var expandedCategories: [String : Bool] = [:]
     var categoryBeforeUpdate: Category?
@@ -51,7 +52,7 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
         if let budgetId = ModelHelper.budgetId(for: date) {
             budgetRef = ref.child(budgetId)
             budgetRef?.observeSingleEvent(of: .value, with: { [unowned self] snapshot in
-                if !self.prepareBudget(from: snapshot) {
+                if !self.prepareBudget(from: snapshot) && !self.isRefreshing {
                     if !self.copyClosestBudget() && !self.dateChanged {
                         self.tryPrevBudgetAndCopy()
                     }
@@ -59,6 +60,11 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
                 self.registerToUpdates(budgetRef: self.budgetRef)
                 self.tableView.reloadData()
                 self.updateHeaderView()
+                
+                if self.isRefreshing {
+                    self.isRefreshing = false
+                    self.tableView.refreshControl?.endRefreshing()
+                }
             })
         }
     }
@@ -159,6 +165,13 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
                 }
             })
         }
+    }
+    
+    @IBAction func didPullToRefresh(_ sender: UIRefreshControl) {
+        isRefreshing = true
+        expandedCategories = [:]
+        unregisterFromUpdates(budgetRef: budgetRef)
+        reload()
     }
     
     @IBAction func didTapEdit(_ sender: UIBarButtonItem) {
