@@ -110,6 +110,7 @@ extension CategoriesViewController {
                 parentCategory.subCategories?.remove(at: index)
                 if parentCategory.subCategories!.count == 0 {
                     parentCategory.subCategories = nil
+                    expandedCategories.removeValue(forKey: parentCategory.id!)
                 }
                 if let parentIndex = self.categories.index(of: parentCategory) {
                     let indexToUpdate = IndexPath.init(row: parentIndex, section: 0)
