@@ -43,7 +43,8 @@ extension CategoriesViewController {
     
     func observeChildUpdate(on budgetRef: FIRDatabaseReference?) {
         budgetRef?.observe(.childChanged, with: { [unowned self] snapshot in
-            if let updatedCategory = self.categories.filter({ $0.id == snapshot.key }).first {
+            let category = Category(snapshot: snapshot)
+            if let updatedCategory = self.categories.filter({ $0.id == category.id }).first {
                 if let origCategory = self.categoryBeforeUpdate {
                     if origCategory.parent != updatedCategory.parent {
                         if updatedCategory.parent == nil {
@@ -60,8 +61,10 @@ extension CategoriesViewController {
                 } else {
                     self.updateCategoryInView(updatedCategory)
                 }
-                self.updateHeaderView()
+            } else if let parent = category.parent, let parentCategory = self.categories.filter({ $0.id == parent }).first {
+                self.updateCategoryInView(parentCategory)
             }
+            self.updateHeaderView()
         })
     }
     
