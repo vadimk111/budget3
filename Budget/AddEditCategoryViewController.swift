@@ -124,7 +124,7 @@ class AddEditCategoryViewController: UIViewController, UIPickerViewDelegate, UIP
             }
             o_parentLabel.textColor = UIColor.black
         } else {
-            o_parentLabel.text = "Parent"
+            o_parentLabel.text = "Sub-category of"
             category?.parent = nil
             category?.order = highestOrder + 100
             o_parentLabel.textColor = UIColor(red: 199 / 255, green: 199 / 255, blue: 205 / 255, alpha: 1)
