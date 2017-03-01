@@ -32,7 +32,7 @@ class CategoryTableViewCell: UITableViewCell, BalanceViewDelegate {
     }
 
     func populate(with data: Category, isExpanded: Bool, mainColor: UIColor) {
-        o_balanceLeadingConstraint.constant = data.parent != nil ? 52 : 7
+        o_balanceLeadingConstraint.constant = data.parent != nil ? 32 : 0
         o_balanceView.populate(amount: data.calculatedAmount, totalSpent: data.calculatedTotalSpent, title: data.title, titleColor: mainColor, showExpand: data.subCategories != nil, isExpanded: isExpanded)
     }
 

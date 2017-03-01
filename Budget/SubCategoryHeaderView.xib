@@ -25,7 +25,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6UE-CH-HOD">
+                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6UE-CH-HOD">
                     <rect key="frame" x="328" y="33" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="EgF-GU-ygY"/>
@@ -40,13 +40,14 @@
             <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="6UE-CH-HOD" firstAttribute="centerY" secondItem="7W4-dN-4bU" secondAttribute="centerY" id="D8m-sm-nvE"/>
+                <constraint firstItem="6UE-CH-HOD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7W4-dN-4bU" secondAttribute="trailing" constant="4" id="Oqg-oK-plZ"/>
                 <constraint firstAttribute="trailing" secondItem="6UE-CH-HOD" secondAttribute="trailing" constant="3" id="PEk-vP-bEX"/>
                 <constraint firstItem="7W4-dN-4bU" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="hoj-Nz-1XQ"/>
                 <constraint firstItem="7W4-dN-4bU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="v10-84-ycV"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="211" y="-220"/>
+            <point key="canvasLocation" x="-19" y="-203"/>
         </view>
     </objects>
     <resources>

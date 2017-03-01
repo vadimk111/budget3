@@ -70,7 +70,7 @@ class BalanceView: CustomView {
             o_expandButton.isHidden = false
             setExpanded(isExpanded)
         } else {
-            o_expandLeadingConstraint.constant = -o_expandButton.frame.width
+            o_expandLeadingConstraint.constant = -26
             o_expandButton.isHidden = true
         }
         

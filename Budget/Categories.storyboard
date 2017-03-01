@@ -28,10 +28,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7u7-vh-vLL" customClass="BalanceView" customModule="Budget" customModuleProvider="target">
-                                            <rect key="frame" x="15" y="7" width="384" height="40"/>
+                                            <rect key="frame" x="0.0" y="5" width="399" height="44"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="CH8-Ol-3vs"/>
+                                                <constraint firstAttribute="height" constant="44" id="CH8-Ol-3vs"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
@@ -50,7 +50,7 @@
                                     <constraints>
                                         <constraint firstItem="7u7-vh-vLL" firstAttribute="centerY" secondItem="WBD-OU-8bc" secondAttribute="centerY" id="VmG-za-nij"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="7u7-vh-vLL" secondAttribute="trailing" constant="7" id="lJj-h4-FLY"/>
-                                        <constraint firstItem="7u7-vh-vLL" firstAttribute="leading" secondItem="WBD-OU-8bc" secondAttribute="leadingMargin" constant="7" id="mrJ-M2-fm2"/>
+                                        <constraint firstItem="7u7-vh-vLL" firstAttribute="leading" secondItem="WBD-OU-8bc" secondAttribute="leading" id="mrJ-M2-fm2"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
