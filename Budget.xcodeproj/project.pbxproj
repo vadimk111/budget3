@@ -30,7 +30,6 @@
 		BF3792351E0933D00060445D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF3792341E0933D00060445D /* Assets.xcassets */; };
 		BF3792381E0933D00060445D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF3792361E0933D00060445D /* LaunchScreen.storyboard */; };
 		BF3792441E09625C0060445D /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF3792431E09625C0060445D /* iPhone.storyboard */; };
-		BF3792461E0963150060445D /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3792451E0963150060445D /* SummaryViewController.swift */; };
 		BF3792481E0963330060445D /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3792471E0963330060445D /* CategoriesViewController.swift */; };
 		BF37924A1E09633C0060445D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3792491E09633C0060445D /* SettingsViewController.swift */; };
 		BF3FFBED1E4BC90300559134 /* AddEditCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF3FFBEC1E4BC90300559134 /* AddEditCategory.storyboard */; };
@@ -39,6 +38,11 @@
 		BF6BC85C1E5B280C0052F4E8 /* SubCategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BC85B1E5B280C0052F4E8 /* SubCategoryHeaderView.swift */; };
 		BF6BC85E1E5B28240052F4E8 /* SubCategoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF6BC85D1E5B28240052F4E8 /* SubCategoryHeaderView.xib */; };
 		BF6BC8601E5DC8450052F4E8 /* CategoriesViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BC85F1E5DC8450052F4E8 /* CategoriesViewController+Firebase.swift */; };
+		BF90631C1E688FB8004B5F8B /* Overview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF90631B1E688FB8004B5F8B /* Overview.storyboard */; };
+		BF90631E1E689102004B5F8B /* OverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90631D1E689102004B5F8B /* OverviewTableViewController.swift */; };
+		BF9063201E6891E3004B5F8B /* OverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90631F1E6891E3004B5F8B /* OverviewTableViewCell.swift */; };
+		BF9063221E6896D3004B5F8B /* DateChanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9063211E6896D3004B5F8B /* DateChanger.swift */; };
+		BF9063241E6896DF004B5F8B /* DateChanger.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF9063231E6896DF004B5F8B /* DateChanger.xib */; };
 		BF9687BD1E58CF1F001CD715 /* CategoriesViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9687BC1E58CF1F001CD715 /* CategoriesViewController+UITableView.swift */; };
 		BF9687BF1E58CFB1001CD715 /* CategoriesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9687BE1E58CFB1001CD715 /* CategoriesHeaderView.swift */; };
 		BF9687C11E58CFDA001CD715 /* CategoriesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF9687C01E58CFDA001CD715 /* CategoriesHeaderView.xib */; };
@@ -76,7 +80,6 @@
 		BF3792371E0933D00060445D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF3792391E0933D00060445D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF3792431E09625C0060445D /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
-		BF3792451E0963150060445D /* SummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		BF3792471E0963330060445D /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		BF3792491E09633C0060445D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BF3FFBEC1E4BC90300559134 /* AddEditCategory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddEditCategory.storyboard; sourceTree = "<group>"; };
@@ -85,6 +88,11 @@
 		BF6BC85B1E5B280C0052F4E8 /* SubCategoryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCategoryHeaderView.swift; sourceTree = "<group>"; };
 		BF6BC85D1E5B28240052F4E8 /* SubCategoryHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubCategoryHeaderView.xib; sourceTree = "<group>"; };
 		BF6BC85F1E5DC8450052F4E8 /* CategoriesViewController+Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoriesViewController+Firebase.swift"; sourceTree = "<group>"; };
+		BF90631B1E688FB8004B5F8B /* Overview.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Overview.storyboard; sourceTree = "<group>"; };
+		BF90631D1E689102004B5F8B /* OverviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewTableViewController.swift; sourceTree = "<group>"; };
+		BF90631F1E6891E3004B5F8B /* OverviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewTableViewCell.swift; sourceTree = "<group>"; };
+		BF9063211E6896D3004B5F8B /* DateChanger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateChanger.swift; sourceTree = "<group>"; };
+		BF9063231E6896DF004B5F8B /* DateChanger.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateChanger.xib; sourceTree = "<group>"; };
 		BF9687BC1E58CF1F001CD715 /* CategoriesViewController+UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoriesViewController+UITableView.swift"; sourceTree = "<group>"; };
 		BF9687BE1E58CFB1001CD715 /* CategoriesHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesHeaderView.swift; sourceTree = "<group>"; };
 		BF9687C01E58CFDA001CD715 /* CategoriesHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesHeaderView.xib; sourceTree = "<group>"; };
@@ -132,6 +140,7 @@
 				BF9687C01E58CFDA001CD715 /* CategoriesHeaderView.xib */,
 				BF00F4831E4D1F2500D5D743 /* CategoryTableViewCell.swift */,
 				BFCA1B7E1E4E3A450023AB55 /* ExpenseTableViewCell.swift */,
+				BF90631F1E6891E3004B5F8B /* OverviewTableViewCell.swift */,
 				BF6BC85B1E5B280C0052F4E8 /* SubCategoryHeaderView.swift */,
 				BF6BC85D1E5B28240052F4E8 /* SubCategoryHeaderView.xib */,
 			);
@@ -146,6 +155,7 @@
 				BF2514691E464B7800042FEF /* Categories.storyboard */,
 				BF3792431E09625C0060445D /* iPhone.storyboard */,
 				BF3792361E0933D00060445D /* LaunchScreen.storyboard */,
+				BF90631B1E688FB8004B5F8B /* Overview.storyboard */,
 				BF25146B1E465C8C00042FEF /* Settings.storyboard */,
 			);
 			name = Storyboards;
@@ -205,8 +215,8 @@
 				BF6BC8561E5ADAB20052F4E8 /* Categories */,
 				BF6BC8581E5ADAE60052F4E8 /* Login */,
 				BF6BC8591E5ADB610052F4E8 /* Main */,
+				BF90631D1E689102004B5F8B /* OverviewTableViewController.swift */,
 				BF3792491E09633C0060445D /* SettingsViewController.swift */,
-				BF3792451E0963150060445D /* SummaryViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -264,6 +274,8 @@
 			children = (
 				BF9687C51E58DBED001CD715 /* BalanceView.swift */,
 				BF9687C31E58DBDC001CD715 /* BalanceView.xib */,
+				BF9063211E6896D3004B5F8B /* DateChanger.swift */,
+				BF9063231E6896DF004B5F8B /* DateChanger.xib */,
 				BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */,
 				BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */,
 			);
@@ -343,10 +355,12 @@
 				BF9687C11E58CFDA001CD715 /* CategoriesHeaderView.xib in Resources */,
 				BF3792441E09625C0060445D /* iPhone.storyboard in Resources */,
 				BF6BC85E1E5B28240052F4E8 /* SubCategoryHeaderView.xib in Resources */,
+				BF90631C1E688FB8004B5F8B /* Overview.storyboard in Resources */,
 				BF00F48E1E4D331100D5D743 /* AddEditExpense.storyboard in Resources */,
 				BF2514711E46626F00042FEF /* GoogleService-Info.plist in Resources */,
 				BF9687C41E58DBDC001CD715 /* BalanceView.xib in Resources */,
 				BF2514771E47154500042FEF /* LoginViewController.xib in Resources */,
+				BF9063241E6896DF004B5F8B /* DateChanger.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,15 +433,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF00F4921E4D348F00D5D743 /* Expense.swift in Sources */,
+				BF9063201E6891E3004B5F8B /* OverviewTableViewCell.swift in Sources */,
 				BFD5AA8C1E52FDBC00DE10E3 /* Consts.swift in Sources */,
 				BF6BC8551E5ADA4E0052F4E8 /* CategoriesViewController+TableViews.swift in Sources */,
 				BF25147F1E47CD8700042FEF /* NavigationViewController.swift in Sources */,
 				BF2514791E47165100042FEF /* MainViewController.swift in Sources */,
+				BF9063221E6896D3004B5F8B /* DateChanger.swift in Sources */,
 				BF00F48C1E4D2FA300D5D743 /* CategoryViewController.swift in Sources */,
 				BF00F4901E4D344A00D5D743 /* AddEditExpenseViewController.swift in Sources */,
 				BF9687C61E58DBED001CD715 /* BalanceView.swift in Sources */,
 				BF3FFBEF1E4BC9E200559134 /* AddEditCategoryViewController.swift in Sources */,
 				BF2514751E470FD100042FEF /* LoginViewController.swift in Sources */,
+				BF90631E1E689102004B5F8B /* OverviewTableViewController.swift in Sources */,
 				BF6BC85C1E5B280C0052F4E8 /* SubCategoryHeaderView.swift in Sources */,
 				BFD5AA8A1E52E16100DE10E3 /* Extensions.swift in Sources */,
 				BF9687BD1E58CF1F001CD715 /* CategoriesViewController+UITableView.swift in Sources */,
@@ -443,7 +460,6 @@
 				BF00F4941E4D350C00D5D743 /* ModelBaseObject.swift in Sources */,
 				BF3792481E0963330060445D /* CategoriesViewController.swift in Sources */,
 				BF00F4861E4D1F4300D5D743 /* ProgressBar.swift in Sources */,
-				BF3792461E0963150060445D /* SummaryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

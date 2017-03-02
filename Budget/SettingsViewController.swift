@@ -12,7 +12,7 @@ import FirebaseAuth
 let logoutNotification = Notification.Name(rawValue: "logout")
 let loginNotification = Notification.Name(rawValue: "login")
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, TabBarComponent {
 
     @IBOutlet weak var o_userEmail: UILabel!
     
@@ -27,6 +27,10 @@ class SettingsViewController: UIViewController {
         if let user = APP.user {
             o_userEmail.text = user.email
         }
+    }
+    
+    func reload() {
+        
     }
     
     @IBAction func didTapLogout(_ sender: UIButton) {

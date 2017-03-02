@@ -33,19 +33,25 @@ class MainViewController: UITabBarController {
                         self.present(a, animated: true, completion: nil)
                     } else if let user = user {
                         APP.user = user
-                        if let vc = self.selectedViewController as? TabBarComponent {
-                            vc.reload()
-                        }
+                        self.reload()
                     }
                 }
             } else {
                 let login = LoginViewController()
                 login.completion = { [unowned self] in
-                    if let vc = self.selectedViewController as? TabBarComponent {
-                        vc.reload()
-                    }
+                    self.reload()
                 }
                 present(login, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func reload() {
+        if let viewControllers = self.viewControllers {
+            for item in viewControllers {
+                if let vc = item as? TabBarComponent {
+                    vc.reload()
+                }
             }
         }
     }

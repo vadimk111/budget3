@@ -13,27 +13,20 @@ protocol CategoriesHeaderViewDelegate: class {
     func categoriesHeaderViewDidGoPrev(_ categoriesHeaderView: CategoriesHeaderView)
 }
 
-class CategoriesHeaderView: CustomView {
+class CategoriesHeaderView: CustomView, DateChangerDelegate {
 
-    @IBOutlet weak var o_title: UILabel!
     @IBOutlet weak var o_balanceView: BalanceView!
+    @IBOutlet weak var o_dateChanger: DateChanger!
     
     weak var delegate: CategoriesHeaderViewDelegate?
     
-    @IBAction func didTapNext(_ sender: UIButton) {
-        delegate?.categoriesHeaderViewDidGoNext(self)
-    }
-    
-    @IBAction func didTapPrev(_ sender: UIButton) {
-        delegate?.categoriesHeaderViewDidGoPrev(self)
+    override func loadXib() {
+        super.loadXib()
+        o_dateChanger.delegate = self
     }
     
     func fill(with data: [Category], date: Date) {
-        let calendar = Calendar.current
-        let year = calendar.component(.year, from: date)
-        let month = calendar.component(.month, from: date)
-        
-        o_title.text = "\(months[month - 1]), \(year)"
+        o_dateChanger.date = date
         
         var amount: Float = 0.0
         var totalSpent: Float = 0.0
@@ -44,5 +37,13 @@ class CategoriesHeaderView: CustomView {
         }
         
         o_balanceView.populate(amount: amount, totalSpent: totalSpent)
+    }
+    
+    func dateChangerDidGoNext(_ dateChanger: DateChanger) {
+        delegate?.categoriesHeaderViewDidGoNext(self)
+    }
+    
+    func dateChangerDidGoPrev(_ dateChanger: DateChanger) {
+        delegate?.categoriesHeaderViewDidGoPrev(self)
     }
 }

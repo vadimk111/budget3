@@ -45,46 +45,20 @@ extension CategoriesViewController : CategoryTableViewCellDelegate, CategoriesHe
     
     //MARK: CategoriesHeaderViewDelegate
     func categoriesHeaderViewDidGoNext(_ categoriesHeaderView: CategoriesHeaderView) {
-        changeDate(forward: true)
+        changeToDate(date.nextMonth())
     }
     
     func categoriesHeaderViewDidGoPrev(_ categoriesHeaderView: CategoriesHeaderView) {
-        changeDate(forward: false)
+        changeToDate(date.prevMonth())
     }
     
-    func changeDate(forward: Bool) {
-        let calendar = Calendar.current
-        var year = calendar.component(.year, from: date)
-        var month = calendar.component(.month, from: date)
-        
-        var comp = DateComponents()
-        if forward {
-            if month == 12 {
-                year += 1
-                month = 1
-            } else {
-                month += 1
-            }
-        } else {
-            if month == 1 {
-                year -= 1
-                month = 12
-            } else {
-                month -= 1
-            }
-        }
-        
-        comp.day = 1
-        comp.month = month
-        comp.year = year
-        
-        date = calendar.date(from: comp)!
+    func changeToDate(_ date: Date) {
+        self.date = date
         dateChanged = true
         closestBudget = categories
         expandedCategories = [:]
         
         unregisterFromUpdates(budgetRef: budgetRef)
         reload()
-
     }
 }

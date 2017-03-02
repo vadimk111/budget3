@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Expenses-->
+        <scene sceneID="4jf-U8-y2Q">
+            <objects>
+                <tableViewController id="wHx-Kj-7kx" customClass="OverviewTableViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="52" sectionHeaderHeight="28" sectionFooterHeight="28" id="lXE-kC-Svh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="overviewCells" id="aDK-5a-xbm" customClass="OverviewTableViewCell" customModule="Budget" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="52"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aDK-5a-xbm" id="Q6H-fG-OcT">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50E-xi-hPP">
+                                            <rect key="frame" x="15" y="8" width="28" height="19"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                            <color key="textColor" red="0.1647058824" green="0.1647058824" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2y8-p2-1yL">
+                                            <rect key="frame" x="15" y="26.5" width="28.5" height="17"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                            <color key="textColor" red="0.32156862749999998" green="0.32156862749999998" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120.90" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cA4-95-2nX">
+                                            <rect key="frame" x="311" y="8" width="49" height="19"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                            <color key="textColor" red="0.83921568629999999" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2/2/17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZv-l9-xCJ">
+                                            <rect key="frame" x="319.5" y="26.5" width="40.5" height="17"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                            <color key="textColor" red="0.32156862749999998" green="0.32156862749999998" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="SZv-l9-xCJ" firstAttribute="top" secondItem="2y8-p2-1yL" secondAttribute="top" id="1ww-wL-Wr8"/>
+                                        <constraint firstItem="50E-xi-hPP" firstAttribute="leading" secondItem="Q6H-fG-OcT" secondAttribute="leadingMargin" constant="7" id="7oT-Zb-s5t"/>
+                                        <constraint firstItem="SZv-l9-xCJ" firstAttribute="trailing" secondItem="cA4-95-2nX" secondAttribute="trailing" id="CVO-M9-Nq7"/>
+                                        <constraint firstItem="2y8-p2-1yL" firstAttribute="leading" secondItem="50E-xi-hPP" secondAttribute="leading" id="FF9-ev-cxC"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="cA4-95-2nX" secondAttribute="trailing" constant="7" id="KCR-uK-tYW"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="2y8-p2-1yL" secondAttribute="bottom" id="Lx5-xQ-fE8"/>
+                                        <constraint firstItem="cA4-95-2nX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="50E-xi-hPP" secondAttribute="trailing" constant="4" id="dmq-c3-Ha4"/>
+                                        <constraint firstItem="50E-xi-hPP" firstAttribute="top" secondItem="Q6H-fG-OcT" secondAttribute="topMargin" id="exo-yX-Eeu"/>
+                                        <constraint firstItem="cA4-95-2nX" firstAttribute="top" secondItem="50E-xi-hPP" secondAttribute="top" id="vZr-rI-3v5"/>
+                                        <constraint firstItem="SZv-l9-xCJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2y8-p2-1yL" secondAttribute="trailing" constant="4" id="zFl-Ci-7pb"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="o_amount" destination="cA4-95-2nX" id="Mqw-5G-QSV"/>
+                                    <outlet property="o_category" destination="2y8-p2-1yL" id="hHa-0s-2EL"/>
+                                    <outlet property="o_date" destination="SZv-l9-xCJ" id="sTI-g3-wzy"/>
+                                    <outlet property="o_title" destination="50E-xi-hPP" id="DUs-Jw-84Y"/>
+                                    <segue destination="TyL-LX-xhe" kind="presentation" identifier="editExpense" id="NRQ-sT-FPi"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="wHx-Kj-7kx" id="Hin-Vp-GX5"/>
+                            <outlet property="delegate" destination="wHx-Kj-7kx" id="3iK-ev-GaJ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Expenses" id="fLv-Cs-92f"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="34Y-Z5-qh9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1167.2" y="-177.66116941529236"/>
+        </scene>
+        <!--AddEditExpense-->
+        <scene sceneID="bbR-bD-2NL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddEditExpense" referencedIdentifier="AddEditExpense" id="TyL-LX-xhe" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="07y-dx-iZL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1759.2" y="-124.13793103448276"/>
+        </scene>
+        <!--Expenses-->
+        <scene sceneID="OjL-KL-7b2">
+            <objects>
+                <navigationController storyboardIdentifier="Overview" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5IP-uP-UPc" customClass="NavigationViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Expenses" image="coins" id="6dC-6P-QuR"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tW7-s6-ebg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wHx-Kj-7kx" kind="relationship" relationship="rootViewController" id="DfH-o3-Wx2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vev-HA-hQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="228" y="-177.66116941529236"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="coins" width="24" height="24"/>
+    </resources>
+</document>

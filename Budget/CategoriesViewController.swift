@@ -19,6 +19,7 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
     var closestBudget: [Category]?
     var expandedCategories: [String : Bool] = [:]
     var categoryBeforeUpdate: Category?
+    var headerView: CategoriesHeaderView!
     
     @IBOutlet weak var o_editButton: UIBarButtonItem!
     
@@ -37,10 +38,9 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
             self.reload()
         })
         
-        let view = CategoriesHeaderView(frame: CGRect.init(origin: CGPoint.zero, size: CGSize(width: tableView.frame.width, height: 100)))
-        view.delegate = self
-        view.fill(with: availableParents, date: date)
-        tableView.tableHeaderView = view
+        headerView = CategoriesHeaderView()
+        headerView.delegate = self
+        headerView.fill(with: availableParents, date: date)
     }
     
     deinit {
@@ -70,7 +70,7 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
     }
     
     func updateHeaderView() {
-        (tableView.tableHeaderView as? CategoriesHeaderView)?.fill(with: availableParents, date: date)
+        headerView.fill(with: availableParents, date: date)
     }
     
     func prepareBudget(from snapshot: FIRDataSnapshot) -> Bool {
