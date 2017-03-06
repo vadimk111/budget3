@@ -87,6 +87,10 @@ class BalanceView: CustomView {
         
         if amount != 0 {
             o_progressBar.set(value: totalSpent / amount)
-        } 
+        } else if totalSpent != 0 {
+            o_progressBar.set(value: 2)
+        } else {
+            o_progressBar.set(value: 0)
+        }
     }
 }

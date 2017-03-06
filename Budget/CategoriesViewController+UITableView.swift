@@ -32,13 +32,13 @@ extension CategoriesViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         var actions = [UITableViewRowAction]()
         
-        let edit = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Edit", handler: { [unowned self] (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+        let edit = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Edit", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
             self.performSegue(withIdentifier: "editCategory", sender: indexPath)
         })
         actions.append(edit)
         
         if categories[indexPath.row].isBill == true {
-            let pay = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Pay", handler: { [unowned self] (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+            let pay = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Pay", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
                 let categoryToPay = self.categories[indexPath.row]
                 let expense = Expense()
                 expense.amount = categoryToPay.amount
@@ -66,9 +66,9 @@ extension CategoriesViewController {
             actions.insert(pay, at: 0)
         }
         
-        let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { [unowned self] (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+        let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
             let a = UIAlertController(title: "Remove category and all its sub categories ?", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            a.addAction(UIAlertAction(title: "Remove", style: .default) { [unowned self] action -> Void in
+            a.addAction(UIAlertAction(title: "Remove", style: .default) { action -> Void in
                 self.categories[indexPath.row].delete()
             })
             a.addAction(UIAlertAction(title: "Cancel", style: .default) { action -> Void in })

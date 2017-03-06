@@ -24,7 +24,7 @@ class MainViewController: UITabBarController {
             isReady = true
             
             if let email = UserDefaults.standard.string(forKey: "email"), let password = UserDefaults.standard.string(forKey: "password") {
-                FIRAuth.auth()?.signIn(withEmail: email, password: password) { [unowned self] (user, error) in
+                FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
                     if let _ = error {
                         let a = UIAlertController(title: "Error", message: error!.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
                         a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in
@@ -38,7 +38,7 @@ class MainViewController: UITabBarController {
                 }
             } else {
                 let login = LoginViewController()
-                login.completion = { [unowned self] in
+                login.completion = {
                     self.reload()
                 }
                 present(login, animated: true, completion: nil)

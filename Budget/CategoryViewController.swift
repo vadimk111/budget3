@@ -60,7 +60,10 @@ class CategoryViewController: UITableViewController, SubCategoryHeaderViewDelega
         
         expensesRef?.observe(.childChanged, with: { [unowned self] snapshot in
             let category = section == 0 ? self.category : self.category.subCategories![section - 1]
+            let expense = Expense(snapshot: snapshot)
             if let index = category?.expenses?.index(where: { $0.id == snapshot.key } ) {
+                category?.expenses?.remove(at: index)
+                category?.expenses?.insert(expense, at: index)
                 self.tableView.reloadRows(at: [IndexPath.init(row: index, section: section)], with: .none)
                 self.updateBalanceNavView()
             }
@@ -167,7 +170,7 @@ class CategoryViewController: UITableViewController, SubCategoryHeaderViewDelega
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { [unowned self] (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+        let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
             self.expense(for: indexPath)?.delete()
         })
         return [delete]

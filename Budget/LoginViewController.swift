@@ -23,10 +23,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         o_password.delegate = self
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == o_email {
@@ -38,7 +34,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapForgot(_ sender: UIButton) {
-        FIRAuth.auth()?.sendPasswordReset(withEmail: o_email.text!) { [unowned self] (error) in
+        FIRAuth.auth()?.sendPasswordReset(withEmail: o_email.text!) { (error) in
             if let error = error {
                 self.loginFailed(with: error)
             } else {
@@ -51,7 +47,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapCreate(_ sender: UIButton) {
-        FIRAuth.auth()?.createUser(withEmail: o_email.text!, password: o_password.text!) { [unowned self] (user, error) in
+        FIRAuth.auth()?.createUser(withEmail: o_email.text!, password: o_password.text!) { (user, error) in
             if let error = error {
                 self.loginFailed(with: error)
             } else if let user = user {
@@ -61,7 +57,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapSignIn(_ sender: UIButton) {
-        FIRAuth.auth()?.signIn(withEmail: o_email.text!, password: o_password.text!) { [unowned self] (user, error) in
+        FIRAuth.auth()?.signIn(withEmail: o_email.text!, password: o_password.text!) { (user, error) in
             if let error = error {
                 self.loginFailed(with: error)
             } else if let user = user {

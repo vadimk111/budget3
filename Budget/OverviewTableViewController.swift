@@ -17,9 +17,7 @@ struct ExpenseObj {
 class OverviewTableViewController: UITableViewController, DateChangerDelegate, TabBarComponent {
 
     var expenses: [ExpenseObj]?
-    var budgetRef: FIRDatabaseReference?
     var date: Date = Date()
-    var isRefreshing = false
     var dateChanger: DateChanger!
     
     override func viewDidLoad() {
@@ -39,22 +37,16 @@ class OverviewTableViewController: UITableViewController, DateChangerDelegate, T
     }
     
     deinit {
-        //unregisterFromUpdates(budgetRef: budgetRef)
+        unregisterFromUpdates()
     }
     
     func reload() {
-        let ref = FIRDatabase.database().reference().child("budgets")
         if let budgetId = ModelHelper.budgetId(for: date) {
-            budgetRef = ref.child(budgetId)
-            budgetRef?.observeSingleEvent(of: .value, with: { [unowned self] snapshot in
+            let ref = FIRDatabase.database().reference().child("budgets")
+            ref.child(budgetId).observeSingleEvent(of: .value, with: { snapshot in
                 self.prepareExpenses(from: snapshot)
-                //self.registerToUpdates(budgetRef: self.budgetRef)
                 self.tableView.reloadData()
-                
-                if self.isRefreshing {
-                    self.isRefreshing = false
-                    self.tableView.refreshControl?.endRefreshing()
-                }
+                self.tableView.refreshControl?.endRefreshing()
             })
         }
     }
@@ -64,6 +56,7 @@ class OverviewTableViewController: UITableViewController, DateChangerDelegate, T
         
         for child in snapshot.children {
             let category = Category(snapshot: child as! FIRDataSnapshot)
+            registerToUpdates(category: category)
             if let cExpenses = category.expenses {
                 for item in cExpenses {
                     expenses?.append(ExpenseObj(expense: item, category: category))
@@ -71,11 +64,54 @@ class OverviewTableViewController: UITableViewController, DateChangerDelegate, T
             }
         }
         
+        sortExpenses()
+    }
+    
+    func sortExpenses() {
         expenses?.sort(by: { (item1: ExpenseObj, item2: ExpenseObj) -> Bool in
             guard let date1 = item1.expense.date else { return true }
             guard let date2 = item2.expense.date else { return true }
             return date1 > date2
         })
+    }
+    
+    func registerToUpdates(category: Category) {
+        let listRef = category.getDatabaseReference()?.child("expenses")
+        
+        listRef?.observe(.childAdded, with: { [unowned self] snapshot in
+            let expense = Expense(snapshot: snapshot)
+            if category.expenses?.contains(where: { $0.id == expense.id } ) == false {
+                self.expenses?.append(ExpenseObj(expense: expense, category: category))
+                self.sortExpenses()
+                self.tableView.reloadData()
+            }
+        })
+        
+        listRef?.observe(.childChanged, with: { [unowned self] snapshot in
+            let expense = Expense(snapshot: snapshot)
+            if let index = self.expenses?.index(where: { $0.expense.id == expense.id }) {
+                self.expenses?.remove(at: index)
+            }
+            self.expenses?.append(ExpenseObj(expense: expense, category: category))
+            self.sortExpenses()
+            self.tableView.reloadData()
+        })
+        
+        listRef?.observe(.childRemoved, with: { [unowned self] snapshot in
+            let expense = Expense(snapshot: snapshot)
+            if let index = self.expenses?.index(where: { $0.expense.id == expense.id }) {
+                self.expenses?.remove(at: index)
+            }
+            self.tableView.reloadData()
+        })
+    }
+
+    func unregisterFromUpdates() {
+        if let expenses = expenses {
+            for item in expenses {
+                item.category.getDatabaseReference()?.child("expenses").removeAllObservers()
+            }
+        }
     }
     
     func dateChangerDidGoPrev(_ dateChanger: DateChanger) {
@@ -89,10 +125,15 @@ class OverviewTableViewController: UITableViewController, DateChangerDelegate, T
     func changeToDate(_ date: Date) {
         self.date = date
         dateChanger.date = date
-        //unregisterFromUpdates(budgetRef: budgetRef)
+        unregisterFromUpdates()
         reload()
     }
-
+    
+    @IBAction func didPullToRefresh(_ sender: UIRefreshControl) {
+        unregisterFromUpdates()
+        reload()
+    }
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let expenses = expenses {
@@ -118,25 +159,17 @@ class OverviewTableViewController: UITableViewController, DateChangerDelegate, T
         return dateChanger
     }
 
-    /*
-    // Override to support conditional editing of the table view.
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+            self.expenses?[indexPath.row].expense.delete()
+        })
+        return [delete]
+    }
+    
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
 
     // MARK: - Navigation
 
