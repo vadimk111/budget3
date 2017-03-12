@@ -26,11 +26,11 @@ class OverviewTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func fill(with data: Expense, category: Category, mainColor: UIColor) {
+    func fill(with data: Expense, categoryTitle: String?, mainColor: UIColor) {
         o_title.text = data.title
         o_title.textColor = mainColor
         
-        o_category.text = category.title
+        o_category.text = categoryTitle
         
         if let amount = data.amount {
             o_amount.text = String(amount)

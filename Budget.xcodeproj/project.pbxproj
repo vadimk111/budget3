@@ -39,7 +39,6 @@
 		BF6BC85E1E5B28240052F4E8 /* SubCategoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF6BC85D1E5B28240052F4E8 /* SubCategoryHeaderView.xib */; };
 		BF6BC8601E5DC8450052F4E8 /* CategoriesViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BC85F1E5DC8450052F4E8 /* CategoriesViewController+Firebase.swift */; };
 		BF90631C1E688FB8004B5F8B /* Overview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF90631B1E688FB8004B5F8B /* Overview.storyboard */; };
-		BF90631E1E689102004B5F8B /* OverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90631D1E689102004B5F8B /* OverviewTableViewController.swift */; };
 		BF9063201E6891E3004B5F8B /* OverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90631F1E6891E3004B5F8B /* OverviewTableViewCell.swift */; };
 		BF9063221E6896D3004B5F8B /* DateChanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9063211E6896D3004B5F8B /* DateChanger.swift */; };
 		BF9063241E6896DF004B5F8B /* DateChanger.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF9063231E6896DF004B5F8B /* DateChanger.xib */; };
@@ -51,6 +50,9 @@
 		BFCA1B7F1E4E3A450023AB55 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCA1B7E1E4E3A450023AB55 /* ExpenseTableViewCell.swift */; };
 		BFD5AA8A1E52E16100DE10E3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5AA891E52E16100DE10E3 /* Extensions.swift */; };
 		BFD5AA8C1E52FDBC00DE10E3 /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5AA8B1E52FDBC00DE10E3 /* Consts.swift */; };
+		BFFCD70B1E73D4990030BD79 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCD70A1E73D4990030BD79 /* ExpensesViewController.swift */; };
+		BFFCD70D1E73D8C70030BD79 /* OverviewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCD70C1E73D8C70030BD79 /* OverviewHeaderView.swift */; };
+		BFFCD70F1E73D8D50030BD79 /* OverviewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFFCD70E1E73D8D50030BD79 /* OverviewHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,7 +91,6 @@
 		BF6BC85D1E5B28240052F4E8 /* SubCategoryHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubCategoryHeaderView.xib; sourceTree = "<group>"; };
 		BF6BC85F1E5DC8450052F4E8 /* CategoriesViewController+Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoriesViewController+Firebase.swift"; sourceTree = "<group>"; };
 		BF90631B1E688FB8004B5F8B /* Overview.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Overview.storyboard; sourceTree = "<group>"; };
-		BF90631D1E689102004B5F8B /* OverviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewTableViewController.swift; sourceTree = "<group>"; };
 		BF90631F1E6891E3004B5F8B /* OverviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewTableViewCell.swift; sourceTree = "<group>"; };
 		BF9063211E6896D3004B5F8B /* DateChanger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateChanger.swift; sourceTree = "<group>"; };
 		BF9063231E6896DF004B5F8B /* DateChanger.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateChanger.xib; sourceTree = "<group>"; };
@@ -101,6 +102,9 @@
 		BFCA1B7E1E4E3A450023AB55 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
 		BFD5AA891E52E16100DE10E3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BFD5AA8B1E52FDBC00DE10E3 /* Consts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
+		BFFCD70A1E73D4990030BD79 /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
+		BFFCD70C1E73D8C70030BD79 /* OverviewHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewHeaderView.swift; sourceTree = "<group>"; };
+		BFFCD70E1E73D8D50030BD79 /* OverviewHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewHeaderView.xib; sourceTree = "<group>"; };
 		CBC31ECB1F88C7F0356DFED8 /* Pods-Budget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Budget/Pods-Budget.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +144,8 @@
 				BF9687C01E58CFDA001CD715 /* CategoriesHeaderView.xib */,
 				BF00F4831E4D1F2500D5D743 /* CategoryTableViewCell.swift */,
 				BFCA1B7E1E4E3A450023AB55 /* ExpenseTableViewCell.swift */,
+				BFFCD70C1E73D8C70030BD79 /* OverviewHeaderView.swift */,
+				BFFCD70E1E73D8D50030BD79 /* OverviewHeaderView.xib */,
 				BF90631F1E6891E3004B5F8B /* OverviewTableViewCell.swift */,
 				BF6BC85B1E5B280C0052F4E8 /* SubCategoryHeaderView.swift */,
 				BF6BC85D1E5B28240052F4E8 /* SubCategoryHeaderView.xib */,
@@ -213,9 +219,9 @@
 			children = (
 				BF6BC8571E5ADACE0052F4E8 /* AddEdit */,
 				BF6BC8561E5ADAB20052F4E8 /* Categories */,
+				BFFCD70A1E73D4990030BD79 /* ExpensesViewController.swift */,
 				BF6BC8581E5ADAE60052F4E8 /* Login */,
 				BF6BC8591E5ADB610052F4E8 /* Main */,
-				BF90631D1E689102004B5F8B /* OverviewTableViewController.swift */,
 				BF3792491E09633C0060445D /* SettingsViewController.swift */,
 			);
 			name = "View Controllers";
@@ -348,6 +354,7 @@
 			files = (
 				BF3FFBED1E4BC90300559134 /* AddEditCategory.storyboard in Resources */,
 				BF25146A1E464B7800042FEF /* Categories.storyboard in Resources */,
+				BFFCD70F1E73D8D50030BD79 /* OverviewHeaderView.xib in Resources */,
 				BF00F4881E4D1F5200D5D743 /* ProgressBar.xib in Resources */,
 				BF3792381E0933D00060445D /* LaunchScreen.storyboard in Resources */,
 				BF25146C1E465C8C00042FEF /* Settings.storyboard in Resources */,
@@ -436,6 +443,7 @@
 				BF9063201E6891E3004B5F8B /* OverviewTableViewCell.swift in Sources */,
 				BFD5AA8C1E52FDBC00DE10E3 /* Consts.swift in Sources */,
 				BF6BC8551E5ADA4E0052F4E8 /* CategoriesViewController+TableViews.swift in Sources */,
+				BFFCD70D1E73D8C70030BD79 /* OverviewHeaderView.swift in Sources */,
 				BF25147F1E47CD8700042FEF /* NavigationViewController.swift in Sources */,
 				BF2514791E47165100042FEF /* MainViewController.swift in Sources */,
 				BF9063221E6896D3004B5F8B /* DateChanger.swift in Sources */,
@@ -444,12 +452,12 @@
 				BF9687C61E58DBED001CD715 /* BalanceView.swift in Sources */,
 				BF3FFBEF1E4BC9E200559134 /* AddEditCategoryViewController.swift in Sources */,
 				BF2514751E470FD100042FEF /* LoginViewController.swift in Sources */,
-				BF90631E1E689102004B5F8B /* OverviewTableViewController.swift in Sources */,
 				BF6BC85C1E5B280C0052F4E8 /* SubCategoryHeaderView.swift in Sources */,
 				BFD5AA8A1E52E16100DE10E3 /* Extensions.swift in Sources */,
 				BF9687BD1E58CF1F001CD715 /* CategoriesViewController+UITableView.swift in Sources */,
 				BF37922E1E0933D00060445D /* AppDelegate.swift in Sources */,
 				BF25146F1E46612200042FEF /* Category.swift in Sources */,
+				BFFCD70B1E73D4990030BD79 /* ExpensesViewController.swift in Sources */,
 				BF6BC8601E5DC8450052F4E8 /* CategoriesViewController+Firebase.swift in Sources */,
 				BF00F48A1E4D1F7000D5D743 /* CustomView.swift in Sources */,
 				BF9687BF1E58CFB1001CD715 /* CategoriesHeaderView.swift in Sources */,
