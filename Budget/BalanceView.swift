@@ -80,9 +80,9 @@ class BalanceView: CustomView {
         if let titleColor = titleColor {
             o_title.textColor = titleColor
         }
-        o_amountSpent.text = String(totalSpent)
-        o_amount.text = " / \(amount)"
-        o_amountLeft.text = "\(amount - totalSpent)"
+        o_amountSpent.text = totalSpent.toString()
+        o_amount.text = "/ " + amount.toString()
+        o_amountLeft.text = (amount - totalSpent).toString()
         o_amountLeft.textColor = totalSpent > amount ? UIColor(red: 214 / 255, green: 74 / 255, blue: 74 / 255, alpha: 1) : UIColor(red: 82 / 255, green: 82 / 255, blue: 82 / 255, alpha: 1)
         
         if amount != 0 {
