@@ -42,10 +42,18 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
     var date: Date = Date()
 
     var didViewLoad = false
+    var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(forName: budgetChangedNotification, object: nil, queue: nil, using: { [unowned self] notification in
+            self.timer?.invalidate()
+            self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (timer) in
+                self.reload()
+            })
+        })
+        
         o_dateChanger.delegate = self
         o_dateChanger.date = date
         

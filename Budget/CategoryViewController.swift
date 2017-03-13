@@ -19,6 +19,10 @@ class CategoryViewController: UITableViewController, SubCategoryHeaderViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(forName: logoutNotification, object: nil, queue: nil, using: { [unowned self] notification in
+            _ = self.navigationController?.popViewController(animated: false)
+        })
+        
         updateBalanceNavView()
         registerToUpdates(expensesRef: category.getDatabaseReference()?.child("expenses"), section: 0)
         

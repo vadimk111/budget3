@@ -9,6 +9,8 @@
 import UIKit
 import FirebaseDatabase
 
+let budgetChangedNotification = Notification.Name(rawValue: "budgetChanged")
+
 class CategoriesViewController: UITableViewController, TabBarComponent {
 
     var budgetRef: FIRDatabaseReference?

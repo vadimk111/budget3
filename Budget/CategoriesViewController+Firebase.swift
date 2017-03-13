@@ -25,9 +25,13 @@ extension CategoriesViewController {
         budgetRef?.observe(.childAdded, with: { [unowned self] snapshot in
             let category = Category(snapshot: snapshot)
             if let _ = category.parent {
-                self.addCategoryToParentView(category)
+                if self.addCategoryToParentView(category) {
+                    NotificationCenter.default.post(Notification(name: budgetChangedNotification))
+                }
             } else {
-                self.addCategoryToView(category)
+                if self.addCategoryToView(category) {
+                    NotificationCenter.default.post(Notification(name: budgetChangedNotification))
+                }
             }
             self.updateHeaderView()
         })
@@ -38,6 +42,7 @@ extension CategoriesViewController {
             let category = Category(snapshot: snapshot)
             self.deleteCategoryFromView(category)
             self.updateHeaderView()
+            NotificationCenter.default.post(Notification(name: budgetChangedNotification))
         })
     }
     
@@ -64,14 +69,18 @@ extension CategoriesViewController {
         })
     }
     
-    func addCategoryToView(_ category: Category) {
+    @discardableResult
+    func addCategoryToView(_ category: Category) -> Bool {
         if !categories.contains(where: { $0.id == category.id } ) {
             categories.append(category)
             tableView.insertRows(at: [IndexPath.init(row: tableView.numberOfRows(inSection: 0), section: 0)], with: .fade)
+            return true
         }
+        return false
     }
     
-    func addCategoryToParentView(_ category: Category) {
+    @discardableResult
+    func addCategoryToParentView(_ category: Category) -> Bool {
         if let parentCategory = categories.filter({ $0.id == category.parent }).first {
             if parentCategory.subCategories == nil {
                 parentCategory.subCategories = []
@@ -88,12 +97,14 @@ extension CategoriesViewController {
                     }
                     tableView.reloadRows(at: [indexToUpdate], with: .none)
                 }
+                return true
             }
         }
+        return false
     }
     
     func deleteCategoryFromView(_ category: Category) {
-        if let index = categories.index(of: category) {
+        if let index = categories.index(where: { $0.id == category.id }) {
             categories.remove(at: index)
             tableView.deleteRows(at: [IndexPath.init(row: index, section: 0)], with: .fade)
             
@@ -105,7 +116,7 @@ extension CategoriesViewController {
     
     func deleteCategoryFromParentView(_ category: Category) {
         if let parentCategory = categories.filter({ $0.id == category.parent }).first {
-            if let index = parentCategory.subCategories?.index(of: category) {
+            if let index = parentCategory.subCategories?.index(where: { $0.id == category.id }) {
                 parentCategory.subCategories?.remove(at: index)
                 if parentCategory.subCategories!.count == 0 {
                     parentCategory.subCategories = nil
