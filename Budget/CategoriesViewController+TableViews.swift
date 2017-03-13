@@ -53,7 +53,13 @@ extension CategoriesViewController : CategoryTableViewCellDelegate, CategoriesHe
     }
     
     func changeToDate(_ date: Date) {
-        self.date = date
+        let calendar = Calendar.current
+        if calendar.component(.month, from: date) == calendar.component(.month, from: Date()) {
+            self.date = Date()
+        } else {
+            self.date = date
+        }
+        
         dateChanged = true
         closestBudget = categories
         expandedCategories = [:]
