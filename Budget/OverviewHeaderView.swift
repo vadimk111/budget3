@@ -22,6 +22,6 @@ class OverviewHeaderView: CustomView {
                 amount += item.amount!
             }
         }
-        o_spent.text = String(amount)
+        o_spent.text = amount.toString()
     }
 }

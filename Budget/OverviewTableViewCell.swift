@@ -11,7 +11,6 @@ import UIKit
 class OverviewTableViewCell: UITableViewCell {
 
     @IBOutlet weak var o_title: UILabel!
-    @IBOutlet weak var o_date: UILabel!
     @IBOutlet weak var o_amount: UILabel!
     @IBOutlet weak var o_category: UILabel!
     
@@ -33,10 +32,7 @@ class OverviewTableViewCell: UITableViewCell {
         o_category.text = categoryTitle
         
         if let amount = data.amount {
-            o_amount.text = String(amount)
-        }
-        if let date = data.date {
-            o_date.text = date.toString()
+            o_amount.text = amount.toString()
         }
     }
 }

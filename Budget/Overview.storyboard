@@ -60,14 +60,8 @@
                                                     <color key="textColor" red="0.32156862749999998" green="0.32156862749999998" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2/2/17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3N-rN-cPW">
-                                                    <rect key="frame" x="319.5" y="26.5" width="40.5" height="17"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                                                    <color key="textColor" red="0.32156862749999998" green="0.32156862749999998" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120.90" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBA-Dv-sfC">
-                                                    <rect key="frame" x="311" y="8.5" width="49" height="19"/>
+                                                    <rect key="frame" x="311" y="16.5" width="49" height="19"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" red="0.83921568629999999" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -76,20 +70,16 @@
                                             <constraints>
                                                 <constraint firstItem="gCI-mZ-nl2" firstAttribute="leading" secondItem="UNn-Bh-WtV" secondAttribute="leadingMargin" constant="7" id="1qT-EC-XAO"/>
                                                 <constraint firstItem="yvE-VP-wFb" firstAttribute="top" secondItem="UNn-Bh-WtV" secondAttribute="topMargin" id="7Hx-xS-YhB"/>
-                                                <constraint firstItem="pBA-Dv-sfC" firstAttribute="top" secondItem="yvE-VP-wFb" secondAttribute="top" id="8SL-ma-CBP"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="pBA-Dv-sfC" secondAttribute="trailing" constant="7" id="GSc-Vd-RG9"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="gCI-mZ-nl2" secondAttribute="bottom" id="Jlt-bW-RxY"/>
                                                 <constraint firstItem="pBA-Dv-sfC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yvE-VP-wFb" secondAttribute="trailing" constant="4" id="QTV-yj-5MK"/>
-                                                <constraint firstItem="B3N-rN-cPW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gCI-mZ-nl2" secondAttribute="trailing" constant="4" id="dsH-tP-JII"/>
-                                                <constraint firstItem="B3N-rN-cPW" firstAttribute="trailing" secondItem="pBA-Dv-sfC" secondAttribute="trailing" id="jj0-PT-fz7"/>
-                                                <constraint firstItem="B3N-rN-cPW" firstAttribute="top" secondItem="gCI-mZ-nl2" secondAttribute="top" id="pdv-2f-gvz"/>
                                                 <constraint firstItem="gCI-mZ-nl2" firstAttribute="leading" secondItem="yvE-VP-wFb" secondAttribute="leading" id="rtH-E6-u7g"/>
+                                                <constraint firstItem="pBA-Dv-sfC" firstAttribute="centerY" secondItem="UNn-Bh-WtV" secondAttribute="centerY" id="uia-uZ-n8J"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="o_amount" destination="pBA-Dv-sfC" id="Ell-1D-Dmd"/>
                                             <outlet property="o_category" destination="gCI-mZ-nl2" id="S2j-sz-Y0T"/>
-                                            <outlet property="o_date" destination="B3N-rN-cPW" id="iUf-43-HwB"/>
                                             <outlet property="o_title" destination="yvE-VP-wFb" id="CMT-s0-Ny6"/>
                                             <segue destination="TyL-LX-xhe" kind="presentation" identifier="editExpense" id="Obn-Lu-DS8"/>
                                         </connections>

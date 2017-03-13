@@ -30,7 +30,7 @@ class ExpenseTableViewCell: UITableViewCell {
         o_title.textColor = mainColor
         
         if let amount = data.amount {
-            o_amount.text = String(amount)
+            o_amount.text = amount.toString()
         }
         if let date = data.date {
             o_date.text = date.toString()

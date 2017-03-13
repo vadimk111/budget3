@@ -64,5 +64,10 @@ extension Date {
         
         return calendar.date(from: comp)!
     }
+}
 
+extension Float {
+    func toString() -> String {
+        return String(format: "%0.2f", self)
+    }
 }
