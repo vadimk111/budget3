@@ -18,7 +18,6 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
     var isRefreshing = false
     var closestBudget: [Category]?
     var expandedCategories: [String : Bool] = [:]
-    var categoryBeforeUpdate: Category?
     var headerView: CategoriesHeaderView!
     
     @IBOutlet weak var o_editButton: UIBarButtonItem!
@@ -196,10 +195,8 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
             if let index = sender as? IndexPath {
                 let category = categories[index.row]
                 
-                categoryBeforeUpdate = category.makeCopy()
-                
                 let vc = addEditController(from: segue)
-                vc?.category = category
+                vc?.category = category.makeCopy()
                 
                 if category.subCategories == nil {
                     vc?.parents = availableParents.filter({ $0.id != category.id })

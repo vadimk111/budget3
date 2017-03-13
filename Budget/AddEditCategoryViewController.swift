@@ -37,7 +37,7 @@ class AddEditCategoryViewController: UIViewController, UIPickerViewDelegate, UIP
         
         o_titleField.text = category?.title
         if let amount = category?.amount {
-            o_amountField.text = String(amount)
+            o_amountField.text = amount.toString()
         }
         if let isBillValue = category?.isBill {
             o_billSwitch.isOn = isBillValue

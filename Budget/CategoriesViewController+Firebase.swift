@@ -44,25 +44,21 @@ extension CategoriesViewController {
     func observeChildUpdate(on budgetRef: FIRDatabaseReference?) {
         budgetRef?.observe(.childChanged, with: { [unowned self] snapshot in
             let category = Category(snapshot: snapshot)
-            if let updatedCategory = self.categories.filter({ $0.id == category.id }).first {
-                if let origCategory = self.categoryBeforeUpdate {
-                    if origCategory.parent != updatedCategory.parent {
-                        if updatedCategory.parent == nil {
-                            self.deleteCategoryFromView(origCategory)
-                            self.addCategoryToView(updatedCategory)
-                        } else {
-                            self.deleteCategoryFromView(origCategory)
-                            self.addCategoryToParentView(updatedCategory)
-                        }
+            
+            if let originalCategory = self.categories.filter({ $0.id == category.id }).first {
+                if originalCategory.parent != category.parent {
+                    if category.parent == nil {
+                        self.deleteCategoryFromView(originalCategory)
+                        self.addCategoryToView(category)
                     } else {
-                        self.updateCategoryInView(updatedCategory)
+                        self.deleteCategoryFromView(originalCategory)
+                        self.addCategoryToParentView(category)
                     }
-                    self.categoryBeforeUpdate = nil
                 } else {
-                    self.updateCategoryInView(updatedCategory)
+                    self.replaceCategoryInView(originalCategory, with: category)
                 }
-            } else if let parent = category.parent, let parentCategory = self.categories.filter({ $0.id == parent }).first {
-                self.updateCategoryInView(parentCategory)
+            } else {
+                self.updateCategoryNotInView(category)
             }
             self.updateHeaderView()
         })
@@ -97,19 +93,19 @@ extension CategoriesViewController {
     }
     
     func deleteCategoryFromView(_ category: Category) {
-        if let index = categories.index(where: { $0.id == category.id }) {
+        if let index = categories.index(of: category) {
             categories.remove(at: index)
             tableView.deleteRows(at: [IndexPath.init(row: index, section: 0)], with: .fade)
             
             if let _ = category.parent {
-                deleteCategoryFromParentData(category)
+                deleteCategoryFromParentView(category)
             }
         }
     }
     
-    func deleteCategoryFromParentData(_ category: Category) {
+    func deleteCategoryFromParentView(_ category: Category) {
         if let parentCategory = categories.filter({ $0.id == category.parent }).first {
-            if let index = parentCategory.subCategories?.index(where: { $0.id == category.id }) {
+            if let index = parentCategory.subCategories?.index(of: category) {
                 parentCategory.subCategories?.remove(at: index)
                 if parentCategory.subCategories!.count == 0 {
                     parentCategory.subCategories = nil
@@ -123,16 +119,62 @@ extension CategoriesViewController {
         }
     }
     
-    func updateCategoryInView(_ category: Category) {
-        if let index = categories.index(where: { $0.id == category.id }) {
+    func replaceCategoryInView(_ originalCategory: Category, with category: Category) {
+        if let index = categories.index(of: originalCategory) {
+            category.subCategories = originalCategory.subCategories
+            categories.remove(at: index)
+            categories.insert(category, at: index)
             tableView.reloadRows(at: [IndexPath.init(row: index, section: 0)], with: .none)
         }
         
-        if let parent = category.parent {
-            if let parentCategory = categories.filter({ $0.id == parent }).first {
-                if let index = categories.index(of: parentCategory) {
-                    tableView.reloadRows(at: [IndexPath.init(row: index, section: 0)], with: .none)
+        if let parent = category.parent, let parentCategory = categories.filter({ $0.id == parent }).first {
+            if let subIndex = parentCategory.subCategories?.index(of: originalCategory) {
+                parentCategory.subCategories?.remove(at: subIndex)
+                parentCategory.subCategories?.insert(category, at: subIndex)
+            }
+            if let index = categories.index(of: parentCategory) {
+                tableView.reloadRows(at: [IndexPath.init(row: index, section: 0)], with: .none)
+            }
+        }
+    }
+    
+    func updateCategoryNotInView(_ category: Category) {
+        var originalSubCategory: Category? = nil
+        var originalParent: Category? = nil
+        
+        for item in categories {
+            if let subCategories = item.subCategories {
+                for subItem in subCategories {
+                    if subItem.id == category.id {
+                        originalSubCategory = subItem
+                        break
+                    }
                 }
+                if let _ = originalSubCategory {
+                    originalParent = item
+                    break
+                }
+            }
+        }
+        
+        if let _ = originalSubCategory, let index = originalParent?.subCategories?.index(of: originalSubCategory!) {
+            originalParent?.subCategories?.remove(at: index)
+            
+            if originalParent?.id == category.parent {
+                originalParent?.subCategories?.insert(category, at: index)
+            } else {
+                if originalParent?.subCategories?.count == 0 {
+                    originalParent?.subCategories = nil
+                }
+                if category.parent == nil {
+                    addCategoryToView(category)
+                } else {
+                    addCategoryToParentView(category)
+                }
+            }
+            
+            if let index = categories.index(of: originalParent!) {
+                tableView.reloadRows(at: [IndexPath.init(row: index, section: 0)], with: .none)
             }
         }
     }

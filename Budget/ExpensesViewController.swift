@@ -63,6 +63,13 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
         reload()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let indexPath = o_tableView.indexPathForSelectedRow {
+            o_tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
     deinit {
         unregisterFromUpdates()
     }

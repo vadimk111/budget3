@@ -25,7 +25,7 @@ class AddEditExpenseViewController: UIViewController {
         
         o_titleField.text = expense?.title
         if let amount = expense?.amount {
-            o_amountField.text = String(amount)
+            o_amountField.text = amount.toString()
         }
         if let date = expense?.date {
             o_dateLabel.text = date.toString()
