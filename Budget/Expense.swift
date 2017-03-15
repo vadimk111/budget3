@@ -34,7 +34,16 @@ class Expense : ModelBaseObject {
         amount = snapshotValue[amountKey] as? Float
         date = (snapshotValue[dateKey] as? String)?.toDate()
     }
-        
+    
+    func makeCopy() -> Expense {
+        let copy = Expense()
+        copy.id = id
+        copy.title = title
+        copy.amount = amount
+        copy.date = date
+        return copy
+    }
+    
     override func toValues() -> [AnyHashable : Any] {
         var result = [AnyHashable : Any]()
         

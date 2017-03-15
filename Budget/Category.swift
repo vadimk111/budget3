@@ -102,7 +102,15 @@ class Category: ModelBaseObject {
         copy.order = order
         copy.parent = parent
         copy.isBill = isBill
-        copy.expenses = expenses
+        
+        if let expenses = expenses {
+            var expensesCopy = [Expense]()
+            for expense in expenses {
+                expensesCopy.append(expense.makeCopy())
+            }
+            copy.expenses = expensesCopy
+        }
+        
         return copy
     }
     

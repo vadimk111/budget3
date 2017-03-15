@@ -48,4 +48,8 @@ class ModelBaseObject : NSObject {
     func getDatabaseReference() -> FIRDatabaseReference? {
         return ref
     }
+    
+    func setDatabaseReference(ref: FIRDatabaseReference?) {
+        self.ref = ref
+    }
 }

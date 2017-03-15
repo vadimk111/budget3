@@ -199,6 +199,7 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
                 
                 let vc = addEditController(from: segue)
                 vc?.category = category.makeCopy()
+                vc?.category?.setDatabaseReference(ref: category.getDatabaseReference())
                 
                 if category.subCategories == nil {
                     vc?.parents = availableParents.filter({ $0.id != category.id })
