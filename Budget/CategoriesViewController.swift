@@ -31,11 +31,9 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(forName: logoutNotification, object: nil, queue: nil, using: { [unowned self] notification in
+        NotificationCenter.default.addObserver(forName: signInStateChangedNotification, object: nil, queue: nil, using: { [unowned self] notification in
             self.closestBudget = nil
             self.date = Date()
-        })
-        NotificationCenter.default.addObserver(forName: loginNotification, object: nil, queue: nil, using: { [unowned self] notification in
             self.reload()
         })
         

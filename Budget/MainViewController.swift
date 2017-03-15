@@ -24,16 +24,20 @@ class MainViewController: UITabBarController {
             isReady = true
             
             if let email = UserDefaults.standard.string(forKey: "email"), let password = UserDefaults.standard.string(forKey: "password") {
-                FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
-                    if let _ = error {
-                        let a = UIAlertController(title: "Error", message: error!.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
-                        a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in
-                            self.present(LoginViewController(), animated: true, completion: nil)
-                        })
-                        self.present(a, animated: true, completion: nil)
-                    } else if let user = user {
-                        APP.user = user
-                        self.reload()
+                if email.contains(anonymous) {
+                    self.reload()
+                } else {
+                    FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
+                        if let _ = error {
+                            let a = UIAlertController(title: "Error", message: error!.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+                            a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in
+                                self.present(LoginViewController(), animated: true, completion: nil)
+                            })
+                            self.present(a, animated: true, completion: nil)
+                        } else if let user = user {
+                            APP.user = user
+                            self.reload()
+                        }
                     }
                 }
             } else {
@@ -49,8 +53,10 @@ class MainViewController: UITabBarController {
     func reload() {
         if let viewControllers = self.viewControllers {
             for item in viewControllers {
-                if let vc = item as? TabBarComponent {
-                    vc.reload()
+                if item.isViewLoaded {
+                    if let vc = item as? TabBarComponent {
+                        vc.reload()
+                    }
                 }
             }
         }

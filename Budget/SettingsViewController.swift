@@ -9,30 +9,44 @@
 import UIKit
 import FirebaseAuth
 
-let logoutNotification = Notification.Name(rawValue: "logout")
-let loginNotification = Notification.Name(rawValue: "login")
+let signInStateChangedNotification = Notification.Name(rawValue: "signInStateChanged")
 
 class SettingsViewController: UIViewController, TabBarComponent {
 
     @IBOutlet weak var o_userEmail: UILabel!
+    @IBOutlet weak var o_logoutBtn: UIButton!
+    @IBOutlet weak var o_loginBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        if let user = APP.user {
-            o_userEmail.text = user.email
-        }
+        reload()
     }
     
     func reload() {
-        
+        if let user = APP.user {
+            o_userEmail.text = user.email
+            o_logoutBtn.isHidden = false
+            o_loginBtn.isHidden = true
+        } else {
+            o_userEmail.text = "Anonymous"
+            o_loginBtn.isHidden = false
+            o_logoutBtn.isHidden = true
+        }
     }
-    
+
+    @IBAction func didTapLogin(_ sender: UIButton) {
+        let login = LoginViewController()
+        login.insideTheApp = true
+        login.completion = { [unowned self] in
+            if let _ = APP.user {
+                self.reload()
+                NotificationCenter.default.post(Notification(name: signInStateChangedNotification))
+            }
+        }
+        present(login, animated: true, completion: nil)
+    }
+
     @IBAction func didTapLogout(_ sender: UIButton) {
         do {
             try FIRAuth.auth()?.signOut()
@@ -43,15 +57,12 @@ class SettingsViewController: UIViewController, TabBarComponent {
         UserDefaults.standard.removeObject(forKey: "email")
         UserDefaults.standard.removeObject(forKey: "password")
         UserDefaults.standard.synchronize()
-        o_userEmail.text = nil
-        
-        NotificationCenter.default.post(Notification(name: logoutNotification))
         
         let login = LoginViewController()
-        login.completion = {
-            NotificationCenter.default.post(Notification(name: loginNotification))
+        login.completion = { [unowned self] in
+            self.reload()
+            NotificationCenter.default.post(Notification(name: signInStateChangedNotification))
         }
         present(login, animated: true, completion: nil)
     }
-    
 }

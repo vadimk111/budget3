@@ -27,8 +27,8 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user@domain.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdD-gy-6s8">
-                                <rect key="frame" x="112.5" y="149" width="149.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anonymous" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdD-gy-6s8">
+                                <rect key="frame" x="139.5" y="149" width="96" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -41,11 +41,22 @@
                                     <action selector="didTapLogout:" destination="Ccc-68-1aU" eventType="touchUpInside" id="4uo-fe-gwF"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbG-l6-kBu">
+                                <rect key="frame" x="164.5" y="190" width="45" height="33"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="didTapLogin:" destination="Ccc-68-1aU" eventType="touchUpInside" id="2bv-Fp-NuN"/>
+                                    <action selector="didTapLogout:" destination="Ccc-68-1aU" eventType="touchUpInside" id="gx0-4S-bbJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ZRl-RU-w6Z" firstAttribute="top" secondItem="sdD-gy-6s8" secondAttribute="bottom" constant="20" id="6hh-3k-bBA"/>
+                            <constraint firstItem="rbG-l6-kBu" firstAttribute="centerY" secondItem="ZRl-RU-w6Z" secondAttribute="centerY" id="85a-aU-1C1"/>
                             <constraint firstItem="leL-7E-eSd" firstAttribute="centerX" secondItem="Spc-KW-1Y6" secondAttribute="centerX" id="CTd-Gp-4E1"/>
+                            <constraint firstItem="rbG-l6-kBu" firstAttribute="centerX" secondItem="ZRl-RU-w6Z" secondAttribute="centerX" id="CpC-rM-tcD"/>
                             <constraint firstItem="sdD-gy-6s8" firstAttribute="centerX" secondItem="leL-7E-eSd" secondAttribute="centerX" id="aQY-Xc-HEy"/>
                             <constraint firstItem="leL-7E-eSd" firstAttribute="top" secondItem="Qo1-rg-su0" secondAttribute="bottom" constant="44" id="fcz-39-3Mc"/>
                             <constraint firstItem="ZRl-RU-w6Z" firstAttribute="centerX" secondItem="sdD-gy-6s8" secondAttribute="centerX" id="k7q-im-HEP"/>
@@ -54,6 +65,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="XTL-Gq-bYx"/>
                     <connections>
+                        <outlet property="o_loginBtn" destination="rbG-l6-kBu" id="ZMV-4I-bUP"/>
+                        <outlet property="o_logoutBtn" destination="ZRl-RU-w6Z" id="fWI-Zp-ISk"/>
                         <outlet property="o_userEmail" destination="sdD-gy-6s8" id="qkZ-Cp-tb6"/>
                     </connections>
                 </viewController>
@@ -64,7 +77,7 @@
         <!--Profile-->
         <scene sceneID="sxj-YV-V3V">
             <objects>
-                <navigationController storyboardIdentifier="Settings" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="etI-nN-NDf" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Settings" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="etI-nN-NDf" customClass="NavigationViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="user" id="f3l-ZL-PLN"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -83,6 +96,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="user" width="16" height="16"/>
+        <image name="user" width="24" height="24"/>
     </resources>
 </document>

@@ -22,13 +22,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYP-VW-ES4">
-                    <rect key="frame" x="166" y="120" width="42" height="21"/>
+                    <rect key="frame" x="166" y="80" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XXT-P9-IKf">
-                    <rect key="frame" x="67.5" y="181" width="240" height="30"/>
+                    <rect key="frame" x="67.5" y="141" width="240" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="240" id="nVG-ID-jLF"/>
                     </constraints>
@@ -37,13 +37,13 @@
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U7i-2F-ACB">
-                    <rect key="frame" x="67.5" y="231" width="240" height="30"/>
+                    <rect key="frame" x="67.5" y="191" width="240" height="30"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KdR-Nw-DY7">
-                    <rect key="frame" x="158.5" y="271" width="56" height="33"/>
+                    <rect key="frame" x="158.5" y="231" width="56" height="33"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                     <state key="normal" title="Sign In"/>
                     <connections>
@@ -51,7 +51,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chR-VK-RQK">
-                    <rect key="frame" x="67" y="314" width="240" height="33"/>
+                    <rect key="frame" x="67" y="274" width="240" height="33"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                     <state key="normal" title="Create Account"/>
                     <connections>
@@ -59,11 +59,19 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFn-eM-jwA">
-                    <rect key="frame" x="121.5" y="357" width="131" height="33"/>
+                    <rect key="frame" x="121.5" y="317" width="131" height="33"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                     <state key="normal" title="Reset Password"/>
                     <connections>
                         <action selector="didTapForgot:" destination="-1" eventType="touchUpInside" id="FlZ-bc-x36"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2a-oR-kUc">
+                    <rect key="frame" x="118" y="360" width="138" height="33"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                    <state key="normal" title="Skip Registration"/>
+                    <connections>
+                        <action selector="didTapSkip:" destination="-1" eventType="touchUpInside" id="Slg-De-wTa"/>
                     </connections>
                 </button>
             </subviews>
@@ -74,13 +82,15 @@
                 <constraint firstItem="U7i-2F-ACB" firstAttribute="width" secondItem="XXT-P9-IKf" secondAttribute="width" id="63a-rG-Rs7"/>
                 <constraint firstItem="XXT-P9-IKf" firstAttribute="top" secondItem="zYP-VW-ES4" secondAttribute="bottom" constant="40" id="7Lc-24-wwa"/>
                 <constraint firstItem="XXT-P9-IKf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="B76-o1-YSX"/>
+                <constraint firstItem="S2a-oR-kUc" firstAttribute="centerX" secondItem="BFn-eM-jwA" secondAttribute="centerX" id="Dav-PP-Eu7"/>
                 <constraint firstItem="chR-VK-RQK" firstAttribute="top" secondItem="KdR-Nw-DY7" secondAttribute="bottom" constant="10" id="Tbc-ch-xiv"/>
                 <constraint firstItem="chR-VK-RQK" firstAttribute="centerX" secondItem="KdR-Nw-DY7" secondAttribute="centerX" id="bAQ-hI-BmX"/>
+                <constraint firstItem="S2a-oR-kUc" firstAttribute="top" secondItem="BFn-eM-jwA" secondAttribute="bottom" constant="10" id="dMW-Vh-DJj"/>
                 <constraint firstItem="KdR-Nw-DY7" firstAttribute="top" secondItem="U7i-2F-ACB" secondAttribute="bottom" constant="10" id="gAF-ce-Xd5"/>
                 <constraint firstItem="U7i-2F-ACB" firstAttribute="top" secondItem="XXT-P9-IKf" secondAttribute="bottom" constant="20" id="gH1-cO-MPH"/>
                 <constraint firstItem="chR-VK-RQK" firstAttribute="width" secondItem="U7i-2F-ACB" secondAttribute="width" id="kZp-cd-BJn"/>
                 <constraint firstItem="zYP-VW-ES4" firstAttribute="centerX" secondItem="XXT-P9-IKf" secondAttribute="centerX" id="mAT-jo-PKi"/>
-                <constraint firstItem="zYP-VW-ES4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="120" id="ocW-ny-aCc"/>
+                <constraint firstItem="zYP-VW-ES4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="80" id="ocW-ny-aCc"/>
                 <constraint firstItem="chR-VK-RQK" firstAttribute="centerX" secondItem="U7i-2F-ACB" secondAttribute="centerX" id="sLt-Xi-AZd"/>
                 <constraint firstItem="U7i-2F-ACB" firstAttribute="centerX" secondItem="XXT-P9-IKf" secondAttribute="centerX" id="zRD-Yi-JsK"/>
             </constraints>

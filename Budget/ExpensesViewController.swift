@@ -41,7 +41,6 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
     var groupedExpensesList: [GroupedExpneses]?
     var date: Date = Date()
 
-    var didViewLoad = false
     var timer: Timer?
     
     override func viewDidLoad() {
@@ -60,14 +59,11 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
         o_tableView.refreshControl = UIRefreshControl()
         o_tableView.refreshControl?.addTarget(self, action: #selector(ExpensesViewController.refresh(_:)), for: .valueChanged)
         
-        NotificationCenter.default.addObserver(forName: logoutNotification, object: nil, queue: nil, using: { [unowned self] notification in
+        NotificationCenter.default.addObserver(forName: signInStateChangedNotification, object: nil, queue: nil, using: { [unowned self] notification in
             self.date = Date()
-        })
-        NotificationCenter.default.addObserver(forName: loginNotification, object: nil, queue: nil, using: { [unowned self] notification in
             self.reload()
         })
-        
-        didViewLoad = true
+                
         reload()
     }
     
@@ -88,15 +84,13 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func reload() {
-        if didViewLoad {
-            if let budgetId = ModelHelper.budgetId(for: date) {
-                let ref = FIRDatabase.database().reference().child("budgets")
-                ref.child(budgetId).observeSingleEvent(of: .value, with: { snapshot in
-                    self.prepareExpenses(from: snapshot)
-                    self.o_tableView.reloadData()
-                    self.o_tableView.refreshControl?.endRefreshing()
-                })
-            }
+        if let budgetId = ModelHelper.budgetId(for: date) {
+            let ref = FIRDatabase.database().reference().child("budgets")
+            ref.child(budgetId).observeSingleEvent(of: .value, with: { snapshot in
+                self.prepareExpenses(from: snapshot)
+                self.o_tableView.reloadData()
+                self.o_tableView.refreshControl?.endRefreshing()
+            })
         }
     }
     
