@@ -33,7 +33,7 @@ class GroupedExpneses {
     }
 }
 
-class ExpensesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DateChangerDelegate, TabBarComponent {
+class ExpensesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DateChangerDelegate {
 
     @IBOutlet weak var o_dateChanger: DateChanger!
     @IBOutlet weak var o_tableView: UITableView!
@@ -63,7 +63,7 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
             self.date = Date()
             self.reload()
         })
-                
+        
         reload()
     }
     

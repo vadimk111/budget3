@@ -7,58 +7,36 @@
 //
 
 import UIKit
-import FirebaseAuth
 
-protocol TabBarComponent {
-    func reload()
-}
+class MainViewController: UITabBarController, AuthenticationDelegate {
 
-class MainViewController: UITabBarController {
-
-    var isReady: Bool = false
+    var authentication: Authentication?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(forName: signInStateChangedNotification, object: nil, queue: nil, using: { [unowned self] notification in
+            self.authentication = nil
+            APP.automaticAuthenticationCompleted = true
+            NotificationCenter.default.removeObserver(self, name: signInStateChangedNotification, object: nil)
+        })
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        if !isReady {
-            isReady = true
-            
-            if let email = UserDefaults.standard.string(forKey: "email"), let password = UserDefaults.standard.string(forKey: "password") {
-                if email.contains(anonymous) {
-                    self.reload()
-                } else {
-                    FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
-                        if let _ = error {
-                            let a = UIAlertController(title: "Error", message: error!.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
-                            a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in
-                                self.present(LoginViewController(), animated: true, completion: nil)
-                            })
-                            self.present(a, animated: true, completion: nil)
-                        } else if let user = user {
-                            APP.user = user
-                            self.reload()
-                        }
-                    }
-                }
-            } else {
-                let login = LoginViewController()
-                login.completion = {
-                    self.reload()
-                }
-                present(login, animated: true, completion: nil)
-            }
-        }
+        
+        DispatchQueue.once(token: "signIn", block: {
+            self.authentication = Authentication()
+            self.authentication?.delegate = self
+            self.authentication?.automaticSignIn()
+        })
     }
     
-    func reload() {
-        if let viewControllers = self.viewControllers {
-            for item in viewControllers {
-                if item.isViewLoaded {
-                    if let vc = item as? TabBarComponent {
-                        vc.reload()
-                    }
-                }
-            }
-        }
+    func authentication(_ authentication: Authentication, shouldDisplay alert: UIAlertController) {
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func authentication(_ authentication: Authentication, shouldDisplay viewController: UIViewController) {
+        present(viewController, animated: true, completion: nil)
     }
 }

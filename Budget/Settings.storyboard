@@ -47,7 +47,6 @@
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="didTapLogin:" destination="Ccc-68-1aU" eventType="touchUpInside" id="2bv-Fp-NuN"/>
-                                    <action selector="didTapLogout:" destination="Ccc-68-1aU" eventType="touchUpInside" id="gx0-4S-bbJ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -77,7 +76,7 @@
         <!--Profile-->
         <scene sceneID="sxj-YV-V3V">
             <objects>
-                <navigationController storyboardIdentifier="Settings" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="etI-nN-NDf" customClass="NavigationViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Settings" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="etI-nN-NDf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="user" id="f3l-ZL-PLN"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

@@ -1,5 +1,5 @@
 //
-//  CategoryViewController.swift
+//  CategoryExpensesViewController.swift
 //  Budget
 //
 //  Created by Vadim Kononov on 10/02/2017.
@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class CategoryViewController: UITableViewController, SubCategoryHeaderViewDelegate {
+class CategoryExpensesViewController: UITableViewController, SubCategoryHeaderViewDelegate {
 
     @IBOutlet weak var o_balanceNavView: BalanceView!
     

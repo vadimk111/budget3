@@ -1,37 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Categories-->
-        <scene sceneID="n5p-HO-83E">
+        <!--Categories View Controller-->
+        <scene sceneID="voq-wS-3zh">
             <objects>
-                <tableViewController id="fZg-EQ-ps6" customClass="CategoriesViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" id="t5z-BU-lfP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                <tableViewController storyboardIdentifier="CategoriesRef" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cfD-Ag-9Zs" customClass="CategoriesViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" id="gyl-9w-MgL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="categoryCells" id="AZM-S2-L9f" customClass="CategoryTableViewCell" customModule="Budget" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="54"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCells" id="p3C-9N-wGf" customClass="CategoryTableViewCell" customModule="Budget" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AZM-S2-L9f" id="WBD-OU-8bc">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="54"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p3C-9N-wGf" id="kzT-aO-Yl5">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7u7-vh-vLL" customClass="BalanceView" customModule="Budget" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="5" width="399" height="44"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1md-t0-Xeq" customClass="BalanceView" customModule="Budget" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="5" width="375" height="44"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="44" id="CH8-Ol-3vs"/>
+                                                <constraint firstAttribute="height" constant="44" id="fTS-9N-j2s"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
@@ -46,190 +45,36 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="7u7-vh-vLL" firstAttribute="centerY" secondItem="WBD-OU-8bc" secondAttribute="centerY" id="VmG-za-nij"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="7u7-vh-vLL" secondAttribute="trailing" constant="7" id="lJj-h4-FLY"/>
-                                        <constraint firstItem="7u7-vh-vLL" firstAttribute="leading" secondItem="WBD-OU-8bc" secondAttribute="leading" id="mrJ-M2-fm2"/>
+                                        <constraint firstItem="1md-t0-Xeq" firstAttribute="leading" secondItem="kzT-aO-Yl5" secondAttribute="leading" id="U8H-N2-tlZ"/>
+                                        <constraint firstItem="1md-t0-Xeq" firstAttribute="centerY" secondItem="kzT-aO-Yl5" secondAttribute="centerY" id="iOu-fC-YCc"/>
+                                        <constraint firstAttribute="trailing" secondItem="1md-t0-Xeq" secondAttribute="trailing" id="uyo-Qj-aGO"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="o_balanceLeadingConstraint" destination="mrJ-M2-fm2" id="YA1-RD-nbz"/>
-                                    <outlet property="o_balanceView" destination="7u7-vh-vLL" id="z0G-Zo-LoU"/>
-                                    <segue destination="9cW-o7-bCD" kind="show" identifier="drillDown" id="vDe-5L-uY5"/>
+                                    <outlet property="o_balanceLeadingConstraint" destination="U8H-N2-tlZ" id="O1y-Yc-zIi"/>
+                                    <outlet property="o_balanceView" destination="1md-t0-Xeq" id="cBn-hz-hJu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="fZg-EQ-ps6" id="rqF-MV-git"/>
-                            <outlet property="delegate" destination="fZg-EQ-ps6" id="dvq-50-xsz"/>
+                            <outlet property="dataSource" destination="cfD-Ag-9Zs" id="e7x-yN-L1Y"/>
+                            <outlet property="delegate" destination="cfD-Ag-9Zs" id="SUs-Yo-Lmv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Categories" id="wy2-fj-BCH">
-                        <barButtonItem key="leftBarButtonItem" image="edit-tool" id="wni-Yi-t8U">
-                            <connections>
-                                <action selector="didTapEdit:" destination="fZg-EQ-ps6" id="65Y-hY-RKu"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="plus" id="2eU-bd-xha">
-                            <connections>
-                                <segue destination="ppo-Hd-jmk" kind="presentation" identifier="addCategory" id="xFz-TX-82o"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="6pA-e3-Fgo">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="8y8-Ql-maB">
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
-                            <action selector="didPullToRefresh:" destination="fZg-EQ-ps6" eventType="valueChanged" id="q4r-S3-037"/>
+                            <action selector="didPullToRefresh:" destination="cfD-Ag-9Zs" eventType="valueChanged" id="Hkd-6F-OhU"/>
                         </connections>
                     </refreshControl>
-                    <connections>
-                        <outlet property="o_editButton" destination="wni-Yi-t8U" id="c9a-Rg-0zW"/>
-                        <segue destination="ppo-Hd-jmk" kind="presentation" identifier="editCategory" id="86d-VO-9Ja"/>
-                    </connections>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isCompactView" value="NO"/>
+                    </userDefinedRuntimeAttributes>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="q5U-XU-uLm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NCV-Ok-a1i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1380" y="690.40479760119945"/>
-        </scene>
-        <!--AddEditCategory-->
-        <scene sceneID="HJr-mu-CCo">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="AddEditCategory" storyboardName="AddEditCategory" referencedIdentifier="AddEditCategory" id="ppo-Hd-jmk" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pfv-7o-q6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2022" y="777"/>
-        </scene>
-        <!--Category-->
-        <scene sceneID="PFZ-ZD-oGw">
-            <objects>
-                <tableViewController title="Category" id="9cW-o7-bCD" customClass="CategoryViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="52" sectionHeaderHeight="28" sectionFooterHeight="28" id="IS4-u0-8QV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="expenseCells" id="oVx-4f-kiE" customClass="ExpenseTableViewCell" customModule="Budget" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="52"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oVx-4f-kiE" id="HVK-Ta-17O">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qC-yh-rdL">
-                                            <rect key="frame" x="15" y="17" width="28" height="19"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                            <color key="textColor" red="0.1647058824" green="0.1647058824" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120.90" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbN-zF-788">
-                                            <rect key="frame" x="356" y="8" width="43" height="17"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                                            <color key="textColor" red="0.83921568629999999" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2/2/17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYe-MR-uid">
-                                            <rect key="frame" x="358" y="27" width="41" height="17"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                                            <color key="textColor" red="0.32156862745098036" green="0.32156862745098036" blue="0.32156862745098036" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="ZbN-zF-788" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8qC-yh-rdL" secondAttribute="trailing" constant="4" id="5Wu-84-gE7"/>
-                                        <constraint firstItem="ZbN-zF-788" firstAttribute="top" secondItem="HVK-Ta-17O" secondAttribute="topMargin" id="Hw1-nJ-s8O"/>
-                                        <constraint firstItem="HYe-MR-uid" firstAttribute="trailing" secondItem="ZbN-zF-788" secondAttribute="trailing" id="QnO-iU-oxJ"/>
-                                        <constraint firstItem="8qC-yh-rdL" firstAttribute="centerY" secondItem="HVK-Ta-17O" secondAttribute="centerY" id="T1h-NF-CQl"/>
-                                        <constraint firstItem="8qC-yh-rdL" firstAttribute="leading" secondItem="HVK-Ta-17O" secondAttribute="leadingMargin" constant="7" id="bHo-Hx-GuE"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="HYe-MR-uid" secondAttribute="bottom" id="rYE-wg-wOo"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="ZbN-zF-788" secondAttribute="trailing" constant="7" id="ust-0E-QNN"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="o_amount" destination="ZbN-zF-788" id="PQN-at-0NC"/>
-                                    <outlet property="o_date" destination="HYe-MR-uid" id="PSW-bq-Gfn"/>
-                                    <outlet property="o_title" destination="8qC-yh-rdL" id="VoG-Lq-7xb"/>
-                                    <segue destination="jFI-x3-gtg" kind="presentation" identifier="editExpense" id="9Mz-AX-3VK"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="9cW-o7-bCD" id="s4W-hC-3Wf"/>
-                            <outlet property="delegate" destination="9cW-o7-bCD" id="Vc7-16-Zs4"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="NJG-fc-3vP">
-                        <nil key="title"/>
-                        <view key="titleView" contentMode="scaleToFill" id="hlI-H8-20r" customClass="BalanceView" customModule="Budget" customModuleProvider="target">
-                            <rect key="frame" x="87" y="6" width="240" height="32"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
-                                    <real key="value" value="14"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="amountSize">
-                                    <real key="value" value="11"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="progressBarSize">
-                                    <real key="value" value="3"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </view>
-                        <barButtonItem key="rightBarButtonItem" image="plus" id="6kb-g8-73K">
-                            <connections>
-                                <segue destination="jFI-x3-gtg" kind="presentation" identifier="addExpense" id="5SW-yM-Sio"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="o_balanceNavView" destination="hlI-H8-20r" id="tUg-D7-H9W"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e26-ke-dbv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2404" y="689.5052473763119"/>
-        </scene>
-        <!--AddEditExpense-->
-        <scene sceneID="DG6-u0-frg">
-            <objects>
-                <viewControllerPlaceholder storyboardName="AddEditExpense" referencedIdentifier="AddEditExpense" id="jFI-x3-gtg" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Uf-sN-tgb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3015" y="690"/>
-        </scene>
-        <!--Categories-->
-        <scene sceneID="O1R-P0-cKg">
-            <objects>
-                <navigationController storyboardIdentifier="Category" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hml-6T-EKX" customClass="NavigationViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Categories" image="categories" id="Y3T-am-X24"/>
-                    <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CbU-WW-elt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="fZg-EQ-ps6" kind="relationship" relationship="rootViewController" id="4yC-s1-iel"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aup-UX-JIj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="440.80000000000001" y="690.40479760119945"/>
+            <point key="canvasLocation" x="106" y="32"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="categories" width="24" height="24"/>
-        <image name="edit-tool" width="16" height="16"/>
-        <image name="plus" width="16" height="16"/>
-    </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="xFz-TX-82o"/>
-        <segue reference="5SW-yM-Sio"/>
-    </inferredMetricsTieBreakers>
 </document>

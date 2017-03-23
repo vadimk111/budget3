@@ -71,3 +71,21 @@ extension Float {
         return String(format: "%0.2f", self)
     }
 }
+
+public extension DispatchQueue {
+    
+    private static var _onceTracker = [String]()
+    
+    public class func once(token: String, block: @escaping () -> Void) {
+        objc_sync_enter(self)
+        defer { objc_sync_exit(self) }
+        
+        if _onceTracker.contains(token) {
+            return
+        }
+        
+        _onceTracker.append(token)
+        block()
+    }
+}
+

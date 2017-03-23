@@ -11,11 +11,12 @@ import FirebaseDatabase
 
 let budgetChangedNotification = Notification.Name(rawValue: "budgetChanged")
 
-protocol CategoriesViewControllerDelegate {
+protocol CategoriesViewControllerDelegate: class {
     func categoriesViewController(_ categoriesViewController: CategoriesViewController, didSelect category: Category)
+    func categoriesViewControllerChanged(_ categoriesViewController: CategoriesViewController)
 }
 
-class CategoriesViewController: UITableViewController, TabBarComponent {
+class CategoriesViewController: UITableViewController {
 
     var budgetRef: FIRDatabaseReference?
     var categories: [Category] = []
@@ -24,8 +25,7 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
     var isRefreshing = false
     var closestBudget: [Category]?
     var expandedCategories: [String : Bool] = [:]
-    var headerView: CategoriesHeaderView?
-    var delegate: CategoriesViewControllerDelegate?
+    weak var delegate: CategoriesViewControllerDelegate?
     
     @IBInspectable
     var isCompactView: Bool = true
@@ -39,17 +39,6 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(forName: signInStateChangedNotification, object: nil, queue: nil, using: { [unowned self] notification in
-            self.closestBudget = nil
-            self.date = Date()
-            self.reload()
-        })
-        
-        if isCompactView {
-            headerView = CategoriesHeaderView()
-            headerView?.delegate = self
-            headerView?.fill(with: availableParents, date: date)
-        }
     }
     
     deinit {
@@ -68,7 +57,7 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
                 }
                 self.registerToUpdates(budgetRef: self.budgetRef)
                 self.tableView.reloadData()
-                self.updateHeaderView()
+                self.delegate?.categoriesViewControllerChanged(self)
                 
                 if self.isRefreshing {
                     self.isRefreshing = false
@@ -77,11 +66,7 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
             })
         }
     }
-    
-    func updateHeaderView() {
-        headerView?.fill(with: availableParents, date: date)
-    }
-    
+        
     func prepareBudget(from snapshot: FIRDataSnapshot) -> Bool {
         categories = []
         var subCategories: [String : [Category]] = [:]
@@ -222,8 +207,8 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
             navigationItem.backBarButtonItem = backItem
             
             if let index = tableView.indexPathForSelectedRow {
-                (segue.destination as? CategoryViewController)?.category = categories[index.row]
-                (segue.destination as? CategoryViewController)?.currentDate = date
+                (segue.destination as? CategoryExpensesViewController)?.category = categories[index.row]
+                (segue.destination as? CategoryExpensesViewController)?.currentDate = date
             }
         }
     }

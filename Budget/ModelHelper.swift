@@ -11,7 +11,7 @@ import Foundation
 class ModelHelper {
     static func budgetId(for date: Date) -> String? {
         var uid = APP.user?.uid
-        if uid == nil {
+        if uid == nil && APP.automaticAuthenticationCompleted {
             uid = UserDefaults.standard.string(forKey: "email")
         }
         

@@ -8,28 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		6AA2CE85BAFB9541D811DABB /* Pods_Budget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 081C64756147318895C06760 /* Pods_Budget.framework */; };
-		BD589DEB1E83E13500F0C9CD /* Categories2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD589DEA1E83E13500F0C9CD /* Categories2.storyboard */; };
+		BD589DEB1E83E13500F0C9CD /* Categories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD589DEA1E83E13500F0C9CD /* Categories.storyboard */; };
 		BD589DED1E83F32A00F0C9CD /* CategoryExpenses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD589DEC1E83F32A00F0C9CD /* CategoryExpenses.storyboard */; };
+		BD589DEF1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD589DEE1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift */; };
+		BD589DF11E8451B200F0C9CD /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD589DF01E8451B200F0C9CD /* Authentication.swift */; };
 		BD6B69E41E79223400F7AF35 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD6B69E31E79223400F7AF35 /* iPad.storyboard */; };
-		BD6B69E61E7950AE00F7AF35 /* CategoriesSplit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD6B69E51E7950AE00F7AF35 /* CategoriesSplit.storyboard */; };
-		BD6B69EA1E79544F00F7AF35 /* CategoriesSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B69E91E79544F00F7AF35 /* CategoriesSplitViewController.swift */; };
+		BD6B69EA1E79544F00F7AF35 /* CategoriesPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B69E91E79544F00F7AF35 /* CategoriesPadViewController.swift */; };
 		BF00F4841E4D1F2500D5D743 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F4831E4D1F2500D5D743 /* CategoryTableViewCell.swift */; };
 		BF00F4861E4D1F4300D5D743 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */; };
 		BF00F4881E4D1F5200D5D743 /* ProgressBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */; };
 		BF00F48A1E4D1F7000D5D743 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F4891E4D1F7000D5D743 /* CustomView.swift */; };
-		BF00F48C1E4D2FA300D5D743 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F48B1E4D2FA300D5D743 /* CategoryViewController.swift */; };
+		BF00F48C1E4D2FA300D5D743 /* CategoryExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F48B1E4D2FA300D5D743 /* CategoryExpensesViewController.swift */; };
 		BF00F48E1E4D331100D5D743 /* AddEditExpense.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF00F48D1E4D331100D5D743 /* AddEditExpense.storyboard */; };
 		BF00F4901E4D344A00D5D743 /* AddEditExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F48F1E4D344A00D5D743 /* AddEditExpenseViewController.swift */; };
 		BF00F4921E4D348F00D5D743 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F4911E4D348F00D5D743 /* Expense.swift */; };
 		BF00F4941E4D350C00D5D743 /* ModelBaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F4931E4D350C00D5D743 /* ModelBaseObject.swift */; };
-		BF25146A1E464B7800042FEF /* Categories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF2514691E464B7800042FEF /* Categories.storyboard */; };
 		BF25146C1E465C8C00042FEF /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF25146B1E465C8C00042FEF /* Settings.storyboard */; };
 		BF25146F1E46612200042FEF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF25146E1E46612200042FEF /* Category.swift */; };
 		BF2514711E46626F00042FEF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF2514701E46626F00042FEF /* GoogleService-Info.plist */; };
 		BF2514751E470FD100042FEF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2514741E470FD100042FEF /* LoginViewController.swift */; };
 		BF2514771E47154500042FEF /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2514761E47154500042FEF /* LoginViewController.xib */; };
 		BF2514791E47165100042FEF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2514781E47165100042FEF /* MainViewController.swift */; };
-		BF25147F1E47CD8700042FEF /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF25147E1E47CD8700042FEF /* NavigationViewController.swift */; };
 		BF2514811E48659400042FEF /* ModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2514801E48659400042FEF /* ModelHelper.swift */; };
 		BF37922E1E0933D00060445D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF37922D1E0933D00060445D /* AppDelegate.swift */; };
 		BF3792351E0933D00060445D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF3792341E0933D00060445D /* Assets.xcassets */; };
@@ -63,28 +62,27 @@
 /* Begin PBXFileReference section */
 		081C64756147318895C06760 /* Pods_Budget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBC9F6F964B24DE5B2DADBF3 /* Pods-Budget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Budget/Pods-Budget.release.xcconfig"; sourceTree = "<group>"; };
-		BD589DEA1E83E13500F0C9CD /* Categories2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Categories2.storyboard; sourceTree = "<group>"; };
+		BD589DEA1E83E13500F0C9CD /* Categories.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Categories.storyboard; sourceTree = "<group>"; };
 		BD589DEC1E83F32A00F0C9CD /* CategoryExpenses.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CategoryExpenses.storyboard; sourceTree = "<group>"; };
+		BD589DEE1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesPhoneViewController.swift; sourceTree = "<group>"; };
+		BD589DF01E8451B200F0C9CD /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		BD6B69E31E79223400F7AF35 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
-		BD6B69E51E7950AE00F7AF35 /* CategoriesSplit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CategoriesSplit.storyboard; sourceTree = "<group>"; };
-		BD6B69E91E79544F00F7AF35 /* CategoriesSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesSplitViewController.swift; sourceTree = "<group>"; };
+		BD6B69E91E79544F00F7AF35 /* CategoriesPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesPadViewController.swift; sourceTree = "<group>"; };
 		BF00F4831E4D1F2500D5D743 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressBar.xib; sourceTree = "<group>"; };
 		BF00F4891E4D1F7000D5D743 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
-		BF00F48B1E4D2FA300D5D743 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		BF00F48B1E4D2FA300D5D743 /* CategoryExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryExpensesViewController.swift; sourceTree = "<group>"; };
 		BF00F48D1E4D331100D5D743 /* AddEditExpense.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddEditExpense.storyboard; sourceTree = "<group>"; };
 		BF00F48F1E4D344A00D5D743 /* AddEditExpenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditExpenseViewController.swift; sourceTree = "<group>"; };
 		BF00F4911E4D348F00D5D743 /* Expense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		BF00F4931E4D350C00D5D743 /* ModelBaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelBaseObject.swift; sourceTree = "<group>"; };
-		BF2514691E464B7800042FEF /* Categories.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Categories.storyboard; sourceTree = "<group>"; };
 		BF25146B1E465C8C00042FEF /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		BF25146E1E46612200042FEF /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		BF2514701E46626F00042FEF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BF2514741E470FD100042FEF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BF2514761E47154500042FEF /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		BF2514781E47165100042FEF /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		BF25147E1E47CD8700042FEF /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		BF2514801E48659400042FEF /* ModelHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelHelper.swift; sourceTree = "<group>"; };
 		BF37922A1E0933D00060445D /* Budget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Budget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF37922D1E0933D00060445D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,11 +145,42 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BD589DF21E8469A300F0C9CD /* Expenses */ = {
+			isa = PBXGroup;
+			children = (
+				BFFCD70A1E73D4990030BD79 /* ExpensesViewController.swift */,
+			);
+			name = Expenses;
+			sourceTree = "<group>";
+		};
+		BD589DF31E8469AA00F0C9CD /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				BD6B69E91E79544F00F7AF35 /* CategoriesPadViewController.swift */,
+				BD589DEE1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift */,
+			);
+			name = Device;
+			sourceTree = "<group>";
+		};
+		BD589DF41E8469B100F0C9CD /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BF3792491E09633C0060445D /* SettingsViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		BD589DF51E8469D100F0C9CD /* Category Expenses */ = {
+			isa = PBXGroup;
+			children = (
+				BF00F48B1E4D2FA300D5D743 /* CategoryExpensesViewController.swift */,
+			);
+			name = "Category Expenses";
+			sourceTree = "<group>";
+		};
 		BF00F4821E4D1EFB00D5D743 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				BF9687BE1E58CFB1001CD715 /* CategoriesHeaderView.swift */,
-				BF9687C01E58CFDA001CD715 /* CategoriesHeaderView.xib */,
 				BF00F4831E4D1F2500D5D743 /* CategoryTableViewCell.swift */,
 				BFCA1B7E1E4E3A450023AB55 /* ExpenseTableViewCell.swift */,
 				BFFCD70C1E73D8C70030BD79 /* OverviewHeaderView.swift */,
@@ -168,9 +197,7 @@
 			children = (
 				BF3FFBEC1E4BC90300559134 /* AddEditCategory.storyboard */,
 				BF00F48D1E4D331100D5D743 /* AddEditExpense.storyboard */,
-				BF2514691E464B7800042FEF /* Categories.storyboard */,
-				BD589DEA1E83E13500F0C9CD /* Categories2.storyboard */,
-				BD6B69E51E7950AE00F7AF35 /* CategoriesSplit.storyboard */,
+				BD589DEA1E83E13500F0C9CD /* Categories.storyboard */,
 				BD589DEC1E83F32A00F0C9CD /* CategoryExpenses.storyboard */,
 				BD6B69E31E79223400F7AF35 /* iPad.storyboard */,
 				BF3792431E09625C0060445D /* iPhone.storyboard */,
@@ -216,6 +243,7 @@
 			children = (
 				BF37922D1E0933D00060445D /* AppDelegate.swift */,
 				BF3792341E0933D00060445D /* Assets.xcassets */,
+				BF6BC8581E5ADAE60052F4E8 /* Authentication */,
 				BF00F4821E4D1EFB00D5D743 /* Cells */,
 				BF6BC85A1E5ADB780052F4E8 /* Common */,
 				BF2514701E46626F00042FEF /* GoogleService-Info.plist */,
@@ -233,11 +261,11 @@
 			children = (
 				BF6BC8571E5ADACE0052F4E8 /* AddEdit */,
 				BF6BC8561E5ADAB20052F4E8 /* Categories */,
-				BD6B69E91E79544F00F7AF35 /* CategoriesSplitViewController.swift */,
-				BFFCD70A1E73D4990030BD79 /* ExpensesViewController.swift */,
-				BF6BC8581E5ADAE60052F4E8 /* Login */,
+				BD589DF51E8469D100F0C9CD /* Category Expenses */,
+				BD589DF31E8469AA00F0C9CD /* Device */,
+				BD589DF21E8469A300F0C9CD /* Expenses */,
 				BF6BC8591E5ADB610052F4E8 /* Main */,
-				BF3792491E09633C0060445D /* SettingsViewController.swift */,
+				BD589DF41E8469B100F0C9CD /* Settings */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -249,7 +277,6 @@
 				BF6BC85F1E5DC8450052F4E8 /* CategoriesViewController+Firebase.swift */,
 				BF6BC8541E5ADA4E0052F4E8 /* CategoriesViewController+TableViews.swift */,
 				BF9687BC1E58CF1F001CD715 /* CategoriesViewController+UITableView.swift */,
-				BF00F48B1E4D2FA300D5D743 /* CategoryViewController.swift */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -263,20 +290,20 @@
 			name = AddEdit;
 			sourceTree = "<group>";
 		};
-		BF6BC8581E5ADAE60052F4E8 /* Login */ = {
+		BF6BC8581E5ADAE60052F4E8 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				BD589DF01E8451B200F0C9CD /* Authentication.swift */,
 				BF2514741E470FD100042FEF /* LoginViewController.swift */,
 				BF2514761E47154500042FEF /* LoginViewController.xib */,
 			);
-			name = Login;
+			name = Authentication;
 			sourceTree = "<group>";
 		};
 		BF6BC8591E5ADB610052F4E8 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				BF2514781E47165100042FEF /* MainViewController.swift */,
-				BF25147E1E47CD8700042FEF /* NavigationViewController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -295,6 +322,8 @@
 			children = (
 				BF9687C51E58DBED001CD715 /* BalanceView.swift */,
 				BF9687C31E58DBDC001CD715 /* BalanceView.xib */,
+				BF9687BE1E58CFB1001CD715 /* CategoriesHeaderView.swift */,
+				BF9687C01E58CFDA001CD715 /* CategoriesHeaderView.xib */,
 				BF9063211E6896D3004B5F8B /* DateChanger.swift */,
 				BF9063231E6896DF004B5F8B /* DateChanger.xib */,
 				BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */,
@@ -368,11 +397,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF3FFBED1E4BC90300559134 /* AddEditCategory.storyboard in Resources */,
-				BF25146A1E464B7800042FEF /* Categories.storyboard in Resources */,
 				BFFCD70F1E73D8D50030BD79 /* OverviewHeaderView.xib in Resources */,
 				BF00F4881E4D1F5200D5D743 /* ProgressBar.xib in Resources */,
 				BF3792381E0933D00060445D /* LaunchScreen.storyboard in Resources */,
-				BD589DEB1E83E13500F0C9CD /* Categories2.storyboard in Resources */,
+				BD589DEB1E83E13500F0C9CD /* Categories.storyboard in Resources */,
 				BF25146C1E465C8C00042FEF /* Settings.storyboard in Resources */,
 				BF3792351E0933D00060445D /* Assets.xcassets in Resources */,
 				BF9687C11E58CFDA001CD715 /* CategoriesHeaderView.xib in Resources */,
@@ -382,7 +410,6 @@
 				BD6B69E41E79223400F7AF35 /* iPad.storyboard in Resources */,
 				BF90631C1E688FB8004B5F8B /* Overview.storyboard in Resources */,
 				BF00F48E1E4D331100D5D743 /* AddEditExpense.storyboard in Resources */,
-				BD6B69E61E7950AE00F7AF35 /* CategoriesSplit.storyboard in Resources */,
 				BF2514711E46626F00042FEF /* GoogleService-Info.plist in Resources */,
 				BF9687C41E58DBDC001CD715 /* BalanceView.xib in Resources */,
 				BF2514771E47154500042FEF /* LoginViewController.xib in Resources */,
@@ -462,11 +489,11 @@
 				BF9063201E6891E3004B5F8B /* OverviewTableViewCell.swift in Sources */,
 				BFD5AA8C1E52FDBC00DE10E3 /* Consts.swift in Sources */,
 				BF6BC8551E5ADA4E0052F4E8 /* CategoriesViewController+TableViews.swift in Sources */,
+				BD589DEF1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift in Sources */,
 				BFFCD70D1E73D8C70030BD79 /* OverviewHeaderView.swift in Sources */,
-				BF25147F1E47CD8700042FEF /* NavigationViewController.swift in Sources */,
 				BF2514791E47165100042FEF /* MainViewController.swift in Sources */,
 				BF9063221E6896D3004B5F8B /* DateChanger.swift in Sources */,
-				BF00F48C1E4D2FA300D5D743 /* CategoryViewController.swift in Sources */,
+				BF00F48C1E4D2FA300D5D743 /* CategoryExpensesViewController.swift in Sources */,
 				BF00F4901E4D344A00D5D743 /* AddEditExpenseViewController.swift in Sources */,
 				BF9687C61E58DBED001CD715 /* BalanceView.swift in Sources */,
 				BF3FFBEF1E4BC9E200559134 /* AddEditCategoryViewController.swift in Sources */,
@@ -474,6 +501,7 @@
 				BF6BC85C1E5B280C0052F4E8 /* SubCategoryHeaderView.swift in Sources */,
 				BFD5AA8A1E52E16100DE10E3 /* Extensions.swift in Sources */,
 				BF9687BD1E58CF1F001CD715 /* CategoriesViewController+UITableView.swift in Sources */,
+				BD589DF11E8451B200F0C9CD /* Authentication.swift in Sources */,
 				BF37922E1E0933D00060445D /* AppDelegate.swift in Sources */,
 				BF25146F1E46612200042FEF /* Category.swift in Sources */,
 				BFFCD70B1E73D4990030BD79 /* ExpensesViewController.swift in Sources */,
@@ -487,7 +515,7 @@
 				BF00F4941E4D350C00D5D743 /* ModelBaseObject.swift in Sources */,
 				BF3792481E0963330060445D /* CategoriesViewController.swift in Sources */,
 				BF00F4861E4D1F4300D5D743 /* ProgressBar.swift in Sources */,
-				BD6B69EA1E79544F00F7AF35 /* CategoriesSplitViewController.swift in Sources */,
+				BD6B69EA1E79544F00F7AF35 /* CategoriesPadViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

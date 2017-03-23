@@ -9,17 +9,21 @@
 import UIKit
 import FirebaseAuth
 
-let signInStateChangedNotification = Notification.Name(rawValue: "signInStateChanged")
-
-class SettingsViewController: UIViewController, TabBarComponent {
+class SettingsViewController: UIViewController, AuthenticationDelegate {
 
     @IBOutlet weak var o_userEmail: UILabel!
     @IBOutlet weak var o_logoutBtn: UIButton!
     @IBOutlet weak var o_loginBtn: UIButton!
     
+    var authentication: Authentication?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(forName: signInStateChangedNotification, object: nil, queue: nil, using: { [unowned self] notification in
+            self.reload()
+        })
+        
         reload()
     }
     
@@ -36,33 +40,23 @@ class SettingsViewController: UIViewController, TabBarComponent {
     }
 
     @IBAction func didTapLogin(_ sender: UIButton) {
-        let login = LoginViewController()
-        login.insideTheApp = true
-        login.completion = { [unowned self] in
-            if let _ = APP.user {
-                self.reload()
-                NotificationCenter.default.post(Notification(name: signInStateChangedNotification))
-            }
-        }
-        present(login, animated: true, completion: nil)
+        authentication = Authentication()
+        authentication?.delegate = self
+        authentication?.manualSignIn()
     }
 
     @IBAction func didTapLogout(_ sender: UIButton) {
-        do {
-            try FIRAuth.auth()?.signOut()
-        } catch {
-            
-        }
-        APP.user = nil
-        UserDefaults.standard.removeObject(forKey: "email")
-        UserDefaults.standard.removeObject(forKey: "password")
-        UserDefaults.standard.synchronize()
-        
-        let login = LoginViewController()
-        login.completion = { [unowned self] in
-            self.reload()
-            NotificationCenter.default.post(Notification(name: signInStateChangedNotification))
-        }
-        present(login, animated: true, completion: nil)
+        authentication = Authentication()
+        authentication?.delegate = self
+        authentication?.signOut()
+        authentication?.manualSignIn()
+    }
+    
+    func authentication(_ authentication: Authentication, shouldDisplay viewController: UIViewController) {
+        present(viewController, animated: true, completion: nil)
+    }
+    
+    func authentication(_ authentication: Authentication, shouldDisplay alert: UIAlertController) {
+        present(alert, animated: true, completion: nil)
     }
 }

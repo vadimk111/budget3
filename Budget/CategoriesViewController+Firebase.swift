@@ -33,7 +33,7 @@ extension CategoriesViewController {
                     NotificationCenter.default.post(Notification(name: budgetChangedNotification))
                 }
             }
-            self.updateHeaderView()
+            self.delegate?.categoriesViewControllerChanged(self)
         })
     }
     
@@ -41,7 +41,7 @@ extension CategoriesViewController {
         budgetRef?.observe(.childRemoved, with: { [unowned self] snapshot in
             let category = Category(snapshot: snapshot)
             self.deleteCategoryFromView(category)
-            self.updateHeaderView()
+            self.delegate?.categoriesViewControllerChanged(self)
             NotificationCenter.default.post(Notification(name: budgetChangedNotification))
         })
     }
@@ -65,7 +65,7 @@ extension CategoriesViewController {
             } else {
                 self.updateCategoryNotInView(category)
             }
-            self.updateHeaderView()
+            self.delegate?.categoriesViewControllerChanged(self)
         })
     }
     

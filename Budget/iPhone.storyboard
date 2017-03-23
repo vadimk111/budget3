@@ -9,16 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Category-->
-        <scene sceneID="94x-k2-ZGX">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Categories" referencedIdentifier="Category" id="lUO-cs-iOo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="2GQ-wb-3Jh"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aT0-Ek-J74" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1680" y="353"/>
-        </scene>
         <!--Overview-->
         <scene sceneID="Kfc-pa-i0W">
             <objects>
@@ -49,7 +39,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="lUO-cs-iOo" kind="relationship" relationship="viewControllers" id="dmV-hq-zlg"/>
+                        <segue destination="kQ6-EE-dpJ" kind="relationship" relationship="viewControllers" id="T0D-Km-U2M"/>
                         <segue destination="HjL-Lk-sps" kind="relationship" relationship="viewControllers" id="RFU-p8-pQ5"/>
                         <segue destination="CHz-Q6-dRd" kind="relationship" relationship="viewControllers" id="C0x-Pn-Y0t"/>
                     </connections>
@@ -58,5 +48,88 @@
             </objects>
             <point key="canvasLocation" x="-1449" y="-106"/>
         </scene>
+        <!--Categories-->
+        <scene sceneID="f3Z-pc-LEI">
+            <objects>
+                <viewController id="XV7-le-M47" customClass="CategoriesPhoneViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bbB-d9-pQn"/>
+                        <viewControllerLayoutGuide type="bottom" id="sfa-rh-LWQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="098-kV-esc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AIC-M3-WH5" customClass="CategoriesHeaderView" customModule="Budget" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="100"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="i71-La-fSV"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcs-mm-sQZ">
+                                <rect key="frame" x="0.0" y="164" width="375" height="454"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="VJb-lu-TIo" kind="embed" identifier="categories" id="ddj-hh-5L1"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="xcs-mm-sQZ" secondAttribute="trailing" id="2jx-IL-7q3"/>
+                            <constraint firstItem="xcs-mm-sQZ" firstAttribute="leading" secondItem="098-kV-esc" secondAttribute="leading" id="A9e-1a-HBu"/>
+                            <constraint firstItem="sfa-rh-LWQ" firstAttribute="top" secondItem="xcs-mm-sQZ" secondAttribute="bottom" id="Bj1-t6-CXW"/>
+                            <constraint firstItem="AIC-M3-WH5" firstAttribute="top" secondItem="bbB-d9-pQn" secondAttribute="bottom" id="bMY-c3-a3R"/>
+                            <constraint firstItem="AIC-M3-WH5" firstAttribute="leading" secondItem="098-kV-esc" secondAttribute="leading" id="gOi-LZ-JRe"/>
+                            <constraint firstAttribute="trailing" secondItem="AIC-M3-WH5" secondAttribute="trailing" id="okQ-nM-aRl"/>
+                            <constraint firstItem="xcs-mm-sQZ" firstAttribute="top" secondItem="AIC-M3-WH5" secondAttribute="bottom" id="yA9-Po-Q02"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Categories" id="zZW-T2-1VQ">
+                        <barButtonItem key="leftBarButtonItem" image="edit-tool" id="6hw-wn-60o"/>
+                        <barButtonItem key="rightBarButtonItem" image="plus" id="HJW-w9-lta"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="o_headerView" destination="AIC-M3-WH5" id="bxO-or-Oxh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HwH-hd-bLi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1590" y="822"/>
+        </scene>
+        <!--CategoriesRef-->
+        <scene sceneID="zrO-du-oao">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Categories" referencedIdentifier="CategoriesRef" id="VJb-lu-TIo" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aYm-cz-3IY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1591" y="1250"/>
+        </scene>
+        <!--Categories-->
+        <scene sceneID="kCO-dD-t7n">
+            <objects>
+                <navigationController storyboardIdentifier="Category" automaticallyAdjustsScrollViewInsets="NO" id="kQ6-EE-dpJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Categories" image="categories" id="up5-eT-Z23"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="v2B-3H-A3B">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XV7-le-M47" kind="relationship" relationship="rootViewController" id="Vf2-Vm-1zW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pv3-vp-IEC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2364" y="821"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="categories" width="24" height="24"/>
+        <image name="edit-tool" width="16" height="16"/>
+        <image name="plus" width="16" height="16"/>
+    </resources>
 </document>

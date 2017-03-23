@@ -126,7 +126,7 @@
         <!--Expenses-->
         <scene sceneID="ZBG-NK-QqL">
             <objects>
-                <navigationController storyboardIdentifier="Overview" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="egI-Yz-RVv" customClass="NavigationViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Overview" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="egI-Yz-RVv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Expenses" image="coins" id="GHR-1b-gG5"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

@@ -19,7 +19,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="GZU-gs-jGe" kind="relationship" relationship="viewControllers" id="Yx7-bf-i0N"/>
+                        <segue destination="r0G-fI-2vg" kind="relationship" relationship="viewControllers" id="glb-vK-ex5"/>
                         <segue destination="R6T-zg-bUh" kind="relationship" relationship="viewControllers" id="Ikk-mY-jHf"/>
                         <segue destination="Giq-hd-8bf" kind="relationship" relationship="viewControllers" id="Y3y-AY-bn2"/>
                     </connections>
@@ -27,16 +27,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0pU-bJ-MHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-657" y="-186"/>
-        </scene>
-        <!--Categories-->
-        <scene sceneID="JWg-xx-pdi">
-            <objects>
-                <viewControllerPlaceholder storyboardName="CategoriesSplit" referencedIdentifier="Categories" id="GZU-gs-jGe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="uHT-d1-K3H"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UE7-YD-Ib0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-850" y="265"/>
         </scene>
         <!--Overview-->
         <scene sceneID="Kf1-fE-fyx">
@@ -58,5 +48,92 @@
             </objects>
             <point key="canvasLocation" x="-475" y="265"/>
         </scene>
+        <!--Categories-->
+        <scene sceneID="Xqf-ke-euh">
+            <objects>
+                <viewController storyboardIdentifier="Categories" useStoryboardIdentifierAsRestorationIdentifier="YES" id="r0G-fI-2vg" customClass="CategoriesPadViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hh2-i8-ZbL"/>
+                        <viewControllerLayoutGuide type="bottom" id="hz3-6l-PGR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QHQ-5C-6al">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M5t-mf-jWF">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="64"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="t98-1t-gIg"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbB-tl-zwx" customClass="CategoriesHeaderView" customModule="Budget" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="1024" height="100"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="HGc-LF-xNS"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYZ-WC-zhs">
+                                <rect key="frame" x="0.0" y="164" width="404" height="555"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="404" id="gW5-V3-ziP"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="CEg-IX-EqG" kind="embed" identifier="categories" id="FbQ-tW-seU"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RX3-Tf-5Un">
+                                <rect key="frame" x="404" y="164" width="620" height="555"/>
+                                <connections>
+                                    <segue destination="41k-4q-Zmw" kind="embed" identifier="expenses" id="qbI-L8-9Fd"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dbB-tl-zwx" firstAttribute="top" secondItem="M5t-mf-jWF" secondAttribute="bottom" id="1ZV-cB-IaM"/>
+                            <constraint firstItem="hz3-6l-PGR" firstAttribute="top" secondItem="oYZ-WC-zhs" secondAttribute="bottom" id="2Ge-Xm-n2s"/>
+                            <constraint firstItem="RX3-Tf-5Un" firstAttribute="top" secondItem="oYZ-WC-zhs" secondAttribute="top" id="9Bv-pr-Klu"/>
+                            <constraint firstItem="dbB-tl-zwx" firstAttribute="leading" secondItem="QHQ-5C-6al" secondAttribute="leading" id="Kya-zf-Jhb"/>
+                            <constraint firstItem="oYZ-WC-zhs" firstAttribute="top" secondItem="dbB-tl-zwx" secondAttribute="bottom" id="NK7-de-itM"/>
+                            <constraint firstItem="RX3-Tf-5Un" firstAttribute="bottom" secondItem="oYZ-WC-zhs" secondAttribute="bottom" id="YHI-Ng-Brk"/>
+                            <constraint firstItem="oYZ-WC-zhs" firstAttribute="leading" secondItem="QHQ-5C-6al" secondAttribute="leading" id="dcc-oz-Q05"/>
+                            <constraint firstItem="M5t-mf-jWF" firstAttribute="leading" secondItem="QHQ-5C-6al" secondAttribute="leading" id="epf-Ei-2In"/>
+                            <constraint firstAttribute="trailing" secondItem="dbB-tl-zwx" secondAttribute="trailing" id="s7v-Wj-pTe"/>
+                            <constraint firstItem="M5t-mf-jWF" firstAttribute="top" secondItem="QHQ-5C-6al" secondAttribute="top" id="vVU-hQ-V1w"/>
+                            <constraint firstAttribute="trailing" secondItem="M5t-mf-jWF" secondAttribute="trailing" id="vtK-kZ-SNV"/>
+                            <constraint firstAttribute="trailing" secondItem="RX3-Tf-5Un" secondAttribute="trailing" id="wy5-pg-zG0"/>
+                            <constraint firstItem="RX3-Tf-5Un" firstAttribute="leading" secondItem="oYZ-WC-zhs" secondAttribute="trailing" id="y4F-sZ-cqT"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Categories" image="categories" id="6Fp-wE-b9G" customClass="cate"/>
+                    <connections>
+                        <outlet property="o_categoriesHeaderView" destination="dbB-tl-zwx" id="aA9-1B-99u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VdB-mP-XiZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-901" y="731"/>
+        </scene>
+        <!--CategoriesRef-->
+        <scene sceneID="122-MC-UWX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Categories" referencedIdentifier="CategoriesRef" id="CEg-IX-EqG" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qW1-x6-qBh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1109" y="1185"/>
+        </scene>
+        <!--Expenses-->
+        <scene sceneID="ZFt-3A-qdv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CategoryExpenses" referencedIdentifier="Expenses" id="41k-4q-Zmw" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rza-dt-TU8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-778" y="1204"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="categories" width="24" height="24"/>
+    </resources>
 </document>
