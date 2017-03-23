@@ -13,7 +13,7 @@ class CategoryViewController: UITableViewController, SubCategoryHeaderViewDelega
 
     @IBOutlet weak var o_balanceNavView: BalanceView!
     
-    var category: Category!
+    var category: Category?
     var currentDate: Date?
     
     override func viewDidLoad() {
@@ -24,9 +24,9 @@ class CategoryViewController: UITableViewController, SubCategoryHeaderViewDelega
         })
         
         updateBalanceNavView()
-        registerToUpdates(expensesRef: category.getDatabaseReference()?.child("expenses"), section: 0)
+        registerToUpdates(expensesRef: category?.getDatabaseReference()?.child("expenses"), section: 0)
         
-        if let subCategories = category.subCategories {
+        if let subCategories = category?.subCategories {
             var index = 1
             for item in subCategories {
                 registerToUpdates(expensesRef: item.getDatabaseReference()?.child("expenses"), section: index)
@@ -36,52 +36,61 @@ class CategoryViewController: UITableViewController, SubCategoryHeaderViewDelega
     }
     
     deinit {
-        category.getDatabaseReference()?.child("expenses").removeAllObservers()
-        if let subCategories = category.subCategories {
+        category?.getDatabaseReference()?.child("expenses").removeAllObservers()
+        if let subCategories = category?.subCategories {
             for item in subCategories {
                 item.getDatabaseReference()?.child("expenses").removeAllObservers()
             }
         }
     }
     
+    func reload(with category: Category) {
+        self.category = category
+        tableView.reloadData()
+    }
+    
     func updateBalanceNavView() {
-        o_balanceNavView.populate(amount: category.calculatedAmount, totalSpent: category.calculatedTotalSpent, title: category.title)
+        if let category = category {
+            o_balanceNavView.populate(amount: category.calculatedAmount, totalSpent: category.calculatedTotalSpent, title: category.title)
+        }
     }
     
     func registerToUpdates(expensesRef: FIRDatabaseReference?, section: Int) {
-        expensesRef?.observe(.childAdded, with: { [unowned self] snapshot in
-            let category = section == 0 ? self.category : self.category.subCategories![section - 1]
-            if category!.expenses == nil {
-                category!.expenses = []
-            }
-            let expense = Expense(snapshot: snapshot)
-            if !category!.expenses!.contains(where: { $0.id == expense.id } ) {
-                category!.expenses!.append(expense)
-                self.tableView.insertRows(at: [IndexPath.init(row: category!.expenses!.count - 1, section: section)], with: .fade)
-                self.updateBalanceNavView()
-            }
-        })
-        
-        expensesRef?.observe(.childChanged, with: { [unowned self] snapshot in
-            let category = section == 0 ? self.category : self.category.subCategories![section - 1]
-            let expense = Expense(snapshot: snapshot)
-            if let index = category?.expenses?.index(where: { $0.id == snapshot.key } ) {
-                category?.expenses?.remove(at: index)
-                category?.expenses?.insert(expense, at: index)
-                self.tableView.reloadRows(at: [IndexPath.init(row: index, section: section)], with: .none)
-                self.updateBalanceNavView()
-            }
-        })
-        
-        expensesRef?.observe(.childRemoved, with: { [unowned self] snapshot in
-            let category = section == 0 ? self.category : self.category.subCategories![section - 1]
-            let expense = Expense(snapshot: snapshot)
-            if let index = category?.expenses?.index(where: { $0.id == expense.id }) {
-                category?.expenses?.remove(at: index)
-                self.tableView.deleteRows(at: [IndexPath.init(row: index, section: section)], with: .fade)
-                self.updateBalanceNavView()
-            }
-        })
+        if let _ = category {
+            expensesRef?.observe(.childAdded, with: { [unowned self] snapshot in
+                let category = section == 0 ? self.category! : self.category!.subCategories![section - 1]
+                if category.expenses == nil {
+                    category.expenses = []
+                }
+                let expense = Expense(snapshot: snapshot)
+                if !category.expenses!.contains(where: { $0.id == expense.id } ) {
+                    category.expenses!.append(expense)
+                    self.tableView.insertRows(at: [IndexPath.init(row: category.expenses!.count - 1, section: section)], with: .fade)
+                    self.updateBalanceNavView()
+                }
+            })
+            
+            expensesRef?.observe(.childChanged, with: { [unowned self] snapshot in
+                let category = section == 0 ? self.category! : self.category!.subCategories![section - 1]
+                let expense = Expense(snapshot: snapshot)
+                if let index = category.expenses?.index(where: { $0.id == snapshot.key } ) {
+                    category.expenses?.remove(at: index)
+                    category.expenses?.insert(expense, at: index)
+                    self.tableView.reloadRows(at: [IndexPath.init(row: index, section: section)], with: .none)
+                    self.updateBalanceNavView()
+                }
+            })
+            
+            expensesRef?.observe(.childRemoved, with: { [unowned self] snapshot in
+                let category = section == 0 ? self.category! : self.category!.subCategories![section - 1]
+                let expense = Expense(snapshot: snapshot)
+                if let index = category.expenses?.index(where: { $0.id == expense.id }) {
+                    category.expenses?.remove(at: index)
+                    self.tableView.deleteRows(at: [IndexPath.init(row: index, section: section)], with: .fade)
+                    self.updateBalanceNavView()
+                }
+            })
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -89,7 +98,7 @@ class CategoryViewController: UITableViewController, SubCategoryHeaderViewDelega
         if segue.identifier == "addExpense" {
             var parentCategory: Category?
             if sender is SubCategoryHeaderView {
-                if let subCategories = category.subCategories {
+                if let subCategories = category?.subCategories {
                     parentCategory = subCategories[(sender as! SubCategoryHeaderView).section - 1]
                 }
             } else {
@@ -109,7 +118,7 @@ class CategoryViewController: UITableViewController, SubCategoryHeaderViewDelega
     
     func expense(for indexPath: IndexPath) -> Expense? {
         if indexPath.section == 0 {
-            return category.expenses?[indexPath.row]
+            return category?.expenses?[indexPath.row]
         } else if let subExpenses = category?.subCategories?[indexPath.section - 1].expenses {
             return subExpenses[indexPath.row]
         }
@@ -124,7 +133,7 @@ class CategoryViewController: UITableViewController, SubCategoryHeaderViewDelega
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if let subCategories = category.subCategories {
+        if let subCategories = category?.subCategories {
             return subCategories.count + 1
         }
         return 1
@@ -132,12 +141,12 @@ class CategoryViewController: UITableViewController, SubCategoryHeaderViewDelega
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            if let expenses = category.expenses {
+            if let expenses = category?.expenses {
                 return expenses.count
             }
             return 0
         } else {
-            if let subExpenses = category.subCategories?[section - 1].expenses {
+            if let subExpenses = category?.subCategories?[section - 1].expenses {
                 return subExpenses.count
             }
             return 0
@@ -156,7 +165,7 @@ class CategoryViewController: UITableViewController, SubCategoryHeaderViewDelega
             let view = SubCategoryHeaderView()
             view.delegate = self
             view.section = section
-            if let subCategory = category.subCategories?[section - 1] {
+            if let subCategory = category?.subCategories?[section - 1] {
                 view.o_title.text = subCategory.title
             }
             return view

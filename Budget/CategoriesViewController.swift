@@ -11,6 +11,10 @@ import FirebaseDatabase
 
 let budgetChangedNotification = Notification.Name(rawValue: "budgetChanged")
 
+protocol CategoriesViewControllerDelegate {
+    func categoriesViewController(_ categoriesViewController: CategoriesViewController, didSelect category: Category)
+}
+
 class CategoriesViewController: UITableViewController, TabBarComponent {
 
     var budgetRef: FIRDatabaseReference?
@@ -20,7 +24,11 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
     var isRefreshing = false
     var closestBudget: [Category]?
     var expandedCategories: [String : Bool] = [:]
-    var headerView: CategoriesHeaderView!
+    var headerView: CategoriesHeaderView?
+    var delegate: CategoriesViewControllerDelegate?
+    
+    @IBInspectable
+    var isCompactView: Bool = true
     
     @IBOutlet weak var o_editButton: UIBarButtonItem!
     
@@ -37,9 +45,11 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
             self.reload()
         })
         
-        headerView = CategoriesHeaderView()
-        headerView.delegate = self
-        headerView.fill(with: availableParents, date: date)
+        if isCompactView {
+            headerView = CategoriesHeaderView()
+            headerView?.delegate = self
+            headerView?.fill(with: availableParents, date: date)
+        }
     }
     
     deinit {
@@ -69,7 +79,7 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
     }
     
     func updateHeaderView() {
-        headerView.fill(with: availableParents, date: date)
+        headerView?.fill(with: availableParents, date: date)
     }
     
     func prepareBudget(from snapshot: FIRDataSnapshot) -> Bool {
@@ -223,5 +233,6 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
             return nav.viewControllers.first as? AddEditCategoryViewController
         }
         return segue.destination as? AddEditCategoryViewController
-    }    
+    }
+    
 }

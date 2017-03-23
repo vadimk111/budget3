@@ -14,7 +14,7 @@ extension CategoriesViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
+        return isCompactView ? 100 : 0
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -162,5 +162,9 @@ extension CategoriesViewController {
         }
 
         return sourceIndexPath
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.categoriesViewController(self, didSelect: categories[indexPath.row])
     }
 }

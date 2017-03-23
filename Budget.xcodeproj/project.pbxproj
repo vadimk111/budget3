@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		6AA2CE85BAFB9541D811DABB /* Pods_Budget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 081C64756147318895C06760 /* Pods_Budget.framework */; };
+		BD589DEB1E83E13500F0C9CD /* Categories2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD589DEA1E83E13500F0C9CD /* Categories2.storyboard */; };
+		BD589DED1E83F32A00F0C9CD /* CategoryExpenses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD589DEC1E83F32A00F0C9CD /* CategoryExpenses.storyboard */; };
+		BD6B69E41E79223400F7AF35 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD6B69E31E79223400F7AF35 /* iPad.storyboard */; };
+		BD6B69E61E7950AE00F7AF35 /* CategoriesSplit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD6B69E51E7950AE00F7AF35 /* CategoriesSplit.storyboard */; };
+		BD6B69EA1E79544F00F7AF35 /* CategoriesSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B69E91E79544F00F7AF35 /* CategoriesSplitViewController.swift */; };
 		BF00F4841E4D1F2500D5D743 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F4831E4D1F2500D5D743 /* CategoryTableViewCell.swift */; };
 		BF00F4861E4D1F4300D5D743 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */; };
 		BF00F4881E4D1F5200D5D743 /* ProgressBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */; };
@@ -58,6 +63,11 @@
 /* Begin PBXFileReference section */
 		081C64756147318895C06760 /* Pods_Budget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBC9F6F964B24DE5B2DADBF3 /* Pods-Budget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Budget/Pods-Budget.release.xcconfig"; sourceTree = "<group>"; };
+		BD589DEA1E83E13500F0C9CD /* Categories2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Categories2.storyboard; sourceTree = "<group>"; };
+		BD589DEC1E83F32A00F0C9CD /* CategoryExpenses.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CategoryExpenses.storyboard; sourceTree = "<group>"; };
+		BD6B69E31E79223400F7AF35 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
+		BD6B69E51E7950AE00F7AF35 /* CategoriesSplit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CategoriesSplit.storyboard; sourceTree = "<group>"; };
+		BD6B69E91E79544F00F7AF35 /* CategoriesSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesSplitViewController.swift; sourceTree = "<group>"; };
 		BF00F4831E4D1F2500D5D743 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressBar.xib; sourceTree = "<group>"; };
@@ -159,6 +169,10 @@
 				BF3FFBEC1E4BC90300559134 /* AddEditCategory.storyboard */,
 				BF00F48D1E4D331100D5D743 /* AddEditExpense.storyboard */,
 				BF2514691E464B7800042FEF /* Categories.storyboard */,
+				BD589DEA1E83E13500F0C9CD /* Categories2.storyboard */,
+				BD6B69E51E7950AE00F7AF35 /* CategoriesSplit.storyboard */,
+				BD589DEC1E83F32A00F0C9CD /* CategoryExpenses.storyboard */,
+				BD6B69E31E79223400F7AF35 /* iPad.storyboard */,
 				BF3792431E09625C0060445D /* iPhone.storyboard */,
 				BF3792361E0933D00060445D /* LaunchScreen.storyboard */,
 				BF90631B1E688FB8004B5F8B /* Overview.storyboard */,
@@ -219,6 +233,7 @@
 			children = (
 				BF6BC8571E5ADACE0052F4E8 /* AddEdit */,
 				BF6BC8561E5ADAB20052F4E8 /* Categories */,
+				BD6B69E91E79544F00F7AF35 /* CategoriesSplitViewController.swift */,
 				BFFCD70A1E73D4990030BD79 /* ExpensesViewController.swift */,
 				BF6BC8581E5ADAE60052F4E8 /* Login */,
 				BF6BC8591E5ADB610052F4E8 /* Main */,
@@ -357,13 +372,17 @@
 				BFFCD70F1E73D8D50030BD79 /* OverviewHeaderView.xib in Resources */,
 				BF00F4881E4D1F5200D5D743 /* ProgressBar.xib in Resources */,
 				BF3792381E0933D00060445D /* LaunchScreen.storyboard in Resources */,
+				BD589DEB1E83E13500F0C9CD /* Categories2.storyboard in Resources */,
 				BF25146C1E465C8C00042FEF /* Settings.storyboard in Resources */,
 				BF3792351E0933D00060445D /* Assets.xcassets in Resources */,
 				BF9687C11E58CFDA001CD715 /* CategoriesHeaderView.xib in Resources */,
 				BF3792441E09625C0060445D /* iPhone.storyboard in Resources */,
 				BF6BC85E1E5B28240052F4E8 /* SubCategoryHeaderView.xib in Resources */,
+				BD589DED1E83F32A00F0C9CD /* CategoryExpenses.storyboard in Resources */,
+				BD6B69E41E79223400F7AF35 /* iPad.storyboard in Resources */,
 				BF90631C1E688FB8004B5F8B /* Overview.storyboard in Resources */,
 				BF00F48E1E4D331100D5D743 /* AddEditExpense.storyboard in Resources */,
+				BD6B69E61E7950AE00F7AF35 /* CategoriesSplit.storyboard in Resources */,
 				BF2514711E46626F00042FEF /* GoogleService-Info.plist in Resources */,
 				BF9687C41E58DBDC001CD715 /* BalanceView.xib in Resources */,
 				BF2514771E47154500042FEF /* LoginViewController.xib in Resources */,
@@ -468,6 +487,7 @@
 				BF00F4941E4D350C00D5D743 /* ModelBaseObject.swift in Sources */,
 				BF3792481E0963330060445D /* CategoriesViewController.swift in Sources */,
 				BF00F4861E4D1F4300D5D743 /* ProgressBar.swift in Sources */,
+				BD6B69EA1E79544F00F7AF35 /* CategoriesSplitViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,7 +612,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -610,7 +630,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
