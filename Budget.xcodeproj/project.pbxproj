@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6AA2CE85BAFB9541D811DABB /* Pods_Budget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 081C64756147318895C06760 /* Pods_Budget.framework */; };
+		BD3D40721E853A4800C3CCAF /* BaseDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D40711E853A4800C3CCAF /* BaseDeviceViewController.swift */; };
 		BD589DEB1E83E13500F0C9CD /* Categories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD589DEA1E83E13500F0C9CD /* Categories.storyboard */; };
 		BD589DED1E83F32A00F0C9CD /* CategoryExpenses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD589DEC1E83F32A00F0C9CD /* CategoryExpenses.storyboard */; };
 		BD589DEF1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD589DEE1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift */; };
@@ -62,6 +63,7 @@
 /* Begin PBXFileReference section */
 		081C64756147318895C06760 /* Pods_Budget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBC9F6F964B24DE5B2DADBF3 /* Pods-Budget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Budget/Pods-Budget.release.xcconfig"; sourceTree = "<group>"; };
+		BD3D40711E853A4800C3CCAF /* BaseDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDeviceViewController.swift; sourceTree = "<group>"; };
 		BD589DEA1E83E13500F0C9CD /* Categories.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Categories.storyboard; sourceTree = "<group>"; };
 		BD589DEC1E83F32A00F0C9CD /* CategoryExpenses.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CategoryExpenses.storyboard; sourceTree = "<group>"; };
 		BD589DEE1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesPhoneViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		BD589DF31E8469AA00F0C9CD /* Device */ = {
 			isa = PBXGroup;
 			children = (
+				BD3D40711E853A4800C3CCAF /* BaseDeviceViewController.swift */,
 				BD6B69E91E79544F00F7AF35 /* CategoriesPadViewController.swift */,
 				BD589DEE1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift */,
 			);
@@ -488,6 +491,7 @@
 				BF00F4921E4D348F00D5D743 /* Expense.swift in Sources */,
 				BF9063201E6891E3004B5F8B /* OverviewTableViewCell.swift in Sources */,
 				BFD5AA8C1E52FDBC00DE10E3 /* Consts.swift in Sources */,
+				BD3D40721E853A4800C3CCAF /* BaseDeviceViewController.swift in Sources */,
 				BF6BC8551E5ADA4E0052F4E8 /* CategoriesViewController+TableViews.swift in Sources */,
 				BD589DEF1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift in Sources */,
 				BFFCD70D1E73D8C70030BD79 /* OverviewHeaderView.swift in Sources */,

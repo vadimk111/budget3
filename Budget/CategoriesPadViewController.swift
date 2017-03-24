@@ -9,36 +9,25 @@
 import UIKit
 import FirebaseAuth
 
-class CategoriesPadViewController: UIViewController, CategoriesHeaderViewDelegate, CategoriesViewControllerDelegate {
+class CategoriesPadViewController: BaseDeviceViewController {
 
-    @IBOutlet weak var o_categoriesHeaderView: CategoriesHeaderView!
-    
-    var categoriesViewController: CategoriesViewController?
     var expensesViewController: CategoryExpensesViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(forName: signInStateChangedNotification, object: nil, queue: nil, using: { [unowned self] notification in
-            self.reload()
-        })
-        
-        o_categoriesHeaderView.delegate = self
-        o_categoriesHeaderView.fill(with: [], date: Date())
-        
-        reload()
-    }
 
-    func reload() {
-        categoriesViewController?.reload()
     }
-    
-    func categoriesHeaderViewDidGoNext(_ categoriesHeaderView: CategoriesHeaderView) {
         
-    }
-
-    func categoriesHeaderViewDidGoPrev(_ categoriesHeaderView: CategoriesHeaderView) {
-        
+    @IBAction func didTapEdit(_ sender: UIButton) {
+        if let categoriesViewController = categoriesViewController {
+            if categoriesViewController.tableView.isEditing {
+                sender.setImage(UIImage(named: "edit-tool"), for: .normal)
+                categoriesViewController.tableView.setEditing(false, animated: true)
+            } else {
+                categoriesViewController.tableView.setEditing(true, animated: true)
+                sender.setImage(UIImage(named: "checked"), for: .normal)
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,14 +36,14 @@ class CategoriesPadViewController: UIViewController, CategoriesHeaderViewDelegat
             categoriesViewController?.delegate = self
         } else if segue.identifier == "expenses" {
             expensesViewController = segue.destination as? CategoryExpensesViewController
+        } else if segue.identifier == "addCategory" {
+            prepareForAddCategory(from: segue)
+        } else if segue.identifier == "editCategory" {
+            prepareForEditCategory(from: segue, sender: sender)
         }
     }
     
-    func categoriesViewController(_ categoriesViewController: CategoriesViewController, didSelect category: Category) {
+    override func categoriesViewController(_ categoriesViewController: CategoriesViewController, didSelect category: Category) {
         expensesViewController?.reload(with: category)
-    }
-    
-    func categoriesViewControllerChanged(_ categoriesViewController: CategoriesViewController) {
-        o_categoriesHeaderView?.fill(with: categoriesViewController.availableParents, date: categoriesViewController.date)
     }
 }

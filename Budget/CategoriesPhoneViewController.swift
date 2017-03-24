@@ -8,49 +8,48 @@
 
 import UIKit
 
-class CategoriesPhoneViewController: UIViewController, CategoriesViewControllerDelegate, CategoriesHeaderViewDelegate {
+class CategoriesPhoneViewController: BaseDeviceViewController {
 
-    @IBOutlet weak var o_headerView: CategoriesHeaderView!
-    
-    var categoriesViewController: CategoriesViewController?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(forName: signInStateChangedNotification, object: nil, queue: nil, using: { [unowned self] notification in
-            self.reload()
-        })
-        
-        o_headerView.delegate = self
-        o_headerView.fill(with: [], date: Date())
-        
-        reload()
-    }
-
-    func reload() {
-        categoriesViewController?.reload()
     }
     
-    func categoriesHeaderViewDidGoNext(_ categoriesHeaderView: CategoriesHeaderView) {
-        
-    }
-    
-    func categoriesHeaderViewDidGoPrev(_ categoriesHeaderView: CategoriesHeaderView) {
-        
+    @IBAction func didTapEdit(_ sender: UIBarButtonItem) {
+        if let categoriesViewController = categoriesViewController {
+            if categoriesViewController.tableView.isEditing {
+                sender.image = UIImage(named: "edit-tool")
+                categoriesViewController.tableView.setEditing(false, animated: true)
+            } else {
+                categoriesViewController.tableView.setEditing(true, animated: true)
+                sender.image = UIImage(named: "checked")
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "categories" {
             categoriesViewController = segue.destination as? CategoriesViewController
             categoriesViewController?.delegate = self
+        } else if segue.identifier == "addCategory" {
+            prepareForAddCategory(from: segue)
+        } else if segue.identifier == "editCategory" {
+            prepareForEditCategory(from: segue, sender: sender)
+        } else if segue.identifier == "drillDown" {
+            if let categoriesViewController = categoriesViewController {
+                let backItem = UIBarButtonItem()
+                backItem.title = ""
+                navigationItem.backBarButtonItem = backItem
+                
+                if let category = sender as? Category {
+                    (segue.destination as? CategoryExpensesViewController)?.category = category
+                    (segue.destination as? CategoryExpensesViewController)?.currentDate = categoriesViewController.date
+                }
+            }
         }
     }
-    
-    func categoriesViewController(_ categoriesViewController: CategoriesViewController, didSelect category: Category) {
         
-    }
-    
-    func categoriesViewControllerChanged(_ categoriesViewController: CategoriesViewController) {
-        o_headerView?.fill(with: categoriesViewController.availableParents, date: categoriesViewController.date)
+    override func categoriesViewController(_ categoriesViewController: CategoriesViewController, didSelect category: Category) {
+        performSegue(withIdentifier: "drillDown", sender: category)
     }
 }

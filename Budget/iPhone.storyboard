@@ -87,16 +87,42 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Categories" id="zZW-T2-1VQ">
-                        <barButtonItem key="leftBarButtonItem" image="edit-tool" id="6hw-wn-60o"/>
-                        <barButtonItem key="rightBarButtonItem" image="plus" id="HJW-w9-lta"/>
+                        <barButtonItem key="leftBarButtonItem" image="edit-tool" id="6hw-wn-60o">
+                            <connections>
+                                <action selector="didTapEdit:" destination="XV7-le-M47" id="H8J-rC-ayJ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="plus" id="HJW-w9-lta">
+                            <connections>
+                                <segue destination="au9-j3-tZH" kind="presentation" identifier="addCategory" id="TKk-Jx-0C8"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="o_headerView" destination="AIC-M3-WH5" id="bxO-or-Oxh"/>
+                        <outlet property="o_categoriesHeaderView" destination="AIC-M3-WH5" id="5ga-ad-Lhc"/>
+                        <segue destination="au9-j3-tZH" kind="presentation" identifier="editCategory" id="XSk-6f-Wr0"/>
+                        <segue destination="6v2-rM-eYK" kind="showDetail" identifier="drillDown" id="weV-7H-gbB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HwH-hd-bLi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1590" y="822"/>
+            <point key="canvasLocation" x="-1591" y="821"/>
+        </scene>
+        <!--AddEditCategory-->
+        <scene sceneID="gTg-If-J4M">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddEditCategory" referencedIdentifier="AddEditCategory" id="au9-j3-tZH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CbF-od-62n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-958" y="820"/>
+        </scene>
+        <!--Expenses-->
+        <scene sceneID="kGt-uV-DPt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CategoryExpenses" referencedIdentifier="Expenses" id="6v2-rM-eYK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nX0-c0-ReY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-958" y="706"/>
         </scene>
         <!--CategoriesRef-->
         <scene sceneID="zrO-du-oao">
@@ -132,4 +158,7 @@
         <image name="edit-tool" width="16" height="16"/>
         <image name="plus" width="16" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="XSk-6f-Wr0"/>
+    </inferredMetricsTieBreakers>
 </document>

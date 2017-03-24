@@ -74,8 +74,54 @@
                                     <constraint firstAttribute="height" constant="100" id="HGc-LF-xNS"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u1F-eD-D6x">
+                                <rect key="frame" x="0.0" y="164" width="1024" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmq-JQ-HJX" userLabel="Edit">
+                                        <rect key="frame" x="10" y="8" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="Geb-tI-G8t"/>
+                                            <constraint firstAttribute="width" constant="48" id="qg7-hW-43N"/>
+                                        </constraints>
+                                        <state key="normal" image="edit-tool"/>
+                                        <connections>
+                                            <action selector="didTapEdit:" destination="r0G-fI-2vg" eventType="touchUpInside" id="nXR-2d-JGF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4Q-43-L4x" userLabel="Add Category">
+                                        <rect key="frame" x="346" y="8" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="Fdp-a1-khN"/>
+                                            <constraint firstAttribute="height" constant="48" id="Ycn-Oh-WlB"/>
+                                        </constraints>
+                                        <state key="normal" image="plus"/>
+                                        <connections>
+                                            <segue destination="J3Y-36-xzN" kind="popoverPresentation" identifier="addCategory" popoverAnchorView="oYZ-WC-zhs" id="fyn-1q-1ZF">
+                                                <popoverArrowDirection key="popoverArrowDirection"/>
+                                            </segue>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39L-gu-CHv" userLabel="Add Expense">
+                                        <rect key="frame" x="966" y="8" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="0ld-4I-09M"/>
+                                            <constraint firstAttribute="width" constant="48" id="HEg-2k-9gb"/>
+                                        </constraints>
+                                        <state key="normal" image="plus"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="hmq-JQ-HJX" firstAttribute="leading" secondItem="u1F-eD-D6x" secondAttribute="leading" constant="10" id="5mb-s8-fAP"/>
+                                    <constraint firstItem="39L-gu-CHv" firstAttribute="centerY" secondItem="u1F-eD-D6x" secondAttribute="centerY" id="7HU-BO-dew"/>
+                                    <constraint firstAttribute="height" constant="64" id="GuL-Fi-xvr"/>
+                                    <constraint firstAttribute="trailing" secondItem="39L-gu-CHv" secondAttribute="trailing" constant="10" id="K8A-Cx-u8Z"/>
+                                    <constraint firstItem="hmq-JQ-HJX" firstAttribute="centerY" secondItem="u1F-eD-D6x" secondAttribute="centerY" id="hIg-ft-jAh"/>
+                                    <constraint firstItem="s4Q-43-L4x" firstAttribute="centerY" secondItem="hmq-JQ-HJX" secondAttribute="centerY" id="tIo-EA-3wm"/>
+                                </constraints>
+                            </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYZ-WC-zhs">
-                                <rect key="frame" x="0.0" y="164" width="404" height="555"/>
+                                <rect key="frame" x="0.0" y="228" width="404" height="491"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="404" id="gW5-V3-ziP"/>
                                 </constraints>
@@ -84,7 +130,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RX3-Tf-5Un">
-                                <rect key="frame" x="404" y="164" width="620" height="555"/>
+                                <rect key="frame" x="404" y="228" width="620" height="491"/>
                                 <connections>
                                     <segue destination="41k-4q-Zmw" kind="embed" identifier="expenses" id="qbI-L8-9Fd"/>
                                 </connections>
@@ -94,9 +140,13 @@
                         <constraints>
                             <constraint firstItem="dbB-tl-zwx" firstAttribute="top" secondItem="M5t-mf-jWF" secondAttribute="bottom" id="1ZV-cB-IaM"/>
                             <constraint firstItem="hz3-6l-PGR" firstAttribute="top" secondItem="oYZ-WC-zhs" secondAttribute="bottom" id="2Ge-Xm-n2s"/>
+                            <constraint firstItem="s4Q-43-L4x" firstAttribute="trailing" secondItem="oYZ-WC-zhs" secondAttribute="trailing" constant="-10" id="3mA-av-VAc"/>
                             <constraint firstItem="RX3-Tf-5Un" firstAttribute="top" secondItem="oYZ-WC-zhs" secondAttribute="top" id="9Bv-pr-Klu"/>
+                            <constraint firstItem="oYZ-WC-zhs" firstAttribute="top" secondItem="u1F-eD-D6x" secondAttribute="bottom" id="AGa-R4-gdZ"/>
+                            <constraint firstItem="u1F-eD-D6x" firstAttribute="top" secondItem="dbB-tl-zwx" secondAttribute="bottom" id="KGa-6o-unL"/>
                             <constraint firstItem="dbB-tl-zwx" firstAttribute="leading" secondItem="QHQ-5C-6al" secondAttribute="leading" id="Kya-zf-Jhb"/>
-                            <constraint firstItem="oYZ-WC-zhs" firstAttribute="top" secondItem="dbB-tl-zwx" secondAttribute="bottom" id="NK7-de-itM"/>
+                            <constraint firstItem="u1F-eD-D6x" firstAttribute="trailing" secondItem="dbB-tl-zwx" secondAttribute="trailing" id="OjQ-5P-5C0"/>
+                            <constraint firstItem="u1F-eD-D6x" firstAttribute="leading" secondItem="dbB-tl-zwx" secondAttribute="leading" id="TA3-e2-5Yd"/>
                             <constraint firstItem="RX3-Tf-5Un" firstAttribute="bottom" secondItem="oYZ-WC-zhs" secondAttribute="bottom" id="YHI-Ng-Brk"/>
                             <constraint firstItem="oYZ-WC-zhs" firstAttribute="leading" secondItem="QHQ-5C-6al" secondAttribute="leading" id="dcc-oz-Q05"/>
                             <constraint firstItem="M5t-mf-jWF" firstAttribute="leading" secondItem="QHQ-5C-6al" secondAttribute="leading" id="epf-Ei-2In"/>
@@ -109,12 +159,23 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Categories" image="categories" id="6Fp-wE-b9G" customClass="cate"/>
                     <connections>
-                        <outlet property="o_categoriesHeaderView" destination="dbB-tl-zwx" id="aA9-1B-99u"/>
+                        <outlet property="o_categoriesHeaderView" destination="dbB-tl-zwx" id="Bny-Ey-k9X"/>
+                        <segue destination="J3Y-36-xzN" kind="popoverPresentation" identifier="editCategory" popoverAnchorView="oYZ-WC-zhs" id="4NM-Zi-o9i">
+                            <popoverArrowDirection key="popoverArrowDirection"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VdB-mP-XiZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-901" y="731"/>
+        </scene>
+        <!--AddEditCategory-->
+        <scene sceneID="3HV-vG-2ZV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddEditCategory" referencedIdentifier="AddEditCategory" id="J3Y-36-xzN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6uN-rm-IMQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-984" y="1236"/>
         </scene>
         <!--CategoriesRef-->
         <scene sceneID="122-MC-UWX">
@@ -135,5 +196,10 @@
     </scenes>
     <resources>
         <image name="categories" width="24" height="24"/>
+        <image name="edit-tool" width="16" height="16"/>
+        <image name="plus" width="16" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="fyn-1q-1ZF"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -13,6 +13,7 @@ let budgetChangedNotification = Notification.Name(rawValue: "budgetChanged")
 
 protocol CategoriesViewControllerDelegate: class {
     func categoriesViewController(_ categoriesViewController: CategoriesViewController, didSelect category: Category)
+    func categoriesViewController(_ categoriesViewController: CategoriesViewController, didEdit category: Category)
     func categoriesViewControllerChanged(_ categoriesViewController: CategoriesViewController)
 }
 
@@ -26,11 +27,6 @@ class CategoriesViewController: UITableViewController {
     var closestBudget: [Category]?
     var expandedCategories: [String : Bool] = [:]
     weak var delegate: CategoriesViewControllerDelegate?
-    
-    @IBInspectable
-    var isCompactView: Bool = true
-    
-    @IBOutlet weak var o_editButton: UIBarButtonItem!
     
     var availableParents: [Category] {
         return categories.filter({ $0.parent == nil })
@@ -167,57 +163,4 @@ class CategoriesViewController: UITableViewController {
         unregisterFromUpdates(budgetRef: budgetRef)
         reload()
     }
-    
-    @IBAction func didTapEdit(_ sender: UIBarButtonItem) {
-        if tableView.isEditing {
-            o_editButton.image = UIImage(named: "edit-tool")
-            tableView.setEditing(false, animated: true)
-        } else {
-            tableView.setEditing(true, animated: true)
-            o_editButton.image = UIImage(named: "checked")
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "addCategory" {
-            let vc = addEditController(from: segue)
-            vc?.parents = availableParents
-            if let last = availableParents.last {
-                vc?.highestOrder = last.order
-            }
-            vc?.budgetRef = budgetRef
-        } else if segue.identifier == "editCategory" {
-            if let index = sender as? IndexPath {
-                let category = categories[index.row]
-                
-                let vc = addEditController(from: segue)
-                vc?.category = category.makeCopy()
-                vc?.category?.setDatabaseReference(ref: category.getDatabaseReference())
-                
-                if category.subCategories == nil {
-                    vc?.parents = availableParents.filter({ $0.id != category.id })
-                }
-                if let last = availableParents.last {
-                    vc?.highestOrder = last.order
-                }
-            }
-        } else if segue.identifier == "drillDown" {
-            let backItem = UIBarButtonItem()
-            backItem.title = ""
-            navigationItem.backBarButtonItem = backItem
-            
-            if let index = tableView.indexPathForSelectedRow {
-                (segue.destination as? CategoryExpensesViewController)?.category = categories[index.row]
-                (segue.destination as? CategoryExpensesViewController)?.currentDate = date
-            }
-        }
-    }
-    
-    func addEditController(from segue: UIStoryboardSegue) -> AddEditCategoryViewController? {
-        if let nav = segue.destination as? UINavigationController {
-            return nav.viewControllers.first as? AddEditCategoryViewController
-        }
-        return segue.destination as? AddEditCategoryViewController
-    }
-    
 }

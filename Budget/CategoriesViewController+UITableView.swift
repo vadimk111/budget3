@@ -25,7 +25,7 @@ extension CategoriesViewController {
         var actions = [UITableViewRowAction]()
         
         let edit = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Edit", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
-            self.performSegue(withIdentifier: "editCategory", sender: indexPath)
+            self.delegate?.categoriesViewController(self, didEdit: self.categories[indexPath.row])
         })
         actions.append(edit)
         
