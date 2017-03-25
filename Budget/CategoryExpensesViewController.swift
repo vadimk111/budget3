@@ -9,21 +9,23 @@
 import UIKit
 import FirebaseDatabase
 
+let categoryChangedNotification = Notification.Name(rawValue: "categoryChanged")
+
+protocol CategoryExpensesViewControllerDelegate: class {
+    func categoryExpensesViewController(_ categoryExpensesViewController: CategoryExpensesViewController, didSelect expense: Expense)
+    func categoryExpensesViewControllerChanged(_ categoryExpensesViewController: CategoryExpensesViewController)
+}
+
 class CategoryExpensesViewController: UITableViewController, SubCategoryHeaderViewDelegate {
 
-    @IBOutlet weak var o_balanceNavView: BalanceView!
-    
     var category: Category?
     var currentDate: Date?
+    
+    weak var delegate: CategoryExpensesViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(forName: signInStateChangedNotification, object: nil, queue: nil, using: { [unowned self] notification in
-            _ = self.navigationController?.popViewController(animated: false)
-        })
-        
-        updateBalanceNavView()
         registerToUpdates(expensesRef: category?.getDatabaseReference()?.child("expenses"), section: 0)
         
         if let subCategories = category?.subCategories {
@@ -49,12 +51,6 @@ class CategoryExpensesViewController: UITableViewController, SubCategoryHeaderVi
         tableView.reloadData()
     }
     
-    func updateBalanceNavView() {
-        if let category = category {
-            o_balanceNavView.populate(amount: category.calculatedAmount, totalSpent: category.calculatedTotalSpent, title: category.title)
-        }
-    }
-    
     func registerToUpdates(expensesRef: FIRDatabaseReference?, section: Int) {
         if let _ = category {
             expensesRef?.observe(.childAdded, with: { [unowned self] snapshot in
@@ -66,7 +62,7 @@ class CategoryExpensesViewController: UITableViewController, SubCategoryHeaderVi
                 if !category.expenses!.contains(where: { $0.id == expense.id } ) {
                     category.expenses!.append(expense)
                     self.tableView.insertRows(at: [IndexPath.init(row: category.expenses!.count - 1, section: section)], with: .fade)
-                    self.updateBalanceNavView()
+                    self.delegate?.categoryExpensesViewControllerChanged(self)
                 }
             })
             
@@ -77,7 +73,7 @@ class CategoryExpensesViewController: UITableViewController, SubCategoryHeaderVi
                     category.expenses?.remove(at: index)
                     category.expenses?.insert(expense, at: index)
                     self.tableView.reloadRows(at: [IndexPath.init(row: index, section: section)], with: .none)
-                    self.updateBalanceNavView()
+                    self.delegate?.categoryExpensesViewControllerChanged(self)
                 }
             })
             
@@ -87,32 +83,9 @@ class CategoryExpensesViewController: UITableViewController, SubCategoryHeaderVi
                 if let index = category.expenses?.index(where: { $0.id == expense.id }) {
                     category.expenses?.remove(at: index)
                     self.tableView.deleteRows(at: [IndexPath.init(row: index, section: section)], with: .fade)
-                    self.updateBalanceNavView()
+                    self.delegate?.categoryExpensesViewControllerChanged(self)
                 }
             })
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = addEditController(from: segue)
-        if segue.identifier == "addExpense" {
-            var parentCategory: Category?
-            if sender is SubCategoryHeaderView {
-                if let subCategories = category?.subCategories {
-                    parentCategory = subCategories[(sender as! SubCategoryHeaderView).section - 1]
-                }
-            } else {
-                parentCategory = category
-            }
-            vc?.parentRef = parentCategory?.getDatabaseReference()?.child("expenses")
-            vc?.expense = Expense()
-            vc?.expense?.date = currentDate
-            vc?.title = "Add Expense"
-        } else if segue.identifier == "editExpense" {
-            if let index = tableView.indexPathForSelectedRow {
-                vc?.expense = expense(for: index)
-                vc?.title = "Edit Expense"
-            }
         }
     }
     
@@ -192,6 +165,12 @@ class CategoryExpensesViewController: UITableViewController, SubCategoryHeaderVi
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let expense = expense(for: indexPath) {
+            delegate?.categoryExpensesViewController(self, didSelect: expense)
+        }
     }
     
     func subCategoryHeaderViewAdd(_ subCategoryHeaderView: SubCategoryHeaderView) {

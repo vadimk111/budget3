@@ -33,7 +33,7 @@ class BaseDeviceViewController: UIViewController, CategoriesHeaderViewDelegate, 
     
     func prepareForAddCategory(from segue: UIStoryboardSegue) {
         if let categoriesViewController = categoriesViewController {
-            let vc = addEditController(from: segue)
+            let vc = segue.addEditCategoryViewController()
             vc?.parents = categoriesViewController.availableParents
             if let last = categoriesViewController.availableParents.last {
                 vc?.highestOrder = last.order
@@ -45,7 +45,7 @@ class BaseDeviceViewController: UIViewController, CategoriesHeaderViewDelegate, 
     func prepareForEditCategory(from segue: UIStoryboardSegue, sender: Any?) {
         if let categoriesViewController = categoriesViewController {
             if let category = sender as? Category {
-                let vc = addEditController(from: segue)
+                let vc = segue.addEditCategoryViewController()
                 vc?.category = category.makeCopy()
                 vc?.category?.setDatabaseReference(ref: category.getDatabaseReference())
                 
@@ -65,13 +65,6 @@ class BaseDeviceViewController: UIViewController, CategoriesHeaderViewDelegate, 
     
     func categoriesHeaderViewDidGoPrev(_ categoriesHeaderView: CategoriesHeaderView) {
         
-    }
-
-    func addEditController(from segue: UIStoryboardSegue) -> AddEditCategoryViewController? {
-        if let nav = segue.destination as? UINavigationController {
-            return nav.viewControllers.first as? AddEditCategoryViewController
-        }
-        return segue.destination as? AddEditCategoryViewController
     }
     
     func categoriesViewController(_ categoriesViewController: CategoriesViewController, didSelect category: Category) {

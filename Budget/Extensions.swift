@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 let dateFormat = "dd-MM-yyyy"
 
@@ -72,7 +73,7 @@ extension Float {
     }
 }
 
-public extension DispatchQueue {
+extension DispatchQueue {
     
     private static var _onceTracker = [String]()
     
@@ -88,4 +89,21 @@ public extension DispatchQueue {
         block()
     }
 }
+
+extension UIStoryboardSegue {
+    func addEditExpenseViewController() -> AddEditExpenseViewController? {
+        if let nav = destination as? UINavigationController {
+            return nav.viewControllers.first as? AddEditExpenseViewController
+        }
+        return destination as? AddEditExpenseViewController
+    }
+    
+    func addEditCategoryViewController() -> AddEditCategoryViewController? {
+        if let nav = destination as? UINavigationController {
+            return nav.viewControllers.first as? AddEditCategoryViewController
+        }
+        return destination as? AddEditCategoryViewController
+    }
+}
+
 

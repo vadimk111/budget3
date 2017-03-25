@@ -257,19 +257,12 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = addEditController(from: segue)
+        let vc = segue.addEditExpenseViewController()
         if segue.identifier == "editExpense" {
             if let index = o_tableView.indexPathForSelectedRow {
                 vc?.expense = groupedExpensesList?[index.section].expenses[index.row].expense
                 vc?.title = "Edit Expense"
             }
         }
-    }
-    
-    func addEditController(from segue: UIStoryboardSegue) -> AddEditExpenseViewController? {
-        if let nav = segue.destination as? UINavigationController {
-            return nav.viewControllers.first as? AddEditExpenseViewController
-        }
-        return segue.destination as? AddEditExpenseViewController
     }
 }

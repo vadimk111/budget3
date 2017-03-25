@@ -10,11 +10,6 @@ import UIKit
 
 class CategoriesPhoneViewController: BaseDeviceViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-    
     @IBAction func didTapEdit(_ sender: UIBarButtonItem) {
         if let categoriesViewController = categoriesViewController {
             if categoriesViewController.tableView.isEditing {
@@ -42,8 +37,8 @@ class CategoriesPhoneViewController: BaseDeviceViewController {
                 navigationItem.backBarButtonItem = backItem
                 
                 if let category = sender as? Category {
-                    (segue.destination as? CategoryExpensesViewController)?.category = category
-                    (segue.destination as? CategoryExpensesViewController)?.currentDate = categoriesViewController.date
+                    (segue.destination as? CategoryDetailPhoneViewController)?.category = category
+                    (segue.destination as? CategoryDetailPhoneViewController)?.currentDate = categoriesViewController.date
                 }
             }
         }

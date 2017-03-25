@@ -101,12 +101,20 @@
                     <connections>
                         <outlet property="o_categoriesHeaderView" destination="AIC-M3-WH5" id="5ga-ad-Lhc"/>
                         <segue destination="au9-j3-tZH" kind="presentation" identifier="editCategory" id="XSk-6f-Wr0"/>
-                        <segue destination="6v2-rM-eYK" kind="showDetail" identifier="drillDown" id="weV-7H-gbB"/>
+                        <segue destination="NDb-5b-vsm" kind="show" identifier="drillDown" id="xoP-N9-LSn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HwH-hd-bLi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1591" y="821"/>
+            <point key="canvasLocation" x="-1641" y="820"/>
+        </scene>
+        <!--Expenses-->
+        <scene sceneID="BfI-Vl-2Kw">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CategoryExpenses" referencedIdentifier="Expenses" id="gM9-R6-kjg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pfc-QX-wUq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-837" y="1288"/>
         </scene>
         <!--AddEditCategory-->
         <scene sceneID="gTg-If-J4M">
@@ -114,15 +122,72 @@
                 <viewControllerPlaceholder storyboardName="AddEditCategory" referencedIdentifier="AddEditCategory" id="au9-j3-tZH" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CbF-od-62n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-958" y="820"/>
+            <point key="canvasLocation" x="-1400" y="1308"/>
         </scene>
-        <!--Expenses-->
-        <scene sceneID="kGt-uV-DPt">
+        <!--Category Detail Phone View Controller-->
+        <scene sceneID="QUJ-rK-QlF">
             <objects>
-                <viewControllerPlaceholder storyboardName="CategoryExpenses" referencedIdentifier="Expenses" id="6v2-rM-eYK" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nX0-c0-ReY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="NDb-5b-vsm" customClass="CategoryDetailPhoneViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="A4w-eb-uyt"/>
+                        <viewControllerLayoutGuide type="bottom" id="gPF-a1-l48"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FXP-UO-ebF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ICr-1T-Hpj">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <connections>
+                                    <segue destination="gM9-R6-kjg" kind="embed" identifier="expenses" id="agf-TN-ZEM"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ICr-1T-Hpj" firstAttribute="leading" secondItem="FXP-UO-ebF" secondAttribute="leading" id="0w8-vb-cYq"/>
+                            <constraint firstItem="gPF-a1-l48" firstAttribute="top" secondItem="ICr-1T-Hpj" secondAttribute="bottom" id="5FI-hW-c9D"/>
+                            <constraint firstItem="ICr-1T-Hpj" firstAttribute="top" secondItem="FXP-UO-ebF" secondAttribute="top" id="J37-de-hkH"/>
+                            <constraint firstAttribute="trailing" secondItem="ICr-1T-Hpj" secondAttribute="trailing" id="rpy-aI-YT7"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="wxL-3A-dmV">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="UUj-Em-cM2" customClass="BalanceView" customModule="Budget" customModuleProvider="target">
+                            <rect key="frame" x="68" y="6" width="240" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
+                                    <real key="value" value="14"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="amountSize">
+                                    <real key="value" value="11"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="progressBarSize">
+                                    <real key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <barButtonItem key="rightBarButtonItem" image="plus" id="Per-4Z-F5C"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="o_balanceNavView" destination="UUj-Em-cM2" id="Ksx-NM-Se0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yH3-PU-bQJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-958" y="706"/>
+            <point key="canvasLocation" x="-836" y="821"/>
+        </scene>
+        <!--AddEditExpense-->
+        <scene sceneID="Mt3-f9-vU9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddEditExpense" referencedIdentifier="AddEditExpense" id="SN7-kB-1UG" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tdC-lR-AWU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-242" y="820"/>
         </scene>
         <!--CategoriesRef-->
         <scene sceneID="zrO-du-oao">
@@ -130,7 +195,7 @@
                 <viewControllerPlaceholder storyboardName="Categories" referencedIdentifier="CategoriesRef" id="VJb-lu-TIo" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYm-cz-3IY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1591" y="1250"/>
+            <point key="canvasLocation" x="-1684" y="1289"/>
         </scene>
         <!--Categories-->
         <scene sceneID="kCO-dD-t7n">
