@@ -9,15 +9,11 @@
 import UIKit
 import FirebaseAuth
 
-class CategoriesPadViewController: BaseDeviceViewController {
+class CategoriesPadViewController: BaseDeviceViewController, CategoryExpensesViewControllerDelegate {
 
     var expensesViewController: CategoryExpensesViewController?
+    var currentDate: Date?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-        
     @IBAction func didTapEdit(_ sender: UIButton) {
         if let categoriesViewController = categoriesViewController {
             if categoriesViewController.tableView.isEditing {
@@ -36,14 +32,51 @@ class CategoriesPadViewController: BaseDeviceViewController {
             categoriesViewController?.delegate = self
         } else if segue.identifier == "expenses" {
             expensesViewController = segue.destination as? CategoryExpensesViewController
+            expensesViewController?.delegate = self
         } else if segue.identifier == "addCategory" {
             prepareForAddCategory(from: segue)
         } else if segue.identifier == "editCategory" {
             prepareForEditCategory(from: segue, sender: sender)
+        } else if segue.identifier == "addExpense" {
+            prepareForAddExpense(from: segue, sender: sender)
+        } else if segue.identifier == "editExpense" {
+            prepareForEditExpense(from: segue, sender: sender)
+        }
+    }
+    
+    func prepareForAddExpense(from segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.addEditExpenseViewController()
+        var parentCategory: Category? = sender as? Category
+        if parentCategory == nil {
+            parentCategory = expensesViewController?.category
+        }
+        vc?.parentRef = parentCategory?.getDatabaseReference()?.child("expenses")
+        vc?.expense = Expense()
+        vc?.expense?.date = currentDate
+        vc?.title = "Add Expense"
+    }
+    
+    func prepareForEditExpense(from segue: UIStoryboardSegue, sender: Any?) {
+        if let expense = sender as? Expense {
+            let vc = segue.addEditExpenseViewController()
+            vc?.expense = expense
+            vc?.title = "Edit Expense"
         }
     }
     
     override func categoriesViewController(_ categoriesViewController: CategoriesViewController, didSelect category: Category) {
-        expensesViewController?.reload(with: category)
+        expensesViewController?.category = category
+    }
+    
+    func categoryExpensesViewControllerChanged(_ categoryExpensesViewController: CategoryExpensesViewController) {
+
+    }
+    
+    func categoryExpensesViewController(_ categoryExpensesViewController: CategoryExpensesViewController, didSelect expense: Expense) {
+        performSegue(withIdentifier: "editExpense", sender: expense)
+    }
+    
+    func categoryExpensesViewController(_ categoryExpensesViewController: CategoryExpensesViewController, addExpenseTo category: Category) {
+        performSegue(withIdentifier: "addExpense", sender: category)
     }
 }

@@ -170,11 +170,16 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <barButtonItem key="rightBarButtonItem" image="plus" id="Per-4Z-F5C"/>
+                        <barButtonItem key="rightBarButtonItem" image="plus" id="Per-4Z-F5C">
+                            <connections>
+                                <segue destination="SN7-kB-1UG" kind="presentation" identifier="addExpense" id="iLe-Pg-Lm2"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="o_balanceNavView" destination="UUj-Em-cM2" id="Ksx-NM-Se0"/>
+                        <segue destination="SN7-kB-1UG" kind="presentation" identifier="editExpense" id="vOp-E8-1JA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yH3-PU-bQJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -225,5 +230,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XSk-6f-Wr0"/>
+        <segue reference="vOp-E8-1JA"/>
     </inferredMetricsTieBreakers>
 </document>

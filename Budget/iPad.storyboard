@@ -62,9 +62,21 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M5t-mf-jWF">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="64"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gGD-yE-Rz3">
+                                        <rect key="frame" x="1004" y="0.0" width="20" height="64"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="OCG-Se-9ka"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="gGD-yE-Rz3" secondAttribute="bottom" id="9T3-fH-RtM"/>
+                                    <constraint firstItem="gGD-yE-Rz3" firstAttribute="top" secondItem="M5t-mf-jWF" secondAttribute="top" id="caT-v8-7Ay"/>
                                     <constraint firstAttribute="height" constant="64" id="t98-1t-gIg"/>
+                                    <constraint firstAttribute="trailing" secondItem="gGD-yE-Rz3" secondAttribute="trailing" id="xOj-T2-4CW"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbB-tl-zwx" customClass="CategoriesHeaderView" customModule="Budget" customModuleProvider="target">
@@ -108,6 +120,11 @@
                                             <constraint firstAttribute="width" constant="48" id="HEg-2k-9gb"/>
                                         </constraints>
                                         <state key="normal" image="plus"/>
+                                        <connections>
+                                            <segue destination="bL2-da-tjq" kind="popoverPresentation" identifier="addExpense" popoverAnchorView="gGD-yE-Rz3" id="Y7e-QQ-AkD">
+                                                <popoverArrowDirection key="popoverArrowDirection"/>
+                                            </segue>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -163,11 +180,22 @@
                         <segue destination="J3Y-36-xzN" kind="popoverPresentation" identifier="editCategory" popoverAnchorView="oYZ-WC-zhs" id="4NM-Zi-o9i">
                             <popoverArrowDirection key="popoverArrowDirection"/>
                         </segue>
+                        <segue destination="bL2-da-tjq" kind="popoverPresentation" identifier="editExpense" popoverAnchorView="gGD-yE-Rz3" id="pNb-mZ-e78">
+                            <popoverArrowDirection key="popoverArrowDirection"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VdB-mP-XiZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-901" y="731"/>
+            <point key="canvasLocation" x="-907" y="759"/>
+        </scene>
+        <!--AddEditExpense-->
+        <scene sceneID="5GM-cE-Dsc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddEditExpense" referencedIdentifier="AddEditExpense" id="bL2-da-tjq" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bDL-rr-OaD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-490" y="775"/>
         </scene>
         <!--AddEditCategory-->
         <scene sceneID="3HV-vG-2ZV">
@@ -200,6 +228,7 @@
         <image name="plus" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fyn-1q-1ZF"/>
+        <segue reference="Y7e-QQ-AkD"/>
+        <segue reference="4NM-Zi-o9i"/>
     </inferredMetricsTieBreakers>
 </document>

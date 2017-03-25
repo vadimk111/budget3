@@ -13,19 +13,29 @@ let categoryChangedNotification = Notification.Name(rawValue: "categoryChanged")
 
 protocol CategoryExpensesViewControllerDelegate: class {
     func categoryExpensesViewController(_ categoryExpensesViewController: CategoryExpensesViewController, didSelect expense: Expense)
+    func categoryExpensesViewController(_ categoryExpensesViewController: CategoryExpensesViewController, addExpenseTo category: Category)
     func categoryExpensesViewControllerChanged(_ categoryExpensesViewController: CategoryExpensesViewController)
 }
 
 class CategoryExpensesViewController: UITableViewController, SubCategoryHeaderViewDelegate {
 
-    var category: Category?
-    var currentDate: Date?
+    var category: Category? {
+        willSet {
+            unregisterFromUpdates()
+        }
+        didSet {
+            tableView.reloadData()
+            registerToUpdates()
+        }
+    }
     
     weak var delegate: CategoryExpensesViewControllerDelegate?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    deinit {
+        unregisterFromUpdates()
+    }
 
+    func registerToUpdates() {
         registerToUpdates(expensesRef: category?.getDatabaseReference()?.child("expenses"), section: 0)
         
         if let subCategories = category?.subCategories {
@@ -37,7 +47,7 @@ class CategoryExpensesViewController: UITableViewController, SubCategoryHeaderVi
         }
     }
     
-    deinit {
+    func unregisterFromUpdates() {
         category?.getDatabaseReference()?.child("expenses").removeAllObservers()
         if let subCategories = category?.subCategories {
             for item in subCategories {
@@ -45,12 +55,7 @@ class CategoryExpensesViewController: UITableViewController, SubCategoryHeaderVi
             }
         }
     }
-    
-    func reload(with category: Category) {
-        self.category = category
-        tableView.reloadData()
-    }
-    
+        
     func registerToUpdates(expensesRef: FIRDatabaseReference?, section: Int) {
         if let _ = category {
             expensesRef?.observe(.childAdded, with: { [unowned self] snapshot in
@@ -96,13 +101,6 @@ class CategoryExpensesViewController: UITableViewController, SubCategoryHeaderVi
             return subExpenses[indexPath.row]
         }
         return nil
-    }
-    
-    func addEditController(from segue: UIStoryboardSegue) -> AddEditExpenseViewController? {
-        if let nav = segue.destination as? UINavigationController {
-            return nav.viewControllers.first as? AddEditExpenseViewController
-        }
-        return segue.destination as? AddEditExpenseViewController
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -174,6 +172,8 @@ class CategoryExpensesViewController: UITableViewController, SubCategoryHeaderVi
     }
     
     func subCategoryHeaderViewAdd(_ subCategoryHeaderView: SubCategoryHeaderView) {
-        performSegue(withIdentifier: "addExpense", sender: subCategoryHeaderView)
+        if let subCategories = category?.subCategories {
+            delegate?.categoryExpensesViewController(self, addExpenseTo: subCategories[subCategoryHeaderView.section - 1])
+        }
     }
 }

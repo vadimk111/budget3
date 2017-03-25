@@ -35,8 +35,8 @@ class CategoryDetailPhoneViewController: UIViewController, CategoryExpensesViewC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "expenses" {
             expensesViewController = segue.destination as? CategoryExpensesViewController
+            expensesViewController?.delegate = self
             expensesViewController?.category = category
-            expensesViewController?.currentDate = currentDate
         } else if segue.identifier == "addExpense" {
             prepareForAddExpense(from: segue, sender: sender)
         } else if segue.identifier == "editExpense" {
@@ -46,12 +46,8 @@ class CategoryDetailPhoneViewController: UIViewController, CategoryExpensesViewC
     
     func prepareForAddExpense(from segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.addEditExpenseViewController()
-        var parentCategory: Category?
-        if sender is SubCategoryHeaderView {
-            if let subCategories = category?.subCategories {
-                parentCategory = subCategories[(sender as! SubCategoryHeaderView).section - 1]
-            }
-        } else {
+        var parentCategory: Category? = sender as? Category
+        if parentCategory == nil {
             parentCategory = category
         }
         vc?.parentRef = parentCategory?.getDatabaseReference()?.child("expenses")
@@ -74,5 +70,9 @@ class CategoryDetailPhoneViewController: UIViewController, CategoryExpensesViewC
     
     func categoryExpensesViewController(_ categoryExpensesViewController: CategoryExpensesViewController, didSelect expense: Expense) {
         performSegue(withIdentifier: "editExpense", sender: expense)
+    }
+    
+    func categoryExpensesViewController(_ categoryExpensesViewController: CategoryExpensesViewController, addExpenseTo category: Category) {
+        performSegue(withIdentifier: "addExpense", sender: category)
     }
 }
