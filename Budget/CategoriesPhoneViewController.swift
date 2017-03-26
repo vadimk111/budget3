@@ -43,7 +43,8 @@ class CategoriesPhoneViewController: BaseDeviceViewController {
             }
         }
     }
-        
+    
+    //MARK - CategoriesViewControllerDelegate
     override func categoriesViewController(_ categoriesViewController: CategoriesViewController, didSelect category: Category) {
         performSegue(withIdentifier: "drillDown", sender: category)
     }

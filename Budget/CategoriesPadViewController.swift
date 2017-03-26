@@ -64,10 +64,12 @@ class CategoriesPadViewController: BaseDeviceViewController, CategoryExpensesVie
         }
     }
     
+    //MARK - CategoriesViewControllerDelegate
     override func categoriesViewController(_ categoriesViewController: CategoriesViewController, didSelect category: Category) {
         expensesViewController?.category = category
     }
     
+    //MARK - CategoryExpensesViewControllerDelegate
     func categoryExpensesViewControllerChanged(_ categoryExpensesViewController: CategoryExpensesViewController) {
 
     }

@@ -67,6 +67,7 @@ class BaseDeviceViewController: UIViewController, CategoriesHeaderViewDelegate, 
         
     }
     
+    //MARK - CategoriesViewControllerDelegate
     func categoriesViewController(_ categoriesViewController: CategoriesViewController, didSelect category: Category) {
         
     }

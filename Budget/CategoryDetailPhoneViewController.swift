@@ -64,6 +64,7 @@ class CategoryDetailPhoneViewController: UIViewController, CategoryExpensesViewC
         }
     }
     
+    //MARK - CategoryExpensesViewControllerDelegate
     func categoryExpensesViewControllerChanged(_ categoryExpensesViewController: CategoryExpensesViewController) {
         updateBalanceNavView()
     }
