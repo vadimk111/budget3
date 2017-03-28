@@ -104,6 +104,13 @@ extension UIStoryboardSegue {
         }
         return destination as? AddEditCategoryViewController
     }
+    
+    func destinationAsViewController<T>() -> T? {
+        if let nav = destination as? UINavigationController {
+            return nav.viewControllers.first as? T
+        }
+        return destination as? T
+    }
 }
 
 

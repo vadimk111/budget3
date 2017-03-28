@@ -17,6 +17,7 @@
 		BD589DF11E8451B200F0C9CD /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD589DF01E8451B200F0C9CD /* Authentication.swift */; };
 		BD6B69E41E79223400F7AF35 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD6B69E31E79223400F7AF35 /* iPad.storyboard */; };
 		BD6B69EA1E79544F00F7AF35 /* CategoriesPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B69E91E79544F00F7AF35 /* CategoriesPadViewController.swift */; };
+		BD82C7F31E8AF00D009EB6A6 /* MainPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD82C7F21E8AF00D009EB6A6 /* MainPadViewController.swift */; };
 		BF00F4841E4D1F2500D5D743 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F4831E4D1F2500D5D743 /* CategoryTableViewCell.swift */; };
 		BF00F4861E4D1F4300D5D743 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */; };
 		BF00F4881E4D1F5200D5D743 /* ProgressBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */; };
@@ -74,6 +75,7 @@
 		BD589DF01E8451B200F0C9CD /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		BD6B69E31E79223400F7AF35 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
 		BD6B69E91E79544F00F7AF35 /* CategoriesPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesPadViewController.swift; sourceTree = "<group>"; };
+		BD82C7F21E8AF00D009EB6A6 /* MainPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPadViewController.swift; sourceTree = "<group>"; };
 		BF00F4831E4D1F2500D5D743 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressBar.xib; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 		BF6BC8591E5ADB610052F4E8 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				BD82C7F21E8AF00D009EB6A6 /* MainPadViewController.swift */,
 				BF2514781E47165100042FEF /* MainViewController.swift */,
 			);
 			name = Main;
@@ -514,6 +517,7 @@
 				BD3D40761E87965800C3CCAF /* CategoryExpensesViewController+UITableView.swift in Sources */,
 				BD589DF11E8451B200F0C9CD /* Authentication.swift in Sources */,
 				BF37922E1E0933D00060445D /* AppDelegate.swift in Sources */,
+				BD82C7F31E8AF00D009EB6A6 /* MainPadViewController.swift in Sources */,
 				BF25146F1E46612200042FEF /* Category.swift in Sources */,
 				BFFCD70B1E73D4990030BD79 /* ExpensesViewController.swift in Sources */,
 				BF6BC8601E5DC8450052F4E8 /* CategoriesViewController+Firebase.swift in Sources */,

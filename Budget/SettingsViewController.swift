@@ -9,6 +9,12 @@
 import UIKit
 import FirebaseAuth
 
+protocol SettingsViewControllerDelegate: class {
+    func settingsViewController(_ settingsViewController: SettingsViewController, shouldDisplayViewController viewController: UIViewController)
+    func settingsViewController(_ settingsViewController: SettingsViewController, shouldDismissViewController viewController: UIViewController)
+    func settingsViewController(_ settingsViewController: SettingsViewController, shouldDisplayAlert alert: UIAlertController)
+}
+
 class SettingsViewController: UIViewController, AuthenticationDelegate {
 
     @IBOutlet weak var o_userEmail: UILabel!
@@ -16,15 +22,20 @@ class SettingsViewController: UIViewController, AuthenticationDelegate {
     @IBOutlet weak var o_loginBtn: UIButton!
     
     var authentication: Authentication?
+    weak var delegate: SettingsViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(forName: signInStateChangedNotification, object: nil, queue: nil, using: { [unowned self] notification in
-            self.reload()
+        NotificationCenter.default.addObserver(forName: signInStateChangedNotification, object: nil, queue: nil, using: { [weak self] notification in
+            self?.reload()
         })
         
         reload()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func reload() {
@@ -53,10 +64,26 @@ class SettingsViewController: UIViewController, AuthenticationDelegate {
     }
     
     func authentication(_ authentication: Authentication, shouldDisplay viewController: UIViewController) {
-        present(viewController, animated: true, completion: nil)
+        if let delegate = delegate {
+            delegate.settingsViewController(self, shouldDisplayViewController: viewController)
+        } else {
+            present(viewController, animated: true, completion: nil)
+        }
     }
     
     func authentication(_ authentication: Authentication, shouldDisplay alert: UIAlertController) {
-        present(alert, animated: true, completion: nil)
+        if let delegate = delegate {
+            delegate.settingsViewController(self, shouldDisplayAlert: alert)
+        } else {
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func authentication(_ authentication: Authentication, shouldDismiss viewController: UIViewController) {
+        if let delegate = delegate {
+            delegate.settingsViewController(self, shouldDismissViewController: viewController)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
     }
 }

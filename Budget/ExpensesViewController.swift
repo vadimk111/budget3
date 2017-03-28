@@ -79,11 +79,12 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func refresh(_ refreshControl: UIRefreshControl) {
-        unregisterFromUpdates()
         reload()
     }
     
     func reload() {
+        unregisterFromUpdates()
+        
         if let budgetId = ModelHelper.budgetId(for: date) {
             let ref = FIRDatabase.database().reference().child("budgets")
             ref.child(budgetId).observeSingleEvent(of: .value, with: { snapshot in
@@ -91,6 +92,10 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
                 self.o_tableView.reloadData()
                 self.o_tableView.refreshControl?.endRefreshing()
             })
+        } else {
+            date = Date()
+            groupedExpensesList = nil
+            self.o_tableView.reloadData()
         }
     }
     
@@ -209,7 +214,6 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
     func changeToDate(_ date: Date) {
         self.date = date
         o_dateChanger.date = date
-        unregisterFromUpdates()
         reload()
     }
 

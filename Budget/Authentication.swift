@@ -16,6 +16,7 @@ let anonymous = "-anonymous-"
 protocol AuthenticationDelegate: class {
     func authentication(_ authentication: Authentication, shouldDisplay viewController: UIViewController)
     func authentication(_ authentication: Authentication, shouldDisplay alert: UIAlertController)
+    func authentication(_ authentication: Authentication, shouldDismiss viewController: UIViewController)
 }
 
 class Authentication: LoginViewControllerDelegate {
@@ -79,7 +80,7 @@ class Authentication: LoginViewControllerDelegate {
         UserDefaults.standard.set(loginViewController.email, forKey: "email")
         UserDefaults.standard.set(loginViewController.password, forKey: "password")
         UserDefaults.standard.synchronize()
-        loginViewController.dismiss(animated: true, completion: nil)
+        delegate?.authentication(self, shouldDismiss: loginViewController)
         notifyStateChanged()
     }
     
@@ -120,7 +121,7 @@ class Authentication: LoginViewControllerDelegate {
         UserDefaults.standard.set(anonymous + UUID().uuidString, forKey: "email")
         UserDefaults.standard.set("-1", forKey: "password")
         UserDefaults.standard.synchronize()
-        loginViewController.dismiss(animated: true, completion: nil)
+        delegate?.authentication(self, shouldDismiss: loginViewController)
         notifyStateChanged()
     }
 }

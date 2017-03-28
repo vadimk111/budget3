@@ -24,7 +24,7 @@ class CategoriesPadViewController: BaseDeviceViewController, CategoryExpensesVie
             }
         }
     }
-    
+        
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "categories" {
             categoriesViewController = segue.destination as? CategoriesViewController

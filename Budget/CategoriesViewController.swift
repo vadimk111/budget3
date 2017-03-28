@@ -42,6 +42,8 @@ class CategoriesViewController: UITableViewController {
     }
     
     func reload() {
+        unregisterFromUpdates(budgetRef: budgetRef)
+        
         let ref = FIRDatabase.database().reference().child("budgets")
         if let budgetId = ModelHelper.budgetId(for: date) {
             budgetRef = ref.child(budgetId)
@@ -60,6 +62,14 @@ class CategoriesViewController: UITableViewController {
                     self.tableView.refreshControl?.endRefreshing()
                 }
             })
+        } else {
+            date = Date()
+            budgetRef = nil
+            closestBudget = nil
+            expandedCategories = [:]
+            categories = []
+            tableView.reloadData()
+            self.delegate?.categoriesViewControllerChanged(self)
         }
     }
         
@@ -160,7 +170,6 @@ class CategoriesViewController: UITableViewController {
     @IBAction func didPullToRefresh(_ sender: UIRefreshControl) {
         isRefreshing = true
         expandedCategories = [:]
-        unregisterFromUpdates(budgetRef: budgetRef)
         reload()
     }
     
@@ -184,7 +193,6 @@ class CategoriesViewController: UITableViewController {
         closestBudget = categories
         expandedCategories = [:]
         
-        unregisterFromUpdates(budgetRef: budgetRef)
         reload()
     }
 }

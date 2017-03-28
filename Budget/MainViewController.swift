@@ -39,4 +39,8 @@ class MainViewController: UITabBarController, AuthenticationDelegate {
     func authentication(_ authentication: Authentication, shouldDisplay viewController: UIViewController) {
         present(viewController, animated: true, completion: nil)
     }
+    
+    func authentication(_ authentication: Authentication, shouldDismiss viewController: UIViewController) {
+        dismiss(animated: true, completion: nil)
+    }
 }
