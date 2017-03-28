@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension CategoriesViewController : CategoryTableViewCellDelegate, CategoriesHeaderViewDelegate {
+extension CategoriesViewController : CategoryTableViewCellDelegate {
     
     //MARK: CategoryTableViewCellDelegate
     func categoryTableViewCellDidExpand(_ cell: CategoryTableViewCell) {
@@ -41,30 +41,5 @@ extension CategoriesViewController : CategoryTableViewCellDelegate, CategoriesHe
             index += 1
         }
         return indexPaths
-    }
-    
-    //MARK: CategoriesHeaderViewDelegate
-    func categoriesHeaderViewDidGoNext(_ categoriesHeaderView: CategoriesHeaderView) {
-        changeToDate(date.nextMonth())
-    }
-    
-    func categoriesHeaderViewDidGoPrev(_ categoriesHeaderView: CategoriesHeaderView) {
-        changeToDate(date.prevMonth())
-    }
-    
-    func changeToDate(_ date: Date) {
-        let calendar = Calendar.current
-        if calendar.component(.month, from: date) == calendar.component(.month, from: Date()) {
-            self.date = Date()
-        } else {
-            self.date = date
-        }
-        
-        dateChanged = true
-        closestBudget = categories
-        expandedCategories = [:]
-        
-        unregisterFromUpdates(budgetRef: budgetRef)
-        reload()
     }
 }

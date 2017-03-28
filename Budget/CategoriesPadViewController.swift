@@ -12,7 +12,6 @@ import FirebaseAuth
 class CategoriesPadViewController: BaseDeviceViewController, CategoryExpensesViewControllerDelegate {
 
     var expensesViewController: CategoryExpensesViewController?
-    var currentDate: Date?
     
     @IBAction func didTapEdit(_ sender: UIButton) {
         if let categoriesViewController = categoriesViewController {
@@ -52,7 +51,7 @@ class CategoriesPadViewController: BaseDeviceViewController, CategoryExpensesVie
         }
         vc?.parentRef = parentCategory?.getDatabaseReference()?.child("expenses")
         vc?.expense = Expense()
-        vc?.expense?.date = currentDate
+        vc?.expense?.date = categoriesViewController?.date
         vc?.title = "Add Expense"
     }
     

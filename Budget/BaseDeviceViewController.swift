@@ -58,13 +58,14 @@ class BaseDeviceViewController: UIViewController, CategoriesHeaderViewDelegate, 
             }
         }
     }
-
+    
+    //MARK: CategoriesHeaderViewDelegate
     func categoriesHeaderViewDidGoNext(_ categoriesHeaderView: CategoriesHeaderView) {
-        
+        categoriesViewController?.goNextMonth()
     }
     
     func categoriesHeaderViewDidGoPrev(_ categoriesHeaderView: CategoriesHeaderView) {
-        
+        categoriesViewController?.goPrevMonth()
     }
     
     //MARK - CategoriesViewControllerDelegate

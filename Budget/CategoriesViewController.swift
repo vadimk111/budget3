@@ -163,4 +163,28 @@ class CategoriesViewController: UITableViewController {
         unregisterFromUpdates(budgetRef: budgetRef)
         reload()
     }
+    
+    func goNextMonth() {
+        changeToDate(date.nextMonth())
+    }
+    
+    func goPrevMonth() {
+        changeToDate(date.prevMonth())
+    }
+    
+    func changeToDate(_ date: Date) {
+        let calendar = Calendar.current
+        if calendar.component(.month, from: date) == calendar.component(.month, from: Date()) {
+            self.date = Date()
+        } else {
+            self.date = date
+        }
+        
+        dateChanged = true
+        closestBudget = categories
+        expandedCategories = [:]
+        
+        unregisterFromUpdates(budgetRef: budgetRef)
+        reload()
+    }
 }
