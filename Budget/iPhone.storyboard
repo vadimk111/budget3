@@ -68,7 +68,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcs-mm-sQZ">
-                                <rect key="frame" x="0.0" y="164" width="360" height="454"/>
+                                <rect key="frame" x="0.0" y="164" width="375" height="454"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="VJb-lu-TIo" kind="embed" identifier="categories" id="ddj-hh-5L1"/>
@@ -77,7 +77,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="xcs-mm-sQZ" secondAttribute="trailing" constant="15" id="2jx-IL-7q3"/>
+                            <constraint firstAttribute="trailing" secondItem="xcs-mm-sQZ" secondAttribute="trailing" id="2jx-IL-7q3"/>
                             <constraint firstItem="xcs-mm-sQZ" firstAttribute="leading" secondItem="098-kV-esc" secondAttribute="leading" id="A9e-1a-HBu"/>
                             <constraint firstItem="sfa-rh-LWQ" firstAttribute="top" secondItem="xcs-mm-sQZ" secondAttribute="bottom" id="Bj1-t6-CXW"/>
                             <constraint firstItem="AIC-M3-WH5" firstAttribute="top" secondItem="bbB-d9-pQn" secondAttribute="bottom" id="bMY-c3-a3R"/>

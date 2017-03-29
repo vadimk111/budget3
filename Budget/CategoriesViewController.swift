@@ -28,6 +28,13 @@ class CategoriesViewController: UITableViewController {
     var expandedCategories: [String : Bool] = [:]
     weak var delegate: CategoriesViewControllerDelegate?
     
+    var tableSeparatorInset: UIEdgeInsets? {
+        didSet {
+            if let tableSeparatorInset = tableSeparatorInset {
+                tableView.separatorInset = tableSeparatorInset
+            }
+        }
+    }
     var availableParents: [Category] {
         return categories.filter({ $0.parent == nil })
     }

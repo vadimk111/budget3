@@ -17,7 +17,9 @@ class CategoryTableViewCell: UITableViewCell, BalanceViewDelegate {
 
     @IBOutlet weak var o_balanceView: BalanceView!
     @IBOutlet weak var o_balanceLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var o_balanceTrailingConstraint: NSLayoutConstraint!
     
+    var trailingConstant: CGFloat?
     weak var delegate: CategoryTableViewCellDelegate?
     
     override func awakeFromNib() {
@@ -33,6 +35,9 @@ class CategoryTableViewCell: UITableViewCell, BalanceViewDelegate {
 
     func populate(with data: Category, isExpanded: Bool, mainColor: UIColor) {
         o_balanceLeadingConstraint.constant = data.parent != nil ? 32 : 0
+        if let trailingConstant = trailingConstant {
+            o_balanceTrailingConstraint.constant = trailingConstant
+        }
         o_balanceView.populate(amount: data.calculatedAmount, totalSpent: data.calculatedTotalSpent, title: data.title, titleColor: mainColor, showExpand: data.subCategories != nil, isExpanded: isExpanded)
     }
 

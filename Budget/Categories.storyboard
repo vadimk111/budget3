@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="5" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCells" id="p3C-9N-wGf" customClass="CategoryTableViewCell" customModule="Budget" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="54"/>
@@ -27,7 +27,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1md-t0-Xeq" customClass="BalanceView" customModule="Budget" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="5" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="5" width="370" height="44"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="fTS-9N-j2s"/>
@@ -48,11 +48,12 @@
                                     <constraints>
                                         <constraint firstItem="1md-t0-Xeq" firstAttribute="leading" secondItem="kzT-aO-Yl5" secondAttribute="leading" id="U8H-N2-tlZ"/>
                                         <constraint firstItem="1md-t0-Xeq" firstAttribute="centerY" secondItem="kzT-aO-Yl5" secondAttribute="centerY" id="iOu-fC-YCc"/>
-                                        <constraint firstAttribute="trailing" secondItem="1md-t0-Xeq" secondAttribute="trailing" id="uyo-Qj-aGO"/>
+                                        <constraint firstAttribute="trailing" secondItem="1md-t0-Xeq" secondAttribute="trailing" constant="5" id="uyo-Qj-aGO"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="o_balanceLeadingConstraint" destination="U8H-N2-tlZ" id="O1y-Yc-zIi"/>
+                                    <outlet property="o_balanceTrailingConstraint" destination="uyo-Qj-aGO" id="0LN-e0-4eW"/>
                                     <outlet property="o_balanceView" destination="1md-t0-Xeq" id="cBn-hz-hJu"/>
                                 </connections>
                             </tableViewCell>

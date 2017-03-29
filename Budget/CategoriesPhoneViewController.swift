@@ -26,6 +26,7 @@ class CategoriesPhoneViewController: BaseDeviceViewController {
         if segue.identifier == "categories" {
             categoriesViewController = segue.destination as? CategoriesViewController
             categoriesViewController?.delegate = self
+            categoriesViewController?.tableSeparatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         } else if segue.identifier == "addCategory" {
             prepareForAddCategory(from: segue)
         } else if segue.identifier == "editCategory" {

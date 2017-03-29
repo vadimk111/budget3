@@ -13,14 +13,31 @@ class CategoriesPadViewController: BaseDeviceViewController, CategoryExpensesVie
 
     var expensesViewController: CategoryExpensesViewController?
     
+    @IBOutlet weak var o_categoriesContainer: UIView!
+    @IBOutlet weak var o_addExpenseBtn: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        o_categoriesContainer.layer.shadowRadius = 2
+        o_categoriesContainer.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
+        o_categoriesContainer.layer.shadowOpacity = 1
+        o_categoriesContainer.layer.shadowOffset = CGSize(width: 0, height: 2)
+        
+        o_categoriesHeaderView.layer.shadowRadius = 2
+        o_categoriesHeaderView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
+        o_categoriesHeaderView.layer.shadowOpacity = 1
+        o_categoriesHeaderView.layer.shadowOffset = CGSize(width: 0, height: 0)
+    }
+    
     @IBAction func didTapEdit(_ sender: UIButton) {
         if let categoriesViewController = categoriesViewController {
             if categoriesViewController.tableView.isEditing {
-                sender.setImage(UIImage(named: "edit-tool"), for: .normal)
+                sender.setTitle("Edit", for: .normal)
                 categoriesViewController.tableView.setEditing(false, animated: true)
             } else {
                 categoriesViewController.tableView.setEditing(true, animated: true)
-                sender.setImage(UIImage(named: "checked"), for: .normal)
+                sender.setTitle("Done", for: .normal)
             }
         }
     }
@@ -29,6 +46,7 @@ class CategoriesPadViewController: BaseDeviceViewController, CategoryExpensesVie
         if segue.identifier == "categories" {
             categoriesViewController = segue.destination as? CategoriesViewController
             categoriesViewController?.delegate = self
+            categoriesViewController?.tableSeparatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 5)
         } else if segue.identifier == "expenses" {
             expensesViewController = segue.destination as? CategoryExpensesViewController
             expensesViewController?.delegate = self
@@ -65,6 +83,7 @@ class CategoriesPadViewController: BaseDeviceViewController, CategoryExpensesVie
     
     //MARK - CategoriesViewControllerDelegate
     override func categoriesViewController(_ categoriesViewController: CategoriesViewController, didSelect category: Category) {
+        o_addExpenseBtn.isEnabled = true
         expensesViewController?.category = category
     }
     

@@ -16,6 +16,7 @@ extension CategoriesViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCells", for: indexPath) as! CategoryTableViewCell
         let category = categories[indexPath.row]
+        cell.trailingConstant = tableSeparatorInset?.right
         cell.populate(with: category, isExpanded: expandedCategories.keys.index(of: category.id!) != nil, mainColor: colors[indexPath.row % colors.count])
         cell.delegate = self
         return cell

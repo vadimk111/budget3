@@ -128,47 +128,40 @@
                                     <constraint firstAttribute="height" constant="44" id="d7P-vm-BcF"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbB-tl-zwx" customClass="CategoriesHeaderView" customModule="Budget" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="100"/>
-                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="HGc-LF-xNS"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u1F-eD-D6x">
-                                <rect key="frame" x="0.0" y="100" width="1024" height="64"/>
+                                <rect key="frame" x="0.0" y="100" width="1024" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmq-JQ-HJX" userLabel="Edit">
-                                        <rect key="frame" x="10" y="8" width="48" height="48"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmq-JQ-HJX" userLabel="Edit">
+                                        <rect key="frame" x="10" y="-2" width="30" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="Geb-tI-G8t"/>
-                                            <constraint firstAttribute="width" constant="48" id="qg7-hW-43N"/>
                                         </constraints>
-                                        <state key="normal" image="edit-tool"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <state key="normal" title="Edit"/>
                                         <connections>
                                             <action selector="didTapEdit:" destination="r0G-fI-2vg" eventType="touchUpInside" id="nXR-2d-JGF"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4Q-43-L4x" userLabel="Add Category">
-                                        <rect key="frame" x="346" y="8" width="48" height="48"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4Q-43-L4x" userLabel="Add Category">
+                                        <rect key="frame" x="307" y="-2" width="87" height="48"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="48" id="Fdp-a1-khN"/>
                                             <constraint firstAttribute="height" constant="48" id="Ycn-Oh-WlB"/>
                                         </constraints>
-                                        <state key="normal" image="plus"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <state key="normal" title="Add Category"/>
                                         <connections>
                                             <segue destination="J3Y-36-xzN" kind="popoverPresentation" identifier="addCategory" popoverAnchorView="oYZ-WC-zhs" id="fyn-1q-1ZF">
                                                 <popoverArrowDirection key="popoverArrowDirection"/>
                                             </segue>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39L-gu-CHv" userLabel="Add Expense">
-                                        <rect key="frame" x="966" y="8" width="48" height="48"/>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39L-gu-CHv" userLabel="Add Expense">
+                                        <rect key="frame" x="930" y="-2" width="84" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="0ld-4I-09M"/>
-                                            <constraint firstAttribute="width" constant="48" id="HEg-2k-9gb"/>
                                         </constraints>
-                                        <state key="normal" image="plus"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <state key="normal" title="Add Expense"/>
                                         <connections>
                                             <segue destination="bL2-da-tjq" kind="popoverPresentation" identifier="addExpense" popoverAnchorView="gGD-yE-Rz3" id="Y7e-QQ-AkD">
                                                 <popoverArrowDirection key="popoverArrowDirection"/>
@@ -180,25 +173,39 @@
                                 <constraints>
                                     <constraint firstItem="hmq-JQ-HJX" firstAttribute="leading" secondItem="u1F-eD-D6x" secondAttribute="leading" constant="10" id="5mb-s8-fAP"/>
                                     <constraint firstItem="39L-gu-CHv" firstAttribute="centerY" secondItem="u1F-eD-D6x" secondAttribute="centerY" id="7HU-BO-dew"/>
-                                    <constraint firstAttribute="height" constant="64" id="GuL-Fi-xvr"/>
+                                    <constraint firstAttribute="height" constant="44" id="GuL-Fi-xvr"/>
                                     <constraint firstAttribute="trailing" secondItem="39L-gu-CHv" secondAttribute="trailing" constant="10" id="K8A-Cx-u8Z"/>
                                     <constraint firstItem="hmq-JQ-HJX" firstAttribute="centerY" secondItem="u1F-eD-D6x" secondAttribute="centerY" id="hIg-ft-jAh"/>
                                     <constraint firstItem="s4Q-43-L4x" firstAttribute="centerY" secondItem="hmq-JQ-HJX" secondAttribute="centerY" id="tIo-EA-3wm"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbB-tl-zwx" customClass="CategoriesHeaderView" customModule="Budget" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="100"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="HGc-LF-xNS"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCQ-x8-rG6" userLabel="separator">
+                                <rect key="frame" x="0.0" y="144" width="1024" height="1"/>
+                                <color key="backgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="HU3-Q3-huH"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RX3-Tf-5Un">
+                                <rect key="frame" x="408" y="145" width="616" height="466"/>
+                                <connections>
+                                    <segue destination="41k-4q-Zmw" kind="embed" identifier="expenses" id="qbI-L8-9Fd"/>
+                                </connections>
+                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYZ-WC-zhs">
-                                <rect key="frame" x="0.0" y="164" width="404" height="447"/>
+                                <rect key="frame" x="0.0" y="145" width="404" height="466"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="404" id="gW5-V3-ziP"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="CEg-IX-EqG" kind="embed" identifier="categories" id="FbQ-tW-seU"/>
-                                </connections>
-                            </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RX3-Tf-5Un">
-                                <rect key="frame" x="404" y="164" width="620" height="447"/>
-                                <connections>
-                                    <segue destination="41k-4q-Zmw" kind="embed" identifier="expenses" id="qbI-L8-9Fd"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -207,23 +214,28 @@
                             <constraint firstItem="hz3-6l-PGR" firstAttribute="top" secondItem="oYZ-WC-zhs" secondAttribute="bottom" id="2Ge-Xm-n2s"/>
                             <constraint firstItem="s4Q-43-L4x" firstAttribute="trailing" secondItem="oYZ-WC-zhs" secondAttribute="trailing" constant="-10" id="3mA-av-VAc"/>
                             <constraint firstItem="RX3-Tf-5Un" firstAttribute="top" secondItem="oYZ-WC-zhs" secondAttribute="top" id="9Bv-pr-Klu"/>
-                            <constraint firstItem="oYZ-WC-zhs" firstAttribute="top" secondItem="u1F-eD-D6x" secondAttribute="bottom" id="AGa-R4-gdZ"/>
+                            <constraint firstItem="RX3-Tf-5Un" firstAttribute="leading" secondItem="oYZ-WC-zhs" secondAttribute="trailing" constant="4" id="DsF-7d-IPl"/>
                             <constraint firstItem="u1F-eD-D6x" firstAttribute="top" secondItem="dbB-tl-zwx" secondAttribute="bottom" id="KGa-6o-unL"/>
                             <constraint firstItem="dbB-tl-zwx" firstAttribute="leading" secondItem="QHQ-5C-6al" secondAttribute="leading" id="Kya-zf-Jhb"/>
+                            <constraint firstAttribute="trailing" secondItem="RCQ-x8-rG6" secondAttribute="trailing" id="MGz-WF-eeI"/>
                             <constraint firstItem="u1F-eD-D6x" firstAttribute="trailing" secondItem="dbB-tl-zwx" secondAttribute="trailing" id="OjQ-5P-5C0"/>
                             <constraint firstItem="u1F-eD-D6x" firstAttribute="leading" secondItem="dbB-tl-zwx" secondAttribute="leading" id="TA3-e2-5Yd"/>
                             <constraint firstItem="RX3-Tf-5Un" firstAttribute="bottom" secondItem="oYZ-WC-zhs" secondAttribute="bottom" id="YHI-Ng-Brk"/>
                             <constraint firstAttribute="trailing" secondItem="gGD-yE-Rz3" secondAttribute="leading" id="brd-UE-74X"/>
+                            <constraint firstItem="oYZ-WC-zhs" firstAttribute="top" secondItem="RCQ-x8-rG6" secondAttribute="bottom" id="cTG-va-JD5"/>
                             <constraint firstItem="oYZ-WC-zhs" firstAttribute="leading" secondItem="QHQ-5C-6al" secondAttribute="leading" id="dcc-oz-Q05"/>
                             <constraint firstItem="gGD-yE-Rz3" firstAttribute="top" secondItem="Hh2-i8-ZbL" secondAttribute="bottom" id="lf0-go-B3V"/>
                             <constraint firstItem="dbB-tl-zwx" firstAttribute="top" secondItem="Hh2-i8-ZbL" secondAttribute="bottom" id="qWd-65-i9t"/>
                             <constraint firstAttribute="trailing" secondItem="dbB-tl-zwx" secondAttribute="trailing" id="s7v-Wj-pTe"/>
+                            <constraint firstItem="RCQ-x8-rG6" firstAttribute="leading" secondItem="QHQ-5C-6al" secondAttribute="leading" id="uBf-Hk-ban"/>
+                            <constraint firstItem="RCQ-x8-rG6" firstAttribute="top" secondItem="u1F-eD-D6x" secondAttribute="bottom" id="v65-zf-uCI"/>
                             <constraint firstAttribute="trailing" secondItem="RX3-Tf-5Un" secondAttribute="trailing" id="wy5-pg-zG0"/>
-                            <constraint firstItem="RX3-Tf-5Un" firstAttribute="leading" secondItem="oYZ-WC-zhs" secondAttribute="trailing" id="y4F-sZ-cqT"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Categories" image="categories" id="6Fp-wE-b9G" customClass="cate"/>
                     <connections>
+                        <outlet property="o_addExpenseBtn" destination="39L-gu-CHv" id="XfD-ES-cXu"/>
+                        <outlet property="o_categoriesContainer" destination="oYZ-WC-zhs" id="ZFx-JH-bJE"/>
                         <outlet property="o_categoriesHeaderView" destination="dbB-tl-zwx" id="Bny-Ey-k9X"/>
                         <segue destination="J3Y-36-xzN" kind="popoverPresentation" identifier="editCategory" popoverAnchorView="oYZ-WC-zhs" id="4NM-Zi-o9i">
                             <popoverArrowDirection key="popoverArrowDirection"/>
@@ -259,7 +271,7 @@
                 <viewControllerPlaceholder storyboardName="AddEditCategory" referencedIdentifier="AddEditCategory" id="J3Y-36-xzN" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6uN-rm-IMQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-984" y="1236"/>
+            <point key="canvasLocation" x="-932" y="1270"/>
         </scene>
         <!--CategoriesRef-->
         <scene sceneID="122-MC-UWX">
@@ -280,8 +292,6 @@
     </scenes>
     <resources>
         <image name="categories" width="24" height="24"/>
-        <image name="edit-tool" width="16" height="16"/>
-        <image name="plus" width="16" height="16"/>
         <image name="user" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
