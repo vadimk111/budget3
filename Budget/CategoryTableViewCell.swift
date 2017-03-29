@@ -11,6 +11,7 @@ import UIKit
 protocol CategoryTableViewCellDelegate: class {
     func categoryTableViewCellDidExpand(_ cell: CategoryTableViewCell)
     func categoryTableViewCellDidCollapse(_ cell: CategoryTableViewCell)
+    func categoryTableViewCellDeselected(_ cell: CategoryTableViewCell)
 }
 
 class CategoryTableViewCell: UITableViewCell, BalanceViewDelegate {
@@ -25,12 +26,20 @@ class CategoryTableViewCell: UITableViewCell, BalanceViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         o_balanceView.delegate = self
+        selectionStyle = .none
     }
-   
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        if selected {
+            self.backgroundColor = UIColor(red: 217 / 255, green: 217 / 255, blue: 217 / 255, alpha: 1)
+        } else {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.backgroundColor = UIColor.clear
+            })
+            delegate?.categoryTableViewCellDeselected(self)
+        }
     }
 
     func populate(with data: Category, isExpanded: Bool, mainColor: UIColor) {

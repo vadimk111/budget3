@@ -15,6 +15,7 @@ protocol CategoriesViewControllerDelegate: class {
     func categoriesViewController(_ categoriesViewController: CategoriesViewController, didSelect category: Category)
     func categoriesViewController(_ categoriesViewController: CategoriesViewController, didEdit category: Category)
     func categoriesViewControllerChanged(_ categoriesViewController: CategoriesViewController)
+    func categoriesViewControllerRowDeselected(_ categoriesViewController: CategoriesViewController)
 }
 
 class CategoriesViewController: UITableViewController {

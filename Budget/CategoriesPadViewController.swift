@@ -87,6 +87,15 @@ class CategoriesPadViewController: BaseDeviceViewController, CategoryExpensesVie
         expensesViewController?.category = category
     }
     
+    override func categoriesViewControllerRowDeselected(_ categoriesViewController: CategoriesViewController) {
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { (Timer) -> Void in
+            if categoriesViewController.tableView.indexPathForSelectedRow == nil {
+                self.expensesViewController?.category = nil
+                self.o_addExpenseBtn.isEnabled = false
+            }
+        })
+    }
+    
     //MARK - CategoryExpensesViewControllerDelegate
     func categoryExpensesViewControllerChanged(_ categoryExpensesViewController: CategoryExpensesViewController) {
 
@@ -94,6 +103,11 @@ class CategoriesPadViewController: BaseDeviceViewController, CategoryExpensesVie
     
     func categoryExpensesViewController(_ categoryExpensesViewController: CategoryExpensesViewController, didSelect expense: Expense) {
         performSegue(withIdentifier: "editExpense", sender: expense)
+        if let indexPath = categoryExpensesViewController.tableView.indexPathForSelectedRow {
+            Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false, block: { (Timer) -> Void in
+                categoryExpensesViewController.tableView.deselectRow(at: indexPath, animated: true)
+            })
+        }
     }
     
     func categoryExpensesViewController(_ categoryExpensesViewController: CategoryExpensesViewController, addExpenseTo category: Category) {

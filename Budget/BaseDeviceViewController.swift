@@ -80,4 +80,8 @@ class BaseDeviceViewController: UIViewController, CategoriesHeaderViewDelegate, 
     func categoriesViewControllerChanged(_ categoriesViewController: CategoriesViewController) {
         o_categoriesHeaderView?.fill(with: categoriesViewController.availableParents, date: categoriesViewController.date)
     }
+    
+    func categoriesViewControllerRowDeselected(_ categoriesViewController: CategoriesViewController) {
+        
+    }
 }

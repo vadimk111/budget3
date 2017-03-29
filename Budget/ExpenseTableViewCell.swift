@@ -16,13 +16,20 @@ class ExpenseTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        if selected {
+            backgroundColor = UIColor(red: 217 / 255, green: 217 / 255, blue: 217 / 255, alpha: 1)
+        } else {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.backgroundColor = UIColor.clear
+            })
+        }
     }
 
     func fill(with data: Expense, mainColor: UIColor) {

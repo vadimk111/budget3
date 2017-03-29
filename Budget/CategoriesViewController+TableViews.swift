@@ -42,4 +42,8 @@ extension CategoriesViewController : CategoryTableViewCellDelegate {
         }
         return indexPaths
     }
+    
+    func categoryTableViewCellDeselected(_ cell: CategoryTableViewCell) {
+        delegate?.categoriesViewControllerRowDeselected(self)
+    }
 }
