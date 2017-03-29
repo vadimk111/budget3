@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UITabBarController, AuthenticationDelegate {
+class MainPhoneViewController: UITabBarController, AuthenticationDelegate {
 
     var authentication: Authentication?
     

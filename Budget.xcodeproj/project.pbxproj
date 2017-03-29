@@ -32,7 +32,7 @@
 		BF2514711E46626F00042FEF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF2514701E46626F00042FEF /* GoogleService-Info.plist */; };
 		BF2514751E470FD100042FEF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2514741E470FD100042FEF /* LoginViewController.swift */; };
 		BF2514771E47154500042FEF /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2514761E47154500042FEF /* LoginViewController.xib */; };
-		BF2514791E47165100042FEF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2514781E47165100042FEF /* MainViewController.swift */; };
+		BF2514791E47165100042FEF /* MainPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2514781E47165100042FEF /* MainPhoneViewController.swift */; };
 		BF2514811E48659400042FEF /* ModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2514801E48659400042FEF /* ModelHelper.swift */; };
 		BF37922E1E0933D00060445D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF37922D1E0933D00060445D /* AppDelegate.swift */; };
 		BF3792351E0933D00060445D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF3792341E0933D00060445D /* Assets.xcassets */; };
@@ -90,7 +90,7 @@
 		BF2514701E46626F00042FEF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BF2514741E470FD100042FEF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BF2514761E47154500042FEF /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		BF2514781E47165100042FEF /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		BF2514781E47165100042FEF /* MainPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPhoneViewController.swift; sourceTree = "<group>"; };
 		BF2514801E48659400042FEF /* ModelHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelHelper.swift; sourceTree = "<group>"; };
 		BF37922A1E0933D00060445D /* Budget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Budget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF37922D1E0933D00060445D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -315,7 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				BD82C7F21E8AF00D009EB6A6 /* MainPadViewController.swift */,
-				BF2514781E47165100042FEF /* MainViewController.swift */,
+				BF2514781E47165100042FEF /* MainPhoneViewController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -504,7 +504,7 @@
 				BF6BC8551E5ADA4E0052F4E8 /* CategoriesViewController+TableViews.swift in Sources */,
 				BD589DEF1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift in Sources */,
 				BFFCD70D1E73D8C70030BD79 /* OverviewHeaderView.swift in Sources */,
-				BF2514791E47165100042FEF /* MainViewController.swift in Sources */,
+				BF2514791E47165100042FEF /* MainPhoneViewController.swift in Sources */,
 				BF9063221E6896D3004B5F8B /* DateChanger.swift in Sources */,
 				BF00F48C1E4D2FA300D5D743 /* CategoryExpensesViewController.swift in Sources */,
 				BF00F4901E4D344A00D5D743 /* AddEditExpenseViewController.swift in Sources */,

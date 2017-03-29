@@ -29,10 +29,10 @@
             </objects>
             <point key="canvasLocation" x="-1230" y="353"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Main Phone View Controller-->
         <scene sceneID="j9y-j2-Pgc">
             <objects>
-                <tabBarController id="yhc-Zy-dv0" customClass="MainViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="yhc-Zy-dv0" customClass="MainPhoneViewController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Ffe-s4-YPM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

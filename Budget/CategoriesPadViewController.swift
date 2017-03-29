@@ -44,7 +44,7 @@ class CategoriesPadViewController: BaseDeviceViewController, CategoryExpensesVie
     }
     
     func prepareForAddExpense(from segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.addEditExpenseViewController()
+        let vc: AddEditExpenseViewController? = segue.destinationController()
         var parentCategory: Category? = sender as? Category
         if parentCategory == nil {
             parentCategory = expensesViewController?.category
@@ -57,7 +57,7 @@ class CategoriesPadViewController: BaseDeviceViewController, CategoryExpensesVie
     
     func prepareForEditExpense(from segue: UIStoryboardSegue, sender: Any?) {
         if let expense = sender as? Expense {
-            let vc = segue.addEditExpenseViewController()
+            let vc: AddEditExpenseViewController? = segue.destinationController()
             vc?.expense = expense
             vc?.title = "Edit Expense"
         }

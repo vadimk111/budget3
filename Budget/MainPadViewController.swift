@@ -38,7 +38,7 @@ class MainPadViewController: UIViewController, AuthenticationDelegate, SettingsV
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "settings" {
-            settingsViewController = segue.destinationAsViewController()
+            settingsViewController = segue.destinationController()
             settingsViewController?.delegate = self
         }
     }

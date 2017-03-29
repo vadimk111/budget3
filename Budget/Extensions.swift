@@ -91,21 +91,8 @@ extension DispatchQueue {
 }
 
 extension UIStoryboardSegue {
-    func addEditExpenseViewController() -> AddEditExpenseViewController? {
-        if let nav = destination as? UINavigationController {
-            return nav.viewControllers.first as? AddEditExpenseViewController
-        }
-        return destination as? AddEditExpenseViewController
-    }
     
-    func addEditCategoryViewController() -> AddEditCategoryViewController? {
-        if let nav = destination as? UINavigationController {
-            return nav.viewControllers.first as? AddEditCategoryViewController
-        }
-        return destination as? AddEditCategoryViewController
-    }
-    
-    func destinationAsViewController<T>() -> T? {
+    func destinationController<T>() -> T? {
         if let nav = destination as? UINavigationController {
             return nav.viewControllers.first as? T
         }
