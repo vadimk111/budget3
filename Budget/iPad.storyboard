@@ -70,7 +70,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YUb-7q-W7C">
                                 <rect key="frame" x="0.0" y="64" width="1024" height="660"/>
                                 <connections>
-                                    <segue destination="FIN-G9-C0l" kind="embed" id="dhT-wX-cTY"/>
+                                    <segue destination="FIN-G9-C0l" kind="embed" identifier="tabbar" id="dhT-wX-cTY"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -101,7 +101,7 @@
         <!--Categories-->
         <scene sceneID="Xqf-ke-euh">
             <objects>
-                <viewController storyboardIdentifier="Categories" useStoryboardIdentifierAsRestorationIdentifier="YES" id="r0G-fI-2vg" customClass="CategoriesPadViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Categories" title="Categories" useStoryboardIdentifierAsRestorationIdentifier="YES" id="r0G-fI-2vg" customClass="CategoriesPadViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hh2-i8-ZbL"/>
                         <viewControllerLayoutGuide type="bottom" id="hz3-6l-PGR"/>
@@ -250,7 +250,7 @@
         <!--Expenses-->
         <scene sceneID="60I-Uf-eAS">
             <objects>
-                <viewController id="08c-M7-Zv7" customClass="ExpensesPadViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Expenses" id="08c-M7-Zv7" customClass="ExpensesPadViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QdW-rn-Moc"/>
                         <viewControllerLayoutGuide type="bottom" id="471-as-3ca"/>

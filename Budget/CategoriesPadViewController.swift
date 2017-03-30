@@ -29,7 +29,7 @@ class CategoriesPadViewController: CategoriesBaseDeviceViewController, CategoryE
         o_categoriesHeaderView.layer.shadowOpacity = 1
         o_categoriesHeaderView.layer.shadowOffset = CGSize(width: 0, height: 0)
     }
-    
+        
     @IBAction func didTapEdit(_ sender: UIButton) {
         if let categoriesViewController = categoriesViewController {
             if categoriesViewController.tableView.isEditing {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainPadViewController: UIViewController, AuthenticationDelegate, SettingsViewControllerDelegate {
+class MainPadViewController: UIViewController, AuthenticationDelegate, SettingsViewControllerDelegate, UITabBarControllerDelegate {
 
     var authentication: Authentication?
     var settingsViewController: SettingsViewController?
@@ -40,6 +40,9 @@ class MainPadViewController: UIViewController, AuthenticationDelegate, SettingsV
         if segue.identifier == "settings" {
             settingsViewController = segue.destinationController()
             settingsViewController?.delegate = self
+        } else if segue.identifier == "tabbar" {
+            let tabBarViewController: UITabBarController? = segue.destinationController()
+            tabBarViewController?.delegate = self
         }
     }
     
@@ -55,6 +58,11 @@ class MainPadViewController: UIViewController, AuthenticationDelegate, SettingsV
     
     func authentication(_ authentication: Authentication, shouldDismiss viewController: UIViewController) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK - UITabBarControllerDelegate
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        o_navigationItem.title = viewController.title
     }
     
     //MARK - SettingsViewControllerDelegate
