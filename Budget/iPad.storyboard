@@ -20,7 +20,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="r0G-fI-2vg" kind="relationship" relationship="viewControllers" id="glb-vK-ex5"/>
-                        <segue destination="R6T-zg-bUh" kind="relationship" relationship="viewControllers" id="Ikk-mY-jHf"/>
+                        <segue destination="08c-M7-Zv7" kind="relationship" relationship="viewControllers" id="Hbg-Qg-DiR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0pU-bJ-MHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -97,16 +97,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g5J-Lx-duH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-383" y="-625"/>
-        </scene>
-        <!--Overview-->
-        <scene sceneID="Kf1-fE-fyx">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Overview" referencedIdentifier="Overview" id="R6T-zg-bUh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="zJt-nM-dkQ"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gaW-CF-EUq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-220" y="479"/>
         </scene>
         <!--Categories-->
         <scene sceneID="Xqf-ke-euh">
@@ -257,6 +247,65 @@
             </objects>
             <point key="canvasLocation" x="18" y="-857"/>
         </scene>
+        <!--Expenses-->
+        <scene sceneID="60I-Uf-eAS">
+            <objects>
+                <viewController id="08c-M7-Zv7" customClass="ExpensesPadViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QdW-rn-Moc"/>
+                        <viewControllerLayoutGuide type="bottom" id="471-as-3ca"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Yx2-SL-jUh">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="660"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cSL-UV-f2I" customClass="DateChanger" customModule="Budget" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="chr-yc-3xW"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYN-uC-J51">
+                                <rect key="frame" x="0.0" y="44" width="1024" height="1"/>
+                                <color key="backgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="uKR-Ur-2JR"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lRG-h9-8s1">
+                                <rect key="frame" x="0.0" y="45" width="404" height="566"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="404" id="OaO-J9-Z2I"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="PRu-bi-e76" kind="embed" identifier="expenses" id="nCX-d1-OrC"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WYN-uC-J51" firstAttribute="leading" secondItem="Yx2-SL-jUh" secondAttribute="leading" id="5fL-FS-BIV"/>
+                            <constraint firstItem="cSL-UV-f2I" firstAttribute="top" secondItem="QdW-rn-Moc" secondAttribute="bottom" id="Boy-v5-tdH"/>
+                            <constraint firstAttribute="trailing" secondItem="cSL-UV-f2I" secondAttribute="trailing" id="D8G-0I-Wig"/>
+                            <constraint firstItem="471-as-3ca" firstAttribute="top" secondItem="lRG-h9-8s1" secondAttribute="bottom" id="ETs-Rd-oAU"/>
+                            <constraint firstAttribute="trailing" secondItem="WYN-uC-J51" secondAttribute="trailing" id="Egd-yx-fef"/>
+                            <constraint firstItem="lRG-h9-8s1" firstAttribute="top" secondItem="WYN-uC-J51" secondAttribute="bottom" id="Nre-ul-Vcb"/>
+                            <constraint firstItem="cSL-UV-f2I" firstAttribute="leading" secondItem="Yx2-SL-jUh" secondAttribute="leading" id="U23-z2-7jt"/>
+                            <constraint firstItem="lRG-h9-8s1" firstAttribute="leading" secondItem="Yx2-SL-jUh" secondAttribute="leading" id="Yt2-xR-Q3b"/>
+                            <constraint firstItem="WYN-uC-J51" firstAttribute="top" secondItem="cSL-UV-f2I" secondAttribute="bottom" id="ezA-33-bgX"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Expenses" image="coins" id="GTE-B4-Doa"/>
+                    <connections>
+                        <outlet property="o_dateChanger" destination="cSL-UV-f2I" id="pS4-rx-jdH"/>
+                        <outlet property="o_expensesContainer" destination="lRG-h9-8s1" id="dIh-qg-4su"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fKq-o9-BaM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-103" y="844"/>
+        </scene>
         <!--AddEditExpense-->
         <scene sceneID="5GM-cE-Dsc">
             <objects>
@@ -264,6 +313,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDL-rr-OaD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-490" y="775"/>
+        </scene>
+        <!--ExpensesRef-->
+        <scene sceneID="Nl0-dB-prp">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Expenses" referencedIdentifier="ExpensesRef" id="PRu-bi-e76" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fFY-ei-r9S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-296" y="1204"/>
         </scene>
         <!--AddEditCategory-->
         <scene sceneID="3HV-vG-2ZV">
@@ -292,6 +349,7 @@
     </scenes>
     <resources>
         <image name="categories" width="24" height="24"/>
+        <image name="coins" width="24" height="24"/>
         <image name="user" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>

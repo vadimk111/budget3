@@ -1,5 +1,5 @@
 //
-//  BaseDeviceViewController.swift
+//  CategoriesBaseDeviceViewController.swift
 //  Budget
 //
 //  Created by Vadik on 24/03/2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseDeviceViewController: UIViewController, CategoriesHeaderViewDelegate, CategoriesViewControllerDelegate {
+class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderViewDelegate, CategoriesViewControllerDelegate {
 
     var categoriesViewController: CategoriesViewController?
     

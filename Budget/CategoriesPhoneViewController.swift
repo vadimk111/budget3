@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoriesPhoneViewController: BaseDeviceViewController {
+class CategoriesPhoneViewController: CategoriesBaseDeviceViewController {
 
     @IBAction func didTapEdit(_ sender: UIBarButtonItem) {
         if let categoriesViewController = categoriesViewController {

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6AA2CE85BAFB9541D811DABB /* Pods_Budget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 081C64756147318895C06760 /* Pods_Budget.framework */; };
-		BD3D40721E853A4800C3CCAF /* BaseDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D40711E853A4800C3CCAF /* BaseDeviceViewController.swift */; };
+		BD3D40721E853A4800C3CCAF /* CategoriesBaseDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D40711E853A4800C3CCAF /* CategoriesBaseDeviceViewController.swift */; };
 		BD3D40741E85714D00C3CCAF /* CategoryDetailPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D40731E85714D00C3CCAF /* CategoryDetailPhoneViewController.swift */; };
 		BD3D40761E87965800C3CCAF /* CategoryExpensesViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D40751E87965800C3CCAF /* CategoryExpensesViewController+UITableView.swift */; };
 		BD589DEB1E83E13500F0C9CD /* Categories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD589DEA1E83E13500F0C9CD /* Categories.storyboard */; };
@@ -18,6 +18,11 @@
 		BD6B69E41E79223400F7AF35 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD6B69E31E79223400F7AF35 /* iPad.storyboard */; };
 		BD6B69EA1E79544F00F7AF35 /* CategoriesPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B69E91E79544F00F7AF35 /* CategoriesPadViewController.swift */; };
 		BD82C7F31E8AF00D009EB6A6 /* MainPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD82C7F21E8AF00D009EB6A6 /* MainPadViewController.swift */; };
+		BDFC60E61E8CFF1D00D77087 /* Expenses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */; };
+		BDFC60E81E8D02D300D77087 /* ExpensesPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */; };
+		BDFC60EA1E8D036000D77087 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */; };
+		BDFC60EC1E8D03A800D77087 /* ExpensesViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60EB1E8D03A800D77087 /* ExpensesViewController+UITableView.swift */; };
+		BDFC60EE1E8D3CE800D77087 /* ExpensesViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60ED1E8D3CE800D77087 /* ExpensesViewController+Firebase.swift */; };
 		BF00F4841E4D1F2500D5D743 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F4831E4D1F2500D5D743 /* CategoryTableViewCell.swift */; };
 		BF00F4861E4D1F4300D5D743 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */; };
 		BF00F4881E4D1F5200D5D743 /* ProgressBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */; };
@@ -58,7 +63,7 @@
 		BFCA1B7F1E4E3A450023AB55 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCA1B7E1E4E3A450023AB55 /* ExpenseTableViewCell.swift */; };
 		BFD5AA8A1E52E16100DE10E3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5AA891E52E16100DE10E3 /* Extensions.swift */; };
 		BFD5AA8C1E52FDBC00DE10E3 /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5AA8B1E52FDBC00DE10E3 /* Consts.swift */; };
-		BFFCD70B1E73D4990030BD79 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCD70A1E73D4990030BD79 /* ExpensesViewController.swift */; };
+		BFFCD70B1E73D4990030BD79 /* ExpensesPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCD70A1E73D4990030BD79 /* ExpensesPhoneViewController.swift */; };
 		BFFCD70D1E73D8C70030BD79 /* OverviewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCD70C1E73D8C70030BD79 /* OverviewHeaderView.swift */; };
 		BFFCD70F1E73D8D50030BD79 /* OverviewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFFCD70E1E73D8D50030BD79 /* OverviewHeaderView.xib */; };
 /* End PBXBuildFile section */
@@ -66,7 +71,7 @@
 /* Begin PBXFileReference section */
 		081C64756147318895C06760 /* Pods_Budget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBC9F6F964B24DE5B2DADBF3 /* Pods-Budget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Budget/Pods-Budget.release.xcconfig"; sourceTree = "<group>"; };
-		BD3D40711E853A4800C3CCAF /* BaseDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDeviceViewController.swift; sourceTree = "<group>"; };
+		BD3D40711E853A4800C3CCAF /* CategoriesBaseDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesBaseDeviceViewController.swift; sourceTree = "<group>"; };
 		BD3D40731E85714D00C3CCAF /* CategoryDetailPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDetailPhoneViewController.swift; sourceTree = "<group>"; };
 		BD3D40751E87965800C3CCAF /* CategoryExpensesViewController+UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryExpensesViewController+UITableView.swift"; sourceTree = "<group>"; };
 		BD589DEA1E83E13500F0C9CD /* Categories.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Categories.storyboard; sourceTree = "<group>"; };
@@ -76,6 +81,11 @@
 		BD6B69E31E79223400F7AF35 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
 		BD6B69E91E79544F00F7AF35 /* CategoriesPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesPadViewController.swift; sourceTree = "<group>"; };
 		BD82C7F21E8AF00D009EB6A6 /* MainPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPadViewController.swift; sourceTree = "<group>"; };
+		BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Expenses.storyboard; sourceTree = "<group>"; };
+		BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesPadViewController.swift; sourceTree = "<group>"; };
+		BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
+		BDFC60EB1E8D03A800D77087 /* ExpensesViewController+UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExpensesViewController+UITableView.swift"; sourceTree = "<group>"; };
+		BDFC60ED1E8D3CE800D77087 /* ExpensesViewController+Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExpensesViewController+Firebase.swift"; sourceTree = "<group>"; };
 		BF00F4831E4D1F2500D5D743 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressBar.xib; sourceTree = "<group>"; };
@@ -118,7 +128,7 @@
 		BFCA1B7E1E4E3A450023AB55 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
 		BFD5AA891E52E16100DE10E3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BFD5AA8B1E52FDBC00DE10E3 /* Consts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
-		BFFCD70A1E73D4990030BD79 /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
+		BFFCD70A1E73D4990030BD79 /* ExpensesPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesPhoneViewController.swift; sourceTree = "<group>"; };
 		BFFCD70C1E73D8C70030BD79 /* OverviewHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewHeaderView.swift; sourceTree = "<group>"; };
 		BFFCD70E1E73D8D50030BD79 /* OverviewHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewHeaderView.xib; sourceTree = "<group>"; };
 		CBC31ECB1F88C7F0356DFED8 /* Pods-Budget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Budget/Pods-Budget.debug.xcconfig"; sourceTree = "<group>"; };
@@ -156,7 +166,9 @@
 		BD589DF21E8469A300F0C9CD /* Expenses */ = {
 			isa = PBXGroup;
 			children = (
-				BFFCD70A1E73D4990030BD79 /* ExpensesViewController.swift */,
+				BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */,
+				BDFC60ED1E8D3CE800D77087 /* ExpensesViewController+Firebase.swift */,
+				BDFC60EB1E8D03A800D77087 /* ExpensesViewController+UITableView.swift */,
 			);
 			name = Expenses;
 			sourceTree = "<group>";
@@ -164,10 +176,12 @@
 		BD589DF31E8469AA00F0C9CD /* Device */ = {
 			isa = PBXGroup;
 			children = (
-				BD3D40711E853A4800C3CCAF /* BaseDeviceViewController.swift */,
+				BD3D40711E853A4800C3CCAF /* CategoriesBaseDeviceViewController.swift */,
 				BD6B69E91E79544F00F7AF35 /* CategoriesPadViewController.swift */,
 				BD589DEE1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift */,
 				BD3D40731E85714D00C3CCAF /* CategoryDetailPhoneViewController.swift */,
+				BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */,
+				BFFCD70A1E73D4990030BD79 /* ExpensesPhoneViewController.swift */,
 			);
 			name = Device;
 			sourceTree = "<group>";
@@ -210,6 +224,7 @@
 				BF00F48D1E4D331100D5D743 /* AddEditExpense.storyboard */,
 				BD589DEA1E83E13500F0C9CD /* Categories.storyboard */,
 				BD589DEC1E83F32A00F0C9CD /* CategoryExpenses.storyboard */,
+				BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */,
 				BD6B69E31E79223400F7AF35 /* iPad.storyboard */,
 				BF3792431E09625C0060445D /* iPhone.storyboard */,
 				BF3792361E0933D00060445D /* LaunchScreen.storyboard */,
@@ -413,6 +428,7 @@
 				BF00F4881E4D1F5200D5D743 /* ProgressBar.xib in Resources */,
 				BF3792381E0933D00060445D /* LaunchScreen.storyboard in Resources */,
 				BD589DEB1E83E13500F0C9CD /* Categories.storyboard in Resources */,
+				BDFC60E61E8CFF1D00D77087 /* Expenses.storyboard in Resources */,
 				BF25146C1E465C8C00042FEF /* Settings.storyboard in Resources */,
 				BF3792351E0933D00060445D /* Assets.xcassets in Resources */,
 				BF9687C11E58CFDA001CD715 /* CategoriesHeaderView.xib in Resources */,
@@ -499,9 +515,11 @@
 			files = (
 				BF00F4921E4D348F00D5D743 /* Expense.swift in Sources */,
 				BF9063201E6891E3004B5F8B /* OverviewTableViewCell.swift in Sources */,
+				BDFC60EE1E8D3CE800D77087 /* ExpensesViewController+Firebase.swift in Sources */,
 				BFD5AA8C1E52FDBC00DE10E3 /* Consts.swift in Sources */,
-				BD3D40721E853A4800C3CCAF /* BaseDeviceViewController.swift in Sources */,
+				BD3D40721E853A4800C3CCAF /* CategoriesBaseDeviceViewController.swift in Sources */,
 				BF6BC8551E5ADA4E0052F4E8 /* CategoriesViewController+TableViews.swift in Sources */,
+				BDFC60E81E8D02D300D77087 /* ExpensesPadViewController.swift in Sources */,
 				BD589DEF1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift in Sources */,
 				BFFCD70D1E73D8C70030BD79 /* OverviewHeaderView.swift in Sources */,
 				BF2514791E47165100042FEF /* MainPhoneViewController.swift in Sources */,
@@ -509,6 +527,7 @@
 				BF00F48C1E4D2FA300D5D743 /* CategoryExpensesViewController.swift in Sources */,
 				BF00F4901E4D344A00D5D743 /* AddEditExpenseViewController.swift in Sources */,
 				BF9687C61E58DBED001CD715 /* BalanceView.swift in Sources */,
+				BDFC60EC1E8D03A800D77087 /* ExpensesViewController+UITableView.swift in Sources */,
 				BF3FFBEF1E4BC9E200559134 /* AddEditCategoryViewController.swift in Sources */,
 				BF2514751E470FD100042FEF /* LoginViewController.swift in Sources */,
 				BF6BC85C1E5B280C0052F4E8 /* SubCategoryHeaderView.swift in Sources */,
@@ -516,10 +535,11 @@
 				BF9687BD1E58CF1F001CD715 /* CategoriesViewController+UITableView.swift in Sources */,
 				BD3D40761E87965800C3CCAF /* CategoryExpensesViewController+UITableView.swift in Sources */,
 				BD589DF11E8451B200F0C9CD /* Authentication.swift in Sources */,
+				BDFC60EA1E8D036000D77087 /* ExpensesViewController.swift in Sources */,
 				BF37922E1E0933D00060445D /* AppDelegate.swift in Sources */,
 				BD82C7F31E8AF00D009EB6A6 /* MainPadViewController.swift in Sources */,
 				BF25146F1E46612200042FEF /* Category.swift in Sources */,
-				BFFCD70B1E73D4990030BD79 /* ExpensesViewController.swift in Sources */,
+				BFFCD70B1E73D4990030BD79 /* ExpensesPhoneViewController.swift in Sources */,
 				BF6BC8601E5DC8450052F4E8 /* CategoriesViewController+Firebase.swift in Sources */,
 				BF00F48A1E4D1F7000D5D743 /* CustomView.swift in Sources */,
 				BF9687BF1E58CFB1001CD715 /* CategoriesHeaderView.swift in Sources */,

@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-class CategoriesPadViewController: BaseDeviceViewController, CategoryExpensesViewControllerDelegate {
+class CategoriesPadViewController: CategoriesBaseDeviceViewController, CategoryExpensesViewControllerDelegate {
 
     var expensesViewController: CategoryExpensesViewController?
     

@@ -40,11 +40,6 @@ class CategoriesViewController: UITableViewController {
         return categories.filter({ $0.parent == nil })
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
     deinit {
         unregisterFromUpdates(budgetRef: budgetRef)
     }
@@ -77,7 +72,7 @@ class CategoriesViewController: UITableViewController {
             expandedCategories = [:]
             categories = []
             tableView.reloadData()
-            self.delegate?.categoriesViewControllerChanged(self)
+            delegate?.categoriesViewControllerChanged(self)
         }
     }
         

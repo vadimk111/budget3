@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <!--Expenses-->
         <scene sceneID="6ep-n1-AjZ">
             <objects>
-                <viewController id="W3j-hq-jMN" customClass="ExpensesViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="W3j-hq-jMN" customClass="ExpensesPhoneViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6aB-qH-9ls"/>
                         <viewControllerLayoutGuide type="bottom" id="wng-N2-5Ig"/>
@@ -45,7 +45,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o1d-VF-Nqh" id="UNn-Bh-WtV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvE-VP-wFb">
@@ -107,8 +107,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Expenses" id="23h-y4-R7P"/>
                     <connections>
-                        <outlet property="o_dateChanger" destination="Aqz-on-ARc" id="I9p-0h-j1O"/>
-                        <outlet property="o_tableView" destination="MTh-B2-yvy" id="T8b-nF-ZIM"/>
+                        <outlet property="o_dateChanger" destination="Aqz-on-ARc" id="pw6-QM-vGI"/>
+                        <outlet property="o_tableView" destination="MTh-B2-yvy" id="rww-5z-3bO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q6h-NZ-vzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
