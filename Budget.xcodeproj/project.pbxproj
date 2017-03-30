@@ -23,6 +23,7 @@
 		BDFC60EA1E8D036000D77087 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */; };
 		BDFC60EC1E8D03A800D77087 /* ExpensesViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60EB1E8D03A800D77087 /* ExpensesViewController+UITableView.swift */; };
 		BDFC60EE1E8D3CE800D77087 /* ExpensesViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60ED1E8D3CE800D77087 /* ExpensesViewController+Firebase.swift */; };
+		BDFC60F21E8D4A3900D77087 /* ExpensesBaseDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60F11E8D4A3900D77087 /* ExpensesBaseDeviceViewController.swift */; };
 		BF00F4841E4D1F2500D5D743 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F4831E4D1F2500D5D743 /* CategoryTableViewCell.swift */; };
 		BF00F4861E4D1F4300D5D743 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */; };
 		BF00F4881E4D1F5200D5D743 /* ProgressBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */; };
@@ -51,7 +52,6 @@
 		BF6BC85C1E5B280C0052F4E8 /* SubCategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BC85B1E5B280C0052F4E8 /* SubCategoryHeaderView.swift */; };
 		BF6BC85E1E5B28240052F4E8 /* SubCategoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF6BC85D1E5B28240052F4E8 /* SubCategoryHeaderView.xib */; };
 		BF6BC8601E5DC8450052F4E8 /* CategoriesViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BC85F1E5DC8450052F4E8 /* CategoriesViewController+Firebase.swift */; };
-		BF90631C1E688FB8004B5F8B /* Overview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF90631B1E688FB8004B5F8B /* Overview.storyboard */; };
 		BF9063201E6891E3004B5F8B /* OverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90631F1E6891E3004B5F8B /* OverviewTableViewCell.swift */; };
 		BF9063221E6896D3004B5F8B /* DateChanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9063211E6896D3004B5F8B /* DateChanger.swift */; };
 		BF9063241E6896DF004B5F8B /* DateChanger.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF9063231E6896DF004B5F8B /* DateChanger.xib */; };
@@ -86,6 +86,7 @@
 		BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
 		BDFC60EB1E8D03A800D77087 /* ExpensesViewController+UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExpensesViewController+UITableView.swift"; sourceTree = "<group>"; };
 		BDFC60ED1E8D3CE800D77087 /* ExpensesViewController+Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExpensesViewController+Firebase.swift"; sourceTree = "<group>"; };
+		BDFC60F11E8D4A3900D77087 /* ExpensesBaseDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesBaseDeviceViewController.swift; sourceTree = "<group>"; };
 		BF00F4831E4D1F2500D5D743 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressBar.xib; sourceTree = "<group>"; };
@@ -116,7 +117,6 @@
 		BF6BC85B1E5B280C0052F4E8 /* SubCategoryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCategoryHeaderView.swift; sourceTree = "<group>"; };
 		BF6BC85D1E5B28240052F4E8 /* SubCategoryHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubCategoryHeaderView.xib; sourceTree = "<group>"; };
 		BF6BC85F1E5DC8450052F4E8 /* CategoriesViewController+Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoriesViewController+Firebase.swift"; sourceTree = "<group>"; };
-		BF90631B1E688FB8004B5F8B /* Overview.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Overview.storyboard; sourceTree = "<group>"; };
 		BF90631F1E6891E3004B5F8B /* OverviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewTableViewCell.swift; sourceTree = "<group>"; };
 		BF9063211E6896D3004B5F8B /* DateChanger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateChanger.swift; sourceTree = "<group>"; };
 		BF9063231E6896DF004B5F8B /* DateChanger.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateChanger.xib; sourceTree = "<group>"; };
@@ -180,6 +180,7 @@
 				BD6B69E91E79544F00F7AF35 /* CategoriesPadViewController.swift */,
 				BD589DEE1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift */,
 				BD3D40731E85714D00C3CCAF /* CategoryDetailPhoneViewController.swift */,
+				BDFC60F11E8D4A3900D77087 /* ExpensesBaseDeviceViewController.swift */,
 				BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */,
 				BFFCD70A1E73D4990030BD79 /* ExpensesPhoneViewController.swift */,
 			);
@@ -228,7 +229,6 @@
 				BD6B69E31E79223400F7AF35 /* iPad.storyboard */,
 				BF3792431E09625C0060445D /* iPhone.storyboard */,
 				BF3792361E0933D00060445D /* LaunchScreen.storyboard */,
-				BF90631B1E688FB8004B5F8B /* Overview.storyboard */,
 				BF25146B1E465C8C00042FEF /* Settings.storyboard */,
 			);
 			name = Storyboards;
@@ -436,7 +436,6 @@
 				BF6BC85E1E5B28240052F4E8 /* SubCategoryHeaderView.xib in Resources */,
 				BD589DED1E83F32A00F0C9CD /* CategoryExpenses.storyboard in Resources */,
 				BD6B69E41E79223400F7AF35 /* iPad.storyboard in Resources */,
-				BF90631C1E688FB8004B5F8B /* Overview.storyboard in Resources */,
 				BF00F48E1E4D331100D5D743 /* AddEditExpense.storyboard in Resources */,
 				BF2514711E46626F00042FEF /* GoogleService-Info.plist in Resources */,
 				BF9687C41E58DBDC001CD715 /* BalanceView.xib in Resources */,
@@ -527,6 +526,7 @@
 				BF00F48C1E4D2FA300D5D743 /* CategoryExpensesViewController.swift in Sources */,
 				BF00F4901E4D344A00D5D743 /* AddEditExpenseViewController.swift in Sources */,
 				BF9687C61E58DBED001CD715 /* BalanceView.swift in Sources */,
+				BDFC60F21E8D4A3900D77087 /* ExpensesBaseDeviceViewController.swift in Sources */,
 				BDFC60EC1E8D03A800D77087 /* ExpensesViewController+UITableView.swift in Sources */,
 				BF3FFBEF1E4BC9E200559134 /* AddEditCategoryViewController.swift in Sources */,
 				BF2514751E470FD100042FEF /* LoginViewController.swift in Sources */,

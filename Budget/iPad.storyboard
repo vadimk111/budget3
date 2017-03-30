@@ -298,7 +298,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Expenses" image="coins" id="GTE-B4-Doa"/>
                     <connections>
-                        <outlet property="o_dateChanger" destination="cSL-UV-f2I" id="pS4-rx-jdH"/>
+                        <outlet property="o_dateChanger" destination="cSL-UV-f2I" id="F6Z-lg-KrC"/>
                         <outlet property="o_expensesContainer" destination="lRG-h9-8s1" id="dIh-qg-4su"/>
                     </connections>
                 </viewController>

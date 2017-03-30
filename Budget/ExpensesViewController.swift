@@ -9,11 +9,49 @@
 import UIKit
 import FirebaseDatabase
 
+class ExpenseWithCategoryData {
+    var expense: Expense
+    var categoryId: String?
+    var categoryTitle: String?
+    var categoryRef: FIRDatabaseReference?
+    
+    init(expense: Expense, category: Category) {
+        self.expense = expense
+        categoryId = category.id
+        categoryTitle = category.title
+        categoryRef = category.getDatabaseReference()
+    }
+}
+
+class GroupedExpneses {
+    var date: Date
+    var expenses: [ExpenseWithCategoryData]
+    
+    init(date: Date, expenses: [ExpenseWithCategoryData]) {
+        self.date = date
+        self.expenses = expenses
+    }
+}
+
+protocol ExpensesViewControllerDelegate: class {
+    func expensesViewController(_ expensesViewController: ExpensesViewController, didSelect expense: Expense)
+    func expensesViewControllerRowDeselected(_ expensesViewController: ExpensesViewController)
+}
+
 class ExpensesViewController: UITableViewController {
 
     var groupedExpensesList: [GroupedExpneses]?
     var date: Date = Date()
+    var delegate: ExpensesViewControllerDelegate?
     
+    var tableSeparatorInset: UIEdgeInsets? {
+        didSet {
+            if let tableSeparatorInset = tableSeparatorInset {
+                tableView.separatorInset = tableSeparatorInset
+            }
+        }
+    }
+
     deinit {
         unregisterFromUpdates()
     }

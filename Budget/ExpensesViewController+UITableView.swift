@@ -49,4 +49,9 @@ extension ExpensesViewController {
         return true
     }
    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let groupedExpensesList = groupedExpensesList {
+            delegate?.expensesViewController(self, didSelect: groupedExpensesList[indexPath.section].expenses[indexPath.row].expense)
+        }
+    }
 }
