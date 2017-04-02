@@ -24,6 +24,8 @@
 		BDFC60EC1E8D03A800D77087 /* ExpensesViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60EB1E8D03A800D77087 /* ExpensesViewController+UITableView.swift */; };
 		BDFC60EE1E8D3CE800D77087 /* ExpensesViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60ED1E8D3CE800D77087 /* ExpensesViewController+Firebase.swift */; };
 		BDFC60F21E8D4A3900D77087 /* ExpensesBaseDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60F11E8D4A3900D77087 /* ExpensesBaseDeviceViewController.swift */; };
+		BDFC60F41E914AA900D77087 /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60F31E914AA900D77087 /* UIKitExtensions.swift */; };
+		BDFC60F61E914F3F00D77087 /* CategoryExpensesViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60F51E914F3F00D77087 /* CategoryExpensesViewController+Firebase.swift */; };
 		BF00F4841E4D1F2500D5D743 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F4831E4D1F2500D5D743 /* CategoryTableViewCell.swift */; };
 		BF00F4861E4D1F4300D5D743 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */; };
 		BF00F4881E4D1F5200D5D743 /* ProgressBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */; };
@@ -87,6 +89,8 @@
 		BDFC60EB1E8D03A800D77087 /* ExpensesViewController+UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExpensesViewController+UITableView.swift"; sourceTree = "<group>"; };
 		BDFC60ED1E8D3CE800D77087 /* ExpensesViewController+Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExpensesViewController+Firebase.swift"; sourceTree = "<group>"; };
 		BDFC60F11E8D4A3900D77087 /* ExpensesBaseDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesBaseDeviceViewController.swift; sourceTree = "<group>"; };
+		BDFC60F31E914AA900D77087 /* UIKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
+		BDFC60F51E914F3F00D77087 /* CategoryExpensesViewController+Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryExpensesViewController+Firebase.swift"; sourceTree = "<group>"; };
 		BF00F4831E4D1F2500D5D743 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressBar.xib; sourceTree = "<group>"; };
@@ -199,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				BF00F48B1E4D2FA300D5D743 /* CategoryExpensesViewController.swift */,
+				BDFC60F51E914F3F00D77087 /* CategoryExpensesViewController+Firebase.swift */,
 				BD3D40751E87965800C3CCAF /* CategoryExpensesViewController+UITableView.swift */,
 			);
 			name = "Category Expenses";
@@ -355,6 +360,7 @@
 				BF9063231E6896DF004B5F8B /* DateChanger.xib */,
 				BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */,
 				BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */,
+				BDFC60F31E914AA900D77087 /* UIKitExtensions.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -521,6 +527,7 @@
 				BDFC60E81E8D02D300D77087 /* ExpensesPadViewController.swift in Sources */,
 				BD589DEF1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift in Sources */,
 				BFFCD70D1E73D8C70030BD79 /* OverviewHeaderView.swift in Sources */,
+				BDFC60F41E914AA900D77087 /* UIKitExtensions.swift in Sources */,
 				BF2514791E47165100042FEF /* MainPhoneViewController.swift in Sources */,
 				BF9063221E6896D3004B5F8B /* DateChanger.swift in Sources */,
 				BF00F48C1E4D2FA300D5D743 /* CategoryExpensesViewController.swift in Sources */,
@@ -547,6 +554,7 @@
 				BF2514811E48659400042FEF /* ModelHelper.swift in Sources */,
 				BFCA1B7F1E4E3A450023AB55 /* ExpenseTableViewCell.swift in Sources */,
 				BF37924A1E09633C0060445D /* SettingsViewController.swift in Sources */,
+				BDFC60F61E914F3F00D77087 /* CategoryExpensesViewController+Firebase.swift in Sources */,
 				BF00F4941E4D350C00D5D743 /* ModelBaseObject.swift in Sources */,
 				BF3792481E0963330060445D /* CategoriesViewController.swift in Sources */,
 				BF00F4861E4D1F4300D5D743 /* ProgressBar.swift in Sources */,

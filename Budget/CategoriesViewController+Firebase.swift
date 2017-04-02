@@ -135,7 +135,9 @@ extension CategoriesViewController {
             category.subCategories = originalCategory.subCategories
             categories.remove(at: index)
             categories.insert(category, at: index)
-            tableView.reloadRows(at: [IndexPath.init(row: index, section: 0)], with: .none)
+            if let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? CategoryTableViewCell {
+                cell.update(with: category)
+            }
         }
         
         if let parent = category.parent, let parentCategory = categories.filter({ $0.id == parent }).first {
@@ -144,7 +146,9 @@ extension CategoriesViewController {
                 parentCategory.subCategories?.insert(category, at: subIndex)
             }
             if let index = categories.index(of: parentCategory) {
-                tableView.reloadRows(at: [IndexPath.init(row: index, section: 0)], with: .none)
+                if let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? CategoryTableViewCell {
+                    cell.update(with: category)
+                }
             }
         }
     }
@@ -184,8 +188,10 @@ extension CategoriesViewController {
                 }
             }
             
-            if let index = categories.index(of: originalParent!) {
-                tableView.reloadRows(at: [IndexPath.init(row: index, section: 0)], with: .none)
+            if let originalParent = originalParent, let index = categories.index(of: originalParent) {
+                if let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? CategoryTableViewCell {
+                    cell.update(with: originalParent)
+                }
             }
         }
     }

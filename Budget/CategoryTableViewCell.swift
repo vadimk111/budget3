@@ -49,6 +49,10 @@ class CategoryTableViewCell: UITableViewCell, BalanceViewDelegate {
         }
         o_balanceView.populate(amount: data.calculatedAmount, totalSpent: data.calculatedTotalSpent, title: data.title, titleColor: mainColor, showExpand: data.subCategories != nil, isExpanded: isExpanded)
     }
+    
+    func update(with data: Category) {
+        o_balanceView.update(amount: data.calculatedAmount, totalSpent: data.calculatedTotalSpent, title: data.title)
+    }
 
     func isExpanded() -> Bool {
         return o_balanceView.isExpanded()

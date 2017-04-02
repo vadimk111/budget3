@@ -18,21 +18,30 @@ class ExpensesBaseDeviceViewController: UIViewController, DateChangerDelegate, E
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(forName: budgetChangedNotification, object: nil, queue: nil, using: { [unowned self] notification in
-            self.timer?.invalidate()
-            self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (timer) in
-                self.reload()
-            })
-        })
+        NotificationCenter.default.addObserver(self, selector: #selector(ExpensesBaseDeviceViewController.onBudgetChanged), name: budgetChangedNotification, object: nil)
         
-        NotificationCenter.default.addObserver(forName: signInStateChangedNotification, object: nil, queue: nil, using: { [unowned self] notification in
-            self.reload()
-        })
+        NotificationCenter.default.addObserver(self, selector: #selector(ExpensesBaseDeviceViewController.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
         
         o_dateChanger.delegate = self
         o_dateChanger.date = Date()
         
         reload()
+    }
+    
+    func onBudgetChanged() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [unowned self] (timer) in
+            self.timer = nil
+            self.reload()
+        })
+    }
+    
+    func onSignInStateChanged() {
+        reload()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func reload() {

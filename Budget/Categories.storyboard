@@ -70,9 +70,6 @@
                             <action selector="didPullToRefresh:" destination="cfD-Ag-9Zs" eventType="valueChanged" id="Hkd-6F-OhU"/>
                         </connections>
                     </refreshControl>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="isCompactView" value="NO"/>
-                    </userDefinedRuntimeAttributes>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NCV-Ok-a1i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

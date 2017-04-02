@@ -26,12 +26,15 @@ extension CategoriesViewController {
         var actions = [UITableViewRowAction]()
         
         let edit = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Edit", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+            self.tableView.setEditing(false, animated: true)
             self.delegate?.categoriesViewController(self, didEdit: self.categories[indexPath.row])
         })
         actions.append(edit)
         
         if categories[indexPath.row].isBill == true {
             let pay = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Pay", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+                self.tableView.setEditing(false, animated: true)
+                
                 let categoryToPay = self.categories[indexPath.row]
                 let expense = Expense()
                 expense.amount = categoryToPay.amount

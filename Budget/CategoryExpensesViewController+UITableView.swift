@@ -9,6 +9,16 @@
 import UIKit
 
 extension CategoryExpensesViewController {
+    
+    func expense(for indexPath: IndexPath) -> Expense? {
+        if indexPath.section == 0 {
+            return category?.expenses?[indexPath.row]
+        } else if let subExpenses = category?.subCategories?[indexPath.section - 1].expenses {
+            return subExpenses[indexPath.row]
+        }
+        return nil
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         if let subCategories = category?.subCategories {
             return subCategories.count + 1

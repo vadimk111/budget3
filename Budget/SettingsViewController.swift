@@ -27,10 +27,12 @@ class SettingsViewController: UIViewController, AuthenticationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(forName: signInStateChangedNotification, object: nil, queue: nil, using: { [weak self] notification in
-            self?.reload()
-        })
+        NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
         
+        reload()
+    }
+    
+    func onSignInStateChanged() {
         reload()
     }
     

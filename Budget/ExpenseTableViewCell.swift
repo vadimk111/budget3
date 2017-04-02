@@ -33,8 +33,13 @@ class ExpenseTableViewCell: UITableViewCell {
     }
 
     func fill(with data: Expense, mainColor: UIColor) {
-        o_title.text = data.title
         o_title.textColor = mainColor
+        
+        update(with: data)
+    }
+    
+    func update(with data: Expense) {
+        o_title.text = data.title
         
         if let amount = data.amount {
             o_amount.text = amount.toString()

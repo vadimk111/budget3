@@ -19,11 +19,13 @@ class MainPadViewController: UIViewController, AuthenticationDelegate, SettingsV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(forName: signInStateChangedNotification, object: nil, queue: nil, using: { [unowned self] notification in
-            self.authentication = nil
-            APP.automaticAuthenticationCompleted = true
-            NotificationCenter.default.removeObserver(self, name: signInStateChangedNotification, object: nil)
-        })
+        NotificationCenter.default.addObserver(self, selector: #selector(MainPadViewController.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
+    }
+    
+    func onSignInStateChanged() {
+        authentication = nil
+        APP.automaticAuthenticationCompleted = true
+        NotificationCenter.default.removeObserver(self, name: signInStateChangedNotification, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {

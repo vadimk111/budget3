@@ -19,11 +19,17 @@ class CategoryDetailPhoneViewController: UIViewController, CategoryExpensesViewC
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(forName: signInStateChangedNotification, object: nil, queue: nil, using: { [unowned self] notification in
-            _ = self.navigationController?.popViewController(animated: false)
-        })
+        NotificationCenter.default.addObserver(self, selector: #selector(CategoryDetailPhoneViewController.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
         
         updateBalanceNavView()
+    }
+    
+    func onSignInStateChanged() {
+        _ = navigationController?.popViewController(animated: false)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func updateBalanceNavView() {
