@@ -34,11 +34,11 @@ class GroupedExpneses {
 }
 
 protocol ExpensesViewControllerDelegate: class {
-    func expensesViewController(_ expensesViewController: ExpensesViewController, didSelect expense: Expense)
+    func expensesViewController(_ expensesViewController: ExpensesViewController, didSelect expenseData: ExpenseWithCategoryData)
     func expensesViewControllerRowDeselected(_ expensesViewController: ExpensesViewController)
 }
 
-class ExpensesViewController: UITableViewController {
+class ExpensesViewController: UITableViewController, OverviewTableViewCellDelegate {
 
     var groupedExpensesList: [GroupedExpneses]?
     var date: Date = Date()
@@ -145,4 +145,7 @@ class ExpensesViewController: UITableViewController {
         reload()
     }
 
+    func overviewTableViewCellDeselected(_ cell: OverviewTableViewCell) {
+        delegate?.expensesViewControllerRowDeselected(self)
+    }
 }

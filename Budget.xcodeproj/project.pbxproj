@@ -25,6 +25,7 @@
 		BDFC60EE1E8D3CE800D77087 /* ExpensesViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60ED1E8D3CE800D77087 /* ExpensesViewController+Firebase.swift */; };
 		BDFC60F21E8D4A3900D77087 /* ExpensesBaseDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60F11E8D4A3900D77087 /* ExpensesBaseDeviceViewController.swift */; };
 		BDFC60F61E914F3F00D77087 /* CategoryExpensesViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60F51E914F3F00D77087 /* CategoryExpensesViewController+Firebase.swift */; };
+		BDFC60FC1E91944800D77087 /* ExpenseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60FB1E91944800D77087 /* ExpenseDetailsViewController.swift */; };
 		BF00F4841E4D1F2500D5D743 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F4831E4D1F2500D5D743 /* CategoryTableViewCell.swift */; };
 		BF00F4861E4D1F4300D5D743 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */; };
 		BF00F4881E4D1F5200D5D743 /* ProgressBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */; };
@@ -89,6 +90,7 @@
 		BDFC60ED1E8D3CE800D77087 /* ExpensesViewController+Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExpensesViewController+Firebase.swift"; sourceTree = "<group>"; };
 		BDFC60F11E8D4A3900D77087 /* ExpensesBaseDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesBaseDeviceViewController.swift; sourceTree = "<group>"; };
 		BDFC60F51E914F3F00D77087 /* CategoryExpensesViewController+Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryExpensesViewController+Firebase.swift"; sourceTree = "<group>"; };
+		BDFC60FB1E91944800D77087 /* ExpenseDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseDetailsViewController.swift; sourceTree = "<group>"; };
 		BF00F4831E4D1F2500D5D743 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressBar.xib; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 		BD589DF21E8469A300F0C9CD /* Expenses */ = {
 			isa = PBXGroup;
 			children = (
+				BDFC60FB1E91944800D77087 /* ExpenseDetailsViewController.swift */,
 				BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */,
 				BDFC60ED1E8D3CE800D77087 /* ExpensesViewController+Firebase.swift */,
 				BDFC60EB1E8D03A800D77087 /* ExpensesViewController+UITableView.swift */,
@@ -482,14 +485,14 @@
 		};
 		BF4A7FC91E5F218100160150 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "GOOGLE_APP_ID=1:15913282601:ios:5e2d75d9e8c8981d\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"ServiceAccount.json\"";
 		};
@@ -529,6 +532,7 @@
 				BF00F48C1E4D2FA300D5D743 /* CategoryExpensesViewController.swift in Sources */,
 				BF00F4901E4D344A00D5D743 /* AddEditExpenseViewController.swift in Sources */,
 				BF9687C61E58DBED001CD715 /* BalanceView.swift in Sources */,
+				BDFC60FC1E91944800D77087 /* ExpenseDetailsViewController.swift in Sources */,
 				BDFC60F21E8D4A3900D77087 /* ExpensesBaseDeviceViewController.swift in Sources */,
 				BDFC60EC1E8D03A800D77087 /* ExpensesViewController+UITableView.swift in Sources */,
 				BF3FFBEF1E4BC9E200559134 /* AddEditCategoryViewController.swift in Sources */,

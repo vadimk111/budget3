@@ -25,7 +25,7 @@ class ExpensesPhoneViewController: ExpensesBaseDeviceViewController {
     }
     
     //MARK - ExpensesViewControllerDelegate
-    override func expensesViewController(_ expensesViewController: ExpensesViewController, didSelect expense: Expense) {
-        performSegue(withIdentifier: "editExpense", sender: expense)
+    override func expensesViewController(_ expensesViewController: ExpensesViewController, didSelect expenseData: ExpenseWithCategoryData) {
+        performSegue(withIdentifier: "editExpense", sender: expenseData.expense)
     }
 }

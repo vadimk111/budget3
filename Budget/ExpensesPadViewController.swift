@@ -12,6 +12,8 @@ class ExpensesPadViewController: ExpensesBaseDeviceViewController {
 
     @IBOutlet weak var o_expensesContainer: UIView!
     
+    var expenseDetailsViewController: ExpenseDetailsViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,11 +28,21 @@ class ExpensesPadViewController: ExpensesBaseDeviceViewController {
             expensesViewController = segue.destination as? ExpensesViewController
             expensesViewController?.delegate = self
             expensesViewController?.tableSeparatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
-        }
+        } else if segue.identifier == "expenseDetails" {
+            expenseDetailsViewController = segue.destination as? ExpenseDetailsViewController
+        } 
     }
     
     //MARK - ExpensesViewControllerDelegate
-    override func expensesViewController(_ expensesViewController: ExpensesViewController, didSelect expense: Expense) {
-        
+    override func expensesViewController(_ expensesViewController: ExpensesViewController, didSelect expenseData: ExpenseWithCategoryData) {
+        expenseDetailsViewController?.expenseData = expenseData
+    }
+    
+    override func expensesViewControllerRowDeselected(_ expensesViewController: ExpensesViewController) {
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { (Timer) -> Void in
+            if expensesViewController.tableView.indexPathForSelectedRow == nil {
+                self.expenseDetailsViewController?.expenseData = nil
+            }
+        })
     }
 }

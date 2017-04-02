@@ -31,6 +31,7 @@ extension ExpensesViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "expenseCells", for: indexPath) as! OverviewTableViewCell
+        cell.delegate = self
         if let expenseWithCategory = groupedExpensesList?[indexPath.section].expenses[indexPath.row] {
             cell.fill(with: expenseWithCategory.expense, categoryTitle: expenseWithCategory.categoryTitle, mainColor: colors[indexPath.row % colors.count])
         }
@@ -51,7 +52,7 @@ extension ExpensesViewController {
    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let groupedExpensesList = groupedExpensesList {
-            delegate?.expensesViewController(self, didSelect: groupedExpensesList[indexPath.section].expenses[indexPath.row].expense)
+            delegate?.expensesViewController(self, didSelect: groupedExpensesList[indexPath.section].expenses[indexPath.row])
         }
     }
 }

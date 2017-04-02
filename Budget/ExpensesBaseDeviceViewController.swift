@@ -62,7 +62,7 @@ class ExpensesBaseDeviceViewController: UIViewController, DateChangerDelegate, E
         
     }
     
-    func expensesViewController(_ expensesViewController: ExpensesViewController, didSelect expense: Expense) {
+    func expensesViewController(_ expensesViewController: ExpensesViewController, didSelect expenseData: ExpenseWithCategoryData) {
         
     }
 }
