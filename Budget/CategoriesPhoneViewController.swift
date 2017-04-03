@@ -10,6 +10,8 @@ import UIKit
 
 class CategoriesPhoneViewController: CategoriesBaseDeviceViewController {
 
+    @IBOutlet weak var o_editBarButton: UIBarButtonItem!
+    
     @IBAction func didTapEdit(_ sender: UIBarButtonItem) {
         if let categoriesViewController = categoriesViewController {
             if categoriesViewController.tableView.isEditing {
@@ -48,5 +50,10 @@ class CategoriesPhoneViewController: CategoriesBaseDeviceViewController {
     //MARK - CategoriesViewControllerDelegate
     override func categoriesViewController(_ categoriesViewController: CategoriesViewController, didSelect category: Category) {
         performSegue(withIdentifier: "drillDown", sender: category)
+    }
+    
+    override func categoriesViewControllerChanged(_ categoriesViewController: CategoriesViewController) {
+        super.categoriesViewControllerChanged(categoriesViewController)
+        o_editBarButton.isEnabled = categoriesViewController.categories.count > 0
     }
 }

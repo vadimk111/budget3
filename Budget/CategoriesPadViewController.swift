@@ -15,6 +15,7 @@ class CategoriesPadViewController: CategoriesBaseDeviceViewController, CategoryE
     
     @IBOutlet weak var o_categoriesContainer: UIView!
     @IBOutlet weak var o_addExpenseBtn: UIButton!
+    @IBOutlet weak var o_editCategoryBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,6 +95,11 @@ class CategoriesPadViewController: CategoriesBaseDeviceViewController, CategoryE
                 self.o_addExpenseBtn.isEnabled = false
             }
         })
+    }
+    
+    override func categoriesViewControllerChanged(_ categoriesViewController: CategoriesViewController) {
+        super.categoriesViewControllerChanged(categoriesViewController)
+        o_editCategoryBtn.isEnabled = categoriesViewController.categories.count > 0
     }
     
     //MARK - CategoryExpensesViewControllerDelegate

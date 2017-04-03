@@ -77,7 +77,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Categories" id="zZW-T2-1VQ">
-                        <barButtonItem key="leftBarButtonItem" image="edit-tool" id="6hw-wn-60o">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" image="edit-tool" id="6hw-wn-60o">
                             <connections>
                                 <action selector="didTapEdit:" destination="XV7-le-M47" id="H8J-rC-ayJ"/>
                             </connections>
@@ -90,6 +90,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="o_categoriesHeaderView" destination="AIC-M3-WH5" id="5ga-ad-Lhc"/>
+                        <outlet property="o_editBarButton" destination="6hw-wn-60o" id="9FI-MQ-Ej7"/>
                         <segue destination="au9-j3-tZH" kind="presentation" identifier="editCategory" id="XSk-6f-Wr0"/>
                         <segue destination="NDb-5b-vsm" kind="show" identifier="drillDown" id="xoP-N9-LSn"/>
                     </connections>

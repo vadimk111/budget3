@@ -122,7 +122,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u1F-eD-D6x">
                                 <rect key="frame" x="0.0" y="100" width="1024" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmq-JQ-HJX" userLabel="Edit">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmq-JQ-HJX" userLabel="Edit">
                                         <rect key="frame" x="10" y="-2" width="30" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="Geb-tI-G8t"/>
@@ -228,6 +228,7 @@
                         <outlet property="o_addExpenseBtn" destination="39L-gu-CHv" id="XfD-ES-cXu"/>
                         <outlet property="o_categoriesContainer" destination="oYZ-WC-zhs" id="ZFx-JH-bJE"/>
                         <outlet property="o_categoriesHeaderView" destination="dbB-tl-zwx" id="Bny-Ey-k9X"/>
+                        <outlet property="o_editCategoryBtn" destination="hmq-JQ-HJX" id="TbH-s4-XJW"/>
                         <segue destination="J3Y-36-xzN" kind="popoverPresentation" identifier="editCategory" popoverAnchorView="oYZ-WC-zhs" id="4NM-Zi-o9i">
                             <popoverArrowDirection key="popoverArrowDirection"/>
                         </segue>

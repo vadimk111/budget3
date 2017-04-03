@@ -44,6 +44,7 @@ class ExpenseDetailsViewController: UIViewController {
         if segue.identifier == "editExpense" {
             let editVC: AddEditExpenseViewController? = segue.destinationController()
             editVC?.expense = expenseData?.expense
+            editVC?.title = "Edit Expense"
         }
     }
 }
