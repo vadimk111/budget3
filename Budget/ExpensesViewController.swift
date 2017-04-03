@@ -73,6 +73,9 @@ class ExpensesViewController: UITableViewController, OverviewTableViewCellDelega
         } else {
             date = Date()
             groupedExpensesList = nil
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                tableView.deselectRow(at: selectedIndexPath, animated: false)
+            }
             tableView.reloadData()
         }
     }

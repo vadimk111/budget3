@@ -71,6 +71,9 @@ class CategoriesViewController: UITableViewController {
             closestBudget = nil
             expandedCategories = [:]
             categories = []
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                tableView.deselectRow(at: selectedIndexPath, animated: false)
+            }
             tableView.reloadData()
             delegate?.categoriesViewControllerChanged(self)
         }
