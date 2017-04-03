@@ -65,3 +65,7 @@ fastlane/test_output
 
 Budget/GoogleService-Info.plist
 ServiceAccount.json
+.firebaserc
+database.rules.json
+firebase.json
+functions/
