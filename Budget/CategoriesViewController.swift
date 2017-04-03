@@ -11,7 +11,14 @@ import FirebaseDatabase
 
 let budgetChangedNotification = Notification.Name(rawValue: "budgetChanged")
 
-class CategoriesViewController: UITableViewController, TabBarComponent {
+protocol CategoriesViewControllerDelegate: class {
+    func categoriesViewController(_ categoriesViewController: CategoriesViewController, didSelect category: Category)
+    func categoriesViewController(_ categoriesViewController: CategoriesViewController, didEdit category: Category)
+    func categoriesViewControllerChanged(_ categoriesViewController: CategoriesViewController)
+    func categoriesViewControllerRowDeselected(_ categoriesViewController: CategoriesViewController)
+}
+
+class CategoriesViewController: UITableViewController {
 
     var budgetRef: FIRDatabaseReference?
     var categories: [Category] = []
@@ -20,26 +27,17 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
     var isRefreshing = false
     var closestBudget: [Category]?
     var expandedCategories: [String : Bool] = [:]
-    var headerView: CategoriesHeaderView!
+    weak var delegate: CategoriesViewControllerDelegate?
     
-    @IBOutlet weak var o_editButton: UIBarButtonItem!
-    
+    var tableSeparatorInset: UIEdgeInsets? {
+        didSet {
+            if let tableSeparatorInset = tableSeparatorInset {
+                tableView.separatorInset = tableSeparatorInset
+            }
+        }
+    }
     var availableParents: [Category] {
         return categories.filter({ $0.parent == nil })
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(forName: signInStateChangedNotification, object: nil, queue: nil, using: { [unowned self] notification in
-            self.closestBudget = nil
-            self.date = Date()
-            self.reload()
-        })
-        
-        headerView = CategoriesHeaderView()
-        headerView.delegate = self
-        headerView.fill(with: availableParents, date: date)
     }
     
     deinit {
@@ -47,6 +45,8 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
     }
     
     func reload() {
+        unregisterFromUpdates(budgetRef: budgetRef)
+        
         let ref = FIRDatabase.database().reference().child("budgets")
         if let budgetId = ModelHelper.budgetId(for: date) {
             budgetRef = ref.child(budgetId)
@@ -58,20 +58,24 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
                 }
                 self.registerToUpdates(budgetRef: self.budgetRef)
                 self.tableView.reloadData()
-                self.updateHeaderView()
+                self.delegate?.categoriesViewControllerChanged(self)
                 
                 if self.isRefreshing {
                     self.isRefreshing = false
                     self.tableView.refreshControl?.endRefreshing()
                 }
             })
+        } else {
+            date = Date()
+            budgetRef = nil
+            closestBudget = nil
+            expandedCategories = [:]
+            categories = []
+            tableView.reloadData()
+            delegate?.categoriesViewControllerChanged(self)
         }
     }
-    
-    func updateHeaderView() {
-        headerView.fill(with: availableParents, date: date)
-    }
-    
+        
     func prepareBudget(from snapshot: FIRDataSnapshot) -> Bool {
         categories = []
         var subCategories: [String : [Category]] = [:]
@@ -169,59 +173,29 @@ class CategoriesViewController: UITableViewController, TabBarComponent {
     @IBAction func didPullToRefresh(_ sender: UIRefreshControl) {
         isRefreshing = true
         expandedCategories = [:]
-        unregisterFromUpdates(budgetRef: budgetRef)
         reload()
     }
     
-    @IBAction func didTapEdit(_ sender: UIBarButtonItem) {
-        if tableView.isEditing {
-            o_editButton.image = UIImage(named: "edit-tool")
-            tableView.setEditing(false, animated: true)
+    func goNextMonth() {
+        changeToDate(date.nextMonth())
+    }
+    
+    func goPrevMonth() {
+        changeToDate(date.prevMonth())
+    }
+    
+    func changeToDate(_ date: Date) {
+        let calendar = Calendar.current
+        if calendar.component(.month, from: date) == calendar.component(.month, from: Date()) {
+            self.date = Date()
         } else {
-            tableView.setEditing(true, animated: true)
-            o_editButton.image = UIImage(named: "checked")
+            self.date = date
         }
+        
+        dateChanged = true
+        closestBudget = categories
+        expandedCategories = [:]
+        
+        reload()
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "addCategory" {
-            let vc = addEditController(from: segue)
-            vc?.parents = availableParents
-            if let last = availableParents.last {
-                vc?.highestOrder = last.order
-            }
-            vc?.budgetRef = budgetRef
-        } else if segue.identifier == "editCategory" {
-            if let index = sender as? IndexPath {
-                let category = categories[index.row]
-                
-                let vc = addEditController(from: segue)
-                vc?.category = category.makeCopy()
-                vc?.category?.setDatabaseReference(ref: category.getDatabaseReference())
-                
-                if category.subCategories == nil {
-                    vc?.parents = availableParents.filter({ $0.id != category.id })
-                }
-                if let last = availableParents.last {
-                    vc?.highestOrder = last.order
-                }
-            }
-        } else if segue.identifier == "drillDown" {
-            let backItem = UIBarButtonItem()
-            backItem.title = ""
-            navigationItem.backBarButtonItem = backItem
-            
-            if let index = tableView.indexPathForSelectedRow {
-                (segue.destination as? CategoryViewController)?.category = categories[index.row]
-                (segue.destination as? CategoryViewController)?.currentDate = date
-            }
-        }
-    }
-    
-    func addEditController(from segue: UIStoryboardSegue) -> AddEditCategoryViewController? {
-        if let nav = segue.destination as? UINavigationController {
-            return nav.viewControllers.first as? AddEditCategoryViewController
-        }
-        return segue.destination as? AddEditCategoryViewController
-    }    
 }

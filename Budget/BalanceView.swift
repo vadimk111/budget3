@@ -74,12 +74,18 @@ class BalanceView: CustomView {
             o_expandButton.isHidden = true
         }
         
-        if let title = title {
-            o_title.text = title
-        }
         if let titleColor = titleColor {
             o_title.textColor = titleColor
         }
+        
+        update(amount: amount, totalSpent: totalSpent, title: title)
+    }
+    
+    func update(amount: Float, totalSpent: Float, title: String? = nil) {
+        if let title = title {
+            o_title.text = title
+        }
+        
         o_amountSpent.text = totalSpent.toString()
         o_amount.text = "/ " + amount.toString()
         o_amountLeft.text = (amount - totalSpent).toString()

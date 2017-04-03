@@ -2,12 +2,12 @@
 //  ExpensesViewController.swift
 //  Budget
 //
-//  Created by Vadim Kononov on 11/03/2017.
+//  Created by Vadik on 30/03/2017.
 //  Copyright © 2017 Vadim Kononov. All rights reserved.
 //
 
 import UIKit
-import Firebase
+import FirebaseDatabase
 
 class ExpenseWithCategoryData {
     var expense: Expense
@@ -33,64 +33,47 @@ class GroupedExpneses {
     }
 }
 
-class ExpensesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DateChangerDelegate, TabBarComponent {
+protocol ExpensesViewControllerDelegate: class {
+    func expensesViewController(_ expensesViewController: ExpensesViewController, didSelect expenseData: ExpenseWithCategoryData)
+    func expensesViewControllerRowDeselected(_ expensesViewController: ExpensesViewController)
+}
 
-    @IBOutlet weak var o_dateChanger: DateChanger!
-    @IBOutlet weak var o_tableView: UITableView!
-    
+class ExpensesViewController: UITableViewController, OverviewTableViewCellDelegate {
+
     var groupedExpensesList: [GroupedExpneses]?
     var date: Date = Date()
-
-    var timer: Timer?
+    var delegate: ExpensesViewControllerDelegate?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        NotificationCenter.default.addObserver(forName: budgetChangedNotification, object: nil, queue: nil, using: { [unowned self] notification in
-            self.timer?.invalidate()
-            self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (timer) in
-                self.reload()
-            })
-        })
-        
-        o_dateChanger.delegate = self
-        o_dateChanger.date = date
-        
-        o_tableView.refreshControl = UIRefreshControl()
-        o_tableView.refreshControl?.addTarget(self, action: #selector(ExpensesViewController.refresh(_:)), for: .valueChanged)
-        
-        NotificationCenter.default.addObserver(forName: signInStateChangedNotification, object: nil, queue: nil, using: { [unowned self] notification in
-            self.date = Date()
-            self.reload()
-        })
-                
-        reload()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if let indexPath = o_tableView.indexPathForSelectedRow {
-            o_tableView.deselectRow(at: indexPath, animated: true)
+    var tableSeparatorInset: UIEdgeInsets? {
+        didSet {
+            if let tableSeparatorInset = tableSeparatorInset {
+                tableView.separatorInset = tableSeparatorInset
+            }
         }
     }
-    
+
     deinit {
         unregisterFromUpdates()
     }
     
-    func refresh(_ refreshControl: UIRefreshControl) {
-        unregisterFromUpdates()
+    @IBAction func didPullToRefresh(_ sender: UIRefreshControl) {
         reload()
     }
     
     func reload() {
+        unregisterFromUpdates()
+        
         if let budgetId = ModelHelper.budgetId(for: date) {
             let ref = FIRDatabase.database().reference().child("budgets")
             ref.child(budgetId).observeSingleEvent(of: .value, with: { snapshot in
                 self.prepareExpenses(from: snapshot)
-                self.o_tableView.reloadData()
-                self.o_tableView.refreshControl?.endRefreshing()
+                self.tableView.reloadData()
+                self.tableView.refreshControl?.endRefreshing()
             })
+        } else {
+            date = Date()
+            groupedExpensesList = nil
+            tableView.reloadData()
         }
     }
     
@@ -144,132 +127,25 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
         }
         return nil
     }
-    
-    func registerToUpdates(category: Category) {
-        let listRef = category.getDatabaseReference()?.child("expenses")
-        
-        listRef?.observe(.childAdded, with: { [unowned self] snapshot in
-            let expense = Expense(snapshot: snapshot)
-            if self.group(for: expense.id) == nil {
-                self.addExpenseToModel(expense, category: category)
-                self.o_tableView.reloadData()
-            }
-        })
-        
-        listRef?.observe(.childChanged, with: { [unowned self] snapshot in
-            let expense = Expense(snapshot: snapshot)
-            self.removeExpenseFromModel(expense)
-            self.addExpenseToModel(expense, category: category)
-            self.o_tableView.reloadData()
-        })
-        
-        listRef?.observe(.childRemoved, with: { [unowned self] snapshot in
-            let expense = Expense(snapshot: snapshot)
-            self.removeExpenseFromModel(expense)
-            self.o_tableView.reloadData()
-        })
+
+    func goNextMonth() -> Date {
+        let newDate = date.nextMonth()
+        changeToDate(newDate)
+        return newDate
     }
     
-    func addExpenseToModel(_ expense: Expense, category: Category) {
-        let expenseWithCategory = ExpenseWithCategoryData(expense: expense, category: category)
-        if let newGroup = self.group(for: expense.date) {
-            newGroup.expenses.append(expenseWithCategory)
-        } else if let date = expense.date {
-            self.groupedExpensesList?.append(GroupedExpneses(date: date, expenses: [expenseWithCategory]))
-            self.sortExpenses()
-        }
-    }
-    
-    func removeExpenseFromModel(_ expense: Expense) {
-        if let group = self.group(for: expense.id) {
-            if let index = group.expenses.index(where: { $0.expense.id == expense.id }) {
-                group.expenses.remove(at: index)
-            }
-        }
-    }
-    
-    func unregisterFromUpdates() {
-        if let list = groupedExpensesList {
-            for item in list {
-                for expense in item.expenses {
-                    expense.categoryRef?.child("expenses").removeAllObservers()
-                }
-            }
-        }
-    }
-    
-    func dateChangerDidGoPrev(_ dateChanger: DateChanger) {
-        changeToDate(date.prevMonth())
-    }
-    
-    func dateChangerDidGoNext(_ dateChanger: DateChanger) {
-        changeToDate(date.nextMonth())
+    func goPrevMonth() -> Date {
+        let newDate = date.prevMonth()
+        changeToDate(newDate)
+        return newDate
     }
     
     func changeToDate(_ date: Date) {
         self.date = date
-        o_dateChanger.date = date
-        unregisterFromUpdates()
         reload()
     }
 
-    // MARK: - Table view data source
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return groupedExpensesList?.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 32
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = OverviewHeaderView()
-        if let group = groupedExpensesList?[section] {
-            view.fill(with: group.date, expenses: group.expenses.map({$0.expense}))
-        }
-        return view
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groupedExpensesList?[section].expenses.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "expenseCells", for: indexPath) as! OverviewTableViewCell
-        if let expenseWithCategory = groupedExpensesList?[indexPath.section].expenses[indexPath.row] {
-            cell.fill(with: expenseWithCategory.expense, categoryTitle: expenseWithCategory.categoryTitle, mainColor: colors[indexPath.row % colors.count])
-        }
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
-            self.groupedExpensesList?[indexPath.section].expenses[indexPath.row].expense.delete()
-        })
-        return [delete]
-    }
-    
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = addEditController(from: segue)
-        if segue.identifier == "editExpense" {
-            if let index = o_tableView.indexPathForSelectedRow {
-                vc?.expense = groupedExpensesList?[index.section].expenses[index.row].expense
-                vc?.title = "Edit Expense"
-            }
-        }
-    }
-    
-    func addEditController(from segue: UIStoryboardSegue) -> AddEditExpenseViewController? {
-        if let nav = segue.destination as? UINavigationController {
-            return nav.viewControllers.first as? AddEditExpenseViewController
-        }
-        return segue.destination as? AddEditExpenseViewController
+    func overviewTableViewCellDeselected(_ cell: OverviewTableViewCell) {
+        delegate?.expensesViewControllerRowDeselected(self)
     }
 }

@@ -9,18 +9,35 @@
 import UIKit
 import FirebaseAuth
 
-let signInStateChangedNotification = Notification.Name(rawValue: "signInStateChanged")
+protocol SettingsViewControllerDelegate: class {
+    func settingsViewController(_ settingsViewController: SettingsViewController, shouldDisplayViewController viewController: UIViewController)
+    func settingsViewController(_ settingsViewController: SettingsViewController, shouldDismissViewController viewController: UIViewController)
+    func settingsViewController(_ settingsViewController: SettingsViewController, shouldDisplayAlert alert: UIAlertController)
+}
 
-class SettingsViewController: UIViewController, TabBarComponent {
+class SettingsViewController: UIViewController, AuthenticationDelegate {
 
     @IBOutlet weak var o_userEmail: UILabel!
     @IBOutlet weak var o_logoutBtn: UIButton!
     @IBOutlet weak var o_loginBtn: UIButton!
     
+    var authentication: Authentication?
+    weak var delegate: SettingsViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
+        
         reload()
+    }
+    
+    func onSignInStateChanged() {
+        reload()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func reload() {
@@ -36,33 +53,39 @@ class SettingsViewController: UIViewController, TabBarComponent {
     }
 
     @IBAction func didTapLogin(_ sender: UIButton) {
-        let login = LoginViewController()
-        login.insideTheApp = true
-        login.completion = { [unowned self] in
-            if let _ = APP.user {
-                self.reload()
-                NotificationCenter.default.post(Notification(name: signInStateChangedNotification))
-            }
-        }
-        present(login, animated: true, completion: nil)
+        authentication = Authentication()
+        authentication?.delegate = self
+        authentication?.manualSignIn()
     }
 
     @IBAction func didTapLogout(_ sender: UIButton) {
-        do {
-            try FIRAuth.auth()?.signOut()
-        } catch {
-            
+        authentication = Authentication()
+        authentication?.delegate = self
+        authentication?.signOut()
+        authentication?.manualSignIn()
+    }
+    
+    func authentication(_ authentication: Authentication, shouldDisplay viewController: UIViewController) {
+        if let delegate = delegate {
+            delegate.settingsViewController(self, shouldDisplayViewController: viewController)
+        } else {
+            present(viewController, animated: true, completion: nil)
         }
-        APP.user = nil
-        UserDefaults.standard.removeObject(forKey: "email")
-        UserDefaults.standard.removeObject(forKey: "password")
-        UserDefaults.standard.synchronize()
-        
-        let login = LoginViewController()
-        login.completion = { [unowned self] in
-            self.reload()
-            NotificationCenter.default.post(Notification(name: signInStateChangedNotification))
+    }
+    
+    func authentication(_ authentication: Authentication, shouldDisplay alert: UIAlertController) {
+        if let delegate = delegate {
+            delegate.settingsViewController(self, shouldDisplayAlert: alert)
+        } else {
+            present(alert, animated: true, completion: nil)
         }
-        present(login, animated: true, completion: nil)
+    }
+    
+    func authentication(_ authentication: Authentication, shouldDismiss viewController: UIViewController) {
+        if let delegate = delegate {
+            delegate.settingsViewController(self, shouldDismissViewController: viewController)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
     }
 }

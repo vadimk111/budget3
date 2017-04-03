@@ -12,18 +12,11 @@ extension CategoriesViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
     }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return headerView
-    }
-    
+        
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCells", for: indexPath) as! CategoryTableViewCell
         let category = categories[indexPath.row]
+        cell.trailingConstant = tableSeparatorInset?.right
         cell.populate(with: category, isExpanded: expandedCategories.keys.index(of: category.id!) != nil, mainColor: colors[indexPath.row % colors.count])
         cell.delegate = self
         return cell
@@ -33,12 +26,15 @@ extension CategoriesViewController {
         var actions = [UITableViewRowAction]()
         
         let edit = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Edit", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
-            self.performSegue(withIdentifier: "editCategory", sender: indexPath)
+            self.tableView.setEditing(false, animated: true)
+            self.delegate?.categoriesViewController(self, didEdit: self.categories[indexPath.row])
         })
         actions.append(edit)
         
         if categories[indexPath.row].isBill == true {
             let pay = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Pay", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+                self.tableView.setEditing(false, animated: true)
+                
                 let categoryToPay = self.categories[indexPath.row]
                 let expense = Expense()
                 expense.amount = categoryToPay.amount
@@ -162,5 +158,9 @@ extension CategoriesViewController {
         }
 
         return sourceIndexPath
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.categoriesViewController(self, didSelect: categories[indexPath.row])
     }
 }
