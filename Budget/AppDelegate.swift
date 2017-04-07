@@ -24,46 +24,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         FIRApp.configure()
         
-        UNUserNotificationCenter.current().delegate = self
-        
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
             self.notificationsAllowed = granted
         }
+        registerCategory()
         
         return true
     }
 
     func registerCategory() {
-        
         let clear = UNNotificationAction(identifier: "clear", title: "Clear", options: [])
-        let category = UNNotificationCategory.init(identifier: "REMINDERNOTIFICATION", actions: [clear], intentIdentifiers: [], options: [])
+        let category = UNNotificationCategory.init(identifier: reminderNotification, actions: [clear], intentIdentifiers: [], options: [])
         UNUserNotificationCenter.current().setNotificationCategories([category])
-    }
-    
-    func scheduleNotification (event : String, interval: TimeInterval) {
-        let content = UNMutableNotificationContent()
-        
-        content.title = event
-        content.body = "body"
-        content.categoryIdentifier = "REMINDERNOTIFICATION"
-        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: interval, repeats: false)
-        let identifier = "id_"+event
-        let request = UNNotificationRequest.init(identifier: identifier, content: content, trigger: trigger)
-        
-        let center = UNUserNotificationCenter.current()
-        center.add(request, withCompletionHandler: { (error) in
-        })
-        
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print("didReceive")
-        completionHandler()
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        print("willPresent")
-        completionHandler([.badge, .alert, .sound])
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

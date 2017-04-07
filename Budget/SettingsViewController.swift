@@ -11,6 +11,7 @@ import UserNotifications
 
 let showReminderskey = "showReminders"
 let remindersDatakey = "remindersData"
+let reminderNotification = "REMINDERNOTIFICATION"
 
 protocol SettingsViewControllerDelegate: class {
     func settingsViewController(_ settingsViewController: SettingsViewController, shouldDisplayViewController viewController: UIViewController)
@@ -74,11 +75,56 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
                 reminders.insert(data, at: index)
                 tableView.reloadRows(at: [IndexPath.init(row: index, section: 2)], with: .fade)
             }
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
         } else {
             data.id = UUID().uuidString
             reminders.append(data)
             tableView.insertRows(at: [IndexPath.init(row: reminders.count - 1, section: 2)], with: .fade)
         }
+        
         saveReminders()
+        scheduleNotification(for: data)
+    }
+    
+    func scheduleAllNotifications() {
+        for reminder in reminders {
+            scheduleNotification(for: reminder)
+        }
+    }
+    
+    func scheduleNotification(for reminder: ReminderData) {
+        if let identifier = reminder.id {
+            
+            let content = UNMutableNotificationContent()
+            content.body = "Time to update your expenses"
+            content.categoryIdentifier = reminderNotification
+            
+            let calendar = Calendar.current
+            let hour = calendar.component(.hour, from: reminder.date)
+            let minute = calendar.component(.minute, from: reminder.date)
+            let weekDay = calendar.component(.weekday, from: reminder.date)
+            let day = calendar.component(.day, from: reminder.date)
+            
+            var comp = DateComponents()
+            comp.hour = hour
+            comp.minute = minute
+            
+            switch reminder.repeatType {
+            case .weekly:
+                comp.weekday = weekDay
+                break
+            case .monthly:
+                comp.day = day
+            default:
+                break
+            }
+            
+            let trigger = UNCalendarNotificationTrigger.init(dateMatching: comp, repeats: reminder.repeatType != .none)
+            
+            let request = UNNotificationRequest.init(identifier: identifier, content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
+            })
+        }
     }
 }

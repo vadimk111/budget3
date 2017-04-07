@@ -43,6 +43,7 @@ extension SettingsViewController: RemindersTableViewCellDelegate {
         
         if showReminders {
             tableView.insertSections([2, 3], with: .fade)
+            scheduleAllNotifications()
         } else {
             tableView.deleteSections([2, 3], with: .fade)
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
