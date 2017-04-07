@@ -7,7 +7,10 @@
 //
 
 import UIKit
-import FirebaseAuth
+import UserNotifications
+
+let showReminderskey = "showReminders"
+let remindersDatakey = "remindersData"
 
 protocol SettingsViewControllerDelegate: class {
     func settingsViewController(_ settingsViewController: SettingsViewController, shouldDisplayViewController viewController: UIViewController)
@@ -15,21 +18,35 @@ protocol SettingsViewControllerDelegate: class {
     func settingsViewController(_ settingsViewController: SettingsViewController, shouldDisplayAlert alert: UIAlertController)
 }
 
-class SettingsViewController: UIViewController, AuthenticationDelegate {
+class SettingsViewController: UITableViewController, AddEditReminderViewControllerDelegate {
 
-    @IBOutlet weak var o_userEmail: UILabel!
-    @IBOutlet weak var o_logoutBtn: UIButton!
-    @IBOutlet weak var o_loginBtn: UIButton!
-    
-    var authentication: Authentication?
     weak var delegate: SettingsViewControllerDelegate?
+    var reminders: [ReminderData] = []
+    var showReminders = UserDefaults.standard.bool(forKey: showReminderskey)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
         
-        reload()
+        if let data = UserDefaults.standard.data(forKey: remindersDatakey),
+            let remindersArr = NSKeyedUnarchiver.unarchiveObject(with: data) as? [ReminderData] {
+            reminders = remindersArr
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let isEdit = segue.identifier == "editReminder"
+        if isEdit || segue.identifier == "addReminder" {
+            let vc: AddEditReminderViewController? = segue.destinationController()
+            vc?.delegate = self
+            
+            if isEdit {
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    vc?.reminderData = reminders[indexPath.row]
+                }
+            }
+        }
     }
     
     func onSignInStateChanged() {
@@ -41,51 +58,23 @@ class SettingsViewController: UIViewController, AuthenticationDelegate {
     }
     
     func reload() {
-        if let user = APP.user {
-            o_userEmail.text = user.email
-            o_logoutBtn.isHidden = false
-            o_loginBtn.isHidden = true
+        tableView.reloadData()
+    }
+            
+    func addEditReminderViewController(_ addEditReminderViewController: AddEditReminderViewController, didSave data: ReminderData) {
+        if let id = data.id {
+            if let index = reminders.index(where: { (reminderData: ReminderData) -> Bool in id == reminderData.id }) {
+                reminders.remove(at: index)
+                reminders.insert(data, at: index)
+                tableView.reloadRows(at: [IndexPath.init(row: index, section: 2)], with: .fade)
+            }
         } else {
-            o_userEmail.text = "Anonymous"
-            o_loginBtn.isHidden = false
-            o_logoutBtn.isHidden = true
+            data.id = UUID().uuidString
+            reminders.append(data)
+            tableView.insertRows(at: [IndexPath.init(row: reminders.count - 1, section: 2)], with: .fade)
         }
-    }
-
-    @IBAction func didTapLogin(_ sender: UIButton) {
-        authentication = Authentication()
-        authentication?.delegate = self
-        authentication?.manualSignIn()
-    }
-
-    @IBAction func didTapLogout(_ sender: UIButton) {
-        authentication = Authentication()
-        authentication?.delegate = self
-        authentication?.signOut()
-        authentication?.manualSignIn()
-    }
-    
-    func authentication(_ authentication: Authentication, shouldDisplay viewController: UIViewController) {
-        if let delegate = delegate {
-            delegate.settingsViewController(self, shouldDisplayViewController: viewController)
-        } else {
-            present(viewController, animated: true, completion: nil)
-        }
-    }
-    
-    func authentication(_ authentication: Authentication, shouldDisplay alert: UIAlertController) {
-        if let delegate = delegate {
-            delegate.settingsViewController(self, shouldDisplayAlert: alert)
-        } else {
-            present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    func authentication(_ authentication: Authentication, shouldDismiss viewController: UIViewController) {
-        if let delegate = delegate {
-            delegate.settingsViewController(self, shouldDismissViewController: viewController)
-        } else {
-            dismiss(animated: true, completion: nil)
-        }
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: reminders)
+        UserDefaults.standard.set(encodedData, forKey: remindersDatakey)
+        UserDefaults.standard.synchronize()
     }
 }

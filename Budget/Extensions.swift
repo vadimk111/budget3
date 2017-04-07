@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 let dateFormat = "dd-MM-yyyy"
+let dateTimeFormat = "dd-MM-yyyy', 'HH:mm"
 
 extension String {
     func toDate() -> Date {
@@ -23,9 +24,9 @@ extension String {
 }
 
 extension Date {
-    func toString() -> String {
+    func toString(showTime: Bool = false) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = dateFormat
+        dateFormatter.dateFormat = showTime ? dateTimeFormat : dateFormat
         return dateFormatter.string(from: self)
     }
     

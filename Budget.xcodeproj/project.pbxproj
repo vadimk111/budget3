@@ -26,6 +26,17 @@
 		BDFC60F21E8D4A3900D77087 /* ExpensesBaseDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60F11E8D4A3900D77087 /* ExpensesBaseDeviceViewController.swift */; };
 		BDFC60F61E914F3F00D77087 /* CategoryExpensesViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60F51E914F3F00D77087 /* CategoryExpensesViewController+Firebase.swift */; };
 		BDFC60FC1E91944800D77087 /* ExpenseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60FB1E91944800D77087 /* ExpenseDetailsViewController.swift */; };
+		BDFC60FE1E928D0B00D77087 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDFC60FD1E928D0B00D77087 /* UserNotifications.framework */; };
+		BDFC61001E9296F200D77087 /* SettingsViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60FF1E9296F200D77087 /* SettingsViewController+UITableView.swift */; };
+		BDFC61021E92989600D77087 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC61011E92989600D77087 /* AccountTableViewCell.swift */; };
+		BDFC61041E9298AC00D77087 /* RemindersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC61031E9298AC00D77087 /* RemindersTableViewCell.swift */; };
+		BDFC61061E9298DA00D77087 /* ScheduledReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC61051E9298DA00D77087 /* ScheduledReminderTableViewCell.swift */; };
+		BDFC610A1E9373A000D77087 /* SettingsViewController+CellsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC61091E9373A000D77087 /* SettingsViewController+CellsDelegate.swift */; };
+		BDFC610E1E93A0FB00D77087 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC610D1E93A0FB00D77087 /* SettingsHeaderView.swift */; };
+		BDFC61101E93A13E00D77087 /* SettingsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDFC610F1E93A13E00D77087 /* SettingsHeaderView.xib */; };
+		BDFC61401E979A1F00D77087 /* AddEditReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC613F1E979A1F00D77087 /* AddEditReminderViewController.swift */; };
+		BDFC61421E979A3700D77087 /* AddEditReminder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFC61411E979A3700D77087 /* AddEditReminder.storyboard */; };
+		BDFC61441E97D7BA00D77087 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC61431E97D7BA00D77087 /* Reminder.swift */; };
 		BF00F4841E4D1F2500D5D743 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F4831E4D1F2500D5D743 /* CategoryTableViewCell.swift */; };
 		BF00F4861E4D1F4300D5D743 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */; };
 		BF00F4881E4D1F5200D5D743 /* ProgressBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */; };
@@ -91,6 +102,17 @@
 		BDFC60F11E8D4A3900D77087 /* ExpensesBaseDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesBaseDeviceViewController.swift; sourceTree = "<group>"; };
 		BDFC60F51E914F3F00D77087 /* CategoryExpensesViewController+Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryExpensesViewController+Firebase.swift"; sourceTree = "<group>"; };
 		BDFC60FB1E91944800D77087 /* ExpenseDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseDetailsViewController.swift; sourceTree = "<group>"; };
+		BDFC60FD1E928D0B00D77087 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		BDFC60FF1E9296F200D77087 /* SettingsViewController+UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+UITableView.swift"; sourceTree = "<group>"; };
+		BDFC61011E92989600D77087 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		BDFC61031E9298AC00D77087 /* RemindersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersTableViewCell.swift; sourceTree = "<group>"; };
+		BDFC61051E9298DA00D77087 /* ScheduledReminderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduledReminderTableViewCell.swift; sourceTree = "<group>"; };
+		BDFC61091E9373A000D77087 /* SettingsViewController+CellsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+CellsDelegate.swift"; sourceTree = "<group>"; };
+		BDFC610D1E93A0FB00D77087 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
+		BDFC610F1E93A13E00D77087 /* SettingsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsHeaderView.xib; sourceTree = "<group>"; };
+		BDFC613F1E979A1F00D77087 /* AddEditReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditReminderViewController.swift; sourceTree = "<group>"; };
+		BDFC61411E979A3700D77087 /* AddEditReminder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddEditReminder.storyboard; sourceTree = "<group>"; };
+		BDFC61431E97D7BA00D77087 /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		BF00F4831E4D1F2500D5D743 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressBar.xib; sourceTree = "<group>"; };
@@ -143,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDFC60FE1E928D0B00D77087 /* UserNotifications.framework in Frameworks */,
 				6AA2CE85BAFB9541D811DABB /* Pods_Budget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,6 +176,7 @@
 		19A62780CECEACE074109F6F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BDFC60FD1E928D0B00D77087 /* UserNotifications.framework */,
 				081C64756147318895C06760 /* Pods_Budget.framework */,
 			);
 			name = Frameworks;
@@ -195,7 +219,8 @@
 		BD589DF41E8469B100F0C9CD /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				BF3792491E09633C0060445D /* SettingsViewController.swift */,
+				BDFC610B1E9374C100D77087 /* Cells */,
+				BDFC610C1E9374C600D77087 /* Controller */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -208,6 +233,28 @@
 				BD3D40751E87965800C3CCAF /* CategoryExpensesViewController+UITableView.swift */,
 			);
 			name = "Category Expenses";
+			sourceTree = "<group>";
+		};
+		BDFC610B1E9374C100D77087 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BDFC61011E92989600D77087 /* AccountTableViewCell.swift */,
+				BDFC61031E9298AC00D77087 /* RemindersTableViewCell.swift */,
+				BDFC61051E9298DA00D77087 /* ScheduledReminderTableViewCell.swift */,
+				BDFC610D1E93A0FB00D77087 /* SettingsHeaderView.swift */,
+				BDFC610F1E93A13E00D77087 /* SettingsHeaderView.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		BDFC610C1E9374C600D77087 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BF3792491E09633C0060445D /* SettingsViewController.swift */,
+				BDFC61091E9373A000D77087 /* SettingsViewController+CellsDelegate.swift */,
+				BDFC60FF1E9296F200D77087 /* SettingsViewController+UITableView.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		BF00F4821E4D1EFB00D5D743 /* Cells */ = {
@@ -229,6 +276,7 @@
 			children = (
 				BF3FFBEC1E4BC90300559134 /* AddEditCategory.storyboard */,
 				BF00F48D1E4D331100D5D743 /* AddEditExpense.storyboard */,
+				BDFC61411E979A3700D77087 /* AddEditReminder.storyboard */,
 				BD589DEA1E83E13500F0C9CD /* Categories.storyboard */,
 				BD589DEC1E83F32A00F0C9CD /* CategoryExpenses.storyboard */,
 				BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */,
@@ -248,6 +296,7 @@
 				BFD5AA891E52E16100DE10E3 /* Extensions.swift */,
 				BF00F4931E4D350C00D5D743 /* ModelBaseObject.swift */,
 				BF2514801E48659400042FEF /* ModelHelper.swift */,
+				BDFC61431E97D7BA00D77087 /* Reminder.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -318,6 +367,7 @@
 			children = (
 				BF3FFBEE1E4BC9E200559134 /* AddEditCategoryViewController.swift */,
 				BF00F48F1E4D344A00D5D743 /* AddEditExpenseViewController.swift */,
+				BDFC613F1E979A1F00D77087 /* AddEditReminderViewController.swift */,
 			);
 			name = AddEdit;
 			sourceTree = "<group>";
@@ -446,6 +496,8 @@
 				BF2514711E46626F00042FEF /* GoogleService-Info.plist in Resources */,
 				BF9687C41E58DBDC001CD715 /* BalanceView.xib in Resources */,
 				BF2514771E47154500042FEF /* LoginViewController.xib in Resources */,
+				BDFC61101E93A13E00D77087 /* SettingsHeaderView.xib in Resources */,
+				BDFC61421E979A3700D77087 /* AddEditReminder.storyboard in Resources */,
 				BF9063241E6896DF004B5F8B /* DateChanger.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,8 +575,11 @@
 				BDFC60EE1E8D3CE800D77087 /* ExpensesViewController+Firebase.swift in Sources */,
 				BFD5AA8C1E52FDBC00DE10E3 /* Consts.swift in Sources */,
 				BD3D40721E853A4800C3CCAF /* CategoriesBaseDeviceViewController.swift in Sources */,
+				BDFC61021E92989600D77087 /* AccountTableViewCell.swift in Sources */,
+				BDFC61401E979A1F00D77087 /* AddEditReminderViewController.swift in Sources */,
 				BF6BC8551E5ADA4E0052F4E8 /* CategoriesViewController+TableViews.swift in Sources */,
 				BDFC60E81E8D02D300D77087 /* ExpensesPadViewController.swift in Sources */,
+				BDFC61061E9298DA00D77087 /* ScheduledReminderTableViewCell.swift in Sources */,
 				BD589DEF1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift in Sources */,
 				BFFCD70D1E73D8C70030BD79 /* OverviewHeaderView.swift in Sources */,
 				BF2514791E47165100042FEF /* MainPhoneViewController.swift in Sources */,
@@ -534,13 +589,17 @@
 				BF9687C61E58DBED001CD715 /* BalanceView.swift in Sources */,
 				BDFC60FC1E91944800D77087 /* ExpenseDetailsViewController.swift in Sources */,
 				BDFC60F21E8D4A3900D77087 /* ExpensesBaseDeviceViewController.swift in Sources */,
+				BDFC61041E9298AC00D77087 /* RemindersTableViewCell.swift in Sources */,
+				BDFC61001E9296F200D77087 /* SettingsViewController+UITableView.swift in Sources */,
 				BDFC60EC1E8D03A800D77087 /* ExpensesViewController+UITableView.swift in Sources */,
 				BF3FFBEF1E4BC9E200559134 /* AddEditCategoryViewController.swift in Sources */,
 				BF2514751E470FD100042FEF /* LoginViewController.swift in Sources */,
 				BF6BC85C1E5B280C0052F4E8 /* SubCategoryHeaderView.swift in Sources */,
+				BDFC610E1E93A0FB00D77087 /* SettingsHeaderView.swift in Sources */,
 				BFD5AA8A1E52E16100DE10E3 /* Extensions.swift in Sources */,
 				BF9687BD1E58CF1F001CD715 /* CategoriesViewController+UITableView.swift in Sources */,
 				BD3D40761E87965800C3CCAF /* CategoryExpensesViewController+UITableView.swift in Sources */,
+				BDFC61441E97D7BA00D77087 /* Reminder.swift in Sources */,
 				BD589DF11E8451B200F0C9CD /* Authentication.swift in Sources */,
 				BDFC60EA1E8D036000D77087 /* ExpensesViewController.swift in Sources */,
 				BF37922E1E0933D00060445D /* AppDelegate.swift in Sources */,
@@ -559,6 +618,7 @@
 				BF3792481E0963330060445D /* CategoriesViewController.swift in Sources */,
 				BF00F4861E4D1F4300D5D743 /* ProgressBar.swift in Sources */,
 				BD6B69EA1E79544F00F7AF35 /* CategoriesPadViewController.swift in Sources */,
+				BDFC610A1E9373A000D77087 /* SettingsViewController+CellsDelegate.swift in Sources */,
 				BD3D40741E85714D00C3CCAF /* CategoryDetailPhoneViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
