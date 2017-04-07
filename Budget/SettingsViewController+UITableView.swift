@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 extension SettingsViewController {
     
@@ -82,6 +83,11 @@ extension SettingsViewController {
 
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+            
+            if let id = self.reminders[indexPath.row].id {
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
+            }
+            
             self.reminders.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
             
