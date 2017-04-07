@@ -47,5 +47,7 @@ extension SettingsViewController: RemindersTableViewCellDelegate {
             tableView.deleteSections([2, 3], with: .fade)
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         }
+        
+        tableView.reloadSections([1], with: .none)
     }
 }

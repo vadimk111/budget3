@@ -11,6 +11,7 @@ import UIKit
 class ScheduledReminderTableViewCell: UITableViewCell {
     
     @IBOutlet weak var o_label: UILabel!
+    @IBOutlet weak var o_separator: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,8 +24,9 @@ class ScheduledReminderTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func populate(with data: ReminderData) {
+    func populate(with data: ReminderData, showSeparator: Bool) {
         o_label.text = data.date.toString(showTime: true) + (data.repeatType != .none ? ", " + data.repeatType.toString() : "")
+        o_separator.isHidden = !showSeparator
     }
 
 }

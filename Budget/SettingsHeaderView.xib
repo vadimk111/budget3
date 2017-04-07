@@ -12,15 +12,30 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsHeaderView" customModule="Budget" customModuleProvider="target">
             <connections>
                 <outlet property="o_label" destination="QiX-Y9-Iac" id="83m-2g-CYe"/>
+                <outlet property="o_topView" destination="Xp6-Ip-cj2" id="HRT-Il-86i"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSx-4H-yTC">
+                    <rect key="frame" x="0.0" y="47" width="375" height="1"/>
+                    <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="exN-fa-bK4"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xp6-Ip-cj2">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                    <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="zA1-KK-d7L"/>
+                    </constraints>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiX-Y9-Iac">
-                    <rect key="frame" x="20" y="90.5" width="39.5" height="19"/>
+                    <rect key="frame" x="20" y="14.5" width="39.5" height="19"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -29,10 +44,17 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="QiX-Y9-Iac" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="5gG-Ud-uhO"/>
-                <constraint firstItem="QiX-Y9-Iac" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Uh5-lo-chZ"/>
+                <constraint firstItem="dSx-4H-yTC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="71y-pk-O4h"/>
+                <constraint firstAttribute="trailing" secondItem="Xp6-Ip-cj2" secondAttribute="trailing" id="8Z7-yb-Cii"/>
+                <constraint firstAttribute="trailing" secondItem="dSx-4H-yTC" secondAttribute="trailing" id="LuH-qZ-dQP"/>
+                <constraint firstItem="Xp6-Ip-cj2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aFc-1g-Bgi"/>
+                <constraint firstItem="Xp6-Ip-cj2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rCL-Ou-Tkk"/>
+                <constraint firstAttribute="bottom" secondItem="QiX-Y9-Iac" secondAttribute="bottom" constant="14" id="rFU-bk-olb"/>
+                <constraint firstAttribute="bottom" secondItem="dSx-4H-yTC" secondAttribute="bottom" id="yzB-32-fxA"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-254" y="28"/>
         </view>
     </objects>
 </document>

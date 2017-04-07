@@ -11,5 +11,6 @@ import UIKit
 class SettingsHeaderView: CustomView {
 
     @IBOutlet weak var o_label: UILabel!
+    @IBOutlet weak var o_topView: UIView!
 
 }

@@ -60,6 +60,12 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
     func reload() {
         tableView.reloadData()
     }
+    
+    func saveReminders() {
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: reminders)
+        UserDefaults.standard.set(encodedData, forKey: remindersDatakey)
+        UserDefaults.standard.synchronize()
+    }
             
     func addEditReminderViewController(_ addEditReminderViewController: AddEditReminderViewController, didSave data: ReminderData) {
         if let id = data.id {
@@ -73,8 +79,6 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
             reminders.append(data)
             tableView.insertRows(at: [IndexPath.init(row: reminders.count - 1, section: 2)], with: .fade)
         }
-        let encodedData = NSKeyedArchiver.archivedData(withRootObject: reminders)
-        UserDefaults.standard.set(encodedData, forKey: remindersDatakey)
-        UserDefaults.standard.synchronize()
+        saveReminders()
     }
 }

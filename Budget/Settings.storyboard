@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -33,20 +32,31 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6WA-zJ-7Fl">
-                                            <rect key="frame" x="298" y="6.5" width="51" height="31"/>
+                                            <rect key="frame" x="306" y="6.5" width="51" height="31"/>
                                             <connections>
                                                 <action selector="didTapEnableNotifications:" destination="BY0-Eh-NCG" eventType="valueChanged" id="iK1-0b-Ggt"/>
                                             </connections>
                                         </switch>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kfg-k3-LbF">
+                                            <rect key="frame" x="0.0" y="43" width="375" height="1"/>
+                                            <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="igT-8k-VZj"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="vRY-qb-nfh" firstAttribute="centerY" secondItem="AEd-o6-qDU" secondAttribute="centerY" id="7kv-F9-I9S"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="6WA-zJ-7Fl" secondAttribute="trailing" constant="20" id="edB-mM-iGc"/>
+                                        <constraint firstAttribute="trailing" secondItem="kfg-k3-LbF" secondAttribute="trailing" id="bfb-46-nBD"/>
+                                        <constraint firstAttribute="trailing" secondItem="6WA-zJ-7Fl" secondAttribute="trailing" constant="20" id="edB-mM-iGc"/>
                                         <constraint firstItem="vRY-qb-nfh" firstAttribute="leading" secondItem="AEd-o6-qDU" secondAttribute="leading" constant="20" id="iQx-ep-ZPH"/>
+                                        <constraint firstItem="kfg-k3-LbF" firstAttribute="leading" secondItem="AEd-o6-qDU" secondAttribute="leading" id="mgm-xD-xy3"/>
+                                        <constraint firstAttribute="bottom" secondItem="kfg-k3-LbF" secondAttribute="bottom" id="nnv-Wm-Nz3"/>
                                         <constraint firstItem="6WA-zJ-7Fl" firstAttribute="centerY" secondItem="AEd-o6-qDU" secondAttribute="centerY" id="osS-7y-vUV"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="o_bottomView" destination="kfg-k3-LbF" id="jxU-Hc-cFl"/>
                                     <outlet property="o_switch" destination="6WA-zJ-7Fl" id="5kJ-xb-lKA"/>
                                 </connections>
                             </tableViewCell>
@@ -75,6 +85,7 @@
                                         <constraint firstItem="9d6-cB-umc" firstAttribute="centerX" secondItem="iYz-J1-yub" secondAttribute="centerX" id="xf5-o3-uby"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="scheduledReminderCells" id="tgv-HS-t6a" customClass="ScheduledReminderTableViewCell" customModule="Budget" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="136" width="375" height="44"/>
@@ -89,14 +100,25 @@
                                             <color key="textColor" red="0.1647058824" green="0.1647058824" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yjX-eb-AMG">
+                                            <rect key="frame" x="15" y="0.0" width="360" height="1"/>
+                                            <color key="backgroundColor" red="0.70588235294117641" green="0.70588235294117641" blue="0.70588235294117641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="n2G-Vi-fdA"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="yjX-eb-AMG" firstAttribute="top" secondItem="ANw-4C-jAR" secondAttribute="top" id="Otc-hZ-BYD"/>
                                         <constraint firstItem="I1T-ur-A6y" firstAttribute="centerY" secondItem="ANw-4C-jAR" secondAttribute="centerY" id="Rfj-Qm-zaf"/>
+                                        <constraint firstAttribute="trailing" secondItem="yjX-eb-AMG" secondAttribute="trailing" id="Zqk-cW-8Rr"/>
                                         <constraint firstItem="I1T-ur-A6y" firstAttribute="leading" secondItem="ANw-4C-jAR" secondAttribute="leading" constant="20" id="nRH-J1-fzc"/>
+                                        <constraint firstItem="yjX-eb-AMG" firstAttribute="leading" secondItem="ANw-4C-jAR" secondAttribute="leading" constant="15" id="rCj-hp-Lzs"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="o_label" destination="I1T-ur-A6y" id="C27-xV-8qI"/>
+                                    <outlet property="o_separator" destination="yjX-eb-AMG" id="q5b-v1-f8j"/>
                                     <segue destination="Lfi-8u-6WY" kind="presentation" identifier="editReminder" id="sHs-tL-7Zp"/>
                                 </connections>
                             </tableViewCell>
