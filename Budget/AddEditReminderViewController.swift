@@ -31,7 +31,7 @@ class AddEditReminderViewController: UIViewController, UIPickerViewDelegate, UIP
         super.viewDidLoad()
         
         if let _ = reminderData.id {
-            o_dateLabel.text = reminderData.date.toString(showTime: true)
+            o_dateLabel.text = reminderData.date.toString(format: dateTimeFormat)
             o_dateLabel.textColor = UIColor.black
             o_datePicker.date = reminderData.date
             
@@ -64,7 +64,7 @@ class AddEditReminderViewController: UIViewController, UIPickerViewDelegate, UIP
     
     @IBAction func dateChanged(_ sender: UIDatePicker) {
         reminderData.date = sender.date
-        o_dateLabel.text = sender.date.toString(showTime: true)
+        o_dateLabel.text = sender.date.toString(format: dateTimeFormat)
         o_dateLabel.textColor = UIColor.black
     }
 

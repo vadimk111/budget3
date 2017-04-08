@@ -11,6 +11,8 @@ import UIKit
 
 let dateFormat = "dd-MM-yyyy"
 let dateTimeFormat = "dd-MM-yyyy', 'HH:mm"
+let timeFormat = "HH:mm"
+let weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
 extension String {
     func toDate() -> Date {
@@ -24,9 +26,9 @@ extension String {
 }
 
 extension Date {
-    func toString(showTime: Bool = false) -> String {
+    func toString(format: String = dateFormat) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = showTime ? dateTimeFormat : dateFormat
+        dateFormatter.dateFormat = format
         return dateFormatter.string(from: self)
     }
     
@@ -65,6 +67,14 @@ extension Date {
         comp.year = year
         
         return calendar.date(from: comp)!
+    }
+    
+    func weekDay() -> String {
+        return weekDays[Calendar.current.component(.weekday, from: self) - 1]
+    }
+    
+    func dayOfMonth() -> Int {
+        return Calendar.current.component(.day, from: self)
     }
 }
 

@@ -25,7 +25,20 @@ class ScheduledReminderTableViewCell: UITableViewCell {
     }
     
     func populate(with data: ReminderData, showSeparator: Bool) {
-        o_label.text = data.date.toString(showTime: true) + (data.repeatType != .none ? ", " + data.repeatType.toString() : "")
+        switch data.repeatType {
+        case .daily:
+            o_label.text = "every day, \(data.date.toString(format: timeFormat))"
+            break
+        case .weekly:
+            o_label.text = "every \(data.date.weekDay()), \(data.date.toString(format: timeFormat))"
+            break
+        case .monthly:
+            o_label.text = "on day \(data.date.dayOfMonth()) of every month, \(data.date.toString(format: timeFormat))"
+            break
+        default:
+            o_label.text = "on \(data.date.toString(format: dateTimeFormat))"
+        }
+        
         o_separator.isHidden = !showSeparator
     }
 
