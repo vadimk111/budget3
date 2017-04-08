@@ -99,6 +99,7 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
             
             let content = UNMutableNotificationContent()
             content.body = "Time to update your expenses"
+            content.sound = UNNotificationSound.default()
             content.categoryIdentifier = reminderNotification
             
             let calendar = Calendar.current

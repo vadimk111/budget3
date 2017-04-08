@@ -147,7 +147,7 @@ extension CategoriesViewController {
             }
             if let index = categories.index(of: parentCategory) {
                 if let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? CategoryTableViewCell {
-                    cell.update(with: category)
+                    cell.update(with: parentCategory)
                 }
             }
         }
