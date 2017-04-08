@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,30 +12,43 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsHeaderView" customModule="Budget" customModuleProvider="target">
             <connections>
                 <outlet property="o_label" destination="QiX-Y9-Iac" id="83m-2g-CYe"/>
+                <outlet property="o_textView" destination="AcO-EF-Ff8" id="gwe-g0-9P6"/>
                 <outlet property="o_topView" destination="Xp6-Ip-cj2" id="HRT-Il-86i"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+            <rect key="frame" x="0.0" y="0.0" width="404" height="130"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSx-4H-yTC">
-                    <rect key="frame" x="0.0" y="47" width="375" height="1"/>
+                    <rect key="frame" x="0.0" y="129" width="404" height="1"/>
                     <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="exN-fa-bK4"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xp6-Ip-cj2">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                    <rect key="frame" x="0.0" y="0.0" width="404" height="1"/>
                     <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="zA1-KK-d7L"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiX-Y9-Iac">
-                    <rect key="frame" x="20" y="14.5" width="39.5" height="19"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AcO-EF-Ff8">
+                    <rect key="frame" x="20" y="30" width="364" height="60"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="VdT-bQ-Ved"/>
+                    </constraints>
+                    <string key="text">WARNING: Push Notifications are disabled. To enable visit:
+Settings &gt; Notification Center &gt; Budget Doctor</string>
+                    <color key="textColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REMINDERS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiX-Y9-Iac">
+                    <rect key="frame" x="20" y="97" width="93" height="19"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -48,13 +61,16 @@
                 <constraint firstAttribute="trailing" secondItem="Xp6-Ip-cj2" secondAttribute="trailing" id="8Z7-yb-Cii"/>
                 <constraint firstAttribute="trailing" secondItem="dSx-4H-yTC" secondAttribute="trailing" id="LuH-qZ-dQP"/>
                 <constraint firstItem="Xp6-Ip-cj2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aFc-1g-Bgi"/>
+                <constraint firstAttribute="trailing" secondItem="AcO-EF-Ff8" secondAttribute="trailing" constant="20" id="dv1-Sr-1hT"/>
                 <constraint firstItem="Xp6-Ip-cj2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rCL-Ou-Tkk"/>
                 <constraint firstAttribute="bottom" secondItem="QiX-Y9-Iac" secondAttribute="bottom" constant="14" id="rFU-bk-olb"/>
+                <constraint firstItem="AcO-EF-Ff8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="t11-OY-k56"/>
+                <constraint firstItem="AcO-EF-Ff8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="xxd-q9-Brv"/>
                 <constraint firstAttribute="bottom" secondItem="dSx-4H-yTC" secondAttribute="bottom" id="yzB-32-fxA"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-254" y="28"/>
+            <point key="canvasLocation" x="-20.5" y="42"/>
         </view>
     </objects>
 </document>

@@ -11,6 +11,7 @@ import Firebase
 import UserNotifications
 
 let APP: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+let userNotificationCenterAuthorizationChangedNotification = Notification.Name(rawValue: "UNCACNot")
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -24,9 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         FIRApp.configure()
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            self.notificationsAllowed = granted
-        }
         registerCategory()
         
         return true
@@ -53,7 +51,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            if self.notificationsAllowed != granted {
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(Notification(name: userNotificationCenterAuthorizationChangedNotification))
+                }
+            }
+            self.notificationsAllowed = granted
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

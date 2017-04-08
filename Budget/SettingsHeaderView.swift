@@ -12,5 +12,6 @@ class SettingsHeaderView: CustomView {
 
     @IBOutlet weak var o_label: UILabel!
     @IBOutlet weak var o_topView: UIView!
+    @IBOutlet weak var o_textView: UITextView!
 
 }

@@ -52,7 +52,7 @@ extension SettingsViewController {
             return 48
         }
         if section == 1 {
-            return 80
+            return APP.notificationsAllowed ? 80 : 130
         }
         if section == 2 {
             return 1
@@ -73,6 +73,7 @@ extension SettingsViewController {
             view.backgroundColor = tableView.backgroundColor
             view.o_label.text = section == 0 ? "ACCOUNT" : "REMINDERS"
             view.o_topView.isHidden = section == 0
+            view.o_textView.isHidden = section == 0 || APP.notificationsAllowed
             return view
         }
     }

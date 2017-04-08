@@ -30,6 +30,8 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
 
         NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.onUserNotificationCenterChanged), name: userNotificationCenterAuthorizationChangedNotification, object: nil)
+        
         if let data = UserDefaults.standard.data(forKey: remindersDatakey),
             let remindersArr = NSKeyedUnarchiver.unarchiveObject(with: data) as? [ReminderData] {
             reminders = remindersArr
@@ -51,15 +53,15 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
     }
     
     func onSignInStateChanged() {
-        reload()
+        tableView.reloadSections([0], with: .none)
+    }
+    
+    func onUserNotificationCenterChanged() {
+        tableView.reloadSections([1], with: .automatic)
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
-    }
-    
-    func reload() {
-        tableView.reloadData()
     }
     
     func saveReminders() {
