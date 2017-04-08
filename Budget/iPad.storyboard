@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vey-qs-9sv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vey-qs-9sv">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -57,7 +57,7 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
                                     <navigationItem title="Categories" id="3tb-VD-VhC">
-                                        <barButtonItem key="rightBarButtonItem" image="user" id="LVr-Aj-67W">
+                                        <barButtonItem key="rightBarButtonItem" image="settings" id="LVr-Aj-67W">
                                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <segue destination="Lbg-Yo-s9P" kind="popoverPresentation" identifier="settings" popoverAnchorBarButtonItem="LVr-Aj-67W" id="Bkx-gP-47Y">
@@ -509,7 +509,7 @@
     <resources>
         <image name="categories" width="24" height="24"/>
         <image name="coins" width="24" height="24"/>
-        <image name="user" width="24" height="24"/>
+        <image name="settings" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="fyn-1q-1ZF"/>

@@ -76,7 +76,7 @@
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                             <state key="normal" title="Add Reminder"/>
                                             <connections>
-                                                <segue destination="Lfi-8u-6WY" kind="presentation" identifier="addReminder" id="94W-Ld-Mmn"/>
+                                                <segue destination="Lfi-8u-6WY" kind="presentation" identifier="addReminder" modalPresentationStyle="overCurrentContext" id="94W-Ld-Mmn"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -119,7 +119,7 @@
                                 <connections>
                                     <outlet property="o_label" destination="I1T-ur-A6y" id="C27-xV-8qI"/>
                                     <outlet property="o_separator" destination="yjX-eb-AMG" id="q5b-v1-f8j"/>
-                                    <segue destination="Lfi-8u-6WY" kind="presentation" identifier="editReminder" id="sHs-tL-7Zp"/>
+                                    <segue destination="Lfi-8u-6WY" kind="presentation" identifier="editReminder" modalPresentationStyle="overCurrentContext" id="sHs-tL-7Zp"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="accountCells" id="dS8-Ko-3BC" customClass="AccountTableViewCell" customModule="Budget" customModuleProvider="target">
@@ -213,6 +213,6 @@
         <image name="settings" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="94W-Ld-Mmn"/>
+        <segue reference="sHs-tL-7Zp"/>
     </inferredMetricsTieBreakers>
 </document>
