@@ -53,7 +53,7 @@ extension CategoryExpensesViewController {
                 if let index = category.expenses?.index(where: { $0.id == snapshot.key } ) {
                     category.expenses?.remove(at: index)
                     category.expenses?.insert(expense, at: index)
-                    if let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? ExpenseTableViewCell {
+                    if let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: section)) as? ExpenseTableViewCell {
                         cell.update(with: expense)
                     }
                     self.delegate?.categoryExpensesViewControllerChanged(self)
