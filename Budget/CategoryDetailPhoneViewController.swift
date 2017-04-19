@@ -14,7 +14,6 @@ class CategoryDetailPhoneViewController: UIViewController, CategoryExpensesViewC
     
     var expensesViewController: CategoryExpensesViewController?
     var category: Category?
-    var currentDate: Date?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +57,7 @@ class CategoryDetailPhoneViewController: UIViewController, CategoryExpensesViewC
         }
         vc?.parentRef = parentCategory?.getDatabaseReference()?.child("expenses")
         vc?.expense = Expense()
-        vc?.expense?.date = currentDate
+        vc?.expense?.date = Date()
         vc?.title = "Add Expense"
     }
     

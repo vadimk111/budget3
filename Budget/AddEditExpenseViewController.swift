@@ -30,18 +30,6 @@ class AddEditExpenseViewController: UIViewController {
         if let date = expense?.date {
             o_dateLabel.text = date.toString()
             o_datePicker.date = date
-            
-            let calendar = Calendar.current
-            
-            var comp = DateComponents()
-            comp.month = calendar.component(.month, from: date)
-            comp.year = calendar.component(.year, from: date)
-            
-            comp.day = 1
-            o_datePicker.minimumDate = calendar.date(from: comp)
-
-            comp.day = lastDay(in: comp.month!, comp.year!)
-            o_datePicker.maximumDate = calendar.date(from: comp)
         }
     }
 

@@ -34,15 +34,12 @@ class CategoriesPhoneViewController: CategoriesBaseDeviceViewController {
         } else if segue.identifier == "editCategory" {
             prepareForEditCategory(from: segue, sender: sender)
         } else if segue.identifier == "drillDown" {
-            if let categoriesViewController = categoriesViewController {
-                let backItem = UIBarButtonItem()
-                backItem.title = ""
-                navigationItem.backBarButtonItem = backItem
-                
-                if let category = sender as? Category {
-                    (segue.destination as? CategoryDetailPhoneViewController)?.category = category
-                    (segue.destination as? CategoryDetailPhoneViewController)?.currentDate = categoriesViewController.date
-                }
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            navigationItem.backBarButtonItem = backItem
+            
+            if let category = sender as? Category {
+                (segue.destination as? CategoryDetailPhoneViewController)?.category = category
             }
         }
     }

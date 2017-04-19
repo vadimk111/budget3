@@ -70,7 +70,7 @@ class CategoriesPadViewController: CategoriesBaseDeviceViewController, CategoryE
         }
         vc?.parentRef = parentCategory?.getDatabaseReference()?.child("expenses")
         vc?.expense = Expense()
-        vc?.expense?.date = categoriesViewController?.date
+        vc?.expense?.date = Date()
         vc?.title = "Add Expense"
     }
     
