@@ -11,17 +11,36 @@ import UIKit
 class CategoriesPhoneViewController: CategoriesBaseDeviceViewController {
 
     @IBOutlet weak var o_editBarButton: UIBarButtonItem!
+    @IBOutlet weak var o_addBarButton: UIBarButtonItem!
     
     @IBAction func didTapEdit(_ sender: UIBarButtonItem) {
         if let categoriesViewController = categoriesViewController {
             if categoriesViewController.tableView.isEditing {
-                sender.image = UIImage(named: "edit-tool")
+                sender.image = #imageLiteral(resourceName: "edit-tool")
+                o_addBarButton.image = #imageLiteral(resourceName: "plus")
+                o_addBarButton.tag = 0
                 categoriesViewController.tableView.setEditing(false, animated: true)
             } else {
                 categoriesViewController.tableView.setEditing(true, animated: true)
-                sender.image = UIImage(named: "checked")
+                sender.image = #imageLiteral(resourceName: "checked")
+                o_addBarButton.image = #imageLiteral(resourceName: "delete-button")
+                o_addBarButton.tag = 1
             }
         }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "addCategory" && o_addBarButton.tag == 1 {
+            let a = UIAlertController(title: "Delete all categories ?", message: nil, preferredStyle: .alert)
+            a.addAction(UIAlertAction(title: "Delete", style: .default) { action -> Void in
+                self.categoriesViewController?.clearBudget()
+                self.didTapEdit(self.o_editBarButton)
+            })
+            a.addAction(UIAlertAction(title: "Cancel", style: .default) { action -> Void in })
+            self.present(a, animated: true, completion: nil)
+            return false
+        }
+        return true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -201,4 +201,10 @@ class CategoriesViewController: UITableViewController {
         
         reload()
     }
+    
+    func clearBudget() {
+        for item in categories {
+            item.delete()
+        }
+    }
 }

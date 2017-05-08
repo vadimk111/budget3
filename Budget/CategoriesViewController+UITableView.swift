@@ -64,7 +64,7 @@ extension CategoriesViewController {
         
         let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
             let title = self.categories[indexPath.row].subCategories != nil ? "Remove category, all its sub categories and all related expenses ?" : "Remove category and all related expenses ?"
-            let a = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.alert)
+            let a = UIAlertController(title: title, message: "", preferredStyle: .alert)
             a.addAction(UIAlertAction(title: "Remove", style: .default) { action -> Void in
                 self.categories[indexPath.row].delete()
             })

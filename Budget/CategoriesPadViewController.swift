@@ -16,6 +16,7 @@ class CategoriesPadViewController: CategoriesBaseDeviceViewController, CategoryE
     @IBOutlet weak var o_categoriesContainer: UIView!
     @IBOutlet weak var o_addExpenseBtn: UIButton!
     @IBOutlet weak var o_editCategoryBtn: UIButton!
+    @IBOutlet weak var o_addCategoryBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,14 +36,32 @@ class CategoriesPadViewController: CategoriesBaseDeviceViewController, CategoryE
         if let categoriesViewController = categoriesViewController {
             if categoriesViewController.tableView.isEditing {
                 sender.setTitle("Edit", for: .normal)
+                o_addCategoryBtn.setTitle("Add Category", for: .normal)
+                o_addCategoryBtn.tag = 0
                 categoriesViewController.tableView.setEditing(false, animated: true)
             } else {
                 categoriesViewController.tableView.setEditing(true, animated: true)
                 sender.setTitle("Done", for: .normal)
+                o_addCategoryBtn.setTitle("Clear", for: .normal)
+                o_addCategoryBtn.tag = 1
             }
         }
     }
-        
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "addCategory" && o_addCategoryBtn.tag == 1 {
+            let a = UIAlertController(title: "Delete all categories ?", message: nil, preferredStyle: .alert)
+            a.addAction(UIAlertAction(title: "Delete", style: .default) { action -> Void in
+                self.categoriesViewController?.clearBudget()
+                self.didTapEdit(self.o_editCategoryBtn)
+            })
+            a.addAction(UIAlertAction(title: "Cancel", style: .default) { action -> Void in })
+            self.present(a, animated: true, completion: nil)
+            return false
+        }
+        return true
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "categories" {
             categoriesViewController = segue.destination as? CategoriesViewController
