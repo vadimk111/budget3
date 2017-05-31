@@ -13,6 +13,7 @@ protocol IncomesViewControllerDelegate: class {
     func incomesViewController(_ incomesViewController: IncomesViewController, didSelect income: Income)
     func incomesViewControllerRowDeselected(_ incomesViewController: IncomesViewController)
     func incomesViewController(_ incomesViewController: IncomesViewController, didUpdateRowWith income: Income)
+    func incomesViewControllerChanged(_ incomesViewController: IncomesViewController)
 }
 
 class IncomesViewController: UITableViewController, IncomeTableViewCellDelegate {
@@ -53,6 +54,7 @@ class IncomesViewController: UITableViewController, IncomeTableViewCellDelegate 
                 
                 self.tableView.reloadData()
                 self.tableView.refreshControl?.endRefreshing()
+                self.delegate?.incomesViewControllerChanged(self)
             })
         } else {
             date = Date()
@@ -61,6 +63,7 @@ class IncomesViewController: UITableViewController, IncomeTableViewCellDelegate 
                 tableView.deselectRow(at: selectedIndexPath, animated: false)
             }
             tableView.reloadData()
+            self.delegate?.incomesViewControllerChanged(self)
         }
     }
     

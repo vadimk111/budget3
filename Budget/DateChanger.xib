@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,8 +19,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="February 2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4t-6a-y9h">
-                    <rect key="frame" x="136" y="12" width="103.5" height="19"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="February 2017" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4t-6a-y9h">
+                    <rect key="frame" x="40" y="12" width="295" height="19"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -52,7 +52,8 @@
             <constraints>
                 <constraint firstItem="Z7s-wa-nB8" firstAttribute="centerY" secondItem="S4t-6a-y9h" secondAttribute="centerY" id="3zd-Mf-Uzf"/>
                 <constraint firstAttribute="trailing" secondItem="jn6-gu-2q9" secondAttribute="trailing" id="ADU-kS-HTF"/>
-                <constraint firstItem="S4t-6a-y9h" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="KJU-xg-ACk"/>
+                <constraint firstItem="jn6-gu-2q9" firstAttribute="leading" secondItem="S4t-6a-y9h" secondAttribute="trailing" constant="-8" id="Aaf-Tt-O5Q"/>
+                <constraint firstItem="S4t-6a-y9h" firstAttribute="leading" secondItem="Z7s-wa-nB8" secondAttribute="trailing" constant="-8" id="Fs3-Jo-bw2"/>
                 <constraint firstItem="Z7s-wa-nB8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="XIT-Ag-NA1"/>
                 <constraint firstItem="jn6-gu-2q9" firstAttribute="centerY" secondItem="S4t-6a-y9h" secondAttribute="centerY" id="cAF-VI-hbG"/>
                 <constraint firstItem="S4t-6a-y9h" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="yt4-Yp-Jxu"/>

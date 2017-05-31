@@ -17,6 +17,7 @@ extension IncomesViewController {
                 self.incomes.append(income)
                 self.tableView.insertRows(at: [IndexPath.init(row: self.tableView.numberOfRows(inSection: 0), section: 0)], with: .fade)
             }
+            self.delegate?.incomesViewControllerChanged(self)
         })
         
         listRef?.observe(.childChanged, with: { [unowned self] snapshot in
@@ -29,7 +30,7 @@ extension IncomesViewController {
                     self.delegate?.incomesViewController(self, didUpdateRowWith: income)
                 }
             }
-
+            self.delegate?.incomesViewControllerChanged(self)
         })
         
         listRef?.observe(.childRemoved, with: { [unowned self] snapshot in
@@ -38,6 +39,7 @@ extension IncomesViewController {
                 self.incomes.remove(at: index)
                 self.tableView.deleteRows(at: [IndexPath.init(row: index, section: 0)], with: .fade)
             }
+            self.delegate?.incomesViewControllerChanged(self)
         })
     }
         

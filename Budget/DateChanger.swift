@@ -40,7 +40,7 @@ class DateChanger: CustomView {
             attributedTitle.append(NSAttributedString(string: dateText, attributes: [NSFontAttributeName: UIFont.init(name: "HelveticaNeue", size: 16)!, NSForegroundColorAttributeName: UIColor.black]))
             
             if let total = totalIncome {
-                attributedTitle.append(NSAttributedString(string: " • Income = \(total)", attributes: [NSFontAttributeName: UIFont.init(name: "HelveticaNeue-Bold", size: 14)!, NSForegroundColorAttributeName: UIColor(red: 103 / 255, green: 171 / 255, blue: 87 / 255, alpha: 1)]))
+                attributedTitle.append(NSAttributedString(string: " • Income = \(total)", attributes: [NSFontAttributeName: UIFont.init(name: "HelveticaNeue-Bold", size: 12)!, NSForegroundColorAttributeName: UIColor(red: 103 / 255, green: 171 / 255, blue: 87 / 255, alpha: 1)]))
             }
             o_title.attributedText = attributedTitle
         }

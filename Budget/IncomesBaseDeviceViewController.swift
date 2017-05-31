@@ -79,4 +79,8 @@ class IncomesBaseDeviceViewController: UIViewController, DateChangerDelegate, In
     func incomesViewController(_ incomesViewController: IncomesViewController, didUpdateRowWith income: Income) {
         
     }
+    
+    func incomesViewControllerChanged(_ incomesViewController: IncomesViewController) {
+        o_dateChanger.updateIncome(with: incomesViewController.incomes)
+    }
 }
