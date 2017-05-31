@@ -15,6 +15,9 @@ protocol DateChangerDelegate: class {
 
 class DateChanger: CustomView {
 
+    var dateText: String?
+    var totalIncome: Float?
+    
     @IBOutlet weak var o_title: UILabel!
     
     weak var delegate: DateChangerDelegate?
@@ -25,7 +28,21 @@ class DateChanger: CustomView {
             let year = calendar.component(.year, from: date)
             let month = calendar.component(.month, from: date)
             
-            o_title.text = "\(months[month - 1]), \(year)"
+            dateText = "\(months[month - 1]), \(year)"
+            updateTitle()
+        }
+    }
+    
+    func updateTitle() {
+        if let dateText = dateText {
+            
+            let attributedTitle = NSMutableAttributedString()
+            attributedTitle.append(NSAttributedString(string: dateText, attributes: [NSFontAttributeName: UIFont.init(name: "HelveticaNeue", size: 16)!, NSForegroundColorAttributeName: UIColor.black]))
+            
+            if let total = totalIncome {
+                attributedTitle.append(NSAttributedString(string: " • Income = \(total)", attributes: [NSFontAttributeName: UIFont.init(name: "HelveticaNeue-Bold", size: 14)!, NSForegroundColorAttributeName: UIColor(red: 103 / 255, green: 171 / 255, blue: 87 / 255, alpha: 1)]))
+            }
+            o_title.attributedText = attributedTitle
         }
     }
     
@@ -35,5 +52,21 @@ class DateChanger: CustomView {
     
     @IBAction func didTapPrev(_ sender: UIButton) {
         delegate?.dateChangerDidGoPrev(self)
+    }
+    
+    func updateIncome(with incomes: [Income]) {
+        var total: Float = 0.0
+        for item in incomes {
+            if let amount = item.amount {
+                total += amount
+            }
+        }
+        if total > 0 {
+            totalIncome = total
+        } else {
+            totalIncome = nil
+        }
+        
+        updateTitle()
     }
 }

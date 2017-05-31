@@ -21,6 +21,11 @@ class IncomesPadViewController: IncomesBaseDeviceViewController {
         o_incomesContainer.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
         o_incomesContainer.layer.shadowOpacity = 1
         o_incomesContainer.layer.shadowOffset = CGSize(width: 0, height: 2)
+        
+        o_dateChanger.layer.shadowRadius = 2
+        o_dateChanger.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
+        o_dateChanger.layer.shadowOpacity = 1
+        o_dateChanger.layer.shadowOffset = CGSize(width: 0, height: 0)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

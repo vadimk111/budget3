@@ -512,22 +512,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="660"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fq4-tS-bxZ" customClass="DateChanger" customModule="Budget" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
-                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="M70-Jc-NQ2"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8g-eJ-qa2" userLabel="separator">
-                                <rect key="frame" x="0.0" y="44" width="1024" height="1"/>
-                                <color key="backgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="0.5" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="gfc-ph-fna"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1hr-ag-QQN">
-                                <rect key="frame" x="0.0" y="45" width="1024" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="1024" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhU-Qv-gEj" userLabel="Add Income">
                                         <rect key="frame" x="304" y="-2" width="90" height="48"/>
@@ -551,15 +537,22 @@
                                     <constraint firstItem="VhU-Qv-gEj" firstAttribute="top" secondItem="1hr-ag-QQN" secondAttribute="top" constant="-2" id="dFy-NM-PNM"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ie4-zA-XaM" userLabel="separator2">
-                                <rect key="frame" x="0.0" y="89" width="1024" height="1"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fq4-tS-bxZ" customClass="DateChanger" customModule="Budget" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="M70-Jc-NQ2"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ie4-zA-XaM" userLabel="separator">
+                                <rect key="frame" x="0.0" y="88" width="1024" height="1"/>
                                 <color key="backgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Uwo-62-0mF"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yR1-WV-W6E">
-                                <rect key="frame" x="0.0" y="90" width="404" height="521"/>
+                                <rect key="frame" x="0.0" y="89" width="404" height="522"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="404" id="3Ka-Lz-B8L"/>
                                 </constraints>
@@ -568,7 +561,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MsI-fu-lQr">
-                                <rect key="frame" x="408" y="90" width="616" height="521"/>
+                                <rect key="frame" x="408" y="89" width="616" height="522"/>
                                 <connections>
                                     <segue destination="FOw-2m-hqc" kind="embed" identifier="incomeDetails" id="dIn-1z-Cze"/>
                                 </connections>
@@ -576,14 +569,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1hr-ag-QQN" firstAttribute="trailing" secondItem="b8g-eJ-qa2" secondAttribute="trailing" id="7bS-0l-epc"/>
                             <constraint firstAttribute="trailing" secondItem="MsI-fu-lQr" secondAttribute="trailing" id="AUr-zL-zea"/>
-                            <constraint firstItem="1hr-ag-QQN" firstAttribute="leading" secondItem="b8g-eJ-qa2" secondAttribute="leading" id="GMJ-5e-xMU"/>
-                            <constraint firstItem="b8g-eJ-qa2" firstAttribute="leading" secondItem="fq4-tS-bxZ" secondAttribute="leading" id="Hid-6X-h8Q"/>
+                            <constraint firstItem="1hr-ag-QQN" firstAttribute="leading" secondItem="fq4-tS-bxZ" secondAttribute="leading" id="CwM-oN-IxC"/>
+                            <constraint firstItem="1hr-ag-QQN" firstAttribute="top" secondItem="fq4-tS-bxZ" secondAttribute="bottom" id="DBy-09-Dzq"/>
                             <constraint firstItem="MsI-fu-lQr" firstAttribute="top" secondItem="yR1-WV-W6E" secondAttribute="top" id="IEf-Uk-eye"/>
                             <constraint firstItem="yR1-WV-W6E" firstAttribute="top" secondItem="ie4-zA-XaM" secondAttribute="bottom" id="Qiw-Iq-DEk"/>
                             <constraint firstAttribute="trailing" secondItem="ie4-zA-XaM" secondAttribute="trailing" id="UxF-Od-5HF"/>
-                            <constraint firstItem="1hr-ag-QQN" firstAttribute="top" secondItem="b8g-eJ-qa2" secondAttribute="bottom" id="VHo-d5-CQ7"/>
                             <constraint firstItem="MsI-fu-lQr" firstAttribute="bottom" secondItem="yR1-WV-W6E" secondAttribute="bottom" id="XXB-FM-Ljw"/>
                             <constraint firstItem="MsI-fu-lQr" firstAttribute="leading" secondItem="yR1-WV-W6E" secondAttribute="trailing" constant="4" id="Xyr-9f-Gb9"/>
                             <constraint firstAttribute="trailing" secondItem="fq4-tS-bxZ" secondAttribute="trailing" id="bRD-ym-IbK"/>
@@ -591,9 +582,8 @@
                             <constraint firstItem="fq4-tS-bxZ" firstAttribute="leading" secondItem="ndX-kb-N5g" secondAttribute="leading" id="c41-Fr-5jb"/>
                             <constraint firstItem="fq4-tS-bxZ" firstAttribute="top" secondItem="EdE-tV-9Q2" secondAttribute="bottom" id="fqk-Lf-a7v"/>
                             <constraint firstItem="eMP-dB-Sr4" firstAttribute="top" secondItem="yR1-WV-W6E" secondAttribute="bottom" id="o5L-EW-Y5c"/>
-                            <constraint firstItem="b8g-eJ-qa2" firstAttribute="top" secondItem="fq4-tS-bxZ" secondAttribute="bottom" id="oSY-OY-BVo"/>
                             <constraint firstItem="ie4-zA-XaM" firstAttribute="leading" secondItem="ndX-kb-N5g" secondAttribute="leading" id="qWL-nH-O9U"/>
-                            <constraint firstItem="b8g-eJ-qa2" firstAttribute="trailing" secondItem="fq4-tS-bxZ" secondAttribute="trailing" id="tg8-RO-Jom"/>
+                            <constraint firstItem="1hr-ag-QQN" firstAttribute="trailing" secondItem="fq4-tS-bxZ" secondAttribute="trailing" id="spq-7D-eIL"/>
                             <constraint firstItem="yR1-WV-W6E" firstAttribute="leading" secondItem="ndX-kb-N5g" secondAttribute="leading" id="z2k-eC-fz5"/>
                         </constraints>
                     </view>
@@ -641,7 +631,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ysP-uw-4o6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Itu-ko-bg1">
-                        <rect key="frame" x="0.0" y="0.0" width="616" height="521"/>
+                        <rect key="frame" x="0.0" y="0.0" width="616" height="522"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hw-Wc-ux7">

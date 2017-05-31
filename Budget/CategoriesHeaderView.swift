@@ -39,6 +39,10 @@ class CategoriesHeaderView: CustomView, DateChangerDelegate {
         o_balanceView.populate(amount: amount, totalSpent: totalSpent)
     }
     
+    func updateIncome(with incomes: [Income]) {
+        o_dateChanger.updateIncome(with: incomes)
+    }
+    
     func dateChangerDidGoNext(_ dateChanger: DateChanger) {
         delegate?.categoriesHeaderViewDidGoNext(self)
     }

@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderViewDelegate, CategoriesViewControllerDelegate {
 
     var categoriesViewController: CategoriesViewController?
     
     @IBOutlet weak var o_categoriesHeaderView: CategoriesHeaderView!
+    
+    var incomesRef: FIRDatabaseReference?
+    var incomes: [Income] = [Income]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +35,31 @@ class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderView
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+        unregisterFromUpdates()
     }
     
     func reload() {
         categoriesViewController?.reload()
+    }
+    
+    func reloadIncomes() {
+        unregisterFromUpdates()
+        
+        let ref = FIRDatabase.database().reference().child("incomes")
+        if let date = categoriesViewController?.date, let listId = ModelHelper.budgetId(for: date) {
+            incomesRef = ref.child(listId)
+            incomesRef?.observeSingleEvent(of: .value, with: { snapshot in
+                self.incomes = []
+                for child in snapshot.children {
+                    self.incomes.append(Income(snapshot: child as! FIRDataSnapshot))
+                }
+                self.registerToUpdates()
+                self.o_categoriesHeaderView.updateIncome(with: self.incomes)
+            })
+        } else {
+            incomes = []
+            self.o_categoriesHeaderView.updateIncome(with: self.incomes)
+        }
     }
     
     func prepareForAddCategory(from segue: UIStoryboardSegue) {
@@ -84,6 +109,7 @@ class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderView
     }
     
     func categoriesViewControllerChanged(_ categoriesViewController: CategoriesViewController) {
+        reloadIncomes()
         o_categoriesHeaderView?.fill(with: categoriesViewController.availableParents, date: categoriesViewController.date)
     }
     

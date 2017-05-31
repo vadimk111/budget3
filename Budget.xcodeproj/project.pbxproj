@@ -31,6 +31,7 @@
 		BD83837B1EDF248900E8B5B2 /* IncomesBaseDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD83837A1EDF248900E8B5B2 /* IncomesBaseDeviceViewController.swift */; };
 		BD83837D1EDF24A500E8B5B2 /* IncomesPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD83837C1EDF24A500E8B5B2 /* IncomesPadViewController.swift */; };
 		BD83837F1EDF24BA00E8B5B2 /* IncomesPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD83837E1EDF24BA00E8B5B2 /* IncomesPhoneViewController.swift */; };
+		BD8383811EDF53E000E8B5B2 /* CategoriesBaseDeviceViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8383801EDF53E000E8B5B2 /* CategoriesBaseDeviceViewController+Firebase.swift */; };
 		BDFC60E61E8CFF1D00D77087 /* Expenses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */; };
 		BDFC60E81E8D02D300D77087 /* ExpensesPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */; };
 		BDFC60EA1E8D036000D77087 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */; };
@@ -120,6 +121,7 @@
 		BD83837A1EDF248900E8B5B2 /* IncomesBaseDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomesBaseDeviceViewController.swift; sourceTree = "<group>"; };
 		BD83837C1EDF24A500E8B5B2 /* IncomesPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomesPadViewController.swift; sourceTree = "<group>"; };
 		BD83837E1EDF24BA00E8B5B2 /* IncomesPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomesPhoneViewController.swift; sourceTree = "<group>"; };
+		BD8383801EDF53E000E8B5B2 /* CategoriesBaseDeviceViewController+Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoriesBaseDeviceViewController+Firebase.swift"; sourceTree = "<group>"; };
 		BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Expenses.storyboard; sourceTree = "<group>"; };
 		BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesPadViewController.swift; sourceTree = "<group>"; };
 		BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				BD3D40711E853A4800C3CCAF /* CategoriesBaseDeviceViewController.swift */,
+				BD8383801EDF53E000E8B5B2 /* CategoriesBaseDeviceViewController+Firebase.swift */,
 				BD6B69E91E79544F00F7AF35 /* CategoriesPadViewController.swift */,
 				BD589DEE1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift */,
 				BD3D40731E85714D00C3CCAF /* CategoryDetailPhoneViewController.swift */,
@@ -653,6 +656,7 @@
 				BDFC61401E979A1F00D77087 /* AddEditReminderViewController.swift in Sources */,
 				BF6BC8551E5ADA4E0052F4E8 /* CategoriesViewController+TableViews.swift in Sources */,
 				BDFC60E81E8D02D300D77087 /* ExpensesPadViewController.swift in Sources */,
+				BD8383811EDF53E000E8B5B2 /* CategoriesBaseDeviceViewController+Firebase.swift in Sources */,
 				BDFC61061E9298DA00D77087 /* ScheduledReminderTableViewCell.swift in Sources */,
 				BD589DEF1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift in Sources */,
 				BFFCD70D1E73D8C70030BD79 /* OverviewHeaderView.swift in Sources */,
