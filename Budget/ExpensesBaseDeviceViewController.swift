@@ -47,14 +47,20 @@ class ExpensesBaseDeviceViewController: UIViewController, DateChangerDelegate, E
     func reload() {
         expensesViewController?.reload()
     }
+    
+    func onDateChanged() {
         
+    }
+    
     //MARK - DateChangerDelegate
     func dateChangerDidGoNext(_ dateChanger: DateChanger) {
         o_dateChanger.date = expensesViewController?.goNextMonth()
+        onDateChanged()
     }
     
     func dateChangerDidGoPrev(_ dateChanger: DateChanger) {
         o_dateChanger.date = expensesViewController?.goPrevMonth()
+        onDateChanged()
     }
     
     //MARK - ExpensesViewControllerDelegate

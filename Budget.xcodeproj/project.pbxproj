@@ -18,6 +18,19 @@
 		BD6B69E41E79223400F7AF35 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD6B69E31E79223400F7AF35 /* iPad.storyboard */; };
 		BD6B69EA1E79544F00F7AF35 /* CategoriesPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B69E91E79544F00F7AF35 /* CategoriesPadViewController.swift */; };
 		BD82C7F31E8AF00D009EB6A6 /* MainPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD82C7F21E8AF00D009EB6A6 /* MainPadViewController.swift */; };
+		BD8383631EDD5E5400E8B5B2 /* Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8383621EDD5E5400E8B5B2 /* Income.swift */; };
+		BD8383651EDD5ED700E8B5B2 /* MoneyFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8383641EDD5ED700E8B5B2 /* MoneyFlow.swift */; };
+		BD8383671EDD5F7000E8B5B2 /* AddEditIncome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD8383661EDD5F7000E8B5B2 /* AddEditIncome.storyboard */; };
+		BD8383691EDD5FEF00E8B5B2 /* AddEditIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8383681EDD5FEF00E8B5B2 /* AddEditIncomeViewController.swift */; };
+		BD83836C1EDD709400E8B5B2 /* IncomeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD83836B1EDD709400E8B5B2 /* IncomeDetailsViewController.swift */; };
+		BD83836E1EDD70A400E8B5B2 /* IncomesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD83836D1EDD70A400E8B5B2 /* IncomesViewController.swift */; };
+		BD8383701EDD70B900E8B5B2 /* IncomesViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD83836F1EDD70B900E8B5B2 /* IncomesViewController+Firebase.swift */; };
+		BD8383721EDD70CC00E8B5B2 /* IncomesViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8383711EDD70CC00E8B5B2 /* IncomesViewController+UITableView.swift */; };
+		BD8383741EDD74DF00E8B5B2 /* Incomes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD8383731EDD74DF00E8B5B2 /* Incomes.storyboard */; };
+		BD8383761EDD758A00E8B5B2 /* IncomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8383751EDD758A00E8B5B2 /* IncomeTableViewCell.swift */; };
+		BD83837B1EDF248900E8B5B2 /* IncomesBaseDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD83837A1EDF248900E8B5B2 /* IncomesBaseDeviceViewController.swift */; };
+		BD83837D1EDF24A500E8B5B2 /* IncomesPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD83837C1EDF24A500E8B5B2 /* IncomesPadViewController.swift */; };
+		BD83837F1EDF24BA00E8B5B2 /* IncomesPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD83837E1EDF24BA00E8B5B2 /* IncomesPhoneViewController.swift */; };
 		BDFC60E61E8CFF1D00D77087 /* Expenses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */; };
 		BDFC60E81E8D02D300D77087 /* ExpensesPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */; };
 		BDFC60EA1E8D036000D77087 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */; };
@@ -94,6 +107,19 @@
 		BD6B69E31E79223400F7AF35 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
 		BD6B69E91E79544F00F7AF35 /* CategoriesPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesPadViewController.swift; sourceTree = "<group>"; };
 		BD82C7F21E8AF00D009EB6A6 /* MainPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPadViewController.swift; sourceTree = "<group>"; };
+		BD8383621EDD5E5400E8B5B2 /* Income.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Income.swift; sourceTree = "<group>"; };
+		BD8383641EDD5ED700E8B5B2 /* MoneyFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyFlow.swift; sourceTree = "<group>"; };
+		BD8383661EDD5F7000E8B5B2 /* AddEditIncome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddEditIncome.storyboard; sourceTree = "<group>"; };
+		BD8383681EDD5FEF00E8B5B2 /* AddEditIncomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditIncomeViewController.swift; sourceTree = "<group>"; };
+		BD83836B1EDD709400E8B5B2 /* IncomeDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeDetailsViewController.swift; sourceTree = "<group>"; };
+		BD83836D1EDD70A400E8B5B2 /* IncomesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomesViewController.swift; sourceTree = "<group>"; };
+		BD83836F1EDD70B900E8B5B2 /* IncomesViewController+Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IncomesViewController+Firebase.swift"; sourceTree = "<group>"; };
+		BD8383711EDD70CC00E8B5B2 /* IncomesViewController+UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IncomesViewController+UITableView.swift"; sourceTree = "<group>"; };
+		BD8383731EDD74DF00E8B5B2 /* Incomes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Incomes.storyboard; sourceTree = "<group>"; };
+		BD8383751EDD758A00E8B5B2 /* IncomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeTableViewCell.swift; sourceTree = "<group>"; };
+		BD83837A1EDF248900E8B5B2 /* IncomesBaseDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomesBaseDeviceViewController.swift; sourceTree = "<group>"; };
+		BD83837C1EDF24A500E8B5B2 /* IncomesPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomesPadViewController.swift; sourceTree = "<group>"; };
+		BD83837E1EDF24BA00E8B5B2 /* IncomesPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomesPhoneViewController.swift; sourceTree = "<group>"; };
 		BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Expenses.storyboard; sourceTree = "<group>"; };
 		BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesPadViewController.swift; sourceTree = "<group>"; };
 		BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
@@ -205,13 +231,9 @@
 		BD589DF31E8469AA00F0C9CD /* Device */ = {
 			isa = PBXGroup;
 			children = (
-				BD3D40711E853A4800C3CCAF /* CategoriesBaseDeviceViewController.swift */,
-				BD6B69E91E79544F00F7AF35 /* CategoriesPadViewController.swift */,
-				BD589DEE1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift */,
-				BD3D40731E85714D00C3CCAF /* CategoryDetailPhoneViewController.swift */,
-				BDFC60F11E8D4A3900D77087 /* ExpensesBaseDeviceViewController.swift */,
-				BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */,
-				BFFCD70A1E73D4990030BD79 /* ExpensesPhoneViewController.swift */,
+				BD8383771EDF242100E8B5B2 /* Category */,
+				BD8383781EDF243400E8B5B2 /* Expense */,
+				BD8383791EDF243E00E8B5B2 /* Income */,
 			);
 			name = Device;
 			sourceTree = "<group>";
@@ -233,6 +255,48 @@
 				BD3D40751E87965800C3CCAF /* CategoryExpensesViewController+UITableView.swift */,
 			);
 			name = "Category Expenses";
+			sourceTree = "<group>";
+		};
+		BD83836A1EDD704700E8B5B2 /* Incomes */ = {
+			isa = PBXGroup;
+			children = (
+				BD83836B1EDD709400E8B5B2 /* IncomeDetailsViewController.swift */,
+				BD83836D1EDD70A400E8B5B2 /* IncomesViewController.swift */,
+				BD83836F1EDD70B900E8B5B2 /* IncomesViewController+Firebase.swift */,
+				BD8383711EDD70CC00E8B5B2 /* IncomesViewController+UITableView.swift */,
+			);
+			name = Incomes;
+			sourceTree = "<group>";
+		};
+		BD8383771EDF242100E8B5B2 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				BD3D40711E853A4800C3CCAF /* CategoriesBaseDeviceViewController.swift */,
+				BD6B69E91E79544F00F7AF35 /* CategoriesPadViewController.swift */,
+				BD589DEE1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift */,
+				BD3D40731E85714D00C3CCAF /* CategoryDetailPhoneViewController.swift */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		BD8383781EDF243400E8B5B2 /* Expense */ = {
+			isa = PBXGroup;
+			children = (
+				BDFC60F11E8D4A3900D77087 /* ExpensesBaseDeviceViewController.swift */,
+				BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */,
+				BFFCD70A1E73D4990030BD79 /* ExpensesPhoneViewController.swift */,
+			);
+			name = Expense;
+			sourceTree = "<group>";
+		};
+		BD8383791EDF243E00E8B5B2 /* Income */ = {
+			isa = PBXGroup;
+			children = (
+				BD83837A1EDF248900E8B5B2 /* IncomesBaseDeviceViewController.swift */,
+				BD83837C1EDF24A500E8B5B2 /* IncomesPadViewController.swift */,
+				BD83837E1EDF24BA00E8B5B2 /* IncomesPhoneViewController.swift */,
+			);
+			name = Income;
 			sourceTree = "<group>";
 		};
 		BDFC610B1E9374C100D77087 /* Cells */ = {
@@ -262,6 +326,7 @@
 			children = (
 				BF00F4831E4D1F2500D5D743 /* CategoryTableViewCell.swift */,
 				BFCA1B7E1E4E3A450023AB55 /* ExpenseTableViewCell.swift */,
+				BD8383751EDD758A00E8B5B2 /* IncomeTableViewCell.swift */,
 				BFFCD70C1E73D8C70030BD79 /* OverviewHeaderView.swift */,
 				BFFCD70E1E73D8D50030BD79 /* OverviewHeaderView.xib */,
 				BF90631F1E6891E3004B5F8B /* OverviewTableViewCell.swift */,
@@ -276,10 +341,12 @@
 			children = (
 				BF3FFBEC1E4BC90300559134 /* AddEditCategory.storyboard */,
 				BF00F48D1E4D331100D5D743 /* AddEditExpense.storyboard */,
+				BD8383661EDD5F7000E8B5B2 /* AddEditIncome.storyboard */,
 				BDFC61411E979A3700D77087 /* AddEditReminder.storyboard */,
 				BD589DEA1E83E13500F0C9CD /* Categories.storyboard */,
 				BD589DEC1E83F32A00F0C9CD /* CategoryExpenses.storyboard */,
 				BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */,
+				BD8383731EDD74DF00E8B5B2 /* Incomes.storyboard */,
 				BD6B69E31E79223400F7AF35 /* iPad.storyboard */,
 				BF3792431E09625C0060445D /* iPhone.storyboard */,
 				BF3792361E0933D00060445D /* LaunchScreen.storyboard */,
@@ -294,8 +361,10 @@
 				BF25146E1E46612200042FEF /* Category.swift */,
 				BF00F4911E4D348F00D5D743 /* Expense.swift */,
 				BFD5AA891E52E16100DE10E3 /* Extensions.swift */,
+				BD8383621EDD5E5400E8B5B2 /* Income.swift */,
 				BF00F4931E4D350C00D5D743 /* ModelBaseObject.swift */,
 				BF2514801E48659400042FEF /* ModelHelper.swift */,
+				BD8383641EDD5ED700E8B5B2 /* MoneyFlow.swift */,
 				BDFC61431E97D7BA00D77087 /* Reminder.swift */,
 			);
 			name = Model;
@@ -345,6 +414,7 @@
 				BD589DF51E8469D100F0C9CD /* Category Expenses */,
 				BD589DF31E8469AA00F0C9CD /* Device */,
 				BD589DF21E8469A300F0C9CD /* Expenses */,
+				BD83836A1EDD704700E8B5B2 /* Incomes */,
 				BF6BC8591E5ADB610052F4E8 /* Main */,
 				BD589DF41E8469B100F0C9CD /* Settings */,
 			);
@@ -367,6 +437,7 @@
 			children = (
 				BF3FFBEE1E4BC9E200559134 /* AddEditCategoryViewController.swift */,
 				BF00F48F1E4D344A00D5D743 /* AddEditExpenseViewController.swift */,
+				BD8383681EDD5FEF00E8B5B2 /* AddEditIncomeViewController.swift */,
 				BDFC613F1E979A1F00D77087 /* AddEditReminderViewController.swift */,
 			);
 			name = AddEdit;
@@ -492,6 +563,7 @@
 				BF6BC85E1E5B28240052F4E8 /* SubCategoryHeaderView.xib in Resources */,
 				BD589DED1E83F32A00F0C9CD /* CategoryExpenses.storyboard in Resources */,
 				BD6B69E41E79223400F7AF35 /* iPad.storyboard in Resources */,
+				BD8383741EDD74DF00E8B5B2 /* Incomes.storyboard in Resources */,
 				BF00F48E1E4D331100D5D743 /* AddEditExpense.storyboard in Resources */,
 				BF2514711E46626F00042FEF /* GoogleService-Info.plist in Resources */,
 				BF9687C41E58DBDC001CD715 /* BalanceView.xib in Resources */,
@@ -499,6 +571,7 @@
 				BDFC61101E93A13E00D77087 /* SettingsHeaderView.xib in Resources */,
 				BDFC61421E979A3700D77087 /* AddEditReminder.storyboard in Resources */,
 				BF9063241E6896DF004B5F8B /* DateChanger.xib in Resources */,
+				BD8383671EDD5F7000E8B5B2 /* AddEditIncome.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,6 +643,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD83836E1EDD70A400E8B5B2 /* IncomesViewController.swift in Sources */,
 				BF00F4921E4D348F00D5D743 /* Expense.swift in Sources */,
 				BF9063201E6891E3004B5F8B /* OverviewTableViewCell.swift in Sources */,
 				BDFC60EE1E8D3CE800D77087 /* ExpensesViewController+Firebase.swift in Sources */,
@@ -593,9 +667,11 @@
 				BDFC61001E9296F200D77087 /* SettingsViewController+UITableView.swift in Sources */,
 				BDFC60EC1E8D03A800D77087 /* ExpensesViewController+UITableView.swift in Sources */,
 				BF3FFBEF1E4BC9E200559134 /* AddEditCategoryViewController.swift in Sources */,
+				BD8383701EDD70B900E8B5B2 /* IncomesViewController+Firebase.swift in Sources */,
 				BF2514751E470FD100042FEF /* LoginViewController.swift in Sources */,
 				BF6BC85C1E5B280C0052F4E8 /* SubCategoryHeaderView.swift in Sources */,
 				BDFC610E1E93A0FB00D77087 /* SettingsHeaderView.swift in Sources */,
+				BD8383651EDD5ED700E8B5B2 /* MoneyFlow.swift in Sources */,
 				BFD5AA8A1E52E16100DE10E3 /* Extensions.swift in Sources */,
 				BF9687BD1E58CF1F001CD715 /* CategoriesViewController+UITableView.swift in Sources */,
 				BD3D40761E87965800C3CCAF /* CategoryExpensesViewController+UITableView.swift in Sources */,
@@ -603,16 +679,24 @@
 				BD589DF11E8451B200F0C9CD /* Authentication.swift in Sources */,
 				BDFC60EA1E8D036000D77087 /* ExpensesViewController.swift in Sources */,
 				BF37922E1E0933D00060445D /* AppDelegate.swift in Sources */,
+				BD8383761EDD758A00E8B5B2 /* IncomeTableViewCell.swift in Sources */,
+				BD8383721EDD70CC00E8B5B2 /* IncomesViewController+UITableView.swift in Sources */,
+				BD83837B1EDF248900E8B5B2 /* IncomesBaseDeviceViewController.swift in Sources */,
+				BD83837D1EDF24A500E8B5B2 /* IncomesPadViewController.swift in Sources */,
 				BD82C7F31E8AF00D009EB6A6 /* MainPadViewController.swift in Sources */,
+				BD8383631EDD5E5400E8B5B2 /* Income.swift in Sources */,
 				BF25146F1E46612200042FEF /* Category.swift in Sources */,
 				BFFCD70B1E73D4990030BD79 /* ExpensesPhoneViewController.swift in Sources */,
+				BD83836C1EDD709400E8B5B2 /* IncomeDetailsViewController.swift in Sources */,
 				BF6BC8601E5DC8450052F4E8 /* CategoriesViewController+Firebase.swift in Sources */,
 				BF00F48A1E4D1F7000D5D743 /* CustomView.swift in Sources */,
 				BF9687BF1E58CFB1001CD715 /* CategoriesHeaderView.swift in Sources */,
 				BF00F4841E4D1F2500D5D743 /* CategoryTableViewCell.swift in Sources */,
 				BF2514811E48659400042FEF /* ModelHelper.swift in Sources */,
+				BD83837F1EDF24BA00E8B5B2 /* IncomesPhoneViewController.swift in Sources */,
 				BFCA1B7F1E4E3A450023AB55 /* ExpenseTableViewCell.swift in Sources */,
 				BF37924A1E09633C0060445D /* SettingsViewController.swift in Sources */,
+				BD8383691EDD5FEF00E8B5B2 /* AddEditIncomeViewController.swift in Sources */,
 				BDFC60F61E914F3F00D77087 /* CategoryExpensesViewController+Firebase.swift in Sources */,
 				BF00F4941E4D350C00D5D743 /* ModelBaseObject.swift in Sources */,
 				BF3792481E0963330060445D /* CategoriesViewController.swift in Sources */,

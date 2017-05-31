@@ -33,6 +33,10 @@ class ExpensesPadViewController: ExpensesBaseDeviceViewController {
         } 
     }
     
+    override func onDateChanged() {
+        expenseDetailsViewController?.expenseData = nil
+    }
+    
     //MARK - ExpensesViewControllerDelegate
     override func expensesViewController(_ expensesViewController: ExpensesViewController, didSelect expenseData: ExpenseWithCategoryData) {
         expenseDetailsViewController?.expenseData = expenseData

@@ -1,18 +1,18 @@
 //
-//  AddEditExpenseViewController.swift
+//  AddEditIncomeViewController.swift
 //  Budget
 //
-//  Created by Vadim Kononov on 10/02/2017.
+//  Created by Vadik on 30/05/2017.
 //  Copyright © 2017 Vadim Kononov. All rights reserved.
 //
 
 import UIKit
 import FirebaseDatabase
 
-class AddEditExpenseViewController: UIViewController {
+class AddEditIncomeViewController: UIViewController {
 
-    var parentRef: FIRDatabaseReference?
-    var expense: Expense?
+    var listRef: FIRDatabaseReference?
+    var income: Income?
     
     @IBOutlet weak var o_titleField: UITextField!
     @IBOutlet weak var o_amountField: UITextField!
@@ -23,16 +23,24 @@ class AddEditExpenseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        o_titleField.text = expense?.title
-        if let amount = expense?.amount {
+        if let _ = income {
+            title = "Edit Income"
+        } else {
+            income = Income()
+            income?.date = Date()
+            title = "Add Income"
+        }
+        
+        o_titleField.text = income?.title
+        if let amount = income?.amount {
             o_amountField.text = amount.toString()
         }
-        if let date = expense?.date {
+        if let date = income?.date {
             o_dateLabel.text = date.toString()
             o_datePicker.date = date
         }
     }
-    
+        
     override var canBecomeFirstResponder: Bool {
         return true
     }
@@ -66,14 +74,14 @@ class AddEditExpenseViewController: UIViewController {
     
     @IBAction func didTapSave(_ sender: UIBarButtonItem) {
         if let title = o_titleField.text, let amountStr = o_amountField.text, let amount = Float(amountStr)  {
-            expense?.title = title
-            expense?.amount = amount
-            expense?.date = o_datePicker.date
+            income?.title = title
+            income?.amount = amount
+            income?.date = o_datePicker.date
             
-            if let parentRef = parentRef {
-                expense?.insert(into: parentRef)
-            } else if let expense = expense {
-                expense.update()
+            if let listRef = listRef {
+                income?.insert(into: listRef)
+            } else if let income = income {
+                income.update()
             }
             dismiss(animated: true, completion: nil)
         }
