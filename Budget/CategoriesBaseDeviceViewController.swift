@@ -17,6 +17,9 @@ class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderView
     
     var incomesRef: FIRDatabaseReference?
     var incomes: [Income] = [Income]()
+    var incomesAddHandler: UInt?
+    var incomesChangeHandler: UInt?
+    var incomesRemoveHandler: UInt?
     
     override func viewDidLoad() {
         super.viewDidLoad()

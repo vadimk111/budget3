@@ -27,13 +27,14 @@ extension CategoriesViewController {
             if let _ = category.parent {
                 if self.addCategoryToParentView(category) {
                     NotificationCenter.default.post(Notification(name: budgetChangedNotification))
+                    self.delegate?.categoriesViewControllerChanged(self)
                 }
             } else {
                 if self.addCategoryToView(category) {
                     NotificationCenter.default.post(Notification(name: budgetChangedNotification))
+                    self.delegate?.categoriesViewControllerChanged(self)
                 }
             }
-            self.delegate?.categoriesViewControllerChanged(self)
         })
     }
     

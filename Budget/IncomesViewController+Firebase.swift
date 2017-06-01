@@ -11,7 +11,7 @@ import FirebaseDatabase
 
 extension IncomesViewController {
     func registerToUpdates() {
-        listRef?.observe(.childAdded, with: { [unowned self] snapshot in
+        addHandler = listRef?.observe(.childAdded, with: { [unowned self] snapshot in
             let income = Income(snapshot: snapshot)
             if !self.incomes.contains(where: { $0.id == income.id } ) {
                 self.incomes.append(income)
@@ -20,7 +20,7 @@ extension IncomesViewController {
             self.delegate?.incomesViewControllerChanged(self)
         })
         
-        listRef?.observe(.childChanged, with: { [unowned self] snapshot in
+        changeHandler = listRef?.observe(.childChanged, with: { [unowned self] snapshot in
             let income = Income(snapshot: snapshot)
             if let index = self.incomes.index(where: { $0.id == income.id }) {
                 self.incomes.remove(at: index)
@@ -33,7 +33,7 @@ extension IncomesViewController {
             self.delegate?.incomesViewControllerChanged(self)
         })
         
-        listRef?.observe(.childRemoved, with: { [unowned self] snapshot in
+        removeHandler = listRef?.observe(.childRemoved, with: { [unowned self] snapshot in
             let income = Income(snapshot: snapshot)
             if let index = self.incomes.index(where: { $0.id == income.id }) {
                 self.incomes.remove(at: index)
@@ -44,6 +44,14 @@ extension IncomesViewController {
     }
         
     func unregisterFromUpdates() {
-        listRef?.removeAllObservers()
+        if let handler = addHandler {
+            listRef?.removeObserver(withHandle: handler)
+        }
+        if let handler = changeHandler {
+            listRef?.removeObserver(withHandle: handler)
+        }
+        if let handler = removeHandler {
+            listRef?.removeObserver(withHandle: handler)
+        }
     }
 }

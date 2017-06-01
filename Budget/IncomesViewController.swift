@@ -21,6 +21,10 @@ class IncomesViewController: UITableViewController, IncomeTableViewCellDelegate 
     var date: Date = Date()
     var incomes: [Income] = [Income]()
     var listRef: FIRDatabaseReference?
+    var addHandler: UInt?
+    var changeHandler: UInt?
+    var removeHandler: UInt?
+    
     weak var delegate: IncomesViewControllerDelegate?
 
     var tableSeparatorInset: UIEdgeInsets? {
