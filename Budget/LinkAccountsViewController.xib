@@ -29,8 +29,8 @@
                         <constraint firstAttribute="height" constant="50" id="hCk-SK-dXm"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gY0-gA-73c">
-                    <rect key="frame" x="53.5" y="210" width="110" height="14"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gY0-gA-73c">
+                    <rect key="frame" x="53.5" y="210" width="110" height="0.0"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="110" id="ENM-ur-ehx"/>
                     </constraints>
@@ -53,7 +53,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cE-Ji-Qlu">
-                    <rect key="frame" x="211.5" y="210.5" width="110" height="14"/>
+                    <rect key="frame" x="211.5" y="203.5" width="110" height="14"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="110" id="ZId-HA-um8"/>
                     </constraints>
@@ -62,7 +62,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g96-ie-64X">
-                    <rect key="frame" x="130.5" y="274.5" width="115" height="33"/>
+                    <rect key="frame" x="130.5" y="267.5" width="115" height="33"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                     <state key="normal" title="Link Accounts"/>
                     <connections>

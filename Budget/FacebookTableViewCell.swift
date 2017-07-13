@@ -17,23 +17,27 @@ class FacebookTableViewCell: UITableViewCell {
 
     weak var delegate: FacebookTableViewCellDelegate?
     
-    @IBOutlet weak var o_button: UIButton!
+    @IBOutlet weak var o_disconnectButton: UIButton!
+    @IBOutlet weak var o_label: UILabel!
+    @IBOutlet weak var o_facebookImage: UIImageView! {
+        didSet {
+            o_facebookImage.layer.cornerRadius = o_facebookImage.frame.width / 2
+        }
+    }
+    @IBOutlet weak var o_connectedView: UIView!
+    @IBOutlet weak var o_disconnectedView: UIView!
     
     var isConnected: Bool = false {
         didSet {
-            if isConnected {
-                o_button.setTitle("Disconnect Facebook Account", for: .normal)
-                o_button.tag = 1
-            } else {
-                o_button.setTitle("Connect Facebook Account", for: .normal)
-                o_button.tag = 0
-            }
+            o_connectedView.isHidden = !isConnected
+            o_disconnectedView.isHidden = isConnected
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        FacebookHelper.loadUserData(onLabel: o_label, andImage: o_facebookImage)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -42,11 +46,11 @@ class FacebookTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @IBAction func didTapButton(_ sender: UIButton) {
-        if sender.tag == 0 {
+    @IBAction func didTapConnect(_ sender: UIButton) {
             delegate?.facebookTableViewCellDidTapConnect(self)
-        } else {
-            delegate?.facebookTableViewCellDidTapDisconnect(self)
-        }
+    }
+    
+    @IBAction func didTapDisconnect(_ sender: UIButton) {
+        delegate?.facebookTableViewCellDidTapDisconnect(self)
     }
 }

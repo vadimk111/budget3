@@ -175,24 +175,78 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X42-Je-hiE">
-                                            <rect key="frame" x="20" y="6.5" width="201" height="31"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                            <state key="normal" title="Connect Facebook Account"/>
-                                            <connections>
-                                                <action selector="didTapButton:" destination="Roi-WU-Tum" eventType="touchUpInside" id="WBF-pQ-kWI"/>
-                                            </connections>
-                                        </button>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pDT-Sw-5Bv">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KAe-i0-7YW">
+                                                    <rect key="frame" x="20" y="4" width="36" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="36" id="5ld-q2-V0K"/>
+                                                        <constraint firstAttribute="height" constant="36" id="yLX-Pq-Njf"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqS-H1-FhU">
+                                                    <rect key="frame" x="64" y="22" width="0.0" height="0.0"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbm-ge-ppb">
+                                                    <rect key="frame" x="277" y="7" width="78" height="30"/>
+                                                    <state key="normal" title="Disconnect"/>
+                                                    <connections>
+                                                        <action selector="didTapDisconnect:" destination="Roi-WU-Tum" eventType="touchUpInside" id="Bro-Mp-jLg"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="tbm-ge-ppb" firstAttribute="centerY" secondItem="pDT-Sw-5Bv" secondAttribute="centerY" id="3XI-JG-Fuy"/>
+                                                <constraint firstItem="KAe-i0-7YW" firstAttribute="centerY" secondItem="pDT-Sw-5Bv" secondAttribute="centerY" id="GLG-SU-x3o"/>
+                                                <constraint firstItem="rqS-H1-FhU" firstAttribute="leading" secondItem="KAe-i0-7YW" secondAttribute="trailing" constant="8" id="KVx-e9-Wvy"/>
+                                                <constraint firstItem="KAe-i0-7YW" firstAttribute="leading" secondItem="pDT-Sw-5Bv" secondAttribute="leading" constant="20" id="M5Y-o7-bA5"/>
+                                                <constraint firstAttribute="trailing" secondItem="tbm-ge-ppb" secondAttribute="trailing" constant="20" id="NxJ-rV-91i"/>
+                                                <constraint firstItem="rqS-H1-FhU" firstAttribute="centerY" secondItem="KAe-i0-7YW" secondAttribute="centerY" id="REd-eC-FG7"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ZG-sh-pSw">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X42-Je-hiE">
+                                                    <rect key="frame" x="20" y="6.5" width="201" height="31"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <state key="normal" title="Connect Facebook Account"/>
+                                                    <connections>
+                                                        <action selector="didTapConnect:" destination="Roi-WU-Tum" eventType="touchUpInside" id="50P-FG-hck"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="X42-Je-hiE" firstAttribute="leading" secondItem="2ZG-sh-pSw" secondAttribute="leading" constant="20" id="Ofr-vm-DPW"/>
+                                                <constraint firstItem="X42-Je-hiE" firstAttribute="centerY" secondItem="2ZG-sh-pSw" secondAttribute="centerY" id="XiH-zb-dOZ"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="X42-Je-hiE" firstAttribute="leading" secondItem="aeg-l3-6mc" secondAttribute="leading" constant="20" id="0yW-O4-qIH"/>
-                                        <constraint firstItem="X42-Je-hiE" firstAttribute="centerY" secondItem="aeg-l3-6mc" secondAttribute="centerY" id="Z80-nO-KyX"/>
+                                        <constraint firstAttribute="bottom" secondItem="pDT-Sw-5Bv" secondAttribute="bottom" id="55E-bA-h5k"/>
+                                        <constraint firstItem="pDT-Sw-5Bv" firstAttribute="top" secondItem="aeg-l3-6mc" secondAttribute="top" id="8gW-Dj-Obj"/>
+                                        <constraint firstAttribute="trailing" secondItem="2ZG-sh-pSw" secondAttribute="trailing" id="DvC-V5-Rsu"/>
+                                        <constraint firstItem="2ZG-sh-pSw" firstAttribute="leading" secondItem="aeg-l3-6mc" secondAttribute="leading" id="Ftb-JJ-ho9"/>
+                                        <constraint firstAttribute="trailing" secondItem="pDT-Sw-5Bv" secondAttribute="trailing" id="O2q-4e-PKt"/>
+                                        <constraint firstItem="2ZG-sh-pSw" firstAttribute="top" secondItem="aeg-l3-6mc" secondAttribute="top" id="UQR-v7-xvz"/>
+                                        <constraint firstItem="pDT-Sw-5Bv" firstAttribute="leading" secondItem="aeg-l3-6mc" secondAttribute="leading" id="gqw-of-0KX"/>
+                                        <constraint firstAttribute="bottom" secondItem="2ZG-sh-pSw" secondAttribute="bottom" id="jIC-dP-nOS"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="o_button" destination="X42-Je-hiE" id="h9m-gj-YTJ"/>
+                                    <outlet property="o_connectedView" destination="pDT-Sw-5Bv" id="YxO-JN-3ok"/>
+                                    <outlet property="o_disconnectButton" destination="tbm-ge-ppb" id="W42-J5-kHe"/>
+                                    <outlet property="o_disconnectedView" destination="2ZG-sh-pSw" id="V6i-tv-Kzd"/>
+                                    <outlet property="o_facebookImage" destination="KAe-i0-7YW" id="rgz-oR-QKz"/>
+                                    <outlet property="o_label" destination="rqS-H1-FhU" id="cYA-kk-gyS"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

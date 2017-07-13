@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FBSDKLoginKit
 
 protocol LinkAccountsViewControllerDelegate: class {
     func linkAccountsViewController(_ linkAccountsViewController: LinkAccountsViewController, linkWithPassword password: String?)
@@ -32,23 +31,7 @@ class LinkAccountsViewController: UIViewController {
         
         o_emailLabel.text = email
         
-        FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields" : "picture, name"]).start(completionHandler: { (connection, result, error) in
-            if let result = result as? NSDictionary {
-                self.o_facebookLabel.text = result["name"] as? String
-                
-                if let picture = result["picture"] as? NSDictionary,
-                    let data = picture["data"] as? NSDictionary,
-                    let urlStr = data["url"] as? String,
-                    let url = URL.init(string: urlStr) {
-                    do {
-                        let data = try Data.init(contentsOf: url)
-                        self.o_facebookImage.image = UIImage.init(data: data)
-                    } catch {
-                        
-                    }
-                }
-            }
-        })
+        FacebookHelper.loadUserData(onLabel: o_facebookLabel, andImage: o_facebookImage)
     }
 
     override func viewWillAppear(_ animated: Bool) {

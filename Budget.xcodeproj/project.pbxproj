@@ -35,6 +35,7 @@
 		BDCDA01F1F13AAA0008AB2A6 /* FacebookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA01E1F13AAA0008AB2A6 /* FacebookTableViewCell.swift */; };
 		BDCDA0221F14F0D8008AB2A6 /* LinkAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA0201F14F0D8008AB2A6 /* LinkAccountsViewController.swift */; };
 		BDCDA0231F14F0D8008AB2A6 /* LinkAccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDCDA0211F14F0D8008AB2A6 /* LinkAccountsViewController.xib */; };
+		BDCDA0251F1756B2008AB2A6 /* FacebookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA0241F1756B2008AB2A6 /* FacebookHelper.swift */; };
 		BDFC60E61E8CFF1D00D77087 /* Expenses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */; };
 		BDFC60E81E8D02D300D77087 /* ExpensesPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */; };
 		BDFC60EA1E8D036000D77087 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */; };
@@ -128,6 +129,7 @@
 		BDCDA01E1F13AAA0008AB2A6 /* FacebookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookTableViewCell.swift; sourceTree = "<group>"; };
 		BDCDA0201F14F0D8008AB2A6 /* LinkAccountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAccountsViewController.swift; sourceTree = "<group>"; };
 		BDCDA0211F14F0D8008AB2A6 /* LinkAccountsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LinkAccountsViewController.xib; sourceTree = "<group>"; };
+		BDCDA0241F1756B2008AB2A6 /* FacebookHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookHelper.swift; sourceTree = "<group>"; };
 		BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Expenses.storyboard; sourceTree = "<group>"; };
 		BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesPadViewController.swift; sourceTree = "<group>"; };
 		BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 			children = (
 				BFD5AA8B1E52FDBC00DE10E3 /* Consts.swift */,
 				BF00F4891E4D1F7000D5D743 /* CustomView.swift */,
+				BDCDA0241F1756B2008AB2A6 /* FacebookHelper.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -711,6 +714,7 @@
 				BD83837F1EDF24BA00E8B5B2 /* IncomesPhoneViewController.swift in Sources */,
 				BFCA1B7F1E4E3A450023AB55 /* ExpenseTableViewCell.swift in Sources */,
 				BF37924A1E09633C0060445D /* SettingsViewController.swift in Sources */,
+				BDCDA0251F1756B2008AB2A6 /* FacebookHelper.swift in Sources */,
 				BD8383691EDD5FEF00E8B5B2 /* AddEditIncomeViewController.swift in Sources */,
 				BDFC60F61E914F3F00D77087 /* CategoryExpensesViewController+Firebase.swift in Sources */,
 				BF00F4941E4D350C00D5D743 /* ModelBaseObject.swift in Sources */,
