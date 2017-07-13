@@ -31,15 +31,13 @@ class FacebookTableViewCell: UITableViewCell {
         didSet {
             o_connectedView.isHidden = !isConnected
             o_disconnectedView.isHidden = isConnected
+            
+            if isConnected {
+                FacebookHelper.loadUserData(onLabel: o_label, andImage: o_facebookImage)
+            }
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        FacebookHelper.loadUserData(onLabel: o_label, andImage: o_facebookImage)
-    }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

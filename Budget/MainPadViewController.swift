@@ -77,7 +77,7 @@ class MainPadViewController: UIViewController, AuthenticationDelegate, SettingsV
     }
 
     func settingsViewController(_ settingsViewController: SettingsViewController, shouldDisplayAlert alert: UIAlertController) {
-        present(alert, animated: true, completion: nil)
+        settingsViewController.present(alert, animated: true, completion: nil)
     }
     
     func settingsViewControllerShouldDismissViewController(_ settingsViewController: SettingsViewController) {
