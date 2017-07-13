@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -166,6 +166,33 @@
                                     <outlet property="o_label" destination="sIx-4U-R2A" id="oa6-0D-Biz"/>
                                     <outlet property="o_loginButton" destination="d7M-vu-uKH" id="Zor-zS-nqi"/>
                                     <outlet property="o_logoutButton" destination="2bN-6E-7hP" id="7yD-14-h1r"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="facebookCells" id="Roi-WU-Tum" customClass="FacebookTableViewCell" customModule="Budget" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="224" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Roi-WU-Tum" id="aeg-l3-6mc">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X42-Je-hiE">
+                                            <rect key="frame" x="20" y="6.5" width="201" height="31"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                            <state key="normal" title="Connect Facebook Account"/>
+                                            <connections>
+                                                <action selector="didTapButton:" destination="Roi-WU-Tum" eventType="touchUpInside" id="WBF-pQ-kWI"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="X42-Je-hiE" firstAttribute="leading" secondItem="aeg-l3-6mc" secondAttribute="leading" constant="20" id="0yW-O4-qIH"/>
+                                        <constraint firstItem="X42-Je-hiE" firstAttribute="centerY" secondItem="aeg-l3-6mc" secondAttribute="centerY" id="Z80-nO-KyX"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="o_button" destination="X42-Je-hiE" id="h9m-gj-YTJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

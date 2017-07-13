@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class CategoriesPadViewController: CategoriesBaseDeviceViewController, CategoryExpensesViewControllerDelegate {
 

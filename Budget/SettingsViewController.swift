@@ -15,13 +15,14 @@ let reminderNotification = "REMINDERNOTIFICATION"
 
 protocol SettingsViewControllerDelegate: class {
     func settingsViewController(_ settingsViewController: SettingsViewController, shouldDisplayViewController viewController: UIViewController)
-    func settingsViewController(_ settingsViewController: SettingsViewController, shouldDismissViewController viewController: UIViewController)
+    func settingsViewControllerShouldDismissViewController(_ settingsViewController: SettingsViewController)
     func settingsViewController(_ settingsViewController: SettingsViewController, shouldDisplayAlert alert: UIAlertController)
 }
 
 class SettingsViewController: UITableViewController, AddEditReminderViewControllerDelegate {
 
     weak var delegate: SettingsViewControllerDelegate?
+    var authentication: Authentication?
     var reminders: [ReminderData] = []
     var showReminders = UserDefaults.standard.bool(forKey: showReminderskey)
     
@@ -29,6 +30,8 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
         super.viewDidLoad()
 
         NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.onFacebookLinkedChange), name: facebookLinkedChangeNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.onUserNotificationCenterChanged), name: userNotificationCenterAuthorizationChangedNotification, object: nil)
         
@@ -53,6 +56,10 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
     }
     
     func onSignInStateChanged() {
+        tableView.reloadSections([0], with: .none)
+    }
+    
+    func onFacebookLinkedChange() {
         tableView.reloadSections([0], with: .none)
     }
     
@@ -128,6 +135,14 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
             
             UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
             })
+        }
+    }
+    
+    func displayAlert(_ alert: UIAlertController) {
+        if let delegate = delegate {
+            delegate.settingsViewController(self, shouldDisplayAlert: alert)
+        } else {
+            present(alert, animated: true, completion: nil)
         }
     }
 }

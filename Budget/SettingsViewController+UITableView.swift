@@ -19,6 +19,18 @@ extension SettingsViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            if APP.user == nil {
+                return 1
+            }
+            if !Authentication.isFacebookAccountConnected() {
+                return 2
+            }
+            if Authentication.canDisconnectFacebookAccount() {
+                return 2
+            }
+            return 1
+        }
         if section == 2 {
             return reminders.count
         }
@@ -27,10 +39,19 @@ extension SettingsViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "accountCells", for: indexPath) as! AccountTableViewCell
-            cell.delegate = self
-            cell.build()
-            return cell
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "accountCells", for: indexPath) as! AccountTableViewCell
+                cell.delegate = self
+                cell.build()
+                return cell
+            }
+            if indexPath.row == 1 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "facebookCells", for: indexPath) as! FacebookTableViewCell
+                cell.delegate = self
+                cell.isConnected = Authentication.isFacebookAccountConnected()
+                return cell
+            }
+            return UITableViewCell()
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "remindersCells", for: indexPath) as! RemindersTableViewCell
             cell.delegate = self

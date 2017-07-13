@@ -11,7 +11,7 @@ import UIKit
 protocol AccountTableViewCellDelegate: class {
     func accountTableViewCell(_ accountTableViewCell: AccountTableViewCell, shouldDisplayViewController viewController: UIViewController)
     func accountTableViewCell(_ accountTableViewCell: AccountTableViewCell, shouldDisplayAlert alert: UIAlertController)
-    func accountTableViewCell(_ accountTableViewCell: AccountTableViewCell, shouldDismiss viewController: UIViewController)
+    func accountTableViewCellShouldDismissViewController(_ accountTableViewCell: AccountTableViewCell)
 }
 
 class AccountTableViewCell: UITableViewCell, AuthenticationDelegate {
@@ -60,16 +60,16 @@ class AccountTableViewCell: UITableViewCell, AuthenticationDelegate {
     }
 
     //MARK - AuthenticationDelegate
-    func authentication(_ authentication: Authentication, shouldDisplay viewController: UIViewController) {
+    func authentication(_ authentication: Authentication, shouldDisplayViewController viewController: UIViewController) {
         delegate?.accountTableViewCell(self, shouldDisplayViewController: viewController)
     }
     
-    func authentication(_ authentication: Authentication, shouldDisplay alert: UIAlertController) {
+    func authentication(_ authentication: Authentication, shouldDisplayAlert alert: UIAlertController) {
         delegate?.accountTableViewCell(self, shouldDisplayAlert: alert)
     }
     
-    func authentication(_ authentication: Authentication, shouldDismiss viewController: UIViewController) {
-        delegate?.accountTableViewCell(self, shouldDismiss: viewController)
+    func authenticationShouldDismissViewController(_ authentication: Authentication) {
+        delegate?.accountTableViewCellShouldDismissViewController(self)
     }
 
 }

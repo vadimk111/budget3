@@ -48,17 +48,17 @@ class MainPadViewController: UIViewController, AuthenticationDelegate, SettingsV
         }
     }
     
-    func authentication(_ authentication: Authentication, shouldDisplay alert: UIAlertController) {
+    func authentication(_ authentication: Authentication, shouldDisplayAlert alert: UIAlertController) {
         present(alert, animated: true, completion: nil)
     }
     
-    func authentication(_ authentication: Authentication, shouldDisplay viewController: UIViewController) {
+    func authentication(_ authentication: Authentication, shouldDisplayViewController viewController: UIViewController) {
         viewController.modalPresentationStyle = .popover
         viewController.popoverPresentationController?.sourceView = o_popoverSourceView
         present(viewController, animated: true, completion: nil)
     }
     
-    func authentication(_ authentication: Authentication, shouldDismiss viewController: UIViewController) {
+    func authenticationShouldDismissViewController(_ authentication: Authentication) {
         dismiss(animated: true, completion: nil)
     }
     
@@ -80,7 +80,7 @@ class MainPadViewController: UIViewController, AuthenticationDelegate, SettingsV
         present(alert, animated: true, completion: nil)
     }
     
-    func settingsViewController(_ settingsViewController: SettingsViewController, shouldDismissViewController viewController: UIViewController) {
+    func settingsViewControllerShouldDismissViewController(_ settingsViewController: SettingsViewController) {
         dismiss(animated: true, completion: nil)
     }
 }

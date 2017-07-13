@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LinkAccountsViewController" customModule="Budget" customModuleProvider="target">
+            <connections>
+                <outlet property="o_emailLabel" destination="6cE-Ji-Qlu" id="fPR-QN-pBp"/>
+                <outlet property="o_facebookImage" destination="tDh-0v-LaF" id="MQj-jp-Jz6"/>
+                <outlet property="o_facebookLabel" destination="gY0-gA-73c" id="Amc-9H-iS6"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tDh-0v-LaF">
+                    <rect key="frame" x="83.5" y="150" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="0W4-Yt-a6H"/>
+                        <constraint firstAttribute="height" constant="50" id="hCk-SK-dXm"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gY0-gA-73c">
+                    <rect key="frame" x="53.5" y="210" width="110" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="110" id="ENM-ur-ehx"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrows-couple" translatesAutoresizingMaskIntoConstraints="NO" id="xpy-SJ-h5s">
+                    <rect key="frame" x="163.5" y="151" width="48" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="48" id="XhB-yc-bLv"/>
+                        <constraint firstAttribute="height" constant="48" id="xHI-5T-aWu"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="LbJ-Iw-7KT">
+                    <rect key="frame" x="241.5" y="150" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="NpI-tE-p8F"/>
+                        <constraint firstAttribute="height" constant="50" id="SX7-bL-xbY"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cE-Ji-Qlu">
+                    <rect key="frame" x="211.5" y="210.5" width="110" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="110" id="ZId-HA-um8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g96-ie-64X">
+                    <rect key="frame" x="130.5" y="274.5" width="115" height="33"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                    <state key="normal" title="Link Accounts"/>
+                    <connections>
+                        <action selector="didTapLink:" destination="-1" eventType="touchUpInside" id="O9U-n5-mM9"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="g96-ie-64X" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3iy-gH-HjX"/>
+                <constraint firstItem="LbJ-Iw-7KT" firstAttribute="leading" secondItem="xpy-SJ-h5s" secondAttribute="trailing" constant="30" id="E2n-oL-gTN"/>
+                <constraint firstItem="xpy-SJ-h5s" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="HRg-vj-god"/>
+                <constraint firstItem="gY0-gA-73c" firstAttribute="centerX" secondItem="tDh-0v-LaF" secondAttribute="centerX" id="IJH-vF-Dfe"/>
+                <constraint firstItem="6cE-Ji-Qlu" firstAttribute="centerY" secondItem="gY0-gA-73c" secondAttribute="centerY" id="PXI-Wn-SXm"/>
+                <constraint firstItem="g96-ie-64X" firstAttribute="top" secondItem="6cE-Ji-Qlu" secondAttribute="bottom" constant="50" id="QAO-fW-81i"/>
+                <constraint firstItem="tDh-0v-LaF" firstAttribute="centerY" secondItem="xpy-SJ-h5s" secondAttribute="centerY" id="SpA-Cg-4zH"/>
+                <constraint firstItem="xpy-SJ-h5s" firstAttribute="leading" secondItem="tDh-0v-LaF" secondAttribute="trailing" constant="30" id="ZdV-RV-o0R"/>
+                <constraint firstItem="tDh-0v-LaF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="150" id="aav-3x-MUK"/>
+                <constraint firstItem="LbJ-Iw-7KT" firstAttribute="centerY" secondItem="xpy-SJ-h5s" secondAttribute="centerY" id="dKF-rX-42b"/>
+                <constraint firstItem="gY0-gA-73c" firstAttribute="top" secondItem="tDh-0v-LaF" secondAttribute="bottom" constant="10" id="ffj-C7-6Ll"/>
+                <constraint firstItem="6cE-Ji-Qlu" firstAttribute="centerX" secondItem="LbJ-Iw-7KT" secondAttribute="centerX" id="jK7-oY-rGE"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrows-couple" width="48" height="48"/>
+        <image name="profile" width="50" height="50"/>
+    </resources>
+</document>

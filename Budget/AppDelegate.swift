@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import UserNotifications
+import FBSDKCoreKit
 
 let APP: AppDelegate = UIApplication.shared.delegate as! AppDelegate
 let userNotificationCenterAuthorizationChangedNotification = Notification.Name(rawValue: "UNCACNot")
@@ -26,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         FIRApp.configure()
         
         registerCategory()
+        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
     }
@@ -65,6 +68,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+    }
 }
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 protocol LoginViewControllerDelegate: class {
     func loginViewControllerCreate(_ loginViewController: LoginViewController)
@@ -19,8 +20,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var o_email: UITextField!
     @IBOutlet weak var o_password: UITextField!
+    @IBOutlet weak var o_fbLoginButton: FBSDKLoginButton!
     
     weak var delegate: LoginViewControllerDelegate?
+    weak var facebookLoginDelegate: FBSDKLoginButtonDelegate?
     
     var email: String {
         get {
@@ -34,9 +37,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    init(delegate: LoginViewControllerDelegate) {
+    init(delegate: LoginViewControllerDelegate, facebookLoginDelegate: FBSDKLoginButtonDelegate) {
         super.init(nibName: nil, bundle: nil)
         self.delegate = delegate
+        self.facebookLoginDelegate = facebookLoginDelegate
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -49,9 +53,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         o_email.delegate = self
         o_password.delegate = self
+        
+        o_fbLoginButton.readPermissions = facebookReadPermissions
+        o_fbLoginButton.delegate = facebookLoginDelegate
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.isNavigationBarHidden = true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -62,7 +75,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
-    
+        
     @IBAction func didTapForgot(_ sender: UIButton) {
         if o_email.text == "" {
             let a = UIAlertController(title: "Error", message: "Please, fill up the email field", preferredStyle: UIAlertControllerStyle.alert)

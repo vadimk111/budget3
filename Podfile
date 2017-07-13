@@ -10,4 +10,7 @@ target ‘Budget’ do
   pod 'Firebase/Auth'
   pod 'Firebase/Crash'
   
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  
 end
