@@ -189,7 +189,8 @@ class CategoriesViewController: UITableViewController {
     
     func changeToDate(_ date: Date) {
         let calendar = Calendar.current
-        if calendar.component(.month, from: date) == calendar.component(.month, from: Date()) {
+        let today = Date()
+        if calendar.component(.month, from: date) == calendar.component(.month, from: today) && calendar.component(.year, from: date) == calendar.component(.year, from: today) {
             self.date = Date()
         } else {
             self.date = date
