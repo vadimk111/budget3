@@ -16,12 +16,22 @@ class MainPhoneViewController: UITabBarController, AuthenticationDelegate {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(MainPhoneViewController.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainPhoneViewController.onDatePickerAppear), name: datePickerControllerDidAppearNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainPhoneViewController.onDatePickerDisappear), name: datePickerControllerDidDisappearNotification, object: nil)
     }
     
     func onSignInStateChanged() {
         authentication = nil
         APP.automaticAuthenticationCompleted = true
         NotificationCenter.default.removeObserver(self, name: signInStateChangedNotification, object: nil)
+    }
+    
+    func onDatePickerAppear() {
+        tabBar.isHidden = true
+    }
+    
+    func onDatePickerDisappear() {
+        tabBar.isHidden = false
     }
     
     override func viewDidAppear(_ animated: Bool) {

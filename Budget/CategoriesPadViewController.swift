@@ -137,4 +137,14 @@ class CategoriesPadViewController: CategoriesBaseDeviceViewController, CategoryE
     func categoryExpensesViewController(_ categoryExpensesViewController: CategoryExpensesViewController, addExpenseTo category: Category) {
         performSegue(withIdentifier: "addExpense", sender: category)
     }
+    
+    //MARK: CategoriesHeaderViewDelegate
+    override func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, didCreateDatePicker datePicker: DatePickerViewController) {
+        presentDatePickerAsPopover(datePicker: datePicker, sourceView: o_categoriesHeaderView, sourceRect: o_categoriesHeaderView.o_dateChanger.o_title.frame)
+    }
+    
+    override func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, didChangeDate date: Date) {
+        super.categoriesHeaderView(categoriesHeaderView, didChangeDate: date)
+        dismiss(animated: true)
+    }
 }

@@ -11,12 +11,16 @@ import UIKit
 protocol DateChangerDelegate: class {
     func dateChangerDidGoNext(_ dateChanger: DateChanger)
     func dateChangerDidGoPrev(_ dateChanger: DateChanger)
+    func dateChanger(_ dateChanger: DateChanger, didCreateDatePicker datePicker: DatePickerViewController)
+    func dateChanger(_ dateChanger: DateChanger, shouldDismiss datePicker: DatePickerViewController)
+    func dateChanger(_ dateChanger: DateChanger, didChangeDate date: Date)
 }
 
-class DateChanger: CustomView {
+class DateChanger: CustomView, DatePickerViewControllerDelegate {
 
     var dateText: String?
     var totalIncome: Float?
+    var datePicker: DatePickerViewController?
     
     @IBOutlet weak var o_title: UILabel!
     
@@ -44,6 +48,21 @@ class DateChanger: CustomView {
             }
             o_title.attributedText = attributedTitle
         }
+    }
+    
+    @IBAction func didTapLabel(_ sender: UITapGestureRecognizer) {
+        datePicker = DatePickerViewController()
+        datePicker?.delegate = self
+        datePicker?.initialDate = date
+        delegate?.dateChanger(self, didCreateDatePicker: datePicker!)
+    }
+    
+    func datePickerViewController(_ datePickerViewController: DatePickerViewController, didChange date: Date) {
+        delegate?.dateChanger(self, didChangeDate: date)
+    }
+    
+    func datePickerViewControllerShouldDismiss(_ datePickerViewController: DatePickerViewController) {
+        delegate?.dateChanger(self, shouldDismiss: datePickerViewController)
     }
     
     @IBAction func didTapNext(_ sender: UIButton) {

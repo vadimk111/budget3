@@ -17,3 +17,6 @@ let colors: [UIColor] = [UIColor(red: 103 / 255, green: 171 / 255, blue: 87 / 25
 
 let months: [String] = ["January", "February", "March", "April", "May", "June",
                         "July", "August", "September", "October", "November", "December"]
+
+let datePickerControllerDidAppearNotification = Notification.Name(rawValue: "datePickerControllerDidAppearNotification")
+let datePickerControllerDidDisappearNotification = Notification.Name(rawValue: "datePickerControllerDidDisappearNotification")

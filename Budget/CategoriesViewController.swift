@@ -187,7 +187,7 @@ class CategoriesViewController: UITableViewController {
         changeToDate(date.prevMonth())
     }
     
-    func changeToDate(_ date: Date) {
+    func changeToDate(_ date: Date, copyClosestBudget: Bool = true) {
         let calendar = Calendar.current
         let today = Date()
         if calendar.component(.month, from: date) == calendar.component(.month, from: today) && calendar.component(.year, from: date) == calendar.component(.year, from: today) {
@@ -197,7 +197,7 @@ class CategoriesViewController: UITableViewController {
         }
         
         dateChanged = true
-        closestBudget = categories
+        closestBudget = copyClosestBudget ? categories : nil
         expandedCategories = [:]
         
         reload()

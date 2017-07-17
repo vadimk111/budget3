@@ -26,4 +26,18 @@ class IncomesPhoneViewController: IncomesBaseDeviceViewController {
     override func incomesViewController(_ incomesViewController: IncomesViewController, didSelect income: Income) {
         performSegue(withIdentifier: "editIncome", sender: income)
     }
+    
+    //MARK - DateChangerDelegate
+    override func dateChanger(_ dateChanger: DateChanger, didCreateDatePicker datePicker: DatePickerViewController) {
+        presentDatePickerOverCurrentContext(datePicker: datePicker)
+    }
+    
+    override func dateChanger(_ dateChanger: DateChanger, shouldDismiss datePicker: DatePickerViewController) {
+        closeDatePicker()
+    }
+    
+    override func dateChanger(_ dateChanger: DateChanger, didChangeDate date: Date) {
+        super.dateChanger(dateChanger, didChangeDate: date)
+        closeDatePicker()
+    }
 }

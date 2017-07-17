@@ -72,4 +72,18 @@ class CategoriesPhoneViewController: CategoriesBaseDeviceViewController {
         super.categoriesViewControllerChanged(categoriesViewController)
         o_editBarButton.isEnabled = categoriesViewController.categories.count > 0
     }
+    
+    //MARK: CategoriesHeaderViewDelegate
+    override func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, didCreateDatePicker datePicker: DatePickerViewController) {
+        presentDatePickerOverCurrentContext(datePicker: datePicker)
+    }
+
+    override func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, shouldDismiss datePicker: DatePickerViewController) {
+        closeDatePicker()
+    }
+
+    override func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, didChangeDate date: Date) {
+        super.categoriesHeaderView(categoriesHeaderView, didChangeDate: date)
+        closeDatePicker()
+    }
 }

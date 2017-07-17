@@ -102,6 +102,16 @@ class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderView
         categoriesViewController?.goPrevMonth()
     }
     
+    func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, didCreateDatePicker datePicker: DatePickerViewController) {
+    }
+    
+    func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, shouldDismiss datePicker: DatePickerViewController) {
+    }
+    
+    func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, didChangeDate date: Date) {
+        categoriesViewController?.changeToDate(date, copyClosestBudget: false)
+    }
+    
     //MARK - CategoriesViewControllerDelegate
     func categoriesViewController(_ categoriesViewController: CategoriesViewController, didSelect category: Category) {
         

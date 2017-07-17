@@ -11,6 +11,9 @@ import UIKit
 protocol CategoriesHeaderViewDelegate: class {
     func categoriesHeaderViewDidGoNext(_ categoriesHeaderView: CategoriesHeaderView)
     func categoriesHeaderViewDidGoPrev(_ categoriesHeaderView: CategoriesHeaderView)
+    func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, didCreateDatePicker datePicker: DatePickerViewController)
+    func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, shouldDismiss datePicker: DatePickerViewController)
+    func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, didChangeDate date: Date)
 }
 
 class CategoriesHeaderView: CustomView, DateChangerDelegate {
@@ -50,4 +53,18 @@ class CategoriesHeaderView: CustomView, DateChangerDelegate {
     func dateChangerDidGoPrev(_ dateChanger: DateChanger) {
         delegate?.categoriesHeaderViewDidGoPrev(self)
     }
+    
+    func dateChanger(_ dateChanger: DateChanger, didCreateDatePicker datePicker: DatePickerViewController) {
+        delegate?.categoriesHeaderView(self, didCreateDatePicker: datePicker)
+    }
+    
+    func dateChanger(_ dateChanger: DateChanger, shouldDismiss datePicker: DatePickerViewController) {
+        delegate?.categoriesHeaderView(self, shouldDismiss: datePicker)
+    }
+    
+    func dateChanger(_ dateChanger: DateChanger, didChangeDate date: Date) {
+        delegate?.categoriesHeaderView(self, didChangeDate: date)
+    }
+    
+    
 }
