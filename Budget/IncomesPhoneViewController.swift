@@ -10,6 +10,14 @@ import UIKit
 
 class IncomesPhoneViewController: IncomesBaseDeviceViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(forName: viewRemovedAtBottomNotification, object: nil, queue: nil, using: { (notification) -> Void in
+            NotificationCenter.default.post(Notification(name: datePickerControllerDidDisappearNotification))
+        })
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "incomes" {
             incomesViewController = segue.destination as? IncomesViewController
@@ -29,11 +37,13 @@ class IncomesPhoneViewController: IncomesBaseDeviceViewController {
     
     //MARK - DateChangerDelegate
     override func dateChanger(_ dateChanger: DateChanger, didCreateDatePicker datePicker: DatePickerView) {
-        presentDatePickerOverCurrentContext(datePicker: datePicker)
+        NotificationCenter.default.post(Notification(name: datePickerControllerWillAppearNotification))
+        datePicker.backgroundColor = UIColor(red: 242 / 255, green: 242 / 255, blue: 242 / 255, alpha: 1)
+        presentViewAtBottom(datePicker, height: 236)
     }
     
     override func dateChanger(_ dateChanger: DateChanger, didChangeDate date: Date) {
         super.dateChanger(dateChanger, didChangeDate: date)
-        closeDatePicker()
+        dismissViewAtBottom()
     }
 }

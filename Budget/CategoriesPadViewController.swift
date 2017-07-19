@@ -140,7 +140,8 @@ class CategoriesPadViewController: CategoriesBaseDeviceViewController, CategoryE
     
     //MARK: CategoriesHeaderViewDelegate
     override func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, didCreateDatePicker datePicker: DatePickerView) {
-        presentDatePickerAsPopover(datePicker: datePicker, sourceView: o_categoriesHeaderView, sourceRect: o_categoriesHeaderView.o_dateChanger.o_title.frame)
+        datePicker.backgroundColor = UIColor.white
+        presentViewAsPopover(datePicker, viewSize: CGSize(width: 320, height: 236), sourceView: o_categoriesHeaderView, sourceRect: o_categoriesHeaderView.o_dateChanger.o_title.frame)
     }
     
     override func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, didChangeDate date: Date) {

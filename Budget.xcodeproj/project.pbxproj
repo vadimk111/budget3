@@ -38,7 +38,7 @@
 		BDCDA0221F14F0D8008AB2A6 /* LinkAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA0201F14F0D8008AB2A6 /* LinkAccountsViewController.swift */; };
 		BDCDA0231F14F0D8008AB2A6 /* LinkAccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDCDA0211F14F0D8008AB2A6 /* LinkAccountsViewController.xib */; };
 		BDCDA0251F1756B2008AB2A6 /* FacebookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA0241F1756B2008AB2A6 /* FacebookHelper.swift */; };
-		BDCDA0311F1CC9BA008AB2A6 /* ViewController+DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA0301F1CC9BA008AB2A6 /* ViewController+DatePicker.swift */; };
+		BDCDA0311F1CC9BA008AB2A6 /* ViewController+Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA0301F1CC9BA008AB2A6 /* ViewController+Picker.swift */; };
 		BDFC60E61E8CFF1D00D77087 /* Expenses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */; };
 		BDFC60E81E8D02D300D77087 /* ExpensesPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */; };
 		BDFC60EA1E8D036000D77087 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */; };
@@ -135,7 +135,7 @@
 		BDCDA0201F14F0D8008AB2A6 /* LinkAccountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAccountsViewController.swift; sourceTree = "<group>"; };
 		BDCDA0211F14F0D8008AB2A6 /* LinkAccountsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LinkAccountsViewController.xib; sourceTree = "<group>"; };
 		BDCDA0241F1756B2008AB2A6 /* FacebookHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookHelper.swift; sourceTree = "<group>"; };
-		BDCDA0301F1CC9BA008AB2A6 /* ViewController+DatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+DatePicker.swift"; sourceTree = "<group>"; };
+		BDCDA0301F1CC9BA008AB2A6 /* ViewController+Picker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+Picker.swift"; sourceTree = "<group>"; };
 		BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Expenses.storyboard; sourceTree = "<group>"; };
 		BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesPadViewController.swift; sourceTree = "<group>"; };
 		BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
@@ -435,7 +435,7 @@
 				BD83836A1EDD704700E8B5B2 /* Incomes */,
 				BF6BC8591E5ADB610052F4E8 /* Main */,
 				BD589DF41E8469B100F0C9CD /* Settings */,
-				BDCDA0301F1CC9BA008AB2A6 /* ViewController+DatePicker.swift */,
+				BDCDA0301F1CC9BA008AB2A6 /* ViewController+Picker.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -708,7 +708,7 @@
 				BD589DF11E8451B200F0C9CD /* Authentication.swift in Sources */,
 				BDFC60EA1E8D036000D77087 /* ExpensesViewController.swift in Sources */,
 				BF37922E1E0933D00060445D /* AppDelegate.swift in Sources */,
-				BDCDA0311F1CC9BA008AB2A6 /* ViewController+DatePicker.swift in Sources */,
+				BDCDA0311F1CC9BA008AB2A6 /* ViewController+Picker.swift in Sources */,
 				BD8383761EDD758A00E8B5B2 /* IncomeTableViewCell.swift in Sources */,
 				BD8383721EDD70CC00E8B5B2 /* IncomesViewController+UITableView.swift in Sources */,
 				BD83837B1EDF248900E8B5B2 /* IncomesBaseDeviceViewController.swift in Sources */,

@@ -13,6 +13,14 @@ class CategoriesPhoneViewController: CategoriesBaseDeviceViewController {
     @IBOutlet weak var o_editBarButton: UIBarButtonItem!
     @IBOutlet weak var o_addBarButton: UIBarButtonItem!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(forName: viewRemovedAtBottomNotification, object: nil, queue: nil, using: { (notification) -> Void in
+            NotificationCenter.default.post(Notification(name: datePickerControllerDidDisappearNotification))
+        })
+    }
+
     @IBAction func didTapEdit(_ sender: UIBarButtonItem) {
         if let categoriesViewController = categoriesViewController {
             if categoriesViewController.tableView.isEditing {
@@ -75,11 +83,13 @@ class CategoriesPhoneViewController: CategoriesBaseDeviceViewController {
     
     //MARK: CategoriesHeaderViewDelegate
     override func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, didCreateDatePicker datePicker: DatePickerView) {
-        presentDatePickerOverCurrentContext(datePicker: datePicker)
+        NotificationCenter.default.post(Notification(name: datePickerControllerWillAppearNotification))
+        datePicker.backgroundColor = UIColor(red: 242 / 255, green: 242 / 255, blue: 242 / 255, alpha: 1)
+        presentViewAtBottom(datePicker, height: 236)
     }
 
     override func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, didChangeDate date: Date) {
         super.categoriesHeaderView(categoriesHeaderView, didChangeDate: date)
-        closeDatePicker()
+        dismissViewAtBottom()
     }
 }
