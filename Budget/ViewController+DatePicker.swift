@@ -12,6 +12,7 @@ extension UIViewController {
     func presentDatePickerOverCurrentContext(datePicker: DatePickerViewController) {
         providesPresentationContextTransitionStyle = true
         definesPresentationContext = true
+        datePicker.pickerBackgroundColor = UIColor(red: 242 / 255, green: 242 / 255, blue: 242 / 255, alpha: 1)
         datePicker.modalPresentationStyle = .overCurrentContext
         datePicker.view.backgroundColor = UIColor.clear
         
@@ -21,7 +22,7 @@ extension UIViewController {
     }
     
     func presentDatePickerAsPopover(datePicker: DatePickerViewController, sourceView: UIView, sourceRect: CGRect) {
-        datePicker.view.backgroundColor = UIColor.white
+        datePicker.pickerBackgroundColor = UIColor.white
         datePicker.preferredContentSize = CGSize(width: 320, height: 236)
         datePicker.modalPresentationStyle = .popover
         datePicker.popoverPresentationController?.permittedArrowDirections = .up

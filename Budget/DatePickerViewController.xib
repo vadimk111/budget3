@@ -11,7 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DatePickerViewController" customModule="Budget" customModuleProvider="target">
             <connections>
+                <outlet property="o_buttonsContainer" destination="Q2K-xc-YNJ" id="YeR-xf-XQz"/>
                 <outlet property="o_datePicker" destination="C5N-vK-Vps" id="Rfh-JM-Cgh"/>
+                <outlet property="o_pickerContainer" destination="3HC-dN-1yh" id="2mA-g4-cjt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -69,7 +71,7 @@
                     <subviews>
                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="C5N-vK-Vps">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="192"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <date key="date" timeIntervalSinceReferenceDate="521969219.70232898">
                                 <!--2017-07-17 07:26:59 +0000-->
                             </date>

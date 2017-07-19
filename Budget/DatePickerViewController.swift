@@ -17,7 +17,10 @@ class DatePickerViewController: UIViewController {
 
     weak var delegate: DatePickerViewControllerDelegate?
     var initialDate: Date?
+    var pickerBackgroundColor: UIColor?
     
+    @IBOutlet weak var o_pickerContainer: UIView!
+    @IBOutlet weak var o_buttonsContainer: UIView!
     @IBOutlet weak var o_datePicker: UIDatePicker!
     
     override func viewDidLoad() {
@@ -25,6 +28,10 @@ class DatePickerViewController: UIViewController {
 
         if let initialDate = initialDate {
             o_datePicker.date = initialDate
+        }
+        if let pickerBackgroundColor = pickerBackgroundColor {
+            o_buttonsContainer.backgroundColor = pickerBackgroundColor
+            o_pickerContainer.backgroundColor = pickerBackgroundColor
         }
     }
 
