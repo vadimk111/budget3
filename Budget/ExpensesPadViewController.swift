@@ -51,7 +51,7 @@ class ExpensesPadViewController: ExpensesBaseDeviceViewController {
     }
     
     //MARK - DateChangerDelegate
-    override func dateChanger(_ dateChanger: DateChanger, didCreateDatePicker datePicker: DatePickerViewController) {
+    override func dateChanger(_ dateChanger: DateChanger, didCreateDatePicker datePicker: DatePickerView) {
         presentDatePickerAsPopover(datePicker: datePicker, sourceView: o_dateChanger, sourceRect: o_dateChanger.o_title.frame)
     }
     

@@ -63,12 +63,9 @@ class ExpensesBaseDeviceViewController: UIViewController, DateChangerDelegate, E
         onDateChanged()
     }
     
-    func dateChanger(_ dateChanger: DateChanger, didCreateDatePicker datePicker: DatePickerViewController) {
+    func dateChanger(_ dateChanger: DateChanger, didCreateDatePicker datePicker: DatePickerView) {
     }
     
-    func dateChanger(_ dateChanger: DateChanger, shouldDismiss datePicker: DatePickerViewController) {
-    }
-
     func dateChanger(_ dateChanger: DateChanger, didChangeDate date: Date) {
         expensesViewController?.changeToDate(date)
         o_dateChanger.date = date

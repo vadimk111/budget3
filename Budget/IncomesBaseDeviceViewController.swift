@@ -67,12 +67,9 @@ class IncomesBaseDeviceViewController: UIViewController, DateChangerDelegate, In
         onDateChanged()
     }
     
-    func dateChanger(_ dateChanger: DateChanger, didCreateDatePicker datePicker: DatePickerViewController) {
+    func dateChanger(_ dateChanger: DateChanger, didCreateDatePicker datePicker: DatePickerView) {
     }
-    
-    func dateChanger(_ dateChanger: DateChanger, shouldDismiss datePicker: DatePickerViewController) {
-    }
-    
+        
     func dateChanger(_ dateChanger: DateChanger, didChangeDate date: Date) {
         incomesViewController?.changeToDate(date)
         o_dateChanger.date = date

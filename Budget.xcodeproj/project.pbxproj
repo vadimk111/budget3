@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6AA2CE85BAFB9541D811DABB /* Pods_Budget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 081C64756147318895C06760 /* Pods_Budget.framework */; };
+		BD1DF1841F1F7E7800E52C29 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1DF1831F1F7E7800E52C29 /* DatePickerView.swift */; };
+		BD1DF1861F1F7E8100E52C29 /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD1DF1851F1F7E8100E52C29 /* DatePickerView.xib */; };
 		BD3D40721E853A4800C3CCAF /* CategoriesBaseDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D40711E853A4800C3CCAF /* CategoriesBaseDeviceViewController.swift */; };
 		BD3D40741E85714D00C3CCAF /* CategoryDetailPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D40731E85714D00C3CCAF /* CategoryDetailPhoneViewController.swift */; };
 		BD3D40761E87965800C3CCAF /* CategoryExpensesViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D40751E87965800C3CCAF /* CategoryExpensesViewController+UITableView.swift */; };
@@ -36,8 +38,6 @@
 		BDCDA0221F14F0D8008AB2A6 /* LinkAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA0201F14F0D8008AB2A6 /* LinkAccountsViewController.swift */; };
 		BDCDA0231F14F0D8008AB2A6 /* LinkAccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDCDA0211F14F0D8008AB2A6 /* LinkAccountsViewController.xib */; };
 		BDCDA0251F1756B2008AB2A6 /* FacebookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA0241F1756B2008AB2A6 /* FacebookHelper.swift */; };
-		BDCDA02C1F1CA30A008AB2A6 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA02A1F1CA30A008AB2A6 /* DatePickerViewController.swift */; };
-		BDCDA02D1F1CA30A008AB2A6 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDCDA02B1F1CA30A008AB2A6 /* DatePickerViewController.xib */; };
 		BDCDA0311F1CC9BA008AB2A6 /* ViewController+DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA0301F1CC9BA008AB2A6 /* ViewController+DatePicker.swift */; };
 		BDFC60E61E8CFF1D00D77087 /* Expenses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */; };
 		BDFC60E81E8D02D300D77087 /* ExpensesPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */; };
@@ -105,6 +105,8 @@
 /* Begin PBXFileReference section */
 		081C64756147318895C06760 /* Pods_Budget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBC9F6F964B24DE5B2DADBF3 /* Pods-Budget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Budget/Pods-Budget.release.xcconfig"; sourceTree = "<group>"; };
+		BD1DF1831F1F7E7800E52C29 /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		BD1DF1851F1F7E8100E52C29 /* DatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
 		BD3D40711E853A4800C3CCAF /* CategoriesBaseDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesBaseDeviceViewController.swift; sourceTree = "<group>"; };
 		BD3D40731E85714D00C3CCAF /* CategoryDetailPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDetailPhoneViewController.swift; sourceTree = "<group>"; };
 		BD3D40751E87965800C3CCAF /* CategoryExpensesViewController+UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryExpensesViewController+UITableView.swift"; sourceTree = "<group>"; };
@@ -133,8 +135,6 @@
 		BDCDA0201F14F0D8008AB2A6 /* LinkAccountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAccountsViewController.swift; sourceTree = "<group>"; };
 		BDCDA0211F14F0D8008AB2A6 /* LinkAccountsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LinkAccountsViewController.xib; sourceTree = "<group>"; };
 		BDCDA0241F1756B2008AB2A6 /* FacebookHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookHelper.swift; sourceTree = "<group>"; };
-		BDCDA02A1F1CA30A008AB2A6 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
-		BDCDA02B1F1CA30A008AB2A6 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
 		BDCDA0301F1CC9BA008AB2A6 /* ViewController+DatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+DatePicker.swift"; sourceTree = "<group>"; };
 		BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Expenses.storyboard; sourceTree = "<group>"; };
 		BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesPadViewController.swift; sourceTree = "<group>"; };
@@ -502,8 +502,8 @@
 				BF9687C01E58CFDA001CD715 /* CategoriesHeaderView.xib */,
 				BF9063211E6896D3004B5F8B /* DateChanger.swift */,
 				BF9063231E6896DF004B5F8B /* DateChanger.xib */,
-				BDCDA02A1F1CA30A008AB2A6 /* DatePickerViewController.swift */,
-				BDCDA02B1F1CA30A008AB2A6 /* DatePickerViewController.xib */,
+				BD1DF1831F1F7E7800E52C29 /* DatePickerView.swift */,
+				BD1DF1851F1F7E8100E52C29 /* DatePickerView.xib */,
 				BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */,
 				BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */,
 			);
@@ -587,6 +587,7 @@
 				BF6BC85E1E5B28240052F4E8 /* SubCategoryHeaderView.xib in Resources */,
 				BD589DED1E83F32A00F0C9CD /* CategoryExpenses.storyboard in Resources */,
 				BD6B69E41E79223400F7AF35 /* iPad.storyboard in Resources */,
+				BD1DF1861F1F7E8100E52C29 /* DatePickerView.xib in Resources */,
 				BDCDA0231F14F0D8008AB2A6 /* LinkAccountsViewController.xib in Resources */,
 				BD8383741EDD74DF00E8B5B2 /* Incomes.storyboard in Resources */,
 				BF00F48E1E4D331100D5D743 /* AddEditExpense.storyboard in Resources */,
@@ -594,7 +595,6 @@
 				BF9687C41E58DBDC001CD715 /* BalanceView.xib in Resources */,
 				BF2514771E47154500042FEF /* LoginViewController.xib in Resources */,
 				BDFC61101E93A13E00D77087 /* SettingsHeaderView.xib in Resources */,
-				BDCDA02D1F1CA30A008AB2A6 /* DatePickerViewController.xib in Resources */,
 				BDFC61421E979A3700D77087 /* AddEditReminder.storyboard in Resources */,
 				BF9063241E6896DF004B5F8B /* DateChanger.xib in Resources */,
 				BD8383671EDD5F7000E8B5B2 /* AddEditIncome.storyboard in Resources */,
@@ -678,7 +678,6 @@
 				BDFC61021E92989600D77087 /* AccountTableViewCell.swift in Sources */,
 				BDFC61401E979A1F00D77087 /* AddEditReminderViewController.swift in Sources */,
 				BF6BC8551E5ADA4E0052F4E8 /* CategoriesViewController+TableViews.swift in Sources */,
-				BDCDA02C1F1CA30A008AB2A6 /* DatePickerViewController.swift in Sources */,
 				BDFC60E81E8D02D300D77087 /* ExpensesPadViewController.swift in Sources */,
 				BD8383811EDF53E000E8B5B2 /* CategoriesBaseDeviceViewController+Firebase.swift in Sources */,
 				BDFC61061E9298DA00D77087 /* ScheduledReminderTableViewCell.swift in Sources */,
@@ -695,6 +694,7 @@
 				BDFC61041E9298AC00D77087 /* RemindersTableViewCell.swift in Sources */,
 				BDFC61001E9296F200D77087 /* SettingsViewController+UITableView.swift in Sources */,
 				BDFC60EC1E8D03A800D77087 /* ExpensesViewController+UITableView.swift in Sources */,
+				BD1DF1841F1F7E7800E52C29 /* DatePickerView.swift in Sources */,
 				BF3FFBEF1E4BC9E200559134 /* AddEditCategoryViewController.swift in Sources */,
 				BD8383701EDD70B900E8B5B2 /* IncomesViewController+Firebase.swift in Sources */,
 				BF2514751E470FD100042FEF /* LoginViewController.swift in Sources */,

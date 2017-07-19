@@ -139,7 +139,7 @@ class CategoriesPadViewController: CategoriesBaseDeviceViewController, CategoryE
     }
     
     //MARK: CategoriesHeaderViewDelegate
-    override func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, didCreateDatePicker datePicker: DatePickerViewController) {
+    override func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, didCreateDatePicker datePicker: DatePickerView) {
         presentDatePickerAsPopover(datePicker: datePicker, sourceView: o_categoriesHeaderView, sourceRect: o_categoriesHeaderView.o_dateChanger.o_title.frame)
     }
     

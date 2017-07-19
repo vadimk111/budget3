@@ -28,12 +28,8 @@ class IncomesPhoneViewController: IncomesBaseDeviceViewController {
     }
     
     //MARK - DateChangerDelegate
-    override func dateChanger(_ dateChanger: DateChanger, didCreateDatePicker datePicker: DatePickerViewController) {
+    override func dateChanger(_ dateChanger: DateChanger, didCreateDatePicker datePicker: DatePickerView) {
         presentDatePickerOverCurrentContext(datePicker: datePicker)
-    }
-    
-    override func dateChanger(_ dateChanger: DateChanger, shouldDismiss datePicker: DatePickerViewController) {
-        closeDatePicker()
     }
     
     override func dateChanger(_ dateChanger: DateChanger, didChangeDate date: Date) {

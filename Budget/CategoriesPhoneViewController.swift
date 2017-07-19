@@ -74,12 +74,8 @@ class CategoriesPhoneViewController: CategoriesBaseDeviceViewController {
     }
     
     //MARK: CategoriesHeaderViewDelegate
-    override func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, didCreateDatePicker datePicker: DatePickerViewController) {
+    override func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, didCreateDatePicker datePicker: DatePickerView) {
         presentDatePickerOverCurrentContext(datePicker: datePicker)
-    }
-
-    override func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, shouldDismiss datePicker: DatePickerViewController) {
-        closeDatePicker()
     }
 
     override func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, didChangeDate date: Date) {
