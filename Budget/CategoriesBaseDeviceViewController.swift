@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderViewDelegate, CategoriesViewControllerDelegate {
+class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderViewDelegate, CategoriesViewControllerDelegate, AddEditCategoryViewControllerDelegate {
 
     var categoriesViewController: CategoriesViewController?
     
@@ -68,6 +68,7 @@ class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderView
     func prepareForAddCategory(from segue: UIStoryboardSegue) {
         if let categoriesViewController = categoriesViewController {
             let vc: AddEditCategoryViewController? = segue.destinationController()
+            vc?.delegate = self
             vc?.parents = categoriesViewController.availableParents
             if let last = categoriesViewController.availableParents.last {
                 vc?.highestOrder = last.order
@@ -125,5 +126,64 @@ class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderView
     
     func categoriesViewControllerRowDeselected(_ categoriesViewController: CategoriesViewController) {
         
+    }
+    
+    //MARK - AddEditCategoryViewControllerDelegate
+    func addEditCategoryViewController(_ addEditCategoryViewController: AddEditCategoryViewController, copyCategoryToFollowingMonths category: Category) {
+        if let date = categoriesViewController?.date {
+            var parentName: String? = nil
+            if let parentId = category.parent {
+                parentName = categoriesViewController?.categories.first(where: { $0.id == parentId })?.title
+            }
+            copyCategory(category, date: date, parentName: parentName)
+        }
+    }
+    
+    func copyCategory(_ category: Category, date: Date, parentName: String?) {
+        let calendar = Calendar.current
+        var year = calendar.component(.year, from: date)
+        var month = calendar.component(.month, from: date)
+        
+        var comp = DateComponents()
+        if month == 12 {
+            year += 1
+            month = 1
+        } else {
+            month += 1
+        }
+        
+        comp.day = 1
+        comp.month = month
+        comp.year = year
+        
+        let nextDate = calendar.date(from: comp)!
+        
+        let ref = FIRDatabase.database().reference().child("budgets")
+        if let budgetId = ModelHelper.budgetId(for: nextDate) {
+            let nextBudgetRef = ref.child(budgetId)
+            nextBudgetRef.observeSingleEvent(of: .value, with: { [unowned self] snapshot in
+                if snapshot.children.allObjects.count > 0 {
+                    
+                    let categories: [Category] = snapshot.children.map { (child: Any) -> Category in
+                        return Category(snapshot: child as! FIRDataSnapshot)
+                        }.sorted(by: { (item1: Category, item2: Category) -> Bool in
+                            return item1.order < item2.order
+                        })
+                    
+                    if let _ = parentName {
+                        category.parent = categories.first(where: { $0.title == parentName && $0.parent == nil })?.id
+                    }
+                    
+                    if let last = categories.filter({ $0.parent == category.parent }).last {
+                        category.order = last.order + 100
+                    } else {
+                        category.order = 100
+                    }
+                    
+                    category.insert(into: nextBudgetRef)
+                    self.copyCategory(category, date: nextDate, parentName: parentName)
+                }
+            })
+        }
     }
 }

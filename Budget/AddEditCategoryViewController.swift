@@ -9,7 +9,13 @@
 import UIKit
 import FirebaseDatabase
 
+protocol AddEditCategoryViewControllerDelegate: class {
+    func addEditCategoryViewController(_ addEditCategoryViewController: AddEditCategoryViewController, copyCategoryToFollowingMonths category: Category)
+}
+
 class AddEditCategoryViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    weak var delegate: AddEditCategoryViewControllerDelegate?
     
     var budgetRef: FIRDatabaseReference?
     var category: Category?
@@ -23,12 +29,15 @@ class AddEditCategoryViewController: UIViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var o_pickerView: UIPickerView!
     @IBOutlet weak var o_parentHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var o_parentLabel: UILabel!
-
+    @IBOutlet weak var o_cloneSwitch: UISwitch!
+    @IBOutlet weak var o_cloneContainer: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if let _ = category {
             title = "Edit Category"
+            o_cloneContainer.isHidden = true
         } else {
             category = Category()
             category?.order = highestOrder + 100
@@ -97,6 +106,11 @@ class AddEditCategoryViewController: UIViewController, UIPickerViewDelegate, UIP
             
             if let budgetRef = budgetRef {
                 category?.insert(into: budgetRef)
+                
+                if o_cloneSwitch.isOn {
+                    delegate?.addEditCategoryViewController(self, copyCategoryToFollowingMonths: category!)
+                }
+                
             } else if let category = category {
                 category.update()
             }

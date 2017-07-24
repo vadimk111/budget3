@@ -54,7 +54,9 @@ class IncomesPadViewController: IncomesBaseDeviceViewController {
     }
     
     override func incomesViewController(_ incomesViewController: IncomesViewController, didSelect income: Income) {
-        incomeDetailsViewController?.income = income
+        if incomeDetailsViewController?.income != income {
+            incomeDetailsViewController?.income = income
+        }
     }
     
     override func incomesViewController(_ incomesViewController: IncomesViewController, didUpdateRowWith income: Income) {

@@ -39,7 +39,10 @@ class ExpensesPadViewController: ExpensesBaseDeviceViewController {
     
     //MARK - ExpensesViewControllerDelegate
     override func expensesViewController(_ expensesViewController: ExpensesViewController, didSelect expenseData: ExpenseWithCategoryData) {
-        expenseDetailsViewController?.expenseData = expenseData
+        
+        if expenseDetailsViewController?.expenseData?.expense != expenseData.expense {
+            expenseDetailsViewController?.expenseData = expenseData
+        } 
     }
     
     override func expensesViewControllerRowDeselected(_ expensesViewController: ExpensesViewController) {

@@ -103,7 +103,9 @@ class CategoriesPadViewController: CategoriesBaseDeviceViewController, CategoryE
     //MARK - CategoriesViewControllerDelegate
     override func categoriesViewController(_ categoriesViewController: CategoriesViewController, didSelect category: Category) {
         o_addExpenseBtn.isEnabled = true
-        expensesViewController?.category = category
+        if expensesViewController?.category != category {
+           expensesViewController?.category = category 
+        }
     }
     
     override func categoriesViewControllerRowDeselected(_ categoriesViewController: CategoriesViewController) {
