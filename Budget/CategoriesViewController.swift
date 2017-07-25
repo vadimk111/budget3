@@ -47,9 +47,8 @@ class CategoriesViewController: UITableViewController {
     func reload() {
         unregisterFromUpdates(budgetRef: budgetRef)
         
-        let ref = FIRDatabase.database().reference().child("budgets")
-        if let budgetId = ModelHelper.budgetId(for: date) {
-            budgetRef = ref.child(budgetId)
+        budgetRef = ModelHelper.budgetReference(for: date)
+        if budgetRef != nil {
             budgetRef?.observeSingleEvent(of: .value, with: { [unowned self] snapshot in
                 if !self.prepareBudget(from: snapshot) && !self.isRefreshing {
                     if !self.copyClosestBudget() && !self.dateChanged {
@@ -160,9 +159,7 @@ class CategoriesViewController: UITableViewController {
         
         let prevDate = calendar.date(from: comp)!
         
-        let ref = FIRDatabase.database().reference().child("budgets")
-        if let budgetId = ModelHelper.budgetId(for: prevDate) {
-            let prevBudgetRef = ref.child(budgetId)
+        if let prevBudgetRef = ModelHelper.budgetReference(for: prevDate) {
             prevBudgetRef.observeSingleEvent(of: .value, with: { [unowned self] snapshot in
                 if self.prepareBudget(from: snapshot) {
                     self.closestBudget = self.categories

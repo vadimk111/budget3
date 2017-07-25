@@ -7,9 +7,13 @@
 //
 
 import Foundation
+import FirebaseDatabase
+
+let budgetsKey = "budgets"
+let incomesKey = "incomes"
 
 class ModelHelper {
-    static func budgetId(for date: Date) -> String? {
+    fileprivate static func uniqueId(for date: Date) -> String? {
         var uid = APP.user?.uid
         if uid == nil && APP.automaticAuthenticationCompleted {
             uid = UserDefaults.standard.string(forKey: "email")
@@ -23,5 +27,20 @@ class ModelHelper {
             return uid + String(year) + String(month)
         }
         return nil
+    }
+    
+    fileprivate static func databaseReference(for path: String, on date: Date) -> FIRDatabaseReference? {
+        if let uniqueId = uniqueId(for: date) {
+            return FIRDatabase.database().reference().child(path).child(uniqueId)
+        }
+        return nil
+    }
+    
+    static func budgetReference(for date: Date) -> FIRDatabaseReference? {
+        return databaseReference(for: budgetsKey, on: date)
+    }
+    
+    static func incomeReference(for date: Date) -> FIRDatabaseReference? {
+        return databaseReference(for: incomesKey, on: date)
     }
 }

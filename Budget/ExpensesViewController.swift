@@ -63,9 +63,8 @@ class ExpensesViewController: UITableViewController, OverviewTableViewCellDelega
     func reload() {
         unregisterFromUpdates()
         
-        if let budgetId = ModelHelper.budgetId(for: date) {
-            let ref = FIRDatabase.database().reference().child("budgets")
-            ref.child(budgetId).observeSingleEvent(of: .value, with: { snapshot in
+        if let ref = ModelHelper.budgetReference(for: date) {
+            ref.observeSingleEvent(of: .value, with: { snapshot in
                 self.prepareExpenses(from: snapshot)
                 self.tableView.reloadData()
                 self.tableView.refreshControl?.endRefreshing()

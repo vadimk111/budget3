@@ -46,9 +46,8 @@ class IncomesViewController: UITableViewController, IncomeTableViewCellDelegate 
     func reload() {
         unregisterFromUpdates()
         
-        let ref = FIRDatabase.database().reference().child("incomes")
-        if let listId = ModelHelper.budgetId(for: date) {
-            listRef = ref.child(listId)
+        listRef = ModelHelper.incomeReference(for: date)
+        if listRef != nil {
             listRef?.observeSingleEvent(of: .value, with: { snapshot in
                 self.incomes = []
                 for child in snapshot.children {

@@ -48,9 +48,8 @@ class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderView
     func reloadIncomes() {
         unregisterFromUpdates()
         
-        let ref = FIRDatabase.database().reference().child("incomes")
-        if let date = categoriesViewController?.date, let listId = ModelHelper.budgetId(for: date) {
-            incomesRef = ref.child(listId)
+        if let date = categoriesViewController?.date, let ref = ModelHelper.incomeReference(for: date) {
+            incomesRef = ref
             incomesRef?.observeSingleEvent(of: .value, with: { snapshot in
                 self.incomes = []
                 for child in snapshot.children {
@@ -158,9 +157,7 @@ class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderView
         
         let nextDate = calendar.date(from: comp)!
         
-        let ref = FIRDatabase.database().reference().child("budgets")
-        if let budgetId = ModelHelper.budgetId(for: nextDate) {
-            let nextBudgetRef = ref.child(budgetId)
+        if let nextBudgetRef = ModelHelper.budgetReference(for: nextDate) {
             nextBudgetRef.observeSingleEvent(of: .value, with: { [unowned self] snapshot in
                 if snapshot.children.allObjects.count > 0 {
                     
