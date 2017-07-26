@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vey-qs-9sv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vey-qs-9sv">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -532,7 +532,6 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="VhU-Qv-gEj" secondAttribute="trailing" constant="630" id="N4u-HL-WTJ"/>
                                     <constraint firstAttribute="height" constant="44" id="XA3-W6-0tK"/>
                                     <constraint firstItem="VhU-Qv-gEj" firstAttribute="top" secondItem="1hr-ag-QQN" secondAttribute="top" constant="-2" id="dFy-NM-PNM"/>
                                 </constraints>
@@ -572,6 +571,7 @@
                             <constraint firstAttribute="trailing" secondItem="MsI-fu-lQr" secondAttribute="trailing" id="AUr-zL-zea"/>
                             <constraint firstItem="1hr-ag-QQN" firstAttribute="leading" secondItem="fq4-tS-bxZ" secondAttribute="leading" id="CwM-oN-IxC"/>
                             <constraint firstItem="1hr-ag-QQN" firstAttribute="top" secondItem="fq4-tS-bxZ" secondAttribute="bottom" id="DBy-09-Dzq"/>
+                            <constraint firstItem="VhU-Qv-gEj" firstAttribute="trailing" secondItem="yR1-WV-W6E" secondAttribute="trailing" constant="-10" id="HlM-fN-b3z"/>
                             <constraint firstItem="MsI-fu-lQr" firstAttribute="top" secondItem="yR1-WV-W6E" secondAttribute="top" id="IEf-Uk-eye"/>
                             <constraint firstItem="yR1-WV-W6E" firstAttribute="top" secondItem="ie4-zA-XaM" secondAttribute="bottom" id="Qiw-Iq-DEk"/>
                             <constraint firstAttribute="trailing" secondItem="ie4-zA-XaM" secondAttribute="trailing" id="UxF-Od-5HF"/>
@@ -654,7 +654,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a51-Gv-i8E">
-                                <rect key="frame" x="305" y="88" width="4.5" height="19"/>
+                                <rect key="frame" x="306" y="88" width="4.5" height="19"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -672,7 +672,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAa-M8-mUz">
-                                <rect key="frame" x="305" y="117" width="4.5" height="19"/>
+                                <rect key="frame" x="306" y="117" width="4.5" height="19"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -690,7 +690,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4H-q5-sbi">
-                                <rect key="frame" x="305" y="146" width="4.5" height="19"/>
+                                <rect key="frame" x="306" y="146" width="4.5" height="19"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
