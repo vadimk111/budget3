@@ -109,6 +109,10 @@ class CategoriesViewController: UITableViewController {
                     parentCategory.subCategories = subCategories[key]?.sorted(by: { (item1: Category, item2: Category) -> Bool in
                         return item1.order < item2.order
                     })
+                } else if let subCats = subCategories[key] {
+                    for subCategory in subCats {
+                        subCategory.delete()
+                    }
                 }
             }
         }
