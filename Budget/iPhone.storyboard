@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yhc-Zy-dv0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yhc-Zy-dv0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -101,10 +101,10 @@
             </objects>
             <point key="canvasLocation" x="-1641" y="820"/>
         </scene>
-        <!--Expenses-->
+        <!--CategoryExpenses-->
         <scene sceneID="BfI-Vl-2Kw">
             <objects>
-                <viewControllerPlaceholder storyboardName="CategoryExpenses" referencedIdentifier="Expenses" id="gM9-R6-kjg" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="CategoryExpenses" referencedIdentifier="CategoryExpenses" id="gM9-R6-kjg" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pfc-QX-wUq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-837" y="1288"/>
@@ -187,10 +187,10 @@
             </objects>
             <point key="canvasLocation" x="-242" y="820"/>
         </scene>
-        <!--CategoriesRef-->
+        <!--Categories-->
         <scene sceneID="zrO-du-oao">
             <objects>
-                <viewControllerPlaceholder storyboardName="Categories" referencedIdentifier="CategoriesRef" id="VJb-lu-TIo" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Categories" referencedIdentifier="Categories" id="VJb-lu-TIo" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYm-cz-3IY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1684" y="1289"/>
@@ -250,10 +250,10 @@
             </objects>
             <point key="canvasLocation" x="-759" y="1767"/>
         </scene>
-        <!--ExpensesRef-->
+        <!--Expenses-->
         <scene sceneID="gXP-cm-QEL">
             <objects>
-                <viewControllerPlaceholder storyboardName="Expenses" referencedIdentifier="ExpensesRef" id="zTh-jY-XmF" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Expenses" referencedIdentifier="Expenses" id="zTh-jY-XmF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C4L-SS-K5C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1464" y="2080"/>
@@ -329,10 +329,10 @@
             </objects>
             <point key="canvasLocation" x="-715" y="2562"/>
         </scene>
-        <!--IncomesRef-->
+        <!--Incomes-->
         <scene sceneID="F8Y-vW-GR8">
             <objects>
-                <viewControllerPlaceholder storyboardName="Incomes" referencedIdentifier="IncomesRef" id="7ax-Yc-Q5z" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Incomes" referencedIdentifier="Incomes" id="7ax-Yc-Q5z" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3dw-d1-2KA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1535" y="2933"/>
@@ -340,7 +340,7 @@
         <!--Categories-->
         <scene sceneID="kCO-dD-t7n">
             <objects>
-                <navigationController storyboardIdentifier="Category" automaticallyAdjustsScrollViewInsets="NO" id="kQ6-EE-dpJ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kQ6-EE-dpJ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Categories" image="categories" id="up5-eT-Z23"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

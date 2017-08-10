@@ -34,11 +34,17 @@
 		BD83837D1EDF24A500E8B5B2 /* IncomesPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD83837C1EDF24A500E8B5B2 /* IncomesPadViewController.swift */; };
 		BD83837F1EDF24BA00E8B5B2 /* IncomesPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD83837E1EDF24BA00E8B5B2 /* IncomesPhoneViewController.swift */; };
 		BD8383811EDF53E000E8B5B2 /* CategoriesBaseDeviceViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8383801EDF53E000E8B5B2 /* CategoriesBaseDeviceViewController+Firebase.swift */; };
+		BDAC303C1F28BBB50099FDD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDAC303B1F28BBB50099FDD5 /* Main.storyboard */; };
+		BDAC30401F29C7620099FDD5 /* CategoriesUniversalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAC303F1F29C7620099FDD5 /* CategoriesUniversalViewController.swift */; };
+		BDAC30421F29E9F90099FDD5 /* CategoriesUniversalViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAC30411F29E9F90099FDD5 /* CategoriesUniversalViewController+Firebase.swift */; };
+		BDAC30441F29F2790099FDD5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAC30431F29F2790099FDD5 /* MainViewController.swift */; };
+		BDAC30471F2A125D0099FDD5 /* CategoriesUniversalViewController+Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAC30461F2A125D0099FDD5 /* CategoriesUniversalViewController+Segues.swift */; };
+		BDAC304B1F2A17210099FDD5 /* CategoriesUniversalViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAC304A1F2A17200099FDD5 /* CategoriesUniversalViewController+Delegates.swift */; };
 		BDCDA01F1F13AAA0008AB2A6 /* FacebookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA01E1F13AAA0008AB2A6 /* FacebookTableViewCell.swift */; };
 		BDCDA0221F14F0D8008AB2A6 /* LinkAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA0201F14F0D8008AB2A6 /* LinkAccountsViewController.swift */; };
 		BDCDA0231F14F0D8008AB2A6 /* LinkAccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDCDA0211F14F0D8008AB2A6 /* LinkAccountsViewController.xib */; };
 		BDCDA0251F1756B2008AB2A6 /* FacebookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA0241F1756B2008AB2A6 /* FacebookHelper.swift */; };
-		BDCDA0311F1CC9BA008AB2A6 /* ViewController+Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA0301F1CC9BA008AB2A6 /* ViewController+Picker.swift */; };
+		BDCDA0311F1CC9BA008AB2A6 /* ViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA0301F1CC9BA008AB2A6 /* ViewController+Extensions.swift */; };
 		BDFC60E61E8CFF1D00D77087 /* Expenses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */; };
 		BDFC60E81E8D02D300D77087 /* ExpensesPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */; };
 		BDFC60EA1E8D036000D77087 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */; };
@@ -131,11 +137,17 @@
 		BD83837C1EDF24A500E8B5B2 /* IncomesPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomesPadViewController.swift; sourceTree = "<group>"; };
 		BD83837E1EDF24BA00E8B5B2 /* IncomesPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomesPhoneViewController.swift; sourceTree = "<group>"; };
 		BD8383801EDF53E000E8B5B2 /* CategoriesBaseDeviceViewController+Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoriesBaseDeviceViewController+Firebase.swift"; sourceTree = "<group>"; };
+		BDAC303B1F28BBB50099FDD5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BDAC303F1F29C7620099FDD5 /* CategoriesUniversalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesUniversalViewController.swift; sourceTree = "<group>"; };
+		BDAC30411F29E9F90099FDD5 /* CategoriesUniversalViewController+Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoriesUniversalViewController+Firebase.swift"; sourceTree = "<group>"; };
+		BDAC30431F29F2790099FDD5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		BDAC30461F2A125D0099FDD5 /* CategoriesUniversalViewController+Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoriesUniversalViewController+Segues.swift"; sourceTree = "<group>"; };
+		BDAC304A1F2A17200099FDD5 /* CategoriesUniversalViewController+Delegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoriesUniversalViewController+Delegates.swift"; sourceTree = "<group>"; };
 		BDCDA01E1F13AAA0008AB2A6 /* FacebookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookTableViewCell.swift; sourceTree = "<group>"; };
 		BDCDA0201F14F0D8008AB2A6 /* LinkAccountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAccountsViewController.swift; sourceTree = "<group>"; };
 		BDCDA0211F14F0D8008AB2A6 /* LinkAccountsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LinkAccountsViewController.xib; sourceTree = "<group>"; };
 		BDCDA0241F1756B2008AB2A6 /* FacebookHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookHelper.swift; sourceTree = "<group>"; };
-		BDCDA0301F1CC9BA008AB2A6 /* ViewController+Picker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+Picker.swift"; sourceTree = "<group>"; };
+		BDCDA0301F1CC9BA008AB2A6 /* ViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+Extensions.swift"; sourceTree = "<group>"; };
 		BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Expenses.storyboard; sourceTree = "<group>"; };
 		BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesPadViewController.swift; sourceTree = "<group>"; };
 		BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
@@ -292,6 +304,7 @@
 				BD6B69E91E79544F00F7AF35 /* CategoriesPadViewController.swift */,
 				BD589DEE1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift */,
 				BD3D40731E85714D00C3CCAF /* CategoryDetailPhoneViewController.swift */,
+				BDAC30451F2A123A0099FDD5 /* Universal */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -314,6 +327,17 @@
 				BD83837E1EDF24BA00E8B5B2 /* IncomesPhoneViewController.swift */,
 			);
 			name = Income;
+			sourceTree = "<group>";
+		};
+		BDAC30451F2A123A0099FDD5 /* Universal */ = {
+			isa = PBXGroup;
+			children = (
+				BDAC303F1F29C7620099FDD5 /* CategoriesUniversalViewController.swift */,
+				BDAC304A1F2A17200099FDD5 /* CategoriesUniversalViewController+Delegates.swift */,
+				BDAC30411F29E9F90099FDD5 /* CategoriesUniversalViewController+Firebase.swift */,
+				BDAC30461F2A125D0099FDD5 /* CategoriesUniversalViewController+Segues.swift */,
+			);
+			name = Universal;
 			sourceTree = "<group>";
 		};
 		BDFC610B1E9374C100D77087 /* Cells */ = {
@@ -368,6 +392,7 @@
 				BD6B69E31E79223400F7AF35 /* iPad.storyboard */,
 				BF3792431E09625C0060445D /* iPhone.storyboard */,
 				BF3792361E0933D00060445D /* LaunchScreen.storyboard */,
+				BDAC303B1F28BBB50099FDD5 /* Main.storyboard */,
 				BF25146B1E465C8C00042FEF /* Settings.storyboard */,
 			);
 			name = Storyboards;
@@ -435,7 +460,7 @@
 				BD83836A1EDD704700E8B5B2 /* Incomes */,
 				BF6BC8591E5ADB610052F4E8 /* Main */,
 				BD589DF41E8469B100F0C9CD /* Settings */,
-				BDCDA0301F1CC9BA008AB2A6 /* ViewController+Picker.swift */,
+				BDCDA0301F1CC9BA008AB2A6 /* ViewController+Extensions.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -479,6 +504,7 @@
 			children = (
 				BD82C7F21E8AF00D009EB6A6 /* MainPadViewController.swift */,
 				BF2514781E47165100042FEF /* MainPhoneViewController.swift */,
+				BDAC30431F29F2790099FDD5 /* MainViewController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -575,6 +601,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF3FFBED1E4BC90300559134 /* AddEditCategory.storyboard in Resources */,
+				BDAC303C1F28BBB50099FDD5 /* Main.storyboard in Resources */,
 				BFFCD70F1E73D8D50030BD79 /* OverviewHeaderView.xib in Resources */,
 				BF00F4881E4D1F5200D5D743 /* ProgressBar.xib in Resources */,
 				BF3792381E0933D00060445D /* LaunchScreen.storyboard in Resources */,
@@ -671,6 +698,7 @@
 			files = (
 				BD83836E1EDD70A400E8B5B2 /* IncomesViewController.swift in Sources */,
 				BF00F4921E4D348F00D5D743 /* Expense.swift in Sources */,
+				BDAC304B1F2A17210099FDD5 /* CategoriesUniversalViewController+Delegates.swift in Sources */,
 				BF9063201E6891E3004B5F8B /* OverviewTableViewCell.swift in Sources */,
 				BDFC60EE1E8D3CE800D77087 /* ExpensesViewController+Firebase.swift in Sources */,
 				BFD5AA8C1E52FDBC00DE10E3 /* Consts.swift in Sources */,
@@ -682,6 +710,7 @@
 				BD8383811EDF53E000E8B5B2 /* CategoriesBaseDeviceViewController+Firebase.swift in Sources */,
 				BDFC61061E9298DA00D77087 /* ScheduledReminderTableViewCell.swift in Sources */,
 				BD589DEF1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift in Sources */,
+				BDAC30401F29C7620099FDD5 /* CategoriesUniversalViewController.swift in Sources */,
 				BFFCD70D1E73D8C70030BD79 /* OverviewHeaderView.swift in Sources */,
 				BF2514791E47165100042FEF /* MainPhoneViewController.swift in Sources */,
 				BF9063221E6896D3004B5F8B /* DateChanger.swift in Sources */,
@@ -700,6 +729,7 @@
 				BF2514751E470FD100042FEF /* LoginViewController.swift in Sources */,
 				BF6BC85C1E5B280C0052F4E8 /* SubCategoryHeaderView.swift in Sources */,
 				BDFC610E1E93A0FB00D77087 /* SettingsHeaderView.swift in Sources */,
+				BDAC30421F29E9F90099FDD5 /* CategoriesUniversalViewController+Firebase.swift in Sources */,
 				BD8383651EDD5ED700E8B5B2 /* MoneyFlow.swift in Sources */,
 				BFD5AA8A1E52E16100DE10E3 /* Extensions.swift in Sources */,
 				BF9687BD1E58CF1F001CD715 /* CategoriesViewController+UITableView.swift in Sources */,
@@ -708,14 +738,16 @@
 				BD589DF11E8451B200F0C9CD /* Authentication.swift in Sources */,
 				BDFC60EA1E8D036000D77087 /* ExpensesViewController.swift in Sources */,
 				BF37922E1E0933D00060445D /* AppDelegate.swift in Sources */,
-				BDCDA0311F1CC9BA008AB2A6 /* ViewController+Picker.swift in Sources */,
+				BDCDA0311F1CC9BA008AB2A6 /* ViewController+Extensions.swift in Sources */,
 				BD8383761EDD758A00E8B5B2 /* IncomeTableViewCell.swift in Sources */,
 				BD8383721EDD70CC00E8B5B2 /* IncomesViewController+UITableView.swift in Sources */,
 				BD83837B1EDF248900E8B5B2 /* IncomesBaseDeviceViewController.swift in Sources */,
 				BD83837D1EDF24A500E8B5B2 /* IncomesPadViewController.swift in Sources */,
+				BDAC30471F2A125D0099FDD5 /* CategoriesUniversalViewController+Segues.swift in Sources */,
 				BD82C7F31E8AF00D009EB6A6 /* MainPadViewController.swift in Sources */,
 				BD8383631EDD5E5400E8B5B2 /* Income.swift in Sources */,
 				BF25146F1E46612200042FEF /* Category.swift in Sources */,
+				BDAC30441F29F2790099FDD5 /* MainViewController.swift in Sources */,
 				BFFCD70B1E73D4990030BD79 /* ExpensesPhoneViewController.swift in Sources */,
 				BD83836C1EDD709400E8B5B2 /* IncomeDetailsViewController.swift in Sources */,
 				BF6BC8601E5DC8450052F4E8 /* CategoriesViewController+Firebase.swift in Sources */,

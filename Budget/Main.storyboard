@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Vwm-Ri-CfN">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Expenses-->
+        <scene sceneID="Tx3-Kc-WqP">
+            <objects>
+                <viewController id="1BT-8B-LqY" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vFr-7P-pe0"/>
+                        <viewControllerLayoutGuide type="bottom" id="TKi-6t-N7A"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gFn-2D-Qmf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Expenses" id="msj-Yc-m5L"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d8G-2y-2Vw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="908" y="182"/>
+        </scene>
+        <!--Categories-->
+        <scene sceneID="vAt-Nb-Tqv">
+            <objects>
+                <viewController id="0S2-Vy-dxd" customClass="CategoriesUniversalViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3Fq-bN-xFB"/>
+                        <viewControllerLayoutGuide type="bottom" id="BkM-bp-g0c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rqY-8v-hXj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzZ-0M-Bui">
+                                <rect key="frame" x="394" y="0.0" width="20" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="9vV-PG-sqf"/>
+                                    <constraint firstAttribute="width" constant="20" id="yCF-1G-3dL"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eP9-px-1Yi">
+                                <rect key="frame" x="0.0" y="120" width="414" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7D7-IN-hVb" userLabel="Edit">
+                                        <rect key="frame" x="10" y="-2" width="30" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="aiq-g9-rfi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <state key="normal" title="Edit"/>
+                                        <connections>
+                                            <action selector="didTapEdit:" destination="0S2-Vy-dxd" eventType="touchUpInside" id="TOH-HI-hzQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dn1-a0-oyF" userLabel="Add Category">
+                                        <rect key="frame" x="314" y="-2" width="90" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="WgP-DW-IXt"/>
+                                            <constraint firstAttribute="height" constant="48" id="jcz-b5-iaj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <state key="normal" title="Add Category"/>
+                                        <connections>
+                                            <segue destination="FuZ-9Q-weN" kind="popoverPresentation" identifier="addCategory" popoverAnchorView="rMK-ew-yFa" id="e7f-dE-BL0">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sya-2P-hFh" userLabel="Add Expense">
+                                        <rect key="frame" x="320" y="-2" width="84" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="YNT-4m-Bhz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <state key="normal" title="Add Expense"/>
+                                        <connections>
+                                            <segue destination="8Q2-vc-Awy" kind="popoverPresentation" identifier="addExpense" popoverAnchorView="dzZ-0M-Bui" id="Zfn-1A-q9X">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Dn1-a0-oyF" firstAttribute="centerY" secondItem="7D7-IN-hVb" secondAttribute="centerY" id="Ard-x1-hk3"/>
+                                    <constraint firstItem="sya-2P-hFh" firstAttribute="centerY" secondItem="eP9-px-1Yi" secondAttribute="centerY" id="GRw-9K-M8V"/>
+                                    <constraint firstAttribute="trailing" secondItem="sya-2P-hFh" secondAttribute="trailing" constant="10" id="IRB-XF-Chv"/>
+                                    <constraint firstItem="7D7-IN-hVb" firstAttribute="leading" secondItem="eP9-px-1Yi" secondAttribute="leading" constant="10" id="Lti-qO-XGL"/>
+                                    <constraint firstAttribute="height" constant="44" id="u1q-eI-G3x"/>
+                                    <constraint firstItem="7D7-IN-hVb" firstAttribute="centerY" secondItem="eP9-px-1Yi" secondAttribute="centerY" id="wlo-qX-q2C"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7LF-Yc-DV8" customClass="CategoriesHeaderView" customModule="Budget" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="414" height="100"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="TQ0-OM-aL8"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CcR-JL-3uT" userLabel="separator">
+                                <rect key="frame" x="0.0" y="164" width="414" height="1"/>
+                                <color key="backgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="WtW-up-NYn"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMK-ew-yFa">
+                                <rect key="frame" x="0.0" y="165" width="414" height="522"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="404" id="Sje-JF-nIE"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Sje-JF-nIE"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="Sje-JF-nIE"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="uAg-F5-Phj" kind="embed" identifier="categories" id="jkw-No-G21"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q2O-ct-5JT">
+                                <rect key="frame" x="418" y="165" width="100" height="522"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="dbf-q6-Lfj"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="dbf-q6-Lfj"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="dbf-q6-Lfj"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="dbf-q6-Lfj"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="TCn-zz-EGO" kind="embed" identifier="categoryExpenses" id="z4b-A1-ls5"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Q2O-ct-5JT" firstAttribute="top" secondItem="rMK-ew-yFa" secondAttribute="top" id="A3T-Fj-Ckw"/>
+                            <constraint firstAttribute="trailing" secondItem="rMK-ew-yFa" secondAttribute="trailing" id="AQV-qO-hQm"/>
+                            <constraint firstAttribute="trailing" secondItem="7LF-Yc-DV8" secondAttribute="trailing" id="Auz-K8-thq"/>
+                            <constraint firstItem="eP9-px-1Yi" firstAttribute="leading" secondItem="rqY-8v-hXj" secondAttribute="leading" id="GIV-Vu-mdk"/>
+                            <constraint firstItem="BkM-bp-g0c" firstAttribute="top" secondItem="rMK-ew-yFa" secondAttribute="bottom" id="H3h-Ma-Iej"/>
+                            <constraint firstAttribute="trailing" secondItem="dzZ-0M-Bui" secondAttribute="trailing" id="JyL-GV-ZQc"/>
+                            <constraint firstItem="CcR-JL-3uT" firstAttribute="top" secondItem="eP9-px-1Yi" secondAttribute="bottom" id="Mgg-DV-GZQ"/>
+                            <constraint firstItem="eP9-px-1Yi" firstAttribute="top" secondItem="7LF-Yc-DV8" secondAttribute="bottom" constant="-44" id="S35-3w-DHk">
+                                <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="eP9-px-1Yi" secondAttribute="trailing" id="SbM-bO-gOJ"/>
+                            <constraint firstItem="rMK-ew-yFa" firstAttribute="leading" secondItem="rqY-8v-hXj" secondAttribute="leading" id="aFc-2i-yG4"/>
+                            <constraint firstItem="rMK-ew-yFa" firstAttribute="top" secondItem="CcR-JL-3uT" secondAttribute="bottom" id="bZ0-Wv-A8F"/>
+                            <constraint firstItem="Dn1-a0-oyF" firstAttribute="trailing" secondItem="rMK-ew-yFa" secondAttribute="trailing" constant="-10" id="beO-JG-3uF"/>
+                            <constraint firstItem="dzZ-0M-Bui" firstAttribute="top" secondItem="rqY-8v-hXj" secondAttribute="top" id="deJ-eo-h1J"/>
+                            <constraint firstItem="7LF-Yc-DV8" firstAttribute="leading" secondItem="rqY-8v-hXj" secondAttribute="leading" id="eae-by-3XK"/>
+                            <constraint firstAttribute="trailing" secondItem="Q2O-ct-5JT" secondAttribute="trailing" id="nnY-JM-WB0"/>
+                            <constraint firstItem="BkM-bp-g0c" firstAttribute="top" secondItem="Q2O-ct-5JT" secondAttribute="bottom" id="qAS-z4-740"/>
+                            <constraint firstItem="Q2O-ct-5JT" firstAttribute="leading" secondItem="rMK-ew-yFa" secondAttribute="trailing" constant="4" id="tuO-uO-KkN"/>
+                            <constraint firstItem="CcR-JL-3uT" firstAttribute="leading" secondItem="rqY-8v-hXj" secondAttribute="leading" id="ukm-gQ-H6P"/>
+                            <constraint firstItem="7LF-Yc-DV8" firstAttribute="top" secondItem="3Fq-bN-xFB" secondAttribute="bottom" id="z7X-fJ-hg0"/>
+                            <constraint firstAttribute="trailing" secondItem="CcR-JL-3uT" secondAttribute="trailing" id="zCS-ZJ-5zR"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="AQV-qO-hQm"/>
+                                <exclude reference="nnY-JM-WB0"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="AQV-qO-hQm"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="AQV-qO-hQm"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="nnY-JM-WB0"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Categories" id="ZA8-J3-naV">
+                        <barButtonItem key="leftBarButtonItem" image="edit-tool" id="xSY-u3-8yQ">
+                            <connections>
+                                <action selector="didTapEdit:" destination="0S2-Vy-dxd" id="tIt-wA-pZv"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="plus" id="fg3-u8-4Gt">
+                            <connections>
+                                <segue destination="FuZ-9Q-weN" kind="presentation" identifier="addCategory" id="dCA-6J-PWq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="o_addBarButton" destination="fg3-u8-4Gt" id="Fzp-j4-EL5"/>
+                        <outlet property="o_addCategoryBtn" destination="Dn1-a0-oyF" id="wHO-8F-kJT"/>
+                        <outlet property="o_addExpenseBtn" destination="sya-2P-hFh" id="VaH-zW-9AO"/>
+                        <outlet property="o_categoriesContainer" destination="rMK-ew-yFa" id="8uk-Ql-JK4"/>
+                        <outlet property="o_categoriesHeaderView" destination="7LF-Yc-DV8" id="hxB-NI-Rv8"/>
+                        <outlet property="o_editBarButton" destination="xSY-u3-8yQ" id="c88-Ux-YRk"/>
+                        <outlet property="o_editCategoryBtn" destination="7D7-IN-hVb" id="BHF-mD-KsC"/>
+                        <segue destination="FuZ-9Q-weN" kind="presentation" identifier="editCategoryPhone" id="3or-NZ-vhW"/>
+                        <segue destination="FuZ-9Q-weN" kind="popoverPresentation" identifier="editCategoryPad" popoverAnchorView="rMK-ew-yFa" id="BIC-xa-qWm">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                        <segue destination="1Rb-P1-3RF" kind="show" identifier="drillDown" id="Apn-Nx-CKw"/>
+                        <segue destination="8Q2-vc-Awy" kind="popoverPresentation" identifier="editExpense" popoverAnchorView="dzZ-0M-Bui" id="LGD-4o-CQO">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bLJ-6l-6HF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="874" y="-587"/>
+        </scene>
+        <!--AddEditCategory-->
+        <scene sceneID="pZo-eH-59Q">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddEditCategory" referencedIdentifier="AddEditCategory" id="FuZ-9Q-weN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KuU-c0-iUN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1471" y="-717"/>
+        </scene>
+        <!--AddEditExpense-->
+        <scene sceneID="8TT-5P-9f7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddEditExpense" referencedIdentifier="AddEditExpense" id="8Q2-vc-Awy" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dsa-nt-A6p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1375" y="-432"/>
+        </scene>
+        <!--Categories-->
+        <scene sceneID="rYM-5y-zqz">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Categories" referencedIdentifier="Categories" id="uAg-F5-Phj" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tqX-QB-5Nl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="646" y="-202"/>
+        </scene>
+        <!--CategoryExpenses-->
+        <scene sceneID="hgR-4L-AGw">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CategoryExpenses" referencedIdentifier="CategoryExpenses" id="TCn-zz-EGO" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Wo-Lu-vGx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1143" y="-195"/>
+        </scene>
+        <!--CategoryExpenses-->
+        <scene sceneID="EVB-Vs-3iQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CategoryExpenses" referencedIdentifier="CategoryExpenses" id="r5B-89-Yru" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fs8-aN-Mc9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1895" y="-172"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="JfN-an-uTE">
+            <objects>
+                <tabBarController id="Vwm-Ri-CfN" customClass="MainViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Jjg-QT-qew">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="oyU-Yz-Fkn" kind="relationship" relationship="viewControllers" id="208-Kf-jUW"/>
+                        <segue destination="Nau-hz-4xk" kind="relationship" relationship="viewControllers" id="Ha1-9b-7Gw"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YEb-xS-Cm7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-636" y="-268"/>
+        </scene>
+        <!--Categories-->
+        <scene sceneID="fBr-RI-wVG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oyU-Yz-Fkn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Categories" image="categories" id="HxO-OL-kc1"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LPi-KS-Dni">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0S2-Vy-dxd" kind="relationship" relationship="rootViewController" id="uwI-Xk-3Gs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bwP-v8-Imj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="134.375" y="-586.5234375"/>
+        </scene>
+        <!--Expenses-->
+        <scene sceneID="wyf-sa-7zm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Nau-hz-4xk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Expenses" image="coins" id="jM8-Co-k04"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RJ8-V0-VcN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1BT-8B-LqY" kind="relationship" relationship="rootViewController" id="k5c-Ar-Ydn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5kR-NF-xdc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="134" y="182"/>
+        </scene>
+        <!--Category Detail Phone View Controller-->
+        <scene sceneID="ZA9-NB-Swb">
+            <objects>
+                <viewController id="1Rb-P1-3RF" customClass="CategoryDetailPhoneViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="17n-Uq-b41"/>
+                        <viewControllerLayoutGuide type="bottom" id="vcm-rk-8g6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1pb-Cp-U1U">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jo0-q7-AhR">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
+                                <connections>
+                                    <segue destination="r5B-89-Yru" kind="embed" identifier="categoryExpenses" id="OV0-je-BSq"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vcm-rk-8g6" firstAttribute="top" secondItem="Jo0-q7-AhR" secondAttribute="bottom" id="SX4-Ae-BcO"/>
+                            <constraint firstItem="Jo0-q7-AhR" firstAttribute="leading" secondItem="1pb-Cp-U1U" secondAttribute="leading" id="cVa-1M-xLX"/>
+                            <constraint firstItem="Jo0-q7-AhR" firstAttribute="top" secondItem="1pb-Cp-U1U" secondAttribute="top" id="nu9-uX-CLS"/>
+                            <constraint firstAttribute="trailing" secondItem="Jo0-q7-AhR" secondAttribute="trailing" id="qBu-B2-Tg1"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="XsN-8r-BdA">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="pJr-dg-zaL" customClass="BalanceView" customModule="Budget" customModuleProvider="target">
+                            <rect key="frame" x="87" y="6" width="240" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
+                                    <real key="value" value="14"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="amountSize">
+                                    <real key="value" value="11"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="progressBarSize">
+                                    <real key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <barButtonItem key="rightBarButtonItem" image="plus" id="fP6-MN-gD6">
+                            <connections>
+                                <segue destination="IB3-3e-gXe" kind="presentation" identifier="addExpense" id="F6o-My-HgH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="o_balanceNavView" destination="pJr-dg-zaL" id="Um2-61-rSF"/>
+                        <segue destination="IB3-3e-gXe" kind="presentation" identifier="editExpense" id="afK-iw-4zv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zzl-p5-7n8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1948" y="-587"/>
+        </scene>
+        <!--AddEditExpense-->
+        <scene sceneID="i3S-6q-llX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddEditExpense" referencedIdentifier="AddEditExpense" id="IB3-3e-gXe" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wcS-Ic-bYt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2630" y="-606"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="categories" width="24" height="24"/>
+        <image name="coins" width="24" height="24"/>
+        <image name="edit-tool" width="16" height="16"/>
+        <image name="plus" width="16" height="16"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="BIC-xa-qWm"/>
+        <segue reference="LGD-4o-CQO"/>
+        <segue reference="F6o-My-HgH"/>
+    </inferredMetricsTieBreakers>
+</document>

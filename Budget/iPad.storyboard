@@ -329,10 +329,10 @@
             </objects>
             <point key="canvasLocation" x="-490" y="775"/>
         </scene>
-        <!--ExpensesRef-->
+        <!--Expenses-->
         <scene sceneID="Nl0-dB-prp">
             <objects>
-                <viewControllerPlaceholder storyboardName="Expenses" referencedIdentifier="ExpensesRef" id="PRu-bi-e76" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Expenses" referencedIdentifier="Expenses" id="PRu-bi-e76" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fFY-ei-r9S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-296" y="1204"/>
@@ -345,18 +345,18 @@
             </objects>
             <point key="canvasLocation" x="-932" y="1270"/>
         </scene>
-        <!--CategoriesRef-->
+        <!--Categories-->
         <scene sceneID="122-MC-UWX">
             <objects>
-                <viewControllerPlaceholder storyboardName="Categories" referencedIdentifier="CategoriesRef" id="CEg-IX-EqG" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Categories" referencedIdentifier="Categories" id="CEg-IX-EqG" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qW1-x6-qBh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1109" y="1185"/>
         </scene>
-        <!--Expenses-->
+        <!--CategoryExpenses-->
         <scene sceneID="ZFt-3A-qdv">
             <objects>
-                <viewControllerPlaceholder storyboardName="CategoryExpenses" referencedIdentifier="Expenses" id="41k-4q-Zmw" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="CategoryExpenses" referencedIdentifier="CategoryExpenses" id="41k-4q-Zmw" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rza-dt-TU8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-778" y="1204"/>
@@ -606,10 +606,10 @@
             </objects>
             <point key="canvasLocation" x="403" y="1176"/>
         </scene>
-        <!--IncomesRef-->
+        <!--Incomes-->
         <scene sceneID="nDy-0E-kKO">
             <objects>
-                <viewControllerPlaceholder storyboardName="Incomes" referencedIdentifier="IncomesRef" id="2zU-10-XgC" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Incomes" referencedIdentifier="Incomes" id="2zU-10-XgC" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SrM-vO-Kak" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="467" y="1276"/>

@@ -38,7 +38,7 @@ class CategoryDetailPhoneViewController: UIViewController, CategoryExpensesViewC
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "expenses" {
+        if segue.identifier == "categoryExpenses" {
             expensesViewController = segue.destination as? CategoryExpensesViewController
             expensesViewController?.delegate = self
             expensesViewController?.category = category
