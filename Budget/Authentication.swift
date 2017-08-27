@@ -108,7 +108,7 @@ class Authentication: NSObject {
     }
     
     static func canDisconnectFacebookAccount() -> Bool {
-        return APP.user != nil && APP.user!.providerData.count > 1
+        return APP.user != nil && FBSDKAccessToken.current() != nil && APP.user!.providerData.count > 1
     }
     
     static func facebookProviderID() -> String? {
@@ -230,8 +230,8 @@ extension Authentication: FBSDKLoginButtonDelegate {
             if let _ = loginViewController {
                 showError(error, on: loginViewController!)
             }
-        } else {
-            let credential = FIRFacebookAuthProvider.credential(withAccessToken: result.token.tokenString)
+        } else if let token = result.token {
+            let credential = FIRFacebookAuthProvider.credential(withAccessToken: token.tokenString)
             FIRAuth.auth()?.signIn(with: credential) { [unowned self] (user, error) in
                 if let error = error {
                     if let error_name = (error as NSError?)?.userInfo["error_name"] as? String, error_name ==  "ERROR_EMAIL_ALREADY_IN_USE" {
