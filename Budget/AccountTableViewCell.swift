@@ -22,6 +22,13 @@ class AccountTableViewCell: UITableViewCell, AuthenticationDelegate {
     @IBOutlet weak var o_logoutButton: UIButton!
     @IBOutlet weak var o_loginButton: UIButton!
     @IBOutlet weak var o_label: UILabel!
+    @IBOutlet weak var o_facebookImage: UIImageView! {
+        didSet {
+            o_facebookImage.layer.cornerRadius = o_facebookImage.frame.width / 2
+        }
+    }
+
+    @IBOutlet weak var o_imageLeadingConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,13 +43,24 @@ class AccountTableViewCell: UITableViewCell, AuthenticationDelegate {
 
     func build() {
         if let user = APP.user {
-            o_label.text = user.email
+            o_label.text = ""
+            if Authentication.isOnlyFacebookAccountRegistered() {
+                FacebookHelper.loadUserData(onLabel: o_label, andImage: o_facebookImage)
+                o_imageLeadingConstraint.constant = 20
+                o_facebookImage.isHidden = false
+            } else {
+                o_label.text = user.email
+                o_imageLeadingConstraint.constant = -24
+                o_facebookImage.isHidden = true
+            }
             o_logoutButton.isHidden = false
             o_loginButton.isHidden = true
         } else {
             o_label.text = "Anonymous"
             o_loginButton.isHidden = false
             o_logoutButton.isHidden = true
+            o_imageLeadingConstraint.constant = -24
+            o_facebookImage.isHidden = true
         }
     }
     

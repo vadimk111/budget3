@@ -45,7 +45,7 @@ class FacebookTableViewCell: UITableViewCell {
     }
     
     @IBAction func didTapConnect(_ sender: UIButton) {
-            delegate?.facebookTableViewCellDidTapConnect(self)
+        delegate?.facebookTableViewCellDidTapConnect(self)
     }
     
     @IBAction func didTapDisconnect(_ sender: UIButton) {

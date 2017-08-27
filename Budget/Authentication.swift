@@ -111,6 +111,10 @@ class Authentication: NSObject {
         return APP.user != nil && FBSDKAccessToken.current() != nil && APP.user!.providerData.count > 1
     }
     
+    static func isOnlyFacebookAccountRegistered() -> Bool {
+        return isFacebookAccountConnected() && APP.user!.providerData.count == 1
+    }
+    
     static func facebookProviderID() -> String? {
         if let user = APP.user {
             for userInfo in user.providerData {
