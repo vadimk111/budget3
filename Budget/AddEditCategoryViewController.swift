@@ -100,9 +100,14 @@ class AddEditCategoryViewController: UIViewController, UIPickerViewDelegate, UIP
     }
     
     @IBAction func didTapSave(_ sender: UIBarButtonItem) {
-        if let title = o_titleField.text, let amountStr = o_amountField.text, let amount = Float(amountStr)  {
+        if let title = o_titleField.text {
             category?.title = title
-            category?.amount = amount
+            
+            if let amountStr = o_amountField.text, let amount = Float(amountStr) {
+                category?.amount = amount
+            } else {
+                category?.amount = 0
+            }
             
             if let budgetRef = budgetRef {
                 category?.insert(into: budgetRef)
