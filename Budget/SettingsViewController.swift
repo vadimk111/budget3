@@ -26,6 +26,26 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
     var reminders: [ReminderData] = []
     var showReminders = UserDefaults.standard.bool(forKey: showReminderskey)
     
+    @IBOutlet weak var o_shareButton: UIBarButtonItem!
+    
+    @IBAction func didTapShare(_ sender: UIBarButtonItem) {
+        if let sharing = APP.user?.sharing {
+            let a = UIAlertController(title: "Unlink shared account ?", message: "", preferredStyle: .alert)
+            a.addAction(UIAlertAction(title: "Unlink", style: .default) { action -> Void in
+                sharing.delete()
+                APP.user?.sharing = nil
+                NotificationCenter.default.post(Notification(name: signInStateChangedNotification))
+            })
+            a.addAction(UIAlertAction(title: "Cancel", style: .default) { action -> Void in })
+            self.present(a, animated: true, completion: nil)
+        } else if let id = APP.user?.firUser.uid, let url = URL(string: "doctor.budget://\(id)") {
+            let objectsToShare = ["Join my Budget Doctor account:", url] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.popoverPresentationController?.barButtonItem = sender
+            present(activityVC, animated: true, completion: nil)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,6 +59,8 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
             let remindersArr = NSKeyedUnarchiver.unarchiveObject(with: data) as? [ReminderData] {
             reminders = remindersArr
         }
+        
+        configureShareButton()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -55,7 +77,18 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
         }
     }
     
+    func configureShareButton() {
+        if let _ = APP.user {
+            o_shareButton.isEnabled = true
+            o_shareButton.image = APP.user?.sharing?.dbId != nil ? #imageLiteral(resourceName: "unlink") : #imageLiteral(resourceName: "share")
+        } else {
+            o_shareButton.isEnabled = false
+            o_shareButton.image = nil
+        }
+    }
+    
     func onSignInStateChanged() {
+        configureShareButton()
         tableView.reloadSections([0], with: .none)
     }
     

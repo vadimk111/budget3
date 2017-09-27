@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Settings-->
         <scene sceneID="KSk-w9-KLK">
@@ -266,7 +271,16 @@
                             <outlet property="delegate" destination="XJn-6Z-CEc" id="vJ7-Kb-eQY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Settings" id="pM7-jh-H5B"/>
+                    <navigationItem key="navigationItem" title="Settings" id="pM7-jh-H5B">
+                        <barButtonItem key="rightBarButtonItem" image="share" id="QQk-er-wtQ">
+                            <connections>
+                                <action selector="didTapShare:" destination="XJn-6Z-CEc" id="nzj-UK-hFR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="o_shareButton" destination="QQk-er-wtQ" id="eDY-Zi-Zc1"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sE0-ze-ut5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -288,7 +302,7 @@
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8f6-0y-fp3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -303,6 +317,7 @@
     </scenes>
     <resources>
         <image name="settings" width="24" height="24"/>
+        <image name="share" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="sHs-tL-7Zp"/>

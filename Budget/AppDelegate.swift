@@ -18,9 +18,10 @@ let userNotificationCenterAuthorizationChangedNotification = Notification.Name(r
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
-    var user: FIRUser?
+    var user: User?
     var automaticAuthenticationCompleted = false
     var notificationsAllowed = false
+    var dbToShare: String?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -70,6 +71,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        let absoluteUrl = url.absoluteString
+        dbToShare = absoluteUrl.substring(from: absoluteUrl.index(absoluteUrl.startIndex, offsetBy: "doctor.budget://".characters.count))
+        
+        if automaticAuthenticationCompleted {
+            onSignInStateChanged()
+        } else {
+            NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
+        }
+        return true
+    }
+    
+    func onSignInStateChanged() {
+        NotificationCenter.default.removeObserver(self, name: signInStateChangedNotification, object: nil)
+        
+        if let dbId = dbToShare {
+            if let ref = ModelHelper.sharingReference() {
+                let sharing = Sharing()
+                sharing.dbId = dbId
+                sharing.insert(into: ref)
+                
+                APP.user?.loadSharing {
+                    NotificationCenter.default.post(Notification(name: signInStateChangedNotification))
+                }
+            } else {
+                let a = UIAlertController(title: "", message: "Account sharing allowed only for signed-in users", preferredStyle: .alert)
+                a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in })
+                if let top = window?.rootViewController?.presentedViewController {
+                    top.present(a, animated: true, completion: nil)
+                } else {
+                    window?.rootViewController?.present(a, animated: true, completion: nil)
+                }
+            }
+            dbToShare = nil
+        }
     }
 }
 

@@ -26,6 +26,14 @@
 				<string>fb483245392010489</string>
 			</array>
 		</dict>
+        <dict>
+            <key>CFBundleURLName</key>
+            <string>com.home.Budget</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>doctor.budget</string>
+            </array>
+        </dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>2</string>

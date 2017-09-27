@@ -11,20 +11,26 @@ import FirebaseDatabase
 
 let budgetsKey = "budgets"
 let incomesKey = "incomes"
+let sharingKey = "sharings"
 
 class ModelHelper {
     fileprivate static func uniqueId(for date: Date) -> String? {
-        var uid = APP.user?.uid
-        if uid == nil && APP.automaticAuthenticationCompleted {
-            uid = UserDefaults.standard.string(forKey: "email")
-        }
+        var dbId: String? = nil
         
-        if let uid = uid {
+        if let sharingDB = APP.user?.sharing?.dbId {
+            dbId = sharingDB
+        } else {
+            dbId = APP.user?.firUser.uid
+            if dbId == nil && APP.automaticAuthenticationCompleted {
+                dbId = UserDefaults.standard.string(forKey: "email")
+            }
+        }
+        if let dbId = dbId {
             let calendar = Calendar.current
             let year = calendar.component(.year, from: date)
             let month = calendar.component(.month, from: date)
             
-            return uid + String(year) + String(month)
+            return dbId + String(year) + String(month)
         }
         return nil
     }
@@ -42,5 +48,12 @@ class ModelHelper {
     
     static func incomeReference(for date: Date) -> FIRDatabaseReference? {
         return databaseReference(for: incomesKey, on: date)
+    }
+    
+    static func sharingReference() -> FIRDatabaseReference? {
+        if let uid = APP.user?.firUser.uid {
+            return FIRDatabase.database().reference().child(sharingKey).child(uid)
+        }
+        return nil
     }
 }
