@@ -64,6 +64,7 @@ fastlane/screenshots
 fastlane/test_output
 
 Budget/GoogleService-Info.plist
+Budget/GoogleService-Info-staging.plist
 ServiceAccount.json
 .firebaserc
 database.rules.json
