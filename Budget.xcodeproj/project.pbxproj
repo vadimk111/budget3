@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6AA2CE85BAFB9541D811DABB /* Pods_Budget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 081C64756147318895C06760 /* Pods_Budget.framework */; };
+		BD138CB61F7EDD9B00CDA4DA /* NavBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD138CB51F7EDD9B00CDA4DA /* NavBalanceView.swift */; };
+		BD138CB81F7EDDB100CDA4DA /* NavBalanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD138CB71F7EDDB100CDA4DA /* NavBalanceView.xib */; };
 		BD1DF1841F1F7E7800E52C29 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1DF1831F1F7E7800E52C29 /* DatePickerView.swift */; };
 		BD1DF1861F1F7E8100E52C29 /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD1DF1851F1F7E8100E52C29 /* DatePickerView.xib */; };
 		BD3D40721E853A4800C3CCAF /* CategoriesBaseDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D40711E853A4800C3CCAF /* CategoriesBaseDeviceViewController.swift */; };
@@ -107,6 +109,8 @@
 /* Begin PBXFileReference section */
 		081C64756147318895C06760 /* Pods_Budget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBC9F6F964B24DE5B2DADBF3 /* Pods-Budget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Budget/Pods-Budget.release.xcconfig"; sourceTree = "<group>"; };
+		BD138CB51F7EDD9B00CDA4DA /* NavBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBalanceView.swift; sourceTree = "<group>"; };
+		BD138CB71F7EDDB100CDA4DA /* NavBalanceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavBalanceView.xib; sourceTree = "<group>"; };
 		BD1DF1831F1F7E7800E52C29 /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		BD1DF1851F1F7E8100E52C29 /* DatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
 		BD3D40711E853A4800C3CCAF /* CategoriesBaseDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesBaseDeviceViewController.swift; sourceTree = "<group>"; };
@@ -510,6 +514,8 @@
 				BF9063231E6896DF004B5F8B /* DateChanger.xib */,
 				BD1DF1831F1F7E7800E52C29 /* DatePickerView.swift */,
 				BD1DF1851F1F7E8100E52C29 /* DatePickerView.xib */,
+				BD138CB51F7EDD9B00CDA4DA /* NavBalanceView.swift */,
+				BD138CB71F7EDDB100CDA4DA /* NavBalanceView.xib */,
 				BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */,
 				BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */,
 			);
@@ -593,6 +599,7 @@
 				BF6BC85E1E5B28240052F4E8 /* SubCategoryHeaderView.xib in Resources */,
 				BD589DED1E83F32A00F0C9CD /* CategoryExpenses.storyboard in Resources */,
 				BD6B69E41E79223400F7AF35 /* iPad.storyboard in Resources */,
+				BD138CB81F7EDDB100CDA4DA /* NavBalanceView.xib in Resources */,
 				BD1DF1861F1F7E8100E52C29 /* DatePickerView.xib in Resources */,
 				BDCDA0231F14F0D8008AB2A6 /* LinkAccountsViewController.xib in Resources */,
 				BD8383741EDD74DF00E8B5B2 /* Incomes.storyboard in Resources */,
@@ -722,6 +729,7 @@
 				BD83837D1EDF24A500E8B5B2 /* IncomesPadViewController.swift in Sources */,
 				BD82C7F31E8AF00D009EB6A6 /* MainPadViewController.swift in Sources */,
 				BD8383631EDD5E5400E8B5B2 /* Income.swift in Sources */,
+				BD138CB61F7EDD9B00CDA4DA /* NavBalanceView.swift in Sources */,
 				BF25146F1E46612200042FEF /* Category.swift in Sources */,
 				BFFCD70B1E73D4990030BD79 /* ExpensesPhoneViewController.swift in Sources */,
 				BD83836C1EDD709400E8B5B2 /* IncomeDetailsViewController.swift in Sources */,

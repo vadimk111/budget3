@@ -10,8 +10,6 @@ import UIKit
 
 class CategoryDetailPhoneViewController: UIViewController, CategoryExpensesViewControllerDelegate {
     
-    @IBOutlet weak var o_balanceNavView: BalanceView!
-    
     var expensesViewController: CategoryExpensesViewController?
     var category: Category?
     
@@ -33,7 +31,10 @@ class CategoryDetailPhoneViewController: UIViewController, CategoryExpensesViewC
     
     func updateBalanceNavView() {
         if let category = category {
-            o_balanceNavView.populate(amount: category.calculatedAmount, totalSpent: category.calculatedTotalSpent, title: category.title)
+            let balanceView = NavBalanceView(frame: CGRect(x: 0, y: 0, width: 240, height: 36))
+            balanceView.populate(amount: category.calculatedAmount, totalSpent: category.calculatedTotalSpent, title: category.title)
+            balanceView.backgroundColor = UIColor.clear
+            navigationItem.titleView = balanceView
         }
     }
     
