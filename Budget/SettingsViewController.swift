@@ -38,7 +38,7 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
             })
             a.addAction(UIAlertAction(title: "Cancel", style: .default) { action -> Void in })
             self.present(a, animated: true, completion: nil)
-        } else if let id = APP.user?.firUser.uid, let url = URL(string: "doctor.budget://\(id)") {
+        } else if let id = APP.user?.firUser.uid, let url = URL(string: "\(appPrefix + id)") {
             let objectsToShare = ["Join my Budget Doctor account:", url] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             activityVC.popoverPresentationController?.barButtonItem = sender

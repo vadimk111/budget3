@@ -13,6 +13,7 @@ import FBSDKCoreKit
 
 let APP: AppDelegate = UIApplication.shared.delegate as! AppDelegate
 let userNotificationCenterAuthorizationChangedNotification = Notification.Name(rawValue: "UNCACNot")
+let appPrefix = "doctor.budget://"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -70,19 +71,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
-    }
-    
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let absoluteUrl = url.absoluteString
-        dbToShare = absoluteUrl.substring(from: absoluteUrl.index(absoluteUrl.startIndex, offsetBy: "doctor.budget://".characters.count))
-        
-        if automaticAuthenticationCompleted {
-            onSignInStateChanged()
-        } else {
-            NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
+        if absoluteUrl.range(of: appPrefix) != nil {
+            dbToShare = absoluteUrl.substring(from: absoluteUrl.index(absoluteUrl.startIndex, offsetBy: appPrefix.characters.count))
+            
+            if automaticAuthenticationCompleted {
+                onSignInStateChanged()
+            } else {
+                NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
+            }
+            return true
         }
-        return true
+        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
     func onSignInStateChanged() {
