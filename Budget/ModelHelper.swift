@@ -35,24 +35,24 @@ class ModelHelper {
         return nil
     }
     
-    fileprivate static func databaseReference(for path: String, on date: Date) -> FIRDatabaseReference? {
+    fileprivate static func databaseReference(for path: String, on date: Date) -> DatabaseReference? {
         if let uniqueId = uniqueId(for: date) {
-            return FIRDatabase.database().reference().child(path).child(uniqueId)
+            return Database.database().reference().child(path).child(uniqueId)
         }
         return nil
     }
     
-    static func budgetReference(for date: Date) -> FIRDatabaseReference? {
+    static func budgetReference(for date: Date) -> DatabaseReference? {
         return databaseReference(for: budgetsKey, on: date)
     }
     
-    static func incomeReference(for date: Date) -> FIRDatabaseReference? {
+    static func incomeReference(for date: Date) -> DatabaseReference? {
         return databaseReference(for: incomesKey, on: date)
     }
     
-    static func sharingReference() -> FIRDatabaseReference? {
+    static func sharingReference() -> DatabaseReference? {
         if let uid = APP.user?.firUser.uid {
-            return FIRDatabase.database().reference().child(sharingKey).child(uid)
+            return Database.database().reference().child(sharingKey).child(uid)
         }
         return nil
     }

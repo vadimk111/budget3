@@ -32,7 +32,7 @@ extension CategoryExpensesViewController {
         }
     }
     
-    func registerToUpdates(expensesRef: FIRDatabaseReference?, section: Int) {
+    func registerToUpdates(expensesRef: DatabaseReference?, section: Int) {
         if let _ = category {
             expensesRef?.observe(.childAdded, with: { [unowned self] snapshot in
                 let category = section == 0 ? self.category! : self.category!.subCategories![section - 1]

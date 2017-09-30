@@ -13,7 +13,7 @@ class ExpenseWithCategoryData {
     var expense: Expense
     var categoryId: String?
     var categoryTitle: String?
-    var categoryRef: FIRDatabaseReference?
+    var categoryRef: DatabaseReference?
     
     init(expense: Expense, category: Category) {
         self.expense = expense
@@ -79,11 +79,11 @@ class ExpensesViewController: UITableViewController, OverviewTableViewCellDelega
         }
     }
     
-    func prepareExpenses(from snapshot: FIRDataSnapshot) {
+    func prepareExpenses(from snapshot: DataSnapshot) {
         var groupsByDate = [Date : [ExpenseWithCategoryData]]()
         
         for child in snapshot.children {
-            let category = Category(snapshot: child as! FIRDataSnapshot)
+            let category = Category(snapshot: child as! DataSnapshot)
             registerToUpdates(category: category)
             
             if let cExpenses = category.expenses {

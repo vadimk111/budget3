@@ -11,13 +11,13 @@ import FirebaseDatabase
 
 class ModelBaseObject : NSObject {
     
-    private var ref: FIRDatabaseReference?
+    private var ref: DatabaseReference?
     
     override init() {
         
     }
     
-    init(snapshot: FIRDataSnapshot) {
+    init(snapshot: DataSnapshot) {
         super.init()
         ref = snapshot.ref
     }
@@ -31,7 +31,7 @@ class ModelBaseObject : NSObject {
     }
     
     @discardableResult
-    func insert(into parent: FIRDatabaseReference) -> String {
+    func insert(into parent: DatabaseReference) -> String {
         let child = parent.childByAutoId()
         child.setValue(toValues())
         return child.key
@@ -45,11 +45,11 @@ class ModelBaseObject : NSObject {
         ref?.child(path).removeValue()
     }
     
-    func getDatabaseReference() -> FIRDatabaseReference? {
+    func getDatabaseReference() -> DatabaseReference? {
         return ref
     }
     
-    func setDatabaseReference(ref: FIRDatabaseReference?) {
+    func setDatabaseReference(ref: DatabaseReference?) {
         self.ref = ref
     }
 }

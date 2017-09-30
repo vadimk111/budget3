@@ -24,7 +24,7 @@ class MoneyFlow : ModelBaseObject {
         super.init()
     }
     
-    override init(snapshot: FIRDataSnapshot) {
+    override init(snapshot: DataSnapshot) {
         super.init(snapshot: snapshot)
         
         id = snapshot.key

@@ -19,14 +19,14 @@ let appPrefix = "doctor.budget://"
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
-    var user: User?
+    var user: BudgetUser?
     var automaticAuthenticationCompleted = false
     var notificationsAllowed = false
     var dbToShare: String?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FIRApp.configure()
+        FirebaseApp.configure()
         
         registerCategory()
         
@@ -75,14 +75,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if absoluteUrl.range(of: appPrefix) != nil {
             dbToShare = absoluteUrl.substring(from: absoluteUrl.index(absoluteUrl.startIndex, offsetBy: appPrefix.characters.count))
             
-            if automaticAuthenticationCompleted {
-                onSignInStateChanged()
-            } else {
-                NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
+            if dbToShare!.contains(".") || dbToShare!.contains("$") || dbToShare!.contains("#") || dbToShare!.contains("[") || dbToShare!.contains("]") {
+                let a = UIAlertController(title: "Failed to load shared budget", message: "Invalid budget identifier: \(dbToShare!)", preferredStyle: .alert)
+                a.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                topViewController()?.present(a, animated: true, completion: nil)
+                
+                dbToShare = nil
             }
+            
+            if let _ = dbToShare {
+                if self.automaticAuthenticationCompleted {
+                    self.onSignInStateChanged()
+                } else {
+                    NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
+                }
+            }
+            
             return true
         }
         return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+    
+    func topViewController() -> UIViewController? {
+        if let vc = window?.rootViewController?.presentedViewController {
+            return vc
+        }
+        return window?.rootViewController
     }
     
     func onSignInStateChanged() {
@@ -98,13 +116,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     NotificationCenter.default.post(Notification(name: signInStateChangedNotification))
                 }
             } else {
-                let a = UIAlertController(title: "", message: "Account sharing allowed only for signed-in users", preferredStyle: .alert)
+                let a = UIAlertController(title: "", message: "Budget sharing allowed only for signed-in users", preferredStyle: .alert)
                 a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in })
-                if let top = window?.rootViewController?.presentedViewController {
-                    top.present(a, animated: true, completion: nil)
-                } else {
-                    window?.rootViewController?.present(a, animated: true, completion: nil)
-                }
+                topViewController()?.present(a, animated: true, completion: nil)
             }
             dbToShare = nil
         }

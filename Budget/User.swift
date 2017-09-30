@@ -9,11 +9,11 @@
 import Foundation
 import Firebase
 
-class User: NSObject {
-    var firUser: FIRUser
+class BudgetUser: NSObject {
+    var firUser: User
     var sharing: Sharing?
     
-    init(firUser: FIRUser) {
+    init(firUser: User) {
         self.firUser = firUser
     }
     

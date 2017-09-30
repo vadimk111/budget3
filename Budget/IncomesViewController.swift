@@ -20,7 +20,7 @@ class IncomesViewController: UITableViewController, IncomeTableViewCellDelegate 
 
     var date: Date = Date()
     var incomes: [Income] = [Income]()
-    var listRef: FIRDatabaseReference?
+    var listRef: DatabaseReference?
     var addHandler: UInt?
     var changeHandler: UInt?
     var removeHandler: UInt?
@@ -51,7 +51,7 @@ class IncomesViewController: UITableViewController, IncomeTableViewCellDelegate 
             listRef?.observeSingleEvent(of: .value, with: { snapshot in
                 self.incomes = []
                 for child in snapshot.children {
-                    self.incomes.append(Income(snapshot: child as! FIRDataSnapshot))
+                    self.incomes.append(Income(snapshot: child as! DataSnapshot))
                 }
                 self.registerToUpdates()
                 

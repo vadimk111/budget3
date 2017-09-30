@@ -20,7 +20,7 @@ protocol CategoriesViewControllerDelegate: class {
 
 class CategoriesViewController: UITableViewController {
 
-    var budgetRef: FIRDatabaseReference?
+    var budgetRef: DatabaseReference?
     var categories: [Category] = []
     var date: Date = Date()
     var dateChanged = false
@@ -78,7 +78,7 @@ class CategoriesViewController: UITableViewController {
         }
     }
         
-    func prepareBudget(from snapshot: FIRDataSnapshot) -> Bool {
+    func prepareBudget(from snapshot: DataSnapshot) -> Bool {
         categories = []
         var subCategories: [String : [Category]] = [:]
         var budgetExist = false
@@ -86,7 +86,7 @@ class CategoriesViewController: UITableViewController {
         for child in snapshot.children {
             budgetExist = true
             
-            let category = Category(snapshot: child as! FIRDataSnapshot)
+            let category = Category(snapshot: child as! DataSnapshot)
             if let parent = category.parent {
                 var mutableArr = [Category]()
                 if let arr = subCategories[parent] {

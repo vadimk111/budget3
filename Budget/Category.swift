@@ -71,7 +71,7 @@ class Category: ModelBaseObject {
         super.init()
     }
     
-    override init(snapshot: FIRDataSnapshot) {
+    override init(snapshot: DataSnapshot) {
         super.init(snapshot: snapshot)
         
         id = snapshot.key
@@ -84,11 +84,11 @@ class Category: ModelBaseObject {
         isBill = snapshotValue[isBillKey] as? Bool
 
         for child in snapshot.children {
-            let childSnapshot = child as! FIRDataSnapshot
+            let childSnapshot = child as! DataSnapshot
             if childSnapshot.key == expensesKey {
                 expenses = []
                 for child in childSnapshot.children {
-                    expenses?.append(Expense(snapshot: child as! FIRDataSnapshot))
+                    expenses?.append(Expense(snapshot: child as! DataSnapshot))
                 }
             }
         }

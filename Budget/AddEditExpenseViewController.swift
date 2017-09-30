@@ -11,7 +11,7 @@ import FirebaseDatabase
 
 class AddEditExpenseViewController: UIViewController {
 
-    var parentRef: FIRDatabaseReference?
+    var parentRef: DatabaseReference?
     var expense: Expense?
     
     @IBOutlet weak var o_titleField: UITextField!

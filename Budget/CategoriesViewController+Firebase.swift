@@ -11,17 +11,17 @@ import FirebaseDatabase
 
 extension CategoriesViewController {
     
-    func unregisterFromUpdates(budgetRef: FIRDatabaseReference?) {
+    func unregisterFromUpdates(budgetRef: DatabaseReference?) {
         budgetRef?.removeAllObservers()
     }
     
-    func registerToUpdates(budgetRef: FIRDatabaseReference?) {
+    func registerToUpdates(budgetRef: DatabaseReference?) {
         observeChildAdd(on: budgetRef)
         observeChildDelete(on: budgetRef)
         observeChildUpdate(on: budgetRef)
     }
     
-    func observeChildAdd(on budgetRef: FIRDatabaseReference?) {
+    func observeChildAdd(on budgetRef: DatabaseReference?) {
         budgetRef?.observe(.childAdded, with: { [unowned self] snapshot in
             let category = Category(snapshot: snapshot)
             if let _ = category.parent {
@@ -38,7 +38,7 @@ extension CategoriesViewController {
         })
     }
     
-    func observeChildDelete(on budgetRef: FIRDatabaseReference?) {
+    func observeChildDelete(on budgetRef: DatabaseReference?) {
         budgetRef?.observe(.childRemoved, with: { [unowned self] snapshot in
             let category = Category(snapshot: snapshot)
             self.deleteCategoryFromView(category)
@@ -47,7 +47,7 @@ extension CategoriesViewController {
         })
     }
     
-    func observeChildUpdate(on budgetRef: FIRDatabaseReference?) {
+    func observeChildUpdate(on budgetRef: DatabaseReference?) {
         budgetRef?.observe(.childChanged, with: { [unowned self] snapshot in
             let category = Category(snapshot: snapshot)
             

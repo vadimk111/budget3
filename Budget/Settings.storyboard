@@ -148,17 +148,17 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2bN-6E-7hP">
-                                            <rect key="frame" x="304" y="6.5" width="51" height="31"/>
+                                            <rect key="frame" x="292" y="6.5" width="63" height="31"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                            <state key="normal" title="Logout"/>
+                                            <state key="normal" title="Sign Out"/>
                                             <connections>
                                                 <action selector="didTapLogout:" destination="dS8-Ko-3BC" eventType="touchUpInside" id="dBP-o9-E5S"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d7M-vu-uKH">
-                                            <rect key="frame" x="304" y="6" width="40" height="31"/>
+                                            <rect key="frame" x="292" y="6" width="50" height="31"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                            <state key="normal" title="Login"/>
+                                            <state key="normal" title="Sign In"/>
                                             <connections>
                                                 <action selector="didTapLogin:" destination="dS8-Ko-3BC" eventType="touchUpInside" id="Vae-aV-Oac"/>
                                             </connections>

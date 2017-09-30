@@ -11,7 +11,7 @@ import FirebaseDatabase
 
 class AddEditIncomeViewController: UIViewController {
 
-    var listRef: FIRDatabaseReference?
+    var listRef: DatabaseReference?
     var income: Income?
     
     @IBOutlet weak var o_titleField: UITextField!

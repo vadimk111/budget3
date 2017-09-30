@@ -42,11 +42,11 @@ class Authentication: NSObject {
             if email.contains(anonymous) {
                 notifyStateChanged()
             } else {
-                FIRAuth.auth()?.signIn(withEmail: email, password: password) { [weak self] (user, error) in
+                Auth.auth().signIn(withEmail: email, password: password) { [weak self] (user, error) in
                     if let error = error {
                         self?.automaticSignInFailed(with: error)
                     } else if let user = user {
-                        APP.user = User(firUser: user)
+                        APP.user = BudgetUser(firUser: user)
                         APP.user?.loadSharing { [weak self] in
                             self?.notifyStateChanged()
                         }
@@ -56,12 +56,12 @@ class Authentication: NSObject {
         } else if let authMethod = UserDefaults.standard.string(forKey: "auth_method") {
             if authMethod == "facebook" {
                 if let token = FBSDKAccessToken.current().tokenString {
-                    let credential = FIRFacebookAuthProvider.credential(withAccessToken: token)
-                    FIRAuth.auth()?.signIn(with: credential) { [weak self] (user, error) in
+                    let credential = FacebookAuthProvider.credential(withAccessToken: token)
+                    Auth.auth().signIn(with: credential) { [weak self] (user, error) in
                         if let error = error {
                             self?.automaticSignInFailed(with: error)
                         } else if let user = user {
-                            APP.user = User(firUser: user)
+                            APP.user = BudgetUser(firUser: user)
                             APP.user?.loadSharing { [weak self] in
                                 self?.notifyStateChanged()
                             }
@@ -82,7 +82,7 @@ class Authentication: NSObject {
     }
     
     func connectFacebookAccount(token: String) {
-        let credential = FIRFacebookAuthProvider.credential(withAccessToken: token)
+        let credential = FacebookAuthProvider.credential(withAccessToken: token)
         APP.user?.firUser.link(with: credential) { [weak self] (user, error) in
             if let error = error {
                 self?.showErrorOnDelegate(error)
@@ -132,7 +132,7 @@ class Authentication: NSObject {
     
     func signOut() {
         do {
-            try FIRAuth.auth()?.signOut()
+            try Auth.auth().signOut()
         } catch {
             
         }
@@ -170,8 +170,8 @@ class Authentication: NSObject {
         delegate?.authentication(self, shouldDisplayAlert: a)
     }
     
-    func passwordSignInSucceded(with user: FIRUser) {
-        APP.user = User(firUser: user)
+    func passwordSignInSucceded(with user: User) {
+        APP.user = BudgetUser(firUser: user)
         UserDefaults.standard.set(loginViewController?.email, forKey: "email")
         UserDefaults.standard.set(loginViewController?.password, forKey: "password")
         UserDefaults.standard.synchronize()
@@ -181,8 +181,8 @@ class Authentication: NSObject {
         }
     }
     
-    func facebookSignInSucceded(with user: FIRUser) {
-        APP.user = User(firUser: user)
+    func facebookSignInSucceded(with user: User) {
+        APP.user = BudgetUser(firUser: user)
         UserDefaults.standard.set("facebook", forKey: "auth_method")
         UserDefaults.standard.synchronize()
         delegate?.authenticationShouldDismissViewController(self)
@@ -194,7 +194,7 @@ class Authentication: NSObject {
 
 extension Authentication: LoginViewControllerDelegate {
     func loginViewControllerCreate(_ loginViewController: LoginViewController) {
-        FIRAuth.auth()?.createUser(withEmail: loginViewController.email, password: loginViewController.password) { (user, error) in
+        Auth.auth().createUser(withEmail: loginViewController.email, password: loginViewController.password) { (user, error) in
             if let error = error {
                 self.showError(error, on: loginViewController)
             } else if let user = user {
@@ -204,7 +204,7 @@ extension Authentication: LoginViewControllerDelegate {
     }
     
     func loginViewControllerSignIn(_ loginViewController: LoginViewController) {
-        FIRAuth.auth()?.signIn(withEmail: loginViewController.email, password: loginViewController.password) { (user, error) in
+        Auth.auth().signIn(withEmail: loginViewController.email, password: loginViewController.password) { (user, error) in
             if let error = error {
                 self.showError(error, on: loginViewController)
             } else if let user = user {
@@ -214,7 +214,7 @@ extension Authentication: LoginViewControllerDelegate {
     }
     
     func loginViewControllerForgot(_ loginViewController: LoginViewController) {
-        FIRAuth.auth()?.sendPasswordReset(withEmail: loginViewController.email) { (error) in
+        Auth.auth().sendPasswordReset(withEmail: loginViewController.email) { (error) in
             if let error = error {
                 self.showError(error, on: loginViewController)
             } else {
@@ -243,8 +243,8 @@ extension Authentication: FBSDKLoginButtonDelegate {
                 showError(error, on: loginViewController!)
             }
         } else if let token = result.token {
-            let credential = FIRFacebookAuthProvider.credential(withAccessToken: token.tokenString)
-            FIRAuth.auth()?.signIn(with: credential) { [weak self] (user, error) in
+            let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
+            Auth.auth().signIn(with: credential) { [weak self] (user, error) in
                 guard let this = self else { return }
                 if let error = error {
                     if let error_name = (error as NSError?)?.userInfo["error_name"] as? String, error_name ==  "ERROR_EMAIL_ALREADY_IN_USE" {
@@ -272,11 +272,11 @@ extension Authentication: FBSDKLoginButtonDelegate {
 
 extension Authentication: LinkAccountsViewControllerDelegate {
     func linkAccountsViewController(_ linkAccountsViewController: LinkAccountsViewController, linkWithPassword password: String?) {
-        FIRAuth.auth()?.signIn(withEmail: linkAccountsViewController.email ?? "", password: password ?? "") { (user, error) in
+        Auth.auth().signIn(withEmail: linkAccountsViewController.email ?? "", password: password ?? "") { (user, error) in
             if let error = error {
                 self.showError(error, on: linkAccountsViewController)
             } else if let user = user {
-                let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
                 user.link(with: credential) { [weak self] (user, error) in
                     if let error = error {
                         self?.showError(error, on: linkAccountsViewController)

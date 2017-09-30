@@ -30,8 +30,8 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
     
     @IBAction func didTapShare(_ sender: UIBarButtonItem) {
         if let sharing = APP.user?.sharing {
-            let a = UIAlertController(title: "Unlink shared account ?", message: "", preferredStyle: .alert)
-            a.addAction(UIAlertAction(title: "Unlink", style: .default) { action -> Void in
+            let a = UIAlertController(title: "Remove shared budget?", message: "", preferredStyle: .alert)
+            a.addAction(UIAlertAction(title: "Remove", style: .default) { action -> Void in
                 sharing.delete()
                 APP.user?.sharing = nil
                 NotificationCenter.default.post(Notification(name: signInStateChangedNotification))
@@ -39,9 +39,10 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
             a.addAction(UIAlertAction(title: "Cancel", style: .default) { action -> Void in })
             self.present(a, animated: true, completion: nil)
         } else if let id = APP.user?.firUser.uid, let url = URL(string: "\(appPrefix + id)") {
-            let objectsToShare = ["Join my Budget Doctor account:", url] as [Any]
+            let objectsToShare = ["Join my Budget Doctor:", url] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             activityVC.popoverPresentationController?.barButtonItem = sender
+            activityVC.excludedActivityTypes = [.airDrop, .saveToCameraRoll, . addToReadingList, .openInIBooks]
             present(activityVC, animated: true, completion: nil)
         }
     }

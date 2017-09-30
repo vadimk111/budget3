@@ -15,7 +15,7 @@ class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderView
     
     @IBOutlet weak var o_categoriesHeaderView: CategoriesHeaderView!
     
-    var incomesRef: FIRDatabaseReference?
+    var incomesRef: DatabaseReference?
     var incomes: [Income] = [Income]()
     var incomesAddHandler: UInt?
     var incomesChangeHandler: UInt?
@@ -53,7 +53,7 @@ class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderView
             incomesRef?.observeSingleEvent(of: .value, with: { snapshot in
                 self.incomes = []
                 for child in snapshot.children {
-                    self.incomes.append(Income(snapshot: child as! FIRDataSnapshot))
+                    self.incomes.append(Income(snapshot: child as! DataSnapshot))
                 }
                 self.registerToUpdates()
                 self.o_categoriesHeaderView.updateIncome(with: self.incomes)
@@ -162,7 +162,7 @@ class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderView
                 if snapshot.children.allObjects.count > 0 {
                     
                     let categories: [Category] = snapshot.children.map { (child: Any) -> Category in
-                        return Category(snapshot: child as! FIRDataSnapshot)
+                        return Category(snapshot: child as! DataSnapshot)
                         }.sorted(by: { (item1: Category, item2: Category) -> Bool in
                             return item1.order < item2.order
                         })

@@ -17,7 +17,7 @@ class AddEditCategoryViewController: UIViewController, UIPickerViewDelegate, UIP
     
     weak var delegate: AddEditCategoryViewControllerDelegate?
     
-    var budgetRef: FIRDatabaseReference?
+    var budgetRef: DatabaseReference?
     var category: Category?
     var parents: [Category] = []
     var highestOrder: Float = 0

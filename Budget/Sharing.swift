@@ -20,7 +20,7 @@ class Sharing: ModelBaseObject {
         super.init()
     }
     
-    override init(snapshot: FIRDataSnapshot) {
+    override init(snapshot: DataSnapshot) {
         super.init(snapshot: snapshot)
         
         id = snapshot.key
@@ -29,7 +29,7 @@ class Sharing: ModelBaseObject {
     }
     
     @discardableResult
-    override func insert(into parent: FIRDatabaseReference) -> String {
+    override func insert(into parent: DatabaseReference) -> String {
         parent.setValue(toValues())
         return parent.key
     }
