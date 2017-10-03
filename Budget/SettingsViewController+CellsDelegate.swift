@@ -39,10 +39,10 @@ extension SettingsViewController: RemindersTableViewCellDelegate {
         UserDefaults.standard.synchronize()
         
         if showReminders {
-            tableView.insertSections([2, 3], with: .fade)
+            tableView.reloadSections([2, 3], with: .fade)
             scheduleAllNotifications()
         } else {
-            tableView.deleteSections([2, 3], with: .fade)
+            tableView.reloadSections([2, 3], with: .fade)
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         }
         
@@ -74,6 +74,24 @@ extension SettingsViewController: FacebookTableViewCellDelegate {
         authentication = Authentication()
         authentication?.delegate = self
         authentication?.disconnectFacebookAccount()
+    }
+}
+
+extension SettingsViewController: ShareBudgetTableViewCellDelegate {
+    func shareBudgetTableViewCellDidTapShare(_ shareBudgetTableViewCell: ShareBudgetTableViewCell) {
+        if let user = APP.user {
+            if let url = URL(string: "\(appPrefix + user.firUser.uid)") {
+                let objectsToShare = ["Join my Budget Doctor:", url] as [Any]
+                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                activityVC.popoverPresentationController?.sourceView = shareBudgetTableViewCell
+                activityVC.excludedActivityTypes = [.airDrop, .saveToCameraRoll, . addToReadingList, .openInIBooks]
+                present(activityVC, animated: true, completion: nil)
+            }
+        } else {
+            let a = UIAlertController(title: "Sorry", message: "Sharing is available for signed-in users only", preferredStyle: .alert)
+            a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in })
+            present(a, animated: true, completion: nil)
+        }
     }
 }
 

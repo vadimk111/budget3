@@ -18,7 +18,8 @@ class IncomesBaseDeviceViewController: UIViewController, DateChangerDelegate, In
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(IncomesBaseDeviceViewController.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: signInStateChangedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: currentBudgetChangedNotification, object: nil)
         
         o_dateChanger.delegate = self
         o_dateChanger.date = Date()
@@ -38,10 +39,6 @@ class IncomesBaseDeviceViewController: UIViewController, DateChangerDelegate, In
             let vc: AddEditIncomeViewController? = segue.destinationController()
             vc?.income = income
         }
-    }
-        
-    func onSignInStateChanged() {
-        reload()
     }
     
     deinit {

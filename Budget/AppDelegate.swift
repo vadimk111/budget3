@@ -14,6 +14,8 @@ import FBSDKCoreKit
 let APP: AppDelegate = UIApplication.shared.delegate as! AppDelegate
 let userNotificationCenterAuthorizationChangedNotification = Notification.Name(rawValue: "UNCACNot")
 let appPrefix = "doctor.budget://"
+let currentBudgetChangedNotification = Notification.Name(rawValue: "currentBudgetChanged")
+let currentBudgetKey = "currentBudget"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -108,13 +110,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         if let dbId = dbToShare {
             if let ref = ModelHelper.sharingReference() {
-                let sharing = Sharing()
-                sharing.dbId = dbId
-                sharing.insert(into: ref)
+                let a = UIAlertController(title: "You are about to import shared budget", message: "Please, provide a title for it", preferredStyle: .alert)
+                a.addTextField(configurationHandler: { (field) in
+                    field.placeholder = "Budget title"
+                })
+                a.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                a.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                    let sharing = Sharing()
+                    sharing.dbId = dbId
+                    sharing.title = a.textFields?.first?.text
+                    sharing.insert(into: ref)
+                    
+                    UserDefaults.standard.set(dbId, forKey: currentBudgetKey)
+                    UserDefaults.standard.synchronize()
+                    
+                    NotificationCenter.default.post(Notification(name: currentBudgetChangedNotification))
+                }))
                 
-                APP.user?.loadSharing {
-                    NotificationCenter.default.post(Notification(name: signInStateChangedNotification))
-                }
+                topViewController()?.present(a, animated: true, completion: nil)
             } else {
                 let a = UIAlertController(title: "", message: "Budget sharing allowed only for signed-in users", preferredStyle: .alert)
                 a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in })

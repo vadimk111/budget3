@@ -20,7 +20,8 @@ class ExpensesBaseDeviceViewController: UIViewController, DateChangerDelegate, E
 
         NotificationCenter.default.addObserver(self, selector: #selector(ExpensesBaseDeviceViewController.onBudgetChanged), name: budgetChangedNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ExpensesBaseDeviceViewController.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: signInStateChangedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: currentBudgetChangedNotification, object: nil)
         
         o_dateChanger.delegate = self
         o_dateChanger.date = Date()
@@ -34,10 +35,6 @@ class ExpensesBaseDeviceViewController: UIViewController, DateChangerDelegate, E
             self.timer = nil
             self.reload()
         })
-    }
-    
-    func onSignInStateChanged() {
-        reload()
     }
     
     deinit {

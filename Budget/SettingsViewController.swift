@@ -8,10 +8,12 @@
 
 import UIKit
 import UserNotifications
+import FirebaseDatabase
 
 let showReminderskey = "showReminders"
 let remindersDatakey = "remindersData"
 let reminderNotification = "REMINDERNOTIFICATION"
+let defaultBudgetId = "---default---"
 
 protocol SettingsViewControllerDelegate: class {
     func settingsViewController(_ settingsViewController: SettingsViewController, shouldDisplayViewController viewController: UIViewController)
@@ -24,27 +26,15 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
     weak var delegate: SettingsViewControllerDelegate?
     var authentication: Authentication?
     var reminders: [ReminderData] = []
+    var selectedReminderRow: IndexPath?
     var showReminders = UserDefaults.standard.bool(forKey: showReminderskey)
+    var sharings: [Sharing] = []
     
-    @IBOutlet weak var o_shareButton: UIBarButtonItem!
-    
-    @IBAction func didTapShare(_ sender: UIBarButtonItem) {
-        if let sharing = APP.user?.sharing {
-            let a = UIAlertController(title: "Remove shared budget?", message: "", preferredStyle: .alert)
-            a.addAction(UIAlertAction(title: "Remove", style: .default) { action -> Void in
-                sharing.delete()
-                APP.user?.sharing = nil
-                NotificationCenter.default.post(Notification(name: signInStateChangedNotification))
-            })
-            a.addAction(UIAlertAction(title: "Cancel", style: .default) { action -> Void in })
-            self.present(a, animated: true, completion: nil)
-        } else if let id = APP.user?.firUser.uid, let url = URL(string: "\(appPrefix + id)") {
-            let objectsToShare = ["Join my Budget Doctor:", url] as [Any]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            activityVC.popoverPresentationController?.barButtonItem = sender
-            activityVC.excludedActivityTypes = [.airDrop, .saveToCameraRoll, . addToReadingList, .openInIBooks]
-            present(activityVC, animated: true, completion: nil)
-        }
+    var defaultBudget: Sharing {
+        let budget = Sharing()
+        budget.dbId = defaultBudgetId
+        budget.title = "Default"
+        return budget
     }
     
     override func viewDidLoad() {
@@ -61,7 +51,7 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
             reminders = remindersArr
         }
         
-        configureShareButton()
+        loadSharings()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -78,18 +68,8 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
         }
     }
     
-    func configureShareButton() {
-        if let _ = APP.user {
-            o_shareButton.isEnabled = true
-            o_shareButton.image = APP.user?.sharing?.dbId != nil ? #imageLiteral(resourceName: "unlink") : #imageLiteral(resourceName: "share")
-        } else {
-            o_shareButton.isEnabled = false
-            o_shareButton.image = nil
-        }
-    }
-    
     func onSignInStateChanged() {
-        configureShareButton()
+        loadSharings()
         tableView.reloadSections([0], with: .none)
     }
     
@@ -105,12 +85,36 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
         NotificationCenter.default.removeObserver(self)
     }
     
+    func loadSharings() {
+        self.sharings = []
+        sharings.append(defaultBudget)
+        
+        ModelHelper.sharingReference()?.observeSingleEvent(of: .value, with: { [unowned self] (snapshot) in
+            for child in snapshot.children {
+                self.sharings.append(Sharing(snapshot: child as! DataSnapshot))
+            }
+            
+            self.tableView.reloadSections([4], with: .fade)
+        })
+    }
+    
     func saveReminders() {
         let encodedData = NSKeyedArchiver.archivedData(withRootObject: reminders)
         UserDefaults.standard.set(encodedData, forKey: remindersDatakey)
         UserDefaults.standard.synchronize()
     }
-            
+    
+    func deselectSelectedReminder() {
+        if let _ = selectedReminderRow {
+            tableView.deselectRow(at: selectedReminderRow!, animated: true)
+            selectedReminderRow = nil
+        }
+    }
+    
+    func addEditReminderViewControllerDidCancel(_ addEditReminderViewController: AddEditReminderViewController) {
+        deselectSelectedReminder()
+    }
+    
     func addEditReminderViewController(_ addEditReminderViewController: AddEditReminderViewController, didSave data: ReminderData) {
         if let id = data.id {
             if let index = reminders.index(where: { (reminderData: ReminderData) -> Bool in id == reminderData.id }) {
@@ -127,6 +131,7 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
         
         saveReminders()
         scheduleNotification(for: data)
+        deselectSelectedReminder()
     }
     
     func scheduleAllNotifications() {

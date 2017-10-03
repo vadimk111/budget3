@@ -12,10 +12,7 @@ import UserNotifications
 extension SettingsViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if showReminders {
-            return 4
-        }
-        return 2
+        return 6
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,10 +28,22 @@ extension SettingsViewController {
             }
             return 1
         }
-        if section == 2 {
-            return reminders.count
+        if section == 1 {
+            return 1
         }
-        return 1
+        if section == 2 {
+            return showReminders ? reminders.count : 0
+        }
+        if section == 3 {
+            return showReminders ? 1 : 0
+        }
+        if section == 4 {
+            return sharings.count
+        }
+        if section == 5 {
+            return 1
+        }
+        return 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,7 +65,6 @@ extension SettingsViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "remindersCells", for: indexPath) as! RemindersTableViewCell
             cell.delegate = self
             cell.o_switch.isOn = UserDefaults.standard.bool(forKey: showReminderskey)
-            cell.o_bottomView.isHidden = showReminders
             return cell
         } else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "scheduledReminderCells", for: indexPath) as! ScheduledReminderTableViewCell
@@ -64,6 +72,24 @@ extension SettingsViewController {
             return cell
         } else if indexPath.section == 3 {
             return tableView.dequeueReusableCell(withIdentifier: "addReminderCells", for: indexPath)
+        } else if indexPath.section == 4 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "budgetCells", for: indexPath) as! BudgetTableViewCell
+            
+            cell.o_label.text = sharings[indexPath.row].title
+            cell.o_separator.isHidden = indexPath.row == sharings.count - 1
+            
+            if let sharingDbId = UserDefaults.standard.string(forKey: currentBudgetKey) {
+                if sharingDbId == sharings[indexPath.row].dbId {
+                    tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+                }
+            } else if sharings[indexPath.row].dbId == defaultBudgetId {
+                tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+            }
+            return cell
+        } else if indexPath.section == 5 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "shareBudgetCells", for: indexPath) as! ShareBudgetTableViewCell
+            cell.delegate = self
+            return cell
         }
         return UITableViewCell()
     }
@@ -75,34 +101,84 @@ extension SettingsViewController {
         if section == 1 {
             return APP.notificationsAllowed ? 80 : 130
         }
-        if section == 2 {
-            return 1
-        }
-        if section == 3 {
+        if section == 3 && showReminders {
             return reminders.count > 0 ? 1 : 0
         }
+        if section == 4 {
+            return 80
+        }
+        if section == 5 {
+            return 1
+        }
+
         return 0
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 2 || section == 3 {
+        if section == 0 {
+            let view = SettingsHeaderView()
+            view.backgroundColor = tableView.backgroundColor
+            view.o_label.text = "ACCOUNT"
+            view.o_topView.isHidden = true
+            view.o_textView.isHidden = true
+            return view
+        }
+        if section == 1 {
+            let view = SettingsHeaderView()
+            view.backgroundColor = tableView.backgroundColor
+            view.o_label.text = "REMINDERS"
+            view.o_topView.isHidden = false
+            view.o_textView.isHidden = APP.notificationsAllowed
+            return view
+        }
+        if section == 2 || section == 3 || section == 5 {
             let view = UIView()
             view.backgroundColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 1)
             return view
-        } else {
+        }
+        if section == 4 {
             let view = SettingsHeaderView()
             view.backgroundColor = tableView.backgroundColor
-            view.o_label.text = section == 0 ? "ACCOUNT" : "REMINDERS"
-            view.o_topView.isHidden = section == 0
-            view.o_textView.isHidden = section == 0 || APP.notificationsAllowed
+            view.o_label.text = "BUDGETS"
+            view.o_topView.isHidden = true
+            view.o_textView.isHidden = true
             return view
         }
+        return nil
     }
     
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return indexPath.section == 2
+        return indexPath.section == 2 || indexPath.section == 4
     }
 
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if indexPath.section == 4 {
+            if let selected = tableView.indexPathForSelectedRow {
+                tableView.deselectRow(at: selected, animated: true)
+            }
+        }
+        return indexPath
+    }
+    
+    override func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
+        return tableView.indexPathForSelectedRow != indexPath ? indexPath : nil
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 4 {
+            let newId = sharings[indexPath.row].dbId
+            if newId == defaultBudgetId {
+                UserDefaults.standard.removeObject(forKey: currentBudgetKey)
+            } else {
+                UserDefaults.standard.set(newId, forKey: currentBudgetKey)
+            }
+            UserDefaults.standard.synchronize()
+            NotificationCenter.default.post(Notification(name: currentBudgetChangedNotification))
+        } else if indexPath.section == 2 {
+            selectedReminderRow = indexPath
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
             

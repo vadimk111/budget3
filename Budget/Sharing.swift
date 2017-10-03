@@ -12,9 +12,11 @@ import FirebaseDatabase
 class Sharing: ModelBaseObject {
     
     private let dbIdKey = "dbId"
+    private let titleKey = "title"
     
     var id: String?
     var dbId: String?
+    var title: String?
     
     override init() {
         super.init()
@@ -26,12 +28,7 @@ class Sharing: ModelBaseObject {
         id = snapshot.key
         let snapshotValue = snapshot.value as! [String : AnyObject]
         dbId = snapshotValue[dbIdKey] as? String
-    }
-    
-    @discardableResult
-    override func insert(into parent: DatabaseReference) -> String {
-        parent.setValue(toValues())
-        return parent.key
+        title = snapshotValue[titleKey] as? String
     }
     
     override func toValues() -> [AnyHashable : Any] {
@@ -39,6 +36,9 @@ class Sharing: ModelBaseObject {
         
         if let _ = dbId {
             result[dbIdKey] = dbId!
+        }
+        if let _ = title {
+            result[titleKey] = title!
         }
 
         return result

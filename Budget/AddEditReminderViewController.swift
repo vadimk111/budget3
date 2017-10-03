@@ -10,6 +10,7 @@ import UIKit
 
 protocol AddEditReminderViewControllerDelegate: class {
     func addEditReminderViewController(_ addEditReminderViewController: AddEditReminderViewController, didSave data: ReminderData)
+    func addEditReminderViewControllerDidCancel(_ addEditReminderViewController: AddEditReminderViewController)
 }
 
 class AddEditReminderViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -44,12 +45,15 @@ class AddEditReminderViewController: UIViewController, UIPickerViewDelegate, UIP
     }
     
     @IBAction func didTapCancel(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true) {
+            self.delegate?.addEditReminderViewControllerDidCancel(self)
+        }
     }
     
     @IBAction func didTapSave(_ sender: UIBarButtonItem) {
-        delegate?.addEditReminderViewController(self, didSave: reminderData)
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true) {
+            self.delegate?.addEditReminderViewController(self, didSave: self.reminderData)
+        }
     }
     
     @IBAction func didTapDate(_ sender: UITapGestureRecognizer) {
