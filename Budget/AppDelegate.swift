@@ -15,7 +15,7 @@ let APP: AppDelegate = UIApplication.shared.delegate as! AppDelegate
 let userNotificationCenterAuthorizationChangedNotification = Notification.Name(rawValue: "UNCACNot")
 let appPrefix = "doctor.budget://"
 let currentBudgetChangedNotification = Notification.Name(rawValue: "currentBudgetChanged")
-let currentBudgetKey = "currentBudget-\(APP.user?.uid ?? "")"
+let sharedBudgetAddedNotification = Notification.Name(rawValue: "sharedBudgetAdded")
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -26,6 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var notificationsAllowed = false
     var dbToShare: String?
 
+    var currentBudgetKey: String {
+        return "currentBudget-\(APP.user?.uid ?? "")"
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
@@ -121,10 +125,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     sharing.title = a.textFields?.first?.text
                     sharing.insert(into: ref)
                     
-                    UserDefaults.standard.set(dbId, forKey: currentBudgetKey)
+                    UserDefaults.standard.set(dbId, forKey: self.currentBudgetKey)
                     UserDefaults.standard.synchronize()
                     
                     NotificationCenter.default.post(Notification(name: currentBudgetChangedNotification))
+                    NotificationCenter.default.post(Notification(name: sharedBudgetAddedNotification))
                 }))
                 
                 topViewController()?.present(a, animated: true, completion: nil)

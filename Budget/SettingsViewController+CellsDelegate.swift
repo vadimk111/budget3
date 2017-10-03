@@ -30,6 +30,13 @@ extension SettingsViewController: AccountTableViewCellDelegate {
             present(viewController, animated: true, completion: nil)
         }
     }
+    
+    func accountTableViewCellWillSignOut(_ accountTableViewCell: AccountTableViewCell) {
+        sharings = []
+        sharings.append(defaultBudget)
+        selectedSharingRow = 0
+        tableView.reloadSections([1], with: .none)
+    }
 }
 
 extension SettingsViewController: RemindersTableViewCellDelegate {
@@ -101,9 +108,9 @@ extension SettingsViewController: BudgetTableViewCellDelegate {
             
             let newId = sharings[indexPath.row].dbId
             if newId == defaultBudgetId {
-                UserDefaults.standard.removeObject(forKey: currentBudgetKey)
+                UserDefaults.standard.removeObject(forKey: APP.currentBudgetKey)
             } else {
-                UserDefaults.standard.set(newId, forKey: currentBudgetKey)
+                UserDefaults.standard.set(newId, forKey: APP.currentBudgetKey)
             }
             UserDefaults.standard.synchronize()
             NotificationCenter.default.post(Notification(name: currentBudgetChangedNotification))

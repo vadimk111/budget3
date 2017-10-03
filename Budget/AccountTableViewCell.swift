@@ -12,6 +12,7 @@ protocol AccountTableViewCellDelegate: class {
     func accountTableViewCell(_ accountTableViewCell: AccountTableViewCell, shouldDisplayViewController viewController: UIViewController)
     func accountTableViewCell(_ accountTableViewCell: AccountTableViewCell, shouldDisplayAlert alert: UIAlertController)
     func accountTableViewCellShouldDismissViewController(_ accountTableViewCell: AccountTableViewCell)
+    func accountTableViewCellWillSignOut(_ accountTableViewCell: AccountTableViewCell)
 }
 
 class AccountTableViewCell: UITableViewCell, AuthenticationDelegate {
@@ -71,6 +72,7 @@ class AccountTableViewCell: UITableViewCell, AuthenticationDelegate {
     }
     
     @IBAction func didTapLogout(_ sender: UIButton) {
+        delegate?.accountTableViewCellWillSignOut(self)
         authentication = Authentication()
         authentication?.delegate = self
         authentication?.signOut()

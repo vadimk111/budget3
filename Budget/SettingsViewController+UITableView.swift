@@ -61,7 +61,7 @@ extension SettingsViewController {
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "budgetCells", for: indexPath) as! BudgetTableViewCell
             var isSelected = false
-            if let sharingDbId = UserDefaults.standard.string(forKey: currentBudgetKey) {
+            if let sharingDbId = UserDefaults.standard.string(forKey: APP.currentBudgetKey) {
                 isSelected = sharingDbId == sharings[indexPath.row].dbId
             } else {
                 isSelected = sharings[indexPath.row].dbId == defaultBudgetId
@@ -194,14 +194,17 @@ extension SettingsViewController {
                     self.sharings.remove(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .fade)
                     
-                    if sharingToDelete.dbId == UserDefaults.standard.string(forKey: currentBudgetKey) {
-                        UserDefaults.standard.removeObject(forKey: currentBudgetKey)
+                    if sharingToDelete.dbId == UserDefaults.standard.string(forKey: APP.currentBudgetKey) {
+                        UserDefaults.standard.removeObject(forKey: APP.currentBudgetKey)
                         UserDefaults.standard.synchronize()
                         self.selectedSharingRow = 0
                         if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: indexPath.section)) as? BudgetTableViewCell {
                             cell.markSelected(true)
                         }
                         NotificationCenter.default.post(Notification(name: currentBudgetChangedNotification))
+                    }
+                    if self.sharings.count == 1 {
+                        self.tableView.reloadSections([indexPath.section], with: .none)
                     }
                 })
                 return [delete]

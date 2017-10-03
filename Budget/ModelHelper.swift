@@ -17,7 +17,7 @@ class ModelHelper {
     fileprivate static func uniqueId(for date: Date) -> String? {
         var dbId: String? = nil
         
-        if let sharingDB = UserDefaults.standard.string(forKey: currentBudgetKey) {
+        if let sharingDB = UserDefaults.standard.string(forKey: APP.currentBudgetKey) {
             dbId = sharingDB
         } else {
             dbId = APP.user?.uid

@@ -29,7 +29,7 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
     var selectedReminderRow: IndexPath?
     var showReminders = UserDefaults.standard.bool(forKey: showReminderskey)
     var sharings: [Sharing] = []
-    var selectedSharingRow: Int = -1
+    var selectedSharingRow: Int = 0
     
     var defaultBudget: Sharing {
         let budget = Sharing()
@@ -41,11 +41,13 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onSignInStateChanged), name: signInStateChangedNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.onFacebookLinkedChange), name: facebookLinkedChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onFacebookLinkedChange), name: facebookLinkedChangeNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.onUserNotificationCenterChanged), name: userNotificationCenterAuthorizationChangedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onUserNotificationCenterChanged), name: userNotificationCenterAuthorizationChangedNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadSharings), name: sharedBudgetAddedNotification, object: nil)
         
         if let data = UserDefaults.standard.data(forKey: remindersDatakey),
             let remindersArr = NSKeyedUnarchiver.unarchiveObject(with: data) as? [ReminderData] {
@@ -87,7 +89,7 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
     }
     
     func loadSharings() {
-        self.sharings = []
+        sharings = []
         sharings.append(defaultBudget)
         
         ModelHelper.sharingReference()?.observeSingleEvent(of: .value, with: { [unowned self] (snapshot) in
