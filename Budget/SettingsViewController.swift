@@ -29,6 +29,7 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
     var selectedReminderRow: IndexPath?
     var showReminders = UserDefaults.standard.bool(forKey: showReminderskey)
     var sharings: [Sharing] = []
+    var selectedSharingRow: Int = -1
     
     var defaultBudget: Sharing {
         let budget = Sharing()

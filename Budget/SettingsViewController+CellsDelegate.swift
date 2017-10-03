@@ -108,3 +108,24 @@ extension SettingsViewController: AuthenticationDelegate {
         
     }
 }
+
+extension SettingsViewController: BudgetTableViewCellDelegate {
+    func budgetTableViewCellDidTap(_ budgetTableViewCell: BudgetTableViewCell) {
+        if let indexPath = tableView.indexPath(for: budgetTableViewCell), selectedSharingRow != indexPath.row {
+            if let cell = tableView.cellForRow(at: IndexPath(row: selectedSharingRow, section: indexPath.section)) as? BudgetTableViewCell {
+                cell.markSelected(false)
+            }
+            budgetTableViewCell.markSelected(true)
+            selectedSharingRow = indexPath.row
+            
+            let newId = sharings[indexPath.row].dbId
+            if newId == defaultBudgetId {
+                UserDefaults.standard.removeObject(forKey: currentBudgetKey)
+            } else {
+                UserDefaults.standard.set(newId, forKey: currentBudgetKey)
+            }
+            UserDefaults.standard.synchronize()
+            NotificationCenter.default.post(Notification(name: currentBudgetChangedNotification))
+        }
+    }
+}

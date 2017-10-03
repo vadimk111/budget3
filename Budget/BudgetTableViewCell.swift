@@ -8,12 +8,18 @@
 
 import UIKit
 
+protocol BudgetTableViewCellDelegate: class {
+    func budgetTableViewCellDidTap(_ budgetTableViewCell: BudgetTableViewCell)
+}
+
 class BudgetTableViewCell: UITableViewCell {
 
+    weak var delegate: BudgetTableViewCellDelegate?
+    
     @IBOutlet weak var o_label: UILabel!
     @IBOutlet weak var o_image: UIImageView!
     @IBOutlet weak var o_separator: UIView!
-    
+   
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,14 +27,21 @@ class BudgetTableViewCell: UITableViewCell {
         selectionStyle = .none
     }
 
+    @IBAction func didTapCell(_ sender: UIButton) {
+        delegate?.budgetTableViewCellDidTap(self)
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        o_image.isHidden = !selected
     }
 
-    func populate(with data: Sharing, hideSeparator: Bool) {
+    func populate(with data: Sharing, isSelected: Bool, hideSeparator: Bool) {
         o_label.text = data.title
         o_separator.isHidden = hideSeparator
+        markSelected(isSelected)
+    }
+    
+    func markSelected(_ isSelected: Bool) {
+        o_image.isHidden = !isSelected
     }
 }

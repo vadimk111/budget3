@@ -271,6 +271,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6JF-4X-MJo">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <connections>
+                                                <action selector="didTapCell:" destination="fB2-fs-zEc" eventType="touchUpInside" id="lHL-cl-PPh"/>
+                                            </connections>
+                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSK-Sj-J8O">
                                             <rect key="frame" x="20" y="12" width="39.5" height="19"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
@@ -292,10 +298,15 @@
                                             </constraints>
                                         </view>
                                     </subviews>
+                                    <gestureRecognizers/>
                                     <constraints>
+                                        <constraint firstItem="6JF-4X-MJo" firstAttribute="leading" secondItem="e9y-4E-fFu" secondAttribute="leading" id="4b3-It-yhd"/>
+                                        <constraint firstAttribute="trailing" secondItem="6JF-4X-MJo" secondAttribute="trailing" id="6Mq-9d-TaG"/>
                                         <constraint firstItem="7WX-OU-AmE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nSK-Sj-J8O" secondAttribute="trailing" constant="10" id="7X2-2Y-sUG"/>
+                                        <constraint firstItem="6JF-4X-MJo" firstAttribute="top" secondItem="e9y-4E-fFu" secondAttribute="top" id="AbK-Ib-m50"/>
                                         <constraint firstItem="nSK-Sj-J8O" firstAttribute="centerY" secondItem="e9y-4E-fFu" secondAttribute="centerY" id="b1x-a6-ZwD"/>
                                         <constraint firstAttribute="trailing" secondItem="7WX-OU-AmE" secondAttribute="trailing" constant="20" id="iiE-ZF-mwi"/>
+                                        <constraint firstAttribute="bottom" secondItem="6JF-4X-MJo" secondAttribute="bottom" id="q5r-pP-FjQ"/>
                                         <constraint firstItem="7WX-OU-AmE" firstAttribute="centerY" secondItem="e9y-4E-fFu" secondAttribute="centerY" id="qoR-H3-KI1"/>
                                         <constraint firstItem="nSK-Sj-J8O" firstAttribute="leading" secondItem="e9y-4E-fFu" secondAttribute="leading" constant="20" id="wJp-Gg-aAf"/>
                                     </constraints>
