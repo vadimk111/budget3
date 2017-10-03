@@ -178,6 +178,9 @@ class Authentication: NSObject {
     func facebookSignInSucceded(with user: User) {
         APP.user = BudgetUser(firUser: user)
         UserDefaults.standard.set("facebook", forKey: "auth_method")
+        if let email = UserDefaults.standard.string(forKey: "email"), email.contains(anonymous) {
+            UserDefaults.standard.removeObject(forKey: "email")
+        }
         UserDefaults.standard.synchronize()
         delegate?.authenticationShouldDismissViewController(self)
         self.notifyStateChanged()
