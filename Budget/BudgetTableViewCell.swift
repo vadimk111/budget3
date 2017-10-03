@@ -23,8 +23,12 @@ class BudgetTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         o_image.isHidden = !selected
     }
 
+    func populate(with data: Sharing, hideSeparator: Bool) {
+        o_label.text = data.title
+        o_separator.isHidden = hideSeparator
+    }
 }

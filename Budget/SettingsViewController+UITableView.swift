@@ -74,10 +74,7 @@ extension SettingsViewController {
             return tableView.dequeueReusableCell(withIdentifier: "addReminderCells", for: indexPath)
         } else if indexPath.section == 4 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "budgetCells", for: indexPath) as! BudgetTableViewCell
-            
-            cell.o_label.text = sharings[indexPath.row].title
-            cell.o_separator.isHidden = indexPath.row == sharings.count - 1
-            
+            cell.populate(with: sharings[indexPath.row], hideSeparator: indexPath.row == sharings.count - 1)
             if let sharingDbId = UserDefaults.standard.string(forKey: currentBudgetKey) {
                 if sharingDbId == sharings[indexPath.row].dbId {
                     tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
@@ -151,6 +148,10 @@ extension SettingsViewController {
         return indexPath.section == 2 || indexPath.section == 4
     }
 
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.section == 2 || (indexPath.section == 4 && indexPath.row != 0)
+    }
+    
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if indexPath.section == 4 {
             if let selected = tableView.indexPathForSelectedRow {
@@ -180,28 +181,43 @@ extension SettingsViewController {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
-            
-            if let id = self.reminders[indexPath.row].id {
-                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
-            }
-            
-            self.reminders.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            if indexPath.row == 0 && self.reminders.count > 0 {
-                self.tableView.reloadRows(at: [IndexPath.init(row: 0, section: 2)], with: .none)
-            }
-            if self.reminders.count == 0 {
-                self.tableView.reloadSections([2], with: .none)
-            }
-            
-            self.saveReminders()
-        })
-        return [delete]
-    }
-    
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return indexPath.section == 2
+        if indexPath.section == 2 {
+            let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+                
+                if let id = self.reminders[indexPath.row].id {
+                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
+                }
+                
+                self.reminders.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+                
+                if indexPath.row == 0 && self.reminders.count > 0 {
+                    self.tableView.reloadRows(at: [IndexPath.init(row: 0, section: 2)], with: .none)
+                }
+                if self.reminders.count == 0 {
+                    self.tableView.reloadSections([2], with: .none)
+                }
+                
+                self.saveReminders()
+            })
+            return [delete]
+        } else if indexPath.section == 4 && sharings[indexPath.row].dbId != defaultBudgetId {
+            let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+                let sharingToDelete = self.sharings[indexPath.row]
+                
+                sharingToDelete.delete()
+                self.sharings.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                
+                if sharingToDelete.dbId == UserDefaults.standard.string(forKey: currentBudgetKey) {
+                    UserDefaults.standard.removeObject(forKey: currentBudgetKey)
+                    UserDefaults.standard.synchronize()
+                    tableView.selectRow(at: IndexPath.init(row: 0, section: indexPath.section), animated: false, scrollPosition: .none)
+                    NotificationCenter.default.post(Notification(name: currentBudgetChangedNotification))
+                }
+            })
+            return [delete]
+        }
+        return nil
     }
 }
