@@ -96,7 +96,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapSkip(_ sender: UIButton) {
-        let a = UIAlertController(title: "Benefits of Registration", message: "Registered users able to sync their data between devices and restore the data from the backup\nTransition from anonymous mode to registered will not copy your data", preferredStyle: UIAlertControllerStyle.alert)
+        let a = UIAlertController(title: "Benefits of Registration", message: "Registered users are able to sync their data between devices and restore the data from the backup\nTransition from anonymous mode to registered will not copy your data", preferredStyle: UIAlertControllerStyle.alert)
         a.addAction(UIAlertAction(title: "Back to Login", style: .default) { action -> Void in
         })
         a.addAction(UIAlertAction(title: "Skip", style: .destructive) { action -> Void in

@@ -131,14 +131,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     NotificationCenter.default.post(Notification(name: currentBudgetChangedNotification))
                     NotificationCenter.default.post(Notification(name: sharedBudgetAddedNotification))
                 }))
-                
-                topViewController()?.present(a, animated: true, completion: nil)
+                showSharingDialog(a)
             } else {
                 let a = UIAlertController(title: "", message: "Budget sharing allowed only for signed-in users", preferredStyle: .alert)
                 a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in })
                 topViewController()?.present(a, animated: true, completion: nil)
             }
             dbToShare = nil
+        }
+    }
+    
+    func showSharingDialog(_ dialog: UIAlertController) {
+        let top = topViewController()
+        if (top as? UINavigationController)?.viewControllers.first is LoginViewController {
+            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [unowned self] (timer) in
+                self.showSharingDialog(dialog)
+            })
+        } else {
+            top?.present(dialog, animated: true, completion: nil)
         }
     }
 }
