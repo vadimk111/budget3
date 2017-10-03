@@ -174,7 +174,7 @@ extension SettingsViewController {
             if indexPath.row == 0 {
                 let share = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Share", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
                     if let user = APP.user {
-                        if let url = URL(string: "\(appPrefix + user.firUser.uid)") {
+                        if let url = URL(string: "\(appPrefix + user.uid)") {
                             let objectsToShare = ["Join my Budget Doctor:", url] as [Any]
                             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
                             activityVC.excludedActivityTypes = [.airDrop, .saveToCameraRoll, . addToReadingList, .openInIBooks]

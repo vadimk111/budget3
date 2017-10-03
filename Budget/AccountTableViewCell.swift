@@ -49,7 +49,7 @@ class AccountTableViewCell: UITableViewCell, AuthenticationDelegate {
                 o_imageLeadingConstraint.constant = 20
                 o_facebookImage.isHidden = false
             } else {
-                o_label.text = user.firUser.email
+                o_label.text = user.email
                 o_imageLeadingConstraint.constant = -24
                 o_facebookImage.isHidden = true
             }

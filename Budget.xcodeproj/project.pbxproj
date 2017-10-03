@@ -43,7 +43,6 @@
 		BDCDA0251F1756B2008AB2A6 /* FacebookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA0241F1756B2008AB2A6 /* FacebookHelper.swift */; };
 		BDCDA0311F1CC9BA008AB2A6 /* ViewController+Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA0301F1CC9BA008AB2A6 /* ViewController+Picker.swift */; };
 		BDE175B71F7C298400CE6125 /* Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE175B61F7C298400CE6125 /* Sharing.swift */; };
-		BDE175BB1F7C30B000CE6125 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE175BA1F7C30B000CE6125 /* User.swift */; };
 		BDFC60E61E8CFF1D00D77087 /* Expenses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */; };
 		BDFC60E81E8D02D300D77087 /* ExpensesPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */; };
 		BDFC60EA1E8D036000D77087 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */; };
@@ -145,7 +144,6 @@
 		BDCDA0241F1756B2008AB2A6 /* FacebookHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookHelper.swift; sourceTree = "<group>"; };
 		BDCDA0301F1CC9BA008AB2A6 /* ViewController+Picker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+Picker.swift"; sourceTree = "<group>"; };
 		BDE175B61F7C298400CE6125 /* Sharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sharing.swift; sourceTree = "<group>"; };
-		BDE175BA1F7C30B000CE6125 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Expenses.storyboard; sourceTree = "<group>"; };
 		BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesPadViewController.swift; sourceTree = "<group>"; };
 		BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
@@ -396,7 +394,6 @@
 				BD8383641EDD5ED700E8B5B2 /* MoneyFlow.swift */,
 				BDFC61431E97D7BA00D77087 /* Reminder.swift */,
 				BDE175B61F7C298400CE6125 /* Sharing.swift */,
-				BDE175BA1F7C30B000CE6125 /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -779,7 +776,6 @@
 				BD6B69EA1E79544F00F7AF35 /* CategoriesPadViewController.swift in Sources */,
 				BDFC610A1E9373A000D77087 /* SettingsViewController+CellsDelegate.swift in Sources */,
 				BD3D40741E85714D00C3CCAF /* CategoryDetailPhoneViewController.swift in Sources */,
-				BDE175BB1F7C30B000CE6125 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

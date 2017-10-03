@@ -15,13 +15,13 @@ let APP: AppDelegate = UIApplication.shared.delegate as! AppDelegate
 let userNotificationCenterAuthorizationChangedNotification = Notification.Name(rawValue: "UNCACNot")
 let appPrefix = "doctor.budget://"
 let currentBudgetChangedNotification = Notification.Name(rawValue: "currentBudgetChanged")
-let currentBudgetKey = "currentBudget-\(APP.user?.firUser.uid ?? "")"
+let currentBudgetKey = "currentBudget-\(APP.user?.uid ?? "")"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
-    var user: BudgetUser?
+    var user: User?
     var automaticAuthenticationCompleted = false
     var notificationsAllowed = false
     var dbToShare: String?
