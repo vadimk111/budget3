@@ -322,30 +322,6 @@
                                     <outlet property="o_separator" destination="43H-4N-0EX" id="IaF-Az-Of7"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="shareBudgetCells" id="NVa-pH-gxJ" customClass="ShareBudgetTableViewCell" customModule="Budget" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="312" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NVa-pH-gxJ" id="MjY-Ld-KBw">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ser-ao-6y2">
-                                            <rect key="frame" x="125.5" y="6.5" width="123" height="31"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                            <state key="normal" title="Share my budget"/>
-                                            <connections>
-                                                <action selector="didTapShare:" destination="NVa-pH-gxJ" eventType="touchUpInside" id="VVM-Xw-23f"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstItem="ser-ao-6y2" firstAttribute="centerX" secondItem="MjY-Ld-KBw" secondAttribute="centerX" id="XkM-pj-zsA"/>
-                                        <constraint firstItem="ser-ao-6y2" firstAttribute="centerY" secondItem="MjY-Ld-KBw" secondAttribute="centerY" id="pnB-gm-baq"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="XJn-6Z-CEc" id="VrD-oS-hsd"/>

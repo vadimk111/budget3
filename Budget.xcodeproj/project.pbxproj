@@ -11,7 +11,6 @@
 		BD138CB61F7EDD9B00CDA4DA /* NavBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD138CB51F7EDD9B00CDA4DA /* NavBalanceView.swift */; };
 		BD138CB81F7EDDB100CDA4DA /* NavBalanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD138CB71F7EDDB100CDA4DA /* NavBalanceView.xib */; };
 		BD138CBE1F7FB5B400CDA4DA /* BudgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD138CBD1F7FB5B400CDA4DA /* BudgetTableViewCell.swift */; };
-		BD138CC21F7FB77900CDA4DA /* ShareBudgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD138CC11F7FB77900CDA4DA /* ShareBudgetTableViewCell.swift */; };
 		BD1DF1841F1F7E7800E52C29 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1DF1831F1F7E7800E52C29 /* DatePickerView.swift */; };
 		BD1DF1861F1F7E8100E52C29 /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD1DF1851F1F7E8100E52C29 /* DatePickerView.xib */; };
 		BD3D40721E853A4800C3CCAF /* CategoriesBaseDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D40711E853A4800C3CCAF /* CategoriesBaseDeviceViewController.swift */; };
@@ -114,7 +113,6 @@
 		BD138CB51F7EDD9B00CDA4DA /* NavBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBalanceView.swift; sourceTree = "<group>"; };
 		BD138CB71F7EDDB100CDA4DA /* NavBalanceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavBalanceView.xib; sourceTree = "<group>"; };
 		BD138CBD1F7FB5B400CDA4DA /* BudgetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTableViewCell.swift; sourceTree = "<group>"; };
-		BD138CC11F7FB77900CDA4DA /* ShareBudgetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareBudgetTableViewCell.swift; sourceTree = "<group>"; };
 		BD1DF1831F1F7E7800E52C29 /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		BD1DF1851F1F7E8100E52C29 /* DatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
 		BD3D40711E853A4800C3CCAF /* CategoriesBaseDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesBaseDeviceViewController.swift; sourceTree = "<group>"; };
@@ -338,7 +336,6 @@
 				BDFC61051E9298DA00D77087 /* ScheduledReminderTableViewCell.swift */,
 				BDFC610D1E93A0FB00D77087 /* SettingsHeaderView.swift */,
 				BDFC610F1E93A13E00D77087 /* SettingsHeaderView.xib */,
-				BD138CC11F7FB77900CDA4DA /* ShareBudgetTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -730,7 +727,6 @@
 				BF9063221E6896D3004B5F8B /* DateChanger.swift in Sources */,
 				BDCDA0221F14F0D8008AB2A6 /* LinkAccountsViewController.swift in Sources */,
 				BF00F48C1E4D2FA300D5D743 /* CategoryExpensesViewController.swift in Sources */,
-				BD138CC21F7FB77900CDA4DA /* ShareBudgetTableViewCell.swift in Sources */,
 				BF00F4901E4D344A00D5D743 /* AddEditExpenseViewController.swift in Sources */,
 				BF9687C61E58DBED001CD715 /* BalanceView.swift in Sources */,
 				BDFC60FC1E91944800D77087 /* ExpenseDetailsViewController.swift in Sources */,

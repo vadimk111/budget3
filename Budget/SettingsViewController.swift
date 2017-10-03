@@ -79,7 +79,7 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
     }
     
     func onUserNotificationCenterChanged() {
-        tableView.reloadSections([1], with: .automatic)
+        tableView.reloadSections([2], with: .automatic)
     }
     
     deinit {
@@ -95,7 +95,7 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
                 self.sharings.append(Sharing(snapshot: child as! DataSnapshot))
             }
             
-            self.tableView.reloadSections([4], with: .fade)
+            self.tableView.reloadSections([1], with: .fade)
         })
     }
     
@@ -121,13 +121,13 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
             if let index = reminders.index(where: { (reminderData: ReminderData) -> Bool in id == reminderData.id }) {
                 reminders.remove(at: index)
                 reminders.insert(data, at: index)
-                tableView.reloadRows(at: [IndexPath.init(row: index, section: 2)], with: .fade)
+                tableView.reloadRows(at: [IndexPath.init(row: index, section: 3)], with: .fade)
             }
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
         } else {
             data.id = UUID().uuidString
             reminders.append(data)
-            tableView.insertRows(at: [IndexPath.init(row: reminders.count - 1, section: 2)], with: .fade)
+            tableView.insertRows(at: [IndexPath.init(row: reminders.count - 1, section: 3)], with: .fade)
         }
         
         saveReminders()
