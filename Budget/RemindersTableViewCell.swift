@@ -17,7 +17,6 @@ class RemindersTableViewCell: UITableViewCell {
     weak var delegate: RemindersTableViewCellDelegate?
     
     @IBOutlet weak var o_switch: UISwitch!
-    @IBOutlet weak var o_bottomView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

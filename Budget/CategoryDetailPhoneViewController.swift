@@ -17,6 +17,7 @@ class CategoryDetailPhoneViewController: UIViewController, CategoryExpensesViewC
         super.viewDidLoad()
 
         NotificationCenter.default.addObserver(self, selector: #selector(CategoryDetailPhoneViewController.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CategoryDetailPhoneViewController.onSignInStateChanged), name: currentBudgetChangedNotification, object: nil)
         
         updateBalanceNavView()
     }

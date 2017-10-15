@@ -24,15 +24,12 @@ class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(CategoriesBaseDeviceViewController.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: signInStateChangedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: currentBudgetChangedNotification, object: nil)
         
         o_categoriesHeaderView.delegate = self
         o_categoriesHeaderView.fill(with: [], date: Date())
         
-        reload()
-    }
-    
-    func onSignInStateChanged() {
         reload()
     }
     

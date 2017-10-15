@@ -17,10 +17,10 @@ class ModelHelper {
     fileprivate static func uniqueId(for date: Date) -> String? {
         var dbId: String? = nil
         
-        if let sharingDB = APP.user?.sharing?.dbId {
+        if let sharingDB = UserDefaults.standard.string(forKey: APP.currentBudgetKey) {
             dbId = sharingDB
         } else {
-            dbId = APP.user?.firUser.uid
+            dbId = APP.user?.uid
             if dbId == nil && APP.automaticAuthenticationCompleted {
                 dbId = UserDefaults.standard.string(forKey: "email")
             }
@@ -51,7 +51,7 @@ class ModelHelper {
     }
     
     static func sharingReference() -> DatabaseReference? {
-        if let uid = APP.user?.firUser.uid {
+        if let uid = APP.user?.uid {
             return Database.database().reference().child(sharingKey).child(uid)
         }
         return nil

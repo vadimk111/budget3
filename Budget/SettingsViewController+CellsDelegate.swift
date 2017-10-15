@@ -30,6 +30,13 @@ extension SettingsViewController: AccountTableViewCellDelegate {
             present(viewController, animated: true, completion: nil)
         }
     }
+    
+    func accountTableViewCellWillSignOut(_ accountTableViewCell: AccountTableViewCell) {
+        sharings = []
+        sharings.append(defaultBudget)
+        selectedSharingRow = 0
+        tableView.reloadSections([1], with: .none)
+    }
 }
 
 extension SettingsViewController: RemindersTableViewCellDelegate {
@@ -38,15 +45,14 @@ extension SettingsViewController: RemindersTableViewCellDelegate {
         UserDefaults.standard.set(showReminders, forKey: showReminderskey)
         UserDefaults.standard.synchronize()
         
+        tableView.reloadSections([3, 4], with: .fade)
         if showReminders {
-            tableView.insertSections([2, 3], with: .fade)
             scheduleAllNotifications()
         } else {
-            tableView.deleteSections([2, 3], with: .fade)
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         }
         
-        tableView.reloadSections([1], with: .none)
+        tableView.reloadSections([2], with: .none)
     }
 }
 
@@ -88,5 +94,26 @@ extension SettingsViewController: AuthenticationDelegate {
     
     func authenticationShouldDismissViewController(_ authentication: Authentication) {
         
+    }
+}
+
+extension SettingsViewController: BudgetTableViewCellDelegate {
+    func budgetTableViewCellDidTap(_ budgetTableViewCell: BudgetTableViewCell) {
+        if let indexPath = tableView.indexPath(for: budgetTableViewCell), selectedSharingRow != indexPath.row {
+            if let cell = tableView.cellForRow(at: IndexPath(row: selectedSharingRow, section: indexPath.section)) as? BudgetTableViewCell {
+                cell.markSelected(false)
+            }
+            budgetTableViewCell.markSelected(true)
+            selectedSharingRow = indexPath.row
+            
+            let newId = sharings[indexPath.row].dbId
+            if newId == defaultBudgetId {
+                UserDefaults.standard.removeObject(forKey: APP.currentBudgetKey)
+            } else {
+                UserDefaults.standard.set(newId, forKey: APP.currentBudgetKey)
+            }
+            UserDefaults.standard.synchronize()
+            NotificationCenter.default.post(Notification(name: currentBudgetChangedNotification))
+        }
     }
 }

@@ -12,6 +12,7 @@ protocol AccountTableViewCellDelegate: class {
     func accountTableViewCell(_ accountTableViewCell: AccountTableViewCell, shouldDisplayViewController viewController: UIViewController)
     func accountTableViewCell(_ accountTableViewCell: AccountTableViewCell, shouldDisplayAlert alert: UIAlertController)
     func accountTableViewCellShouldDismissViewController(_ accountTableViewCell: AccountTableViewCell)
+    func accountTableViewCellWillSignOut(_ accountTableViewCell: AccountTableViewCell)
 }
 
 class AccountTableViewCell: UITableViewCell, AuthenticationDelegate {
@@ -49,7 +50,7 @@ class AccountTableViewCell: UITableViewCell, AuthenticationDelegate {
                 o_imageLeadingConstraint.constant = 20
                 o_facebookImage.isHidden = false
             } else {
-                o_label.text = user.firUser.email
+                o_label.text = user.email
                 o_imageLeadingConstraint.constant = -24
                 o_facebookImage.isHidden = true
             }
@@ -71,6 +72,7 @@ class AccountTableViewCell: UITableViewCell, AuthenticationDelegate {
     }
     
     @IBAction func didTapLogout(_ sender: UIButton) {
+        delegate?.accountTableViewCellWillSignOut(self)
         authentication = Authentication()
         authentication?.delegate = self
         authentication?.signOut()

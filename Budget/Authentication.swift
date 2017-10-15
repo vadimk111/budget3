@@ -46,10 +46,8 @@ class Authentication: NSObject {
                     if let error = error {
                         self?.automaticSignInFailed(with: error)
                     } else if let user = user {
-                        APP.user = BudgetUser(firUser: user)
-                        APP.user?.loadSharing { [weak self] in
-                            self?.notifyStateChanged()
-                        }
+                        APP.user = user
+                        self?.notifyStateChanged()
                     }
                 }
             }
@@ -61,10 +59,8 @@ class Authentication: NSObject {
                         if let error = error {
                             self?.automaticSignInFailed(with: error)
                         } else if let user = user {
-                            APP.user = BudgetUser(firUser: user)
-                            APP.user?.loadSharing { [weak self] in
-                                self?.notifyStateChanged()
-                            }
+                            APP.user = user
+                            self?.notifyStateChanged()
                         }
                     }
                 }
@@ -83,7 +79,7 @@ class Authentication: NSObject {
     
     func connectFacebookAccount(token: String) {
         let credential = FacebookAuthProvider.credential(withAccessToken: token)
-        APP.user?.firUser.link(with: credential) { [weak self] (user, error) in
+        APP.user?.link(with: credential) { [weak self] (user, error) in
             if let error = error {
                 self?.showErrorOnDelegate(error)
             } else {
@@ -94,7 +90,7 @@ class Authentication: NSObject {
     
     func disconnectFacebookAccount() {
         if let providerId = Authentication.facebookProviderID() {
-            APP.user?.firUser.unlink(fromProvider: providerId) { [weak self] (user, error) in
+            APP.user?.unlink(fromProvider: providerId) { [weak self] (user, error) in
                 if let error = error {
                     self?.showErrorOnDelegate(error)
                 } else {
@@ -112,16 +108,16 @@ class Authentication: NSObject {
     }
     
     static func canDisconnectFacebookAccount() -> Bool {
-        return APP.user != nil && FBSDKAccessToken.current() != nil && APP.user!.firUser.providerData.count > 1
+        return APP.user != nil && FBSDKAccessToken.current() != nil && APP.user!.providerData.count > 1
     }
     
     static func isOnlyFacebookAccountRegistered() -> Bool {
-        return isFacebookAccountConnected() && APP.user!.firUser.providerData.count == 1
+        return isFacebookAccountConnected() && APP.user!.providerData.count == 1
     }
     
     static func facebookProviderID() -> String? {
         if let user = APP.user {
-            for userInfo in user.firUser.providerData {
+            for userInfo in user.providerData {
                 if userInfo.providerID.contains("facebook") {
                     return userInfo.providerID
                 }
@@ -171,24 +167,23 @@ class Authentication: NSObject {
     }
     
     func passwordSignInSucceded(with user: User) {
-        APP.user = BudgetUser(firUser: user)
+        APP.user = user
         UserDefaults.standard.set(loginViewController?.email, forKey: "email")
         UserDefaults.standard.set(loginViewController?.password, forKey: "password")
         UserDefaults.standard.synchronize()
         delegate?.authenticationShouldDismissViewController(self)
-        APP.user?.loadSharing { [weak self] in
-            self?.notifyStateChanged()
-        }
+        self.notifyStateChanged()
     }
     
     func facebookSignInSucceded(with user: User) {
-        APP.user = BudgetUser(firUser: user)
+        APP.user = user
         UserDefaults.standard.set("facebook", forKey: "auth_method")
+        if let email = UserDefaults.standard.string(forKey: "email"), email.contains(anonymous) {
+            UserDefaults.standard.removeObject(forKey: "email")
+        }
         UserDefaults.standard.synchronize()
         delegate?.authenticationShouldDismissViewController(self)
-        APP.user?.loadSharing { [weak self] in
-            self?.notifyStateChanged()
-        }
+        self.notifyStateChanged()
     }
 }
 
@@ -247,7 +242,7 @@ extension Authentication: FBSDKLoginButtonDelegate {
             Auth.auth().signIn(with: credential) { [weak self] (user, error) in
                 guard let this = self else { return }
                 if let error = error {
-                    if let error_name = (error as NSError?)?.userInfo["error_name"] as? String, error_name ==  "ERROR_EMAIL_ALREADY_IN_USE" {
+                    if let error_name = (error as NSError?)?.userInfo["error_name"] as? String, error_name == "ERROR_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL" {
                         this.linkAccountsViewController = LinkAccountsViewController()
                         this.linkAccountsViewController?.delegate = this
                         this.linkAccountsViewController?.email = (error as NSError?)?.userInfo["FIRAuthErrorUserInfoEmailKey"] as? String
