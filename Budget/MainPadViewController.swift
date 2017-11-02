@@ -22,7 +22,7 @@ class MainPadViewController: UIViewController, AuthenticationDelegate, SettingsV
         NotificationCenter.default.addObserver(self, selector: #selector(MainPadViewController.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
     }
     
-    func onSignInStateChanged() {
+    @objc func onSignInStateChanged() {
         authentication = nil
         APP.automaticAuthenticationCompleted = true
         NotificationCenter.default.removeObserver(self, name: signInStateChangedNotification, object: nil)

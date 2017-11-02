@@ -45,7 +45,7 @@ class IncomesBaseDeviceViewController: UIViewController, DateChangerDelegate, In
         NotificationCenter.default.removeObserver(self)
     }
     
-    func reload() {
+    @objc func reload() {
         incomesViewController?.reload()
     }
     

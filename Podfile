@@ -8,9 +8,10 @@ target ‘Budget’ do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
-  pod 'Firebase/Crash'
   
   pod 'FacebookCore'
   pod 'FacebookLogin'
   
+  pod 'Fabric', '~> 1.7.2'
+  pod 'Crashlytics', '~> 3.9.3'
 end

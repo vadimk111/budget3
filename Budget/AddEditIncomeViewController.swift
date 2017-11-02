@@ -48,7 +48,7 @@ class AddEditIncomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if o_titleField.text?.characters.count == 0 {
+        if o_titleField.text?.count == 0 {
             o_titleField.becomeFirstResponder()
         }
     }

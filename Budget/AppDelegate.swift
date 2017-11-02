@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         let absoluteUrl = url.absoluteString
         if absoluteUrl.range(of: appPrefix) != nil {
-            dbToShare = absoluteUrl.substring(from: absoluteUrl.index(absoluteUrl.startIndex, offsetBy: appPrefix.characters.count))
+            dbToShare = String(absoluteUrl[absoluteUrl.index(absoluteUrl.startIndex, offsetBy: appPrefix.count)...])
             
             if dbToShare!.contains(".") || dbToShare!.contains("$") || dbToShare!.contains("#") || dbToShare!.contains("[") || dbToShare!.contains("]") {
                 let a = UIAlertController(title: "Failed to load shared budget", message: "Invalid budget identifier: \(dbToShare!)", preferredStyle: .alert)
@@ -109,7 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return window?.rootViewController
     }
     
-    func onSignInStateChanged() {
+    @objc func onSignInStateChanged() {
         NotificationCenter.default.removeObserver(self, name: signInStateChangedNotification, object: nil)
         
         if let dbId = dbToShare {

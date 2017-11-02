@@ -71,16 +71,16 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
         }
     }
     
-    func onSignInStateChanged() {
+    @objc func onSignInStateChanged() {
         loadSharings()
         tableView.reloadSections([0], with: .none)
     }
     
-    func onFacebookLinkedChange() {
+    @objc func onFacebookLinkedChange() {
         tableView.reloadSections([0], with: .none)
     }
     
-    func onUserNotificationCenterChanged() {
+    @objc func onUserNotificationCenterChanged() {
         tableView.reloadSections([2], with: .automatic)
     }
     
@@ -88,7 +88,7 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
         NotificationCenter.default.removeObserver(self)
     }
     
-    func loadSharings() {
+    @objc func loadSharings() {
         sharings = []
         sharings.append(defaultBudget)
         

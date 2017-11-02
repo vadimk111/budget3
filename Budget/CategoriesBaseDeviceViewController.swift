@@ -38,7 +38,7 @@ class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderView
         unregisterFromUpdates()
     }
     
-    func reload() {
+    @objc func reload() {
         categoriesViewController?.reload()
     }
     

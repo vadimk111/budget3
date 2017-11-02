@@ -80,7 +80,7 @@ extension UIViewController {
         return bottomConstraint
     }
     
-    func dismissViewAtBottom() {
+    @objc func dismissViewAtBottom() {
         if let constraint = view.constraints.first(where: { $0.identifier == "viewBottom" }), let viewToDismiss = constraint.secondItem {
             UIView.animate(withDuration: 0.4, animations: {
                 constraint.constant = -viewToDismiss.frame.height

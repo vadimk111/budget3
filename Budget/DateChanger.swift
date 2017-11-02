@@ -40,10 +40,10 @@ class DateChanger: CustomView, DatePickerViewDelegate {
         if let dateText = dateText {
             
             let attributedTitle = NSMutableAttributedString()
-            attributedTitle.append(NSAttributedString(string: dateText, attributes: [NSFontAttributeName: UIFont.init(name: "HelveticaNeue", size: 16)!, NSForegroundColorAttributeName: UIColor.black]))
+            attributedTitle.append(NSAttributedString(string: dateText, attributes: [NSAttributedStringKey.font: UIFont.init(name: "HelveticaNeue", size: 16)!, NSAttributedStringKey.foregroundColor: UIColor.black]))
             
             if let total = totalIncome {
-                attributedTitle.append(NSAttributedString(string: " • Income = \(total)", attributes: [NSFontAttributeName: UIFont.init(name: "HelveticaNeue-Bold", size: 12)!, NSForegroundColorAttributeName: UIColor(red: 103 / 255, green: 171 / 255, blue: 87 / 255, alpha: 1)]))
+                attributedTitle.append(NSAttributedString(string: " • Income = \(total)", attributes: [NSAttributedStringKey.font: UIFont.init(name: "HelveticaNeue-Bold", size: 12)!, NSAttributedStringKey.foregroundColor: UIColor(red: 103 / 255, green: 171 / 255, blue: 87 / 255, alpha: 1)]))
             }
             o_title.attributedText = attributedTitle
         }

@@ -29,7 +29,7 @@ class ExpensesBaseDeviceViewController: UIViewController, DateChangerDelegate, E
         reload()
     }
     
-    func onBudgetChanged() {
+    @objc func onBudgetChanged() {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [unowned self] (timer) in
             self.timer = nil
@@ -41,7 +41,7 @@ class ExpensesBaseDeviceViewController: UIViewController, DateChangerDelegate, E
         NotificationCenter.default.removeObserver(self)
     }
     
-    func reload() {
+    @objc func reload() {
         expensesViewController?.reload()
     }
     

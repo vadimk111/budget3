@@ -20,17 +20,17 @@ class MainPhoneViewController: UITabBarController, AuthenticationDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(MainPhoneViewController.onDatePickerDisappear), name: datePickerControllerDidDisappearNotification, object: nil)
     }
     
-    func onSignInStateChanged() {
+    @objc func onSignInStateChanged() {
         authentication = nil
         APP.automaticAuthenticationCompleted = true
         NotificationCenter.default.removeObserver(self, name: signInStateChangedNotification, object: nil)
     }
     
-    func onDatePickerAppear() {
+    @objc func onDatePickerAppear() {
         tabBar.isHidden = true
     }
     
-    func onDatePickerDisappear() {
+    @objc func onDatePickerDisappear() {
         tabBar.isHidden = false
     }
     

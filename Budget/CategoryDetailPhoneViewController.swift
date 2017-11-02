@@ -22,7 +22,7 @@ class CategoryDetailPhoneViewController: UIViewController, CategoryExpensesViewC
         updateBalanceNavView()
     }
     
-    func onSignInStateChanged() {
+    @objc func onSignInStateChanged() {
         _ = navigationController?.popViewController(animated: false)
     }
     
