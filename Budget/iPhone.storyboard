@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yhc-Zy-dv0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yhc-Zy-dv0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -65,12 +65,18 @@
                                     <segue destination="VJb-lu-TIo" kind="embed" identifier="categories" id="ddj-hh-5L1"/>
                                 </connections>
                             </containerView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ba7-rI-UqW">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="xcs-mm-sQZ" secondAttribute="trailing" id="2jx-IL-7q3"/>
                             <constraint firstItem="xcs-mm-sQZ" firstAttribute="leading" secondItem="098-kV-esc" secondAttribute="leading" id="A9e-1a-HBu"/>
                             <constraint firstItem="sfa-rh-LWQ" firstAttribute="top" secondItem="xcs-mm-sQZ" secondAttribute="bottom" id="Bj1-t6-CXW"/>
+                            <constraint firstItem="ba7-rI-UqW" firstAttribute="centerX" secondItem="098-kV-esc" secondAttribute="centerX" id="Ep3-XN-XQM"/>
+                            <constraint firstItem="ba7-rI-UqW" firstAttribute="centerY" secondItem="098-kV-esc" secondAttribute="centerY" id="aQ7-NG-iOT"/>
                             <constraint firstItem="AIC-M3-WH5" firstAttribute="top" secondItem="bbB-d9-pQn" secondAttribute="bottom" id="bMY-c3-a3R"/>
                             <constraint firstItem="AIC-M3-WH5" firstAttribute="leading" secondItem="098-kV-esc" secondAttribute="leading" id="gOi-LZ-JRe"/>
                             <constraint firstAttribute="trailing" secondItem="AIC-M3-WH5" secondAttribute="trailing" id="okQ-nM-aRl"/>
@@ -90,6 +96,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="o_activityIndicator" destination="ba7-rI-UqW" id="pMT-N1-V2u"/>
                         <outlet property="o_addBarButton" destination="HJW-w9-lta" id="cL5-L3-hgO"/>
                         <outlet property="o_categoriesHeaderView" destination="AIC-M3-WH5" id="5ga-ad-Lhc"/>
                         <outlet property="o_editBarButton" destination="6hw-wn-60o" id="9FI-MQ-Ej7"/>

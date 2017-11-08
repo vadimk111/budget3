@@ -15,6 +15,8 @@ protocol CategoriesViewControllerDelegate: class {
     func categoriesViewController(_ categoriesViewController: CategoriesViewController, didSelect category: Category)
     func categoriesViewController(_ categoriesViewController: CategoriesViewController, didEdit category: Category)
     func categoriesViewControllerChanged(_ categoriesViewController: CategoriesViewController)
+    func categoriesViewControllerWillReload(_ categoriesViewController: CategoriesViewController)
+    func categoriesViewControllerDidReload(_ categoriesViewController: CategoriesViewController)
     func categoriesViewControllerRowDeselected(_ categoriesViewController: CategoriesViewController)
 }
 
@@ -49,6 +51,10 @@ class CategoriesViewController: UITableViewController {
         
         budgetRef = ModelHelper.budgetReference(for: date)
         if budgetRef != nil {
+            if !isRefreshing {
+                delegate?.categoriesViewControllerWillReload(self)
+            }
+            
             budgetRef?.observeSingleEvent(of: .value, with: { [unowned self] snapshot in
                 if !self.prepareBudget(from: snapshot) && !self.isRefreshing {
                     if !self.copyClosestBudget() && !self.dateChanged {
@@ -62,6 +68,8 @@ class CategoriesViewController: UITableViewController {
                 if self.isRefreshing {
                     self.isRefreshing = false
                     self.tableView.refreshControl?.endRefreshing()
+                } else {
+                    self.delegate?.categoriesViewControllerDidReload(self)
                 }
             })
         } else {

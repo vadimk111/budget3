@@ -14,6 +14,7 @@ class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderView
     var categoriesViewController: CategoriesViewController?
     
     @IBOutlet weak var o_categoriesHeaderView: CategoriesHeaderView!
+    @IBOutlet weak var o_activityIndicator: UIActivityIndicatorView!
     
     var incomesRef: DatabaseReference?
     var incomes: [Income] = [Income]()
@@ -118,6 +119,14 @@ class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderView
     func categoriesViewControllerChanged(_ categoriesViewController: CategoriesViewController) {
         reloadIncomes()
         o_categoriesHeaderView?.fill(with: categoriesViewController.availableParents, date: categoriesViewController.date)
+    }
+    
+    func categoriesViewControllerWillReload(_ categoriesViewController: CategoriesViewController) {
+        o_activityIndicator.startAnimating()
+    }
+    
+    func categoriesViewControllerDidReload(_ categoriesViewController: CategoriesViewController) {
+        o_activityIndicator.stopAnimating()
     }
     
     func categoriesViewControllerRowDeselected(_ categoriesViewController: CategoriesViewController) {
