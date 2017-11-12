@@ -9,10 +9,15 @@
 import UIKit
 import FirebaseDatabase
 
+protocol AddEditExpenseViewControllerDelegate {
+    func addEditExpenseViewControllerWillDismiss(_ addEditExpenseViewController: AddEditExpenseViewController)
+}
+
 class AddEditExpenseViewController: UIViewController {
 
     var parentRef: DatabaseReference?
     var expense: Expense?
+    var delegate: AddEditExpenseViewControllerDelegate?
     
     @IBOutlet weak var o_titleField: UITextField!
     @IBOutlet weak var o_amountField: UITextField!
@@ -61,6 +66,7 @@ class AddEditExpenseViewController: UIViewController {
     }
     
     @IBAction func didTapCancel(_ sender: UIBarButtonItem) {
+        delegate?.addEditExpenseViewControllerWillDismiss(self)
         dismiss(animated: true, completion: nil)
     }
     
@@ -75,6 +81,7 @@ class AddEditExpenseViewController: UIViewController {
             } else if let expense = expense {
                 expense.update()
             }
+            delegate?.addEditExpenseViewControllerWillDismiss(self)
             dismiss(animated: true, completion: nil)
         }
     }

@@ -142,12 +142,18 @@
                                     <segue destination="gM9-R6-kjg" kind="embed" identifier="expenses" id="agf-TN-ZEM"/>
                                 </connections>
                             </containerView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="OQj-BC-KZg">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="OQj-BC-KZg" firstAttribute="centerX" secondItem="FXP-UO-ebF" secondAttribute="centerX" id="0rz-9c-OzH"/>
                             <constraint firstItem="ICr-1T-Hpj" firstAttribute="leading" secondItem="FXP-UO-ebF" secondAttribute="leading" id="0w8-vb-cYq"/>
                             <constraint firstItem="gPF-a1-l48" firstAttribute="top" secondItem="ICr-1T-Hpj" secondAttribute="bottom" id="5FI-hW-c9D"/>
                             <constraint firstItem="ICr-1T-Hpj" firstAttribute="top" secondItem="FXP-UO-ebF" secondAttribute="top" id="J37-de-hkH"/>
+                            <constraint firstItem="OQj-BC-KZg" firstAttribute="centerY" secondItem="FXP-UO-ebF" secondAttribute="centerY" id="nEZ-74-GOK"/>
                             <constraint firstAttribute="trailing" secondItem="ICr-1T-Hpj" secondAttribute="trailing" id="rpy-aI-YT7"/>
                         </constraints>
                     </view>
@@ -162,6 +168,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="o_activityIndicator" destination="OQj-BC-KZg" id="zYp-Nb-cE1"/>
                         <segue destination="SN7-kB-1UG" kind="presentation" identifier="editExpense" id="vOp-E8-1JA"/>
                     </connections>
                 </viewController>

@@ -8,10 +8,11 @@
 
 import UIKit
 
-class CategoryDetailPhoneViewController: UIViewController, CategoryExpensesViewControllerDelegate {
+class CategoryDetailPhoneViewController: UIViewController, CategoryExpensesViewControllerDelegate, AddEditExpenseViewControllerDelegate {
     
     var expensesViewController: CategoryExpensesViewController?
     var category: Category?
+    @IBOutlet weak var o_activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +69,7 @@ class CategoryDetailPhoneViewController: UIViewController, CategoryExpensesViewC
             let vc: AddEditExpenseViewController? = segue.destinationController()
             vc?.expense = expense
             vc?.title = "Edit Expense"
+            vc?.delegate = self
         }
     }
     
@@ -77,10 +79,16 @@ class CategoryDetailPhoneViewController: UIViewController, CategoryExpensesViewC
     }
     
     func categoryExpensesViewController(_ categoryExpensesViewController: CategoryExpensesViewController, didSelect expense: Expense) {
+        o_activityIndicator.startAnimating()
         performSegue(withIdentifier: "editExpense", sender: expense)
     }
     
     func categoryExpensesViewController(_ categoryExpensesViewController: CategoryExpensesViewController, addExpenseTo category: Category) {
         performSegue(withIdentifier: "addExpense", sender: category)
+    }
+    
+    //MARK: AddEditExpenseViewControllerDelegate
+    func addEditExpenseViewControllerWillDismiss(_ addEditExpenseViewController: AddEditExpenseViewController) {
+        o_activityIndicator.stopAnimating()
     }
 }

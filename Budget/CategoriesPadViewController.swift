@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoriesPadViewController: CategoriesBaseDeviceViewController, CategoryExpensesViewControllerDelegate {
+class CategoriesPadViewController: CategoriesBaseDeviceViewController, CategoryExpensesViewControllerDelegate, AddEditExpenseViewControllerDelegate {
 
     var expensesViewController: CategoryExpensesViewController?
     
@@ -16,6 +16,7 @@ class CategoriesPadViewController: CategoriesBaseDeviceViewController, CategoryE
     @IBOutlet weak var o_addExpenseBtn: UIButton!
     @IBOutlet weak var o_editCategoryBtn: UIButton!
     @IBOutlet weak var o_addCategoryBtn: UIButton!
+    @IBOutlet weak var o_expensesActivityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +98,7 @@ class CategoriesPadViewController: CategoriesBaseDeviceViewController, CategoryE
             let vc: AddEditExpenseViewController? = segue.destinationController()
             vc?.expense = expense
             vc?.title = "Edit Expense"
+            vc?.delegate = self
         }
     }
     
@@ -128,6 +130,7 @@ class CategoriesPadViewController: CategoriesBaseDeviceViewController, CategoryE
     }
     
     func categoryExpensesViewController(_ categoryExpensesViewController: CategoryExpensesViewController, didSelect expense: Expense) {
+        o_expensesActivityIndicator.startAnimating()
         performSegue(withIdentifier: "editExpense", sender: expense)
         if let indexPath = categoryExpensesViewController.tableView.indexPathForSelectedRow {
             Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false, block: { (Timer) -> Void in
@@ -149,5 +152,10 @@ class CategoriesPadViewController: CategoriesBaseDeviceViewController, CategoryE
     override func categoriesHeaderView(_ categoriesHeaderView: CategoriesHeaderView, didChangeDate date: Date) {
         super.categoriesHeaderView(categoriesHeaderView, didChangeDate: date)
         dismiss(animated: true)
+    }
+    
+    //MARK: AddEditExpenseViewControllerDelegate
+    func addEditExpenseViewControllerWillDismiss(_ addEditExpenseViewController: AddEditExpenseViewController) {
+        o_expensesActivityIndicator.stopAnimating()
     }
 }

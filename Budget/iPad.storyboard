@@ -197,6 +197,10 @@
                                     <segue destination="41k-4q-Zmw" kind="embed" identifier="expenses" id="qbI-L8-9Fd"/>
                                 </connections>
                             </containerView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="UMm-eG-R9e">
+                                <rect key="frame" x="698" y="370" width="37" height="37"/>
+                                <color key="color" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYZ-WC-zhs">
                                 <rect key="frame" x="0.0" y="165" width="404" height="446"/>
                                 <constraints>
@@ -217,10 +221,12 @@
                             <constraint firstItem="s4Q-43-L4x" firstAttribute="trailing" secondItem="oYZ-WC-zhs" secondAttribute="trailing" constant="-10" id="3mA-av-VAc"/>
                             <constraint firstItem="3Yu-OA-bGL" firstAttribute="centerX" secondItem="oYZ-WC-zhs" secondAttribute="centerX" id="8TQ-hp-gue"/>
                             <constraint firstItem="RX3-Tf-5Un" firstAttribute="top" secondItem="oYZ-WC-zhs" secondAttribute="top" id="9Bv-pr-Klu"/>
+                            <constraint firstItem="UMm-eG-R9e" firstAttribute="centerX" secondItem="RX3-Tf-5Un" secondAttribute="centerX" id="C2h-5G-K9n"/>
                             <constraint firstItem="RX3-Tf-5Un" firstAttribute="leading" secondItem="oYZ-WC-zhs" secondAttribute="trailing" constant="4" id="DsF-7d-IPl"/>
                             <constraint firstItem="u1F-eD-D6x" firstAttribute="top" secondItem="dbB-tl-zwx" secondAttribute="bottom" id="KGa-6o-unL"/>
                             <constraint firstItem="dbB-tl-zwx" firstAttribute="leading" secondItem="QHQ-5C-6al" secondAttribute="leading" id="Kya-zf-Jhb"/>
                             <constraint firstAttribute="trailing" secondItem="RCQ-x8-rG6" secondAttribute="trailing" id="MGz-WF-eeI"/>
+                            <constraint firstItem="UMm-eG-R9e" firstAttribute="centerY" secondItem="RX3-Tf-5Un" secondAttribute="centerY" id="Nni-as-O6v"/>
                             <constraint firstItem="u1F-eD-D6x" firstAttribute="trailing" secondItem="dbB-tl-zwx" secondAttribute="trailing" id="OjQ-5P-5C0"/>
                             <constraint firstItem="u1F-eD-D6x" firstAttribute="leading" secondItem="dbB-tl-zwx" secondAttribute="leading" id="TA3-e2-5Yd"/>
                             <constraint firstItem="3Yu-OA-bGL" firstAttribute="centerY" secondItem="oYZ-WC-zhs" secondAttribute="centerY" id="Tt9-Aa-iNK"/>
@@ -244,6 +250,7 @@
                         <outlet property="o_categoriesContainer" destination="oYZ-WC-zhs" id="ZFx-JH-bJE"/>
                         <outlet property="o_categoriesHeaderView" destination="dbB-tl-zwx" id="Bny-Ey-k9X"/>
                         <outlet property="o_editCategoryBtn" destination="hmq-JQ-HJX" id="TbH-s4-XJW"/>
+                        <outlet property="o_expensesActivityIndicator" destination="UMm-eG-R9e" id="nFh-2K-gTk"/>
                         <segue destination="J3Y-36-xzN" kind="popoverPresentation" identifier="editCategory" popoverAnchorView="oYZ-WC-zhs" id="4NM-Zi-o9i">
                             <popoverArrowDirection key="popoverArrowDirection"/>
                         </segue>
@@ -455,7 +462,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RH8-x0-ode">
                                 <rect key="frame" x="232.5" y="175" width="65.5" height="19"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSJ-kp-PEi">
