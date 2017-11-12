@@ -14,6 +14,7 @@ class ExpensesBaseDeviceViewController: UIViewController, DateChangerDelegate, E
     var timer: Timer?
     
     @IBOutlet weak var o_dateChanger: DateChanger!
+    @IBOutlet weak var o_activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,5 +77,13 @@ class ExpensesBaseDeviceViewController: UIViewController, DateChangerDelegate, E
     
     func expensesViewController(_ expensesViewController: ExpensesViewController, didSelect expenseData: ExpenseWithCategoryData) {
         
+    }
+    
+    func expensesViewControllerWillReload(_ expensesViewController: ExpensesViewController) {
+        o_activityIndicator.startAnimating()
+    }
+    
+    func expensesViewControllerDidReload(_ expensesViewController: ExpensesViewController) {
+        o_activityIndicator.stopAnimating()
     }
 }

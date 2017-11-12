@@ -217,11 +217,17 @@
                                     <segue destination="zTh-jY-XmF" kind="embed" identifier="expenses" id="B80-6i-Za3"/>
                                 </connections>
                             </containerView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cgo-lk-472">
+                                <rect key="frame" x="169" y="347" width="37" height="37"/>
+                                <color key="color" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="l5S-go-x7Z" firstAttribute="leading" secondItem="2tw-5M-9Sg" secondAttribute="leading" id="1RO-oN-SpT"/>
                             <constraint firstAttribute="trailing" secondItem="l5S-go-x7Z" secondAttribute="trailing" id="9el-aI-Z3K"/>
+                            <constraint firstItem="cgo-lk-472" firstAttribute="centerX" secondItem="DUd-gR-xVc" secondAttribute="centerX" id="Elq-cF-riY"/>
+                            <constraint firstItem="cgo-lk-472" firstAttribute="centerY" secondItem="DUd-gR-xVc" secondAttribute="centerY" id="N3Q-w9-UAr"/>
                             <constraint firstAttribute="trailing" secondItem="DUd-gR-xVc" secondAttribute="trailing" id="Y3w-c8-nUS"/>
                             <constraint firstItem="l5S-go-x7Z" firstAttribute="top" secondItem="MXv-zy-biM" secondAttribute="bottom" id="Zfq-1G-ckL"/>
                             <constraint firstItem="DUd-gR-xVc" firstAttribute="leading" secondItem="2tw-5M-9Sg" secondAttribute="leading" id="el3-Jr-RiX"/>
@@ -231,6 +237,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Expenses" id="ahX-xW-UxJ"/>
                     <connections>
+                        <outlet property="o_activityIndicator" destination="cgo-lk-472" id="G0V-u5-DbW"/>
                         <outlet property="o_dateChanger" destination="l5S-go-x7Z" id="JfZ-ld-syp"/>
                         <segue destination="d63-mL-AxS" kind="presentation" identifier="editExpense" id="m4Q-4D-hu6"/>
                     </connections>
@@ -287,6 +294,10 @@
                                     <segue destination="7ax-Yc-Q5z" kind="embed" identifier="incomes" id="3cY-fA-izH"/>
                                 </connections>
                             </containerView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hC3-QY-puj">
+                                <rect key="frame" x="169" y="347" width="37" height="37"/>
+                                <color key="color" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -296,10 +307,12 @@
                             <constraint firstItem="FrY-NP-qN3" firstAttribute="leading" secondItem="vhv-33-iFg" secondAttribute="leading" id="EjW-b0-Nal"/>
                             <constraint firstAttribute="trailing" secondItem="FrY-NP-qN3" secondAttribute="trailing" id="JH7-4A-10r"/>
                             <constraint firstItem="EDs-xl-Gpk" firstAttribute="leading" secondItem="FrY-NP-qN3" secondAttribute="leading" id="KLH-Bi-Sar"/>
+                            <constraint firstItem="hC3-QY-puj" firstAttribute="centerY" secondItem="QC9-iE-hHF" secondAttribute="centerY" id="Ldo-vo-I1U"/>
                             <constraint firstItem="QC9-iE-hHF" firstAttribute="top" secondItem="EDs-xl-Gpk" secondAttribute="bottom" id="Tf6-9n-pZo"/>
                             <constraint firstItem="EDs-xl-Gpk" firstAttribute="trailing" secondItem="FrY-NP-qN3" secondAttribute="trailing" id="g2r-wg-X1P"/>
                             <constraint firstItem="FrY-NP-qN3" firstAttribute="top" secondItem="TKZ-Qj-bok" secondAttribute="bottom" id="hr2-yJ-7Tk"/>
                             <constraint firstItem="EDs-xl-Gpk" firstAttribute="top" secondItem="FrY-NP-qN3" secondAttribute="bottom" id="kSH-jQ-vjn"/>
+                            <constraint firstItem="hC3-QY-puj" firstAttribute="centerX" secondItem="QC9-iE-hHF" secondAttribute="centerX" id="qO9-3t-bVe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Incomes" id="HMN-DL-5sg">
@@ -310,6 +323,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="o_activityIndicator" destination="hC3-QY-puj" id="bP9-ns-oYi"/>
                         <outlet property="o_dateChanger" destination="FrY-NP-qN3" id="Gte-CK-tdi"/>
                         <segue destination="2A7-Ex-edm" kind="presentation" identifier="editIncome" id="iry-wD-Z1W"/>
                     </connections>

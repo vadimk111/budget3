@@ -48,7 +48,7 @@ class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderView
         
         if let date = categoriesViewController?.date, let ref = ModelHelper.incomeReference(for: date) {
             incomesRef = ref
-            incomesRef?.observeSingleEvent(of: .value, with: { snapshot in
+            incomesRef?.observeSingleEvent(of: .value, with: { [unowned self] snapshot in
                 self.incomes = []
                 for child in snapshot.children {
                     self.incomes.append(Income(snapshot: child as! DataSnapshot))

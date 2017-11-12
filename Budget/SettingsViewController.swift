@@ -92,7 +92,7 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
         sharings = []
         sharings.append(defaultBudget)
         
-        ModelHelper.sharingReference()?.observeSingleEvent(of: .value, with: { [unowned self] (snapshot) in
+        ModelHelper.sharingReference()?.observeSingleEvent(of: .value, with: { [unowned self] snapshot in
             for child in snapshot.children {
                 self.sharings.append(Sharing(snapshot: child as! DataSnapshot))
             }

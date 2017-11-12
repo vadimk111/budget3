@@ -36,6 +36,8 @@ class GroupedExpneses {
 protocol ExpensesViewControllerDelegate: class {
     func expensesViewController(_ expensesViewController: ExpensesViewController, didSelect expenseData: ExpenseWithCategoryData)
     func expensesViewControllerRowDeselected(_ expensesViewController: ExpensesViewController)
+    func expensesViewControllerWillReload(_ expensesViewController: ExpensesViewController)
+    func expensesViewControllerDidReload(_ expensesViewController: ExpensesViewController)
 }
 
 class ExpensesViewController: UITableViewController, OverviewTableViewCellDelegate {
@@ -43,6 +45,7 @@ class ExpensesViewController: UITableViewController, OverviewTableViewCellDelega
     var groupedExpensesList: [GroupedExpneses]?
     var date: Date = Date()
     var delegate: ExpensesViewControllerDelegate?
+    var isRefreshing: Bool = false
     
     var tableSeparatorInset: UIEdgeInsets? {
         didSet {
@@ -57,6 +60,7 @@ class ExpensesViewController: UITableViewController, OverviewTableViewCellDelega
     }
     
     @IBAction func didPullToRefresh(_ sender: UIRefreshControl) {
+        isRefreshing = true
         reload()
     }
     
@@ -64,10 +68,20 @@ class ExpensesViewController: UITableViewController, OverviewTableViewCellDelega
         unregisterFromUpdates()
         
         if let ref = ModelHelper.budgetReference(for: date) {
-            ref.observeSingleEvent(of: .value, with: { snapshot in
+            if !isRefreshing {
+                delegate?.expensesViewControllerWillReload(self)
+            }
+            
+            ref.observeSingleEvent(of: .value, with: { [unowned self] snapshot in
                 self.prepareExpenses(from: snapshot)
                 self.tableView.reloadData()
-                self.tableView.refreshControl?.endRefreshing()
+                
+                if self.isRefreshing {
+                    self.tableView.refreshControl?.endRefreshing()
+                    self.isRefreshing = false
+                } else {
+                    self.delegate?.expensesViewControllerDidReload(self)
+                }
             })
         } else {
             date = Date()

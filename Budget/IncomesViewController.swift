@@ -14,6 +14,8 @@ protocol IncomesViewControllerDelegate: class {
     func incomesViewControllerRowDeselected(_ incomesViewController: IncomesViewController)
     func incomesViewController(_ incomesViewController: IncomesViewController, didUpdateRowWith income: Income)
     func incomesViewControllerChanged(_ incomesViewController: IncomesViewController)
+    func incomesViewControllerWillReload(_ incomesViewController: IncomesViewController)
+    func incomesViewControllerDidReload(_ incomesViewController: IncomesViewController)
 }
 
 class IncomesViewController: UITableViewController, IncomeTableViewCellDelegate {
@@ -24,6 +26,7 @@ class IncomesViewController: UITableViewController, IncomeTableViewCellDelegate 
     var addHandler: UInt?
     var changeHandler: UInt?
     var removeHandler: UInt?
+    var isRefreshing: Bool = false
     
     weak var delegate: IncomesViewControllerDelegate?
 
@@ -40,6 +43,7 @@ class IncomesViewController: UITableViewController, IncomeTableViewCellDelegate 
     }
     
     @IBAction func didPullToRefresh(_ sender: UIRefreshControl) {
+        isRefreshing = true
         reload()
     }
     
@@ -48,7 +52,11 @@ class IncomesViewController: UITableViewController, IncomeTableViewCellDelegate 
         
         listRef = ModelHelper.incomeReference(for: date)
         if listRef != nil {
-            listRef?.observeSingleEvent(of: .value, with: { snapshot in
+            if !isRefreshing {
+                delegate?.incomesViewControllerWillReload(self)
+            }
+            
+            listRef?.observeSingleEvent(of: .value, with: { [unowned self] snapshot in
                 self.incomes = []
                 for child in snapshot.children {
                     self.incomes.append(Income(snapshot: child as! DataSnapshot))
@@ -56,7 +64,12 @@ class IncomesViewController: UITableViewController, IncomeTableViewCellDelegate 
                 self.registerToUpdates()
                 
                 self.tableView.reloadData()
-                self.tableView.refreshControl?.endRefreshing()
+                if self.isRefreshing {
+                    self.tableView.refreshControl?.endRefreshing()
+                    self.isRefreshing = false
+                } else {
+                    self.delegate?.incomesViewControllerDidReload(self)
+                }
                 self.delegate?.incomesViewControllerChanged(self)
             })
         } else {

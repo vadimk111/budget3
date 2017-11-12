@@ -14,6 +14,7 @@ class IncomesBaseDeviceViewController: UIViewController, DateChangerDelegate, In
     var timer: Timer?
     
     @IBOutlet weak var o_dateChanger: DateChanger!
+    @IBOutlet weak var o_activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +81,14 @@ class IncomesBaseDeviceViewController: UIViewController, DateChangerDelegate, In
     
     func incomesViewController(_ incomesViewController: IncomesViewController, didSelect income: Income) {
         
+    }
+    
+    func incomesViewControllerWillReload(_ incomesViewController: IncomesViewController) {
+        o_activityIndicator.startAnimating()
+    }
+    
+    func incomesViewControllerDidReload(_ incomesViewController: IncomesViewController) {
+        o_activityIndicator.stopAnimating()
     }
 
     func incomesViewController(_ incomesViewController: IncomesViewController, didUpdateRowWith income: Income) {
