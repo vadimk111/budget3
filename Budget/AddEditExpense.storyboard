@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Add Expense-->
         <scene sceneID="106-0I-cs3">
@@ -134,14 +139,27 @@
                                     <constraint firstItem="ZsI-nm-VfX" firstAttribute="trailing" secondItem="dWd-XI-a1X" secondAttribute="trailing" id="xLH-da-u7K"/>
                                 </constraints>
                             </view>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Wd-oQ-7pv">
+                                <rect key="frame" x="16" y="117" width="343" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="wVT-5s-fL8"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="eZA-hn-fdi" kind="embed" identifier="autoComplete" id="cnb-XU-FWf"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="9Vv-HS-0Nq" firstAttribute="top" secondItem="OHE-T8-CW5" secondAttribute="bottom" id="63G-Vn-gDC"/>
                             <constraint firstItem="OHE-T8-CW5" firstAttribute="leading" secondItem="rL8-p2-pLw" secondAttribute="leadingMargin" id="69s-1Q-nTB"/>
+                            <constraint firstItem="5Wd-oQ-7pv" firstAttribute="leading" secondItem="OHE-T8-CW5" secondAttribute="leading" id="FrU-TT-ngO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OHE-T8-CW5" secondAttribute="trailing" id="KjP-Q4-tct"/>
+                            <constraint firstItem="5Wd-oQ-7pv" firstAttribute="trailing" secondItem="OHE-T8-CW5" secondAttribute="trailing" id="TRL-RT-tew"/>
                             <constraint firstAttribute="trailingMargin" secondItem="51q-X8-zwa" secondAttribute="trailing" id="Tt5-Z6-X23"/>
                             <constraint firstItem="OHE-T8-CW5" firstAttribute="top" secondItem="azA-v6-Nez" secondAttribute="bottom" constant="10" id="UFc-6k-LD1"/>
+                            <constraint firstItem="5Wd-oQ-7pv" firstAttribute="top" secondItem="OHE-T8-CW5" secondAttribute="bottom" constant="-1" id="XGG-UH-Rgj"/>
                             <constraint firstItem="51q-X8-zwa" firstAttribute="leading" secondItem="rL8-p2-pLw" secondAttribute="leadingMargin" id="hIG-4v-Y2P"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9Vv-HS-0Nq" secondAttribute="trailing" id="odO-KS-tcm"/>
                             <constraint firstItem="51q-X8-zwa" firstAttribute="top" secondItem="9Vv-HS-0Nq" secondAttribute="bottom" id="z8O-EK-mgh"/>
@@ -164,6 +182,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="o_amountField" destination="Rig-KG-Les" id="V5a-9D-fpH"/>
+                        <outlet property="o_autoCompleteContainer" destination="5Wd-oQ-7pv" id="kfF-51-apT"/>
                         <outlet property="o_dateLabel" destination="dWd-XI-a1X" id="Z8A-Jr-y6M"/>
                         <outlet property="o_datePicker" destination="ZsI-nm-VfX" id="GEz-XY-HLe"/>
                         <outlet property="o_dateViewConstraint" destination="eyZ-Vg-Ghd" id="sZ6-NE-8RB"/>
@@ -179,13 +198,21 @@
             </objects>
             <point key="canvasLocation" x="1084" y="187.55622188905548"/>
         </scene>
+        <!--AutoComplete-->
+        <scene sceneID="diW-Dz-ICP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AutoComplete" referencedIdentifier="AutoComplete" id="eZA-hn-fdi" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="07L-ak-oXU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1772" y="187"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ipt-7y-Jkb">
             <objects>
                 <navigationController storyboardIdentifier="AddEditExpense" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hrs-kB-ijl" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OoS-Zo-9p5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

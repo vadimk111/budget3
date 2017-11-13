@@ -20,6 +20,8 @@
 		BD589DED1E83F32A00F0C9CD /* CategoryExpenses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD589DEC1E83F32A00F0C9CD /* CategoryExpenses.storyboard */; };
 		BD589DEF1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD589DEE1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift */; };
 		BD589DF11E8451B200F0C9CD /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD589DF01E8451B200F0C9CD /* Authentication.swift */; };
+		BD6A1C9E1FB88721003148B7 /* AutoCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6A1C9D1FB88721003148B7 /* AutoCompleteViewController.swift */; };
+		BD6A1CA01FB88736003148B7 /* AutoComplete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD6A1C9F1FB88736003148B7 /* AutoComplete.storyboard */; };
 		BD6B69E41E79223400F7AF35 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD6B69E31E79223400F7AF35 /* iPad.storyboard */; };
 		BD6B69EA1E79544F00F7AF35 /* CategoriesPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B69E91E79544F00F7AF35 /* CategoriesPadViewController.swift */; };
 		BD82C7F31E8AF00D009EB6A6 /* MainPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD82C7F21E8AF00D009EB6A6 /* MainPadViewController.swift */; };
@@ -121,6 +123,8 @@
 		BD589DEC1E83F32A00F0C9CD /* CategoryExpenses.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CategoryExpenses.storyboard; sourceTree = "<group>"; };
 		BD589DEE1E844E4E00F0C9CD /* CategoriesPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesPhoneViewController.swift; sourceTree = "<group>"; };
 		BD589DF01E8451B200F0C9CD /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		BD6A1C9D1FB88721003148B7 /* AutoCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteViewController.swift; sourceTree = "<group>"; };
+		BD6A1C9F1FB88736003148B7 /* AutoComplete.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AutoComplete.storyboard; sourceTree = "<group>"; };
 		BD6B69E31E79223400F7AF35 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
 		BD6B69E91E79544F00F7AF35 /* CategoriesPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesPadViewController.swift; sourceTree = "<group>"; };
 		BD82C7F21E8AF00D009EB6A6 /* MainPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPadViewController.swift; sourceTree = "<group>"; };
@@ -265,8 +269,8 @@
 		BD589DF41E8469B100F0C9CD /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				BDFC610B1E9374C100D77087 /* Cells */,
 				BDFC610C1E9374C600D77087 /* Controller */,
+				BD7E223C1FB884C1008B8869 /* Table */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -279,6 +283,20 @@
 				BD3D40751E87965800C3CCAF /* CategoryExpensesViewController+UITableView.swift */,
 			);
 			name = "Category Expenses";
+			sourceTree = "<group>";
+		};
+		BD7E223C1FB884C1008B8869 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				BDFC61011E92989600D77087 /* AccountTableViewCell.swift */,
+				BD138CBD1F7FB5B400CDA4DA /* BudgetTableViewCell.swift */,
+				BDCDA01E1F13AAA0008AB2A6 /* FacebookTableViewCell.swift */,
+				BDFC61031E9298AC00D77087 /* RemindersTableViewCell.swift */,
+				BDFC61051E9298DA00D77087 /* ScheduledReminderTableViewCell.swift */,
+				BDFC610D1E93A0FB00D77087 /* SettingsHeaderView.swift */,
+				BDFC610F1E93A13E00D77087 /* SettingsHeaderView.xib */,
+			);
+			name = Table;
 			sourceTree = "<group>";
 		};
 		BD83836A1EDD704700E8B5B2 /* Incomes */ = {
@@ -324,20 +342,6 @@
 			name = Income;
 			sourceTree = "<group>";
 		};
-		BDFC610B1E9374C100D77087 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				BDFC61011E92989600D77087 /* AccountTableViewCell.swift */,
-				BD138CBD1F7FB5B400CDA4DA /* BudgetTableViewCell.swift */,
-				BDCDA01E1F13AAA0008AB2A6 /* FacebookTableViewCell.swift */,
-				BDFC61031E9298AC00D77087 /* RemindersTableViewCell.swift */,
-				BDFC61051E9298DA00D77087 /* ScheduledReminderTableViewCell.swift */,
-				BDFC610D1E93A0FB00D77087 /* SettingsHeaderView.swift */,
-				BDFC610F1E93A13E00D77087 /* SettingsHeaderView.xib */,
-			);
-			name = Cells;
-			sourceTree = "<group>";
-		};
 		BDFC610C1E9374C600D77087 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,6 +374,7 @@
 				BF00F48D1E4D331100D5D743 /* AddEditExpense.storyboard */,
 				BD8383661EDD5F7000E8B5B2 /* AddEditIncome.storyboard */,
 				BDFC61411E979A3700D77087 /* AddEditReminder.storyboard */,
+				BD6A1C9F1FB88736003148B7 /* AutoComplete.storyboard */,
 				BD589DEA1E83E13500F0C9CD /* Categories.storyboard */,
 				BD589DEC1E83F32A00F0C9CD /* CategoryExpenses.storyboard */,
 				BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */,
@@ -424,12 +429,12 @@
 				BF6BC8581E5ADAE60052F4E8 /* Authentication */,
 				BF00F4821E4D1EFB00D5D743 /* Cells */,
 				BF6BC85A1E5ADB780052F4E8 /* Common */,
+				BF9687C21E58DBB0001CD715 /* Custom Views */,
 				BF2514701E46626F00042FEF /* GoogleService-Info.plist */,
 				BF3792391E0933D00060445D /* Info.plist */,
 				BF25146D1E46610F00042FEF /* Model */,
 				BF2514681E464B5B00042FEF /* Storyboards */,
 				BF37924B1E0963420060445D /* View Controllers */,
-				BF9687C21E58DBB0001CD715 /* Views */,
 			);
 			path = Budget;
 			sourceTree = "<group>";
@@ -438,6 +443,7 @@
 			isa = PBXGroup;
 			children = (
 				BF6BC8571E5ADACE0052F4E8 /* AddEdit */,
+				BD6A1C9D1FB88721003148B7 /* AutoCompleteViewController.swift */,
 				BF6BC8561E5ADAB20052F4E8 /* Categories */,
 				BD589DF51E8469D100F0C9CD /* Category Expenses */,
 				BD589DF31E8469AA00F0C9CD /* Device */,
@@ -503,7 +509,7 @@
 			name = Common;
 			sourceTree = "<group>";
 		};
-		BF9687C21E58DBB0001CD715 /* Views */ = {
+		BF9687C21E58DBB0001CD715 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
 				BF9687C51E58DBED001CD715 /* BalanceView.swift */,
@@ -519,7 +525,7 @@
 				BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */,
 				BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */,
 			);
-			name = Views;
+			name = "Custom Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -599,6 +605,7 @@
 				BF3792441E09625C0060445D /* iPhone.storyboard in Resources */,
 				BF6BC85E1E5B28240052F4E8 /* SubCategoryHeaderView.xib in Resources */,
 				BD589DED1E83F32A00F0C9CD /* CategoryExpenses.storyboard in Resources */,
+				BD6A1CA01FB88736003148B7 /* AutoComplete.storyboard in Resources */,
 				BD6B69E41E79223400F7AF35 /* iPad.storyboard in Resources */,
 				BD138CB81F7EDDB100CDA4DA /* NavBalanceView.xib in Resources */,
 				BD1DF1861F1F7E8100E52C29 /* DatePickerView.xib in Resources */,
@@ -738,6 +745,7 @@
 				BF2514751E470FD100042FEF /* LoginViewController.swift in Sources */,
 				BF6BC85C1E5B280C0052F4E8 /* SubCategoryHeaderView.swift in Sources */,
 				BDFC610E1E93A0FB00D77087 /* SettingsHeaderView.swift in Sources */,
+				BD6A1C9E1FB88721003148B7 /* AutoCompleteViewController.swift in Sources */,
 				BD8383651EDD5ED700E8B5B2 /* MoneyFlow.swift in Sources */,
 				BFD5AA8A1E52E16100DE10E3 /* Extensions.swift in Sources */,
 				BF9687BD1E58CF1F001CD715 /* CategoriesViewController+UITableView.swift in Sources */,

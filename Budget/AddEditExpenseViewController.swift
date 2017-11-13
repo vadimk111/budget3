@@ -13,10 +13,11 @@ protocol AddEditExpenseViewControllerDelegate {
     func addEditExpenseViewControllerWillDismiss(_ addEditExpenseViewController: AddEditExpenseViewController)
 }
 
-class AddEditExpenseViewController: UIViewController {
+class AddEditExpenseViewController: UIViewController, AutoCompleteViewControllerDelegate {
 
     var parentRef: DatabaseReference?
     var expense: Expense?
+    var autoCompleteViewController: AutoCompleteViewController?
     var delegate: AddEditExpenseViewControllerDelegate?
     
     @IBOutlet weak var o_titleField: UITextField!
@@ -24,11 +25,17 @@ class AddEditExpenseViewController: UIViewController {
     @IBOutlet weak var o_dateLabel: UILabel!
     @IBOutlet weak var o_datePicker: UIDatePicker!
     @IBOutlet weak var o_dateViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var o_autoCompleteContainer: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        o_titleField.addTarget(self, action: #selector(titleChanged), for: .editingChanged)
         o_titleField.text = expense?.title
+        
+        o_autoCompleteContainer.layer.borderWidth = 1
+        o_autoCompleteContainer.layer.borderColor = UIColor(red: 224 / 255, green: 224 / 255, blue: 224 / 255, alpha: 1).cgColor
+        
         if let amount = expense?.amount {
             o_amountField.text = amount.toString()
         }
@@ -47,6 +54,23 @@ class AddEditExpenseViewController: UIViewController {
         
         if o_titleField.text?.count == 0 {
             o_titleField.becomeFirstResponder()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "autoComplete" {
+            autoCompleteViewController = segue.destinationController()
+            autoCompleteViewController?.delegate = self
+        }
+    }
+    
+    @objc func titleChanged() {
+        if o_titleField.text?.count == 0 {
+            autoCompleteViewController?.items = []
+            o_autoCompleteContainer.isHidden = true
+        } else {
+            autoCompleteViewController?.items = ["a", "b", "c", "d", "e"]
+            o_autoCompleteContainer.isHidden = false
         }
     }
     
@@ -84,5 +108,10 @@ class AddEditExpenseViewController: UIViewController {
             delegate?.addEditExpenseViewControllerWillDismiss(self)
             dismiss(animated: true, completion: nil)
         }
+    }
+    
+    func autoCompleteViewController(_ autoCompleteViewController: AutoCompleteViewController, didSelectItem item: String) {
+        o_titleField.text = item
+        o_autoCompleteContainer.isHidden = true
     }
 }
