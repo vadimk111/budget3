@@ -58,6 +58,11 @@ class AddEditIncomeViewController: UIViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.addEditIncomeViewControllerWillDismiss(self)
+    }
+    
     @IBAction func dateChanged(_ sender: UIDatePicker) {
         o_dateLabel.text = sender.date.toString()
     }
@@ -74,7 +79,6 @@ class AddEditIncomeViewController: UIViewController {
     }
     
     @IBAction func didTapCancel(_ sender: UIBarButtonItem) {
-        delegate?.addEditIncomeViewControllerWillDismiss(self)
         dismiss(animated: true, completion: nil)
     }
     
@@ -89,7 +93,6 @@ class AddEditIncomeViewController: UIViewController {
             } else if let income = income {
                 income.update()
             }
-            delegate?.addEditIncomeViewControllerWillDismiss(self)
             dismiss(animated: true, completion: nil)
         }
     }

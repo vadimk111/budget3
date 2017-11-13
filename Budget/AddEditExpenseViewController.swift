@@ -57,6 +57,11 @@ class AddEditExpenseViewController: UIViewController, AutoCompleteViewController
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.addEditExpenseViewControllerWillDismiss(self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "autoComplete" {
             autoCompleteViewController = segue.destinationController()
@@ -86,7 +91,6 @@ class AddEditExpenseViewController: UIViewController, AutoCompleteViewController
     }
     
     @IBAction func didTapCancel(_ sender: UIBarButtonItem) {
-        delegate?.addEditExpenseViewControllerWillDismiss(self)
         dismiss(animated: true, completion: nil)
     }
     
@@ -103,7 +107,6 @@ class AddEditExpenseViewController: UIViewController, AutoCompleteViewController
             }
             
             AutoCompleteHelper.saveText(title)
-            delegate?.addEditExpenseViewControllerWillDismiss(self)
             dismiss(animated: true, completion: nil)
         }
     }
