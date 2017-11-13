@@ -13,20 +13,25 @@ protocol AddEditIncomeViewControllerDelegate {
     func addEditIncomeViewControllerWillDismiss(_ addEditIncomeViewController: AddEditIncomeViewController)
 }
 
-class AddEditIncomeViewController: UIViewController {
+class AddEditIncomeViewController: UIViewController, AutoCompleteViewControllerDelegate {
 
     var listRef: DatabaseReference?
     var income: Income?
     var delegate: AddEditIncomeViewControllerDelegate?
+    var autoCompleteViewController: AutoCompleteViewController?
     
     @IBOutlet weak var o_titleField: UITextField!
     @IBOutlet weak var o_amountField: UITextField!
     @IBOutlet weak var o_dateLabel: UILabel!
     @IBOutlet weak var o_datePicker: UIDatePicker!
     @IBOutlet weak var o_dateViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var o_autoCompleteContainer: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        o_autoCompleteContainer.layer.borderWidth = 1
+        o_autoCompleteContainer.layer.borderColor = UIColor(red: 224 / 255, green: 224 / 255, blue: 224 / 255, alpha: 1).cgColor
         
         if let _ = income {
             title = "Edit Income"
@@ -36,7 +41,9 @@ class AddEditIncomeViewController: UIViewController {
             title = "Add Income"
         }
         
+        o_titleField.addTarget(self, action: #selector(titleChanged), for: .editingChanged)
         o_titleField.text = income?.title
+        
         if let amount = income?.amount {
             o_amountField.text = amount.toString()
         }
@@ -61,6 +68,19 @@ class AddEditIncomeViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         delegate?.addEditIncomeViewControllerWillDismiss(self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "autoComplete" {
+            autoCompleteViewController = segue.destinationController()
+            autoCompleteViewController?.delegate = self
+        }
+    }
+    
+    @objc func titleChanged() {
+        let items = AutoCompleteHelper.getItems(for: o_titleField.text).prefix(3)
+        autoCompleteViewController?.items = Array(items)
+        o_autoCompleteContainer.isHidden = items.count == 0
     }
     
     @IBAction func dateChanged(_ sender: UIDatePicker) {
@@ -93,7 +113,13 @@ class AddEditIncomeViewController: UIViewController {
             } else if let income = income {
                 income.update()
             }
+            AutoCompleteHelper.saveText(title)
             dismiss(animated: true, completion: nil)
         }
+    }
+    
+    func autoCompleteViewController(_ autoCompleteViewController: AutoCompleteViewController, didSelectItem item: String) {
+        o_titleField.text = item
+        o_autoCompleteContainer.isHidden = true
     }
 }
