@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExpensesPhoneViewController: ExpensesBaseDeviceViewController {
+class ExpensesPhoneViewController: ExpensesBaseDeviceViewController, AddEditExpenseViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,12 +28,19 @@ class ExpensesPhoneViewController: ExpensesBaseDeviceViewController {
                 let vc: AddEditExpenseViewController? = segue.destinationController()
                 vc?.expense = expense
                 vc?.title = "Edit Expense"
+                vc?.delegate = self
             }
         }
     }
     
+    //MARK - AddEditExpenseViewControllerDelegate
+    func addEditExpenseViewControllerWillDismiss(_ addEditExpenseViewController: AddEditExpenseViewController) {
+        o_activityIndicator.stopAnimating()
+    }
+    
     //MARK - ExpensesViewControllerDelegate
     override func expensesViewController(_ expensesViewController: ExpensesViewController, didSelect expenseData: ExpenseWithCategoryData) {
+        o_activityIndicator.startAnimating()
         performSegue(withIdentifier: "editExpense", sender: expenseData.expense)
     }
     

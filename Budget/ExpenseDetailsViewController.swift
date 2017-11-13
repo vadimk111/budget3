@@ -8,12 +8,13 @@
 
 import UIKit
 
-class ExpenseDetailsViewController: UIViewController {
+class ExpenseDetailsViewController: UIViewController, AddEditExpenseViewControllerDelegate {
 
     @IBOutlet weak var o_title: UILabel!
     @IBOutlet weak var o_amount: UILabel!
     @IBOutlet weak var o_category: UILabel!
     @IBOutlet weak var o_date: UILabel!
+    @IBOutlet weak var o_activityIndicator: UIActivityIndicatorView!
     
     var expenseData: ExpenseWithCategoryData? {
         didSet {
@@ -45,6 +46,12 @@ class ExpenseDetailsViewController: UIViewController {
             let editVC: AddEditExpenseViewController? = segue.destinationController()
             editVC?.expense = expenseData?.expense
             editVC?.title = "Edit Expense"
+            editVC?.delegate = self
+            o_activityIndicator.startAnimating()
         }
+    }
+    
+    func addEditExpenseViewControllerWillDismiss(_ addEditExpenseViewController: AddEditExpenseViewController) {
+        o_activityIndicator.stopAnimating()
     }
 }
