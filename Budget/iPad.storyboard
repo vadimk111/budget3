@@ -740,6 +740,10 @@
                                 <color key="textColor" red="0.65490196079999996" green="0.45882352939999999" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="gRS-uU-6hF">
+                                <rect key="frame" x="289" y="232" width="37" height="37"/>
+                                <color key="color" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -748,6 +752,7 @@
                             <constraint firstItem="xdQ-DH-ZDU" firstAttribute="top" secondItem="pgn-pe-4bk" secondAttribute="bottom" constant="10" id="23R-FN-DnJ"/>
                             <constraint firstItem="dAa-M8-mUz" firstAttribute="centerX" secondItem="a51-Gv-i8E" secondAttribute="centerX" id="4X6-Og-iRs"/>
                             <constraint firstItem="p4H-q5-sbi" firstAttribute="centerX" secondItem="dAa-M8-mUz" secondAttribute="centerX" id="5x5-Yn-oB3"/>
+                            <constraint firstItem="gRS-uU-6hF" firstAttribute="centerX" secondItem="Itu-ko-bg1" secondAttribute="centerX" id="75V-Bf-dYi"/>
                             <constraint firstItem="l7N-hz-htd" firstAttribute="centerY" secondItem="p4H-q5-sbi" secondAttribute="centerY" id="8JQ-g0-AoN"/>
                             <constraint firstItem="IEK-UU-EkP" firstAttribute="leading" secondItem="Itu-ko-bg1" secondAttribute="centerX" constant="10" id="Acv-3f-AFb"/>
                             <constraint firstItem="l7N-hz-htd" firstAttribute="leading" secondItem="YQQ-JX-OO4" secondAttribute="leading" id="BJX-LV-qpj"/>
@@ -755,6 +760,7 @@
                             <constraint firstItem="YQQ-JX-OO4" firstAttribute="centerY" secondItem="dAa-M8-mUz" secondAttribute="centerY" id="LlE-Qm-hCI"/>
                             <constraint firstItem="rtU-pb-ZAO" firstAttribute="top" secondItem="xdQ-DH-ZDU" secondAttribute="bottom" constant="10" id="bkh-mn-s8d"/>
                             <constraint firstItem="a51-Gv-i8E" firstAttribute="centerY" secondItem="pgn-pe-4bk" secondAttribute="centerY" id="ipM-PD-wQZ"/>
+                            <constraint firstItem="gRS-uU-6hF" firstAttribute="centerY" secondItem="Itu-ko-bg1" secondAttribute="centerY" id="lFM-hc-XaG"/>
                             <constraint firstItem="xdQ-DH-ZDU" firstAttribute="trailing" secondItem="pgn-pe-4bk" secondAttribute="trailing" id="mWy-Wb-n8w"/>
                             <constraint firstItem="p4H-q5-sbi" firstAttribute="centerY" secondItem="rtU-pb-ZAO" secondAttribute="centerY" id="qD0-dm-dgH"/>
                             <constraint firstItem="YQQ-JX-OO4" firstAttribute="leading" secondItem="IEK-UU-EkP" secondAttribute="leading" id="rhi-j1-y92"/>
@@ -766,6 +772,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="o_activityIndicator" destination="gRS-uU-6hF" id="Wz3-a7-v1o"/>
                         <outlet property="o_amount" destination="YQQ-JX-OO4" id="qzg-gJ-V9p"/>
                         <outlet property="o_date" destination="l7N-hz-htd" id="HFu-pc-Dh4"/>
                         <outlet property="o_title" destination="IEK-UU-EkP" id="h6Y-Wo-2pi"/>

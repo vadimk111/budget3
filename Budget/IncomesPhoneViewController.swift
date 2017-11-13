@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IncomesPhoneViewController: IncomesBaseDeviceViewController {
+class IncomesPhoneViewController: IncomesBaseDeviceViewController, AddEditIncomeViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +26,17 @@ class IncomesPhoneViewController: IncomesBaseDeviceViewController {
         } else if segue.identifier == "addIncome" {
             prepareForAddIncome(from: segue)
         } else if segue.identifier == "editIncome" {
-            prepareForEditIncome(from: segue, sender: sender)
+            if let income = sender as? Income {
+                let vc: AddEditIncomeViewController? = segue.destinationController()
+                vc?.income = income
+                vc?.delegate = self
+            }
         }
     }
     
     //MARK - ExpensesViewControllerDelegate
     override func incomesViewController(_ incomesViewController: IncomesViewController, didSelect income: Income) {
+        o_activityIndicator.startAnimating()
         performSegue(withIdentifier: "editIncome", sender: income)
     }
     
@@ -45,5 +50,10 @@ class IncomesPhoneViewController: IncomesBaseDeviceViewController {
     override func dateChanger(_ dateChanger: DateChanger, didChangeDate date: Date) {
         super.dateChanger(dateChanger, didChangeDate: date)
         dismissViewAtBottom()
+    }
+    
+    //MARK - AddEditIncomeViewControllerDelegate
+    func addEditIncomeViewControllerWillDismiss(_ addEditIncomeViewController: AddEditIncomeViewController) {
+        o_activityIndicator.stopAnimating()
     }
 }

@@ -8,11 +8,12 @@
 
 import UIKit
 
-class IncomeDetailsViewController: UIViewController {
+class IncomeDetailsViewController: UIViewController, AddEditIncomeViewControllerDelegate {
 
     @IBOutlet weak var o_title: UILabel!
     @IBOutlet weak var o_amount: UILabel!
     @IBOutlet weak var o_date: UILabel!
+    @IBOutlet weak var o_activityIndicator: UIActivityIndicatorView!
     
     var income: Income? {
         didSet {
@@ -43,6 +44,12 @@ class IncomeDetailsViewController: UIViewController {
             let editVC: AddEditIncomeViewController? = segue.destinationController()
             editVC?.income = income
             editVC?.title = "Edit Income"
+            editVC?.delegate = self
+            o_activityIndicator.startAnimating()
         }
+    }
+    
+    func addEditIncomeViewControllerWillDismiss(_ addEditIncomeViewController: AddEditIncomeViewController) {
+        o_activityIndicator.stopAnimating()
     }
 }

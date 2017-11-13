@@ -9,10 +9,15 @@
 import UIKit
 import FirebaseDatabase
 
+protocol AddEditIncomeViewControllerDelegate {
+    func addEditIncomeViewControllerWillDismiss(_ addEditIncomeViewController: AddEditIncomeViewController)
+}
+
 class AddEditIncomeViewController: UIViewController {
 
     var listRef: DatabaseReference?
     var income: Income?
+    var delegate: AddEditIncomeViewControllerDelegate?
     
     @IBOutlet weak var o_titleField: UITextField!
     @IBOutlet weak var o_amountField: UITextField!
@@ -69,6 +74,7 @@ class AddEditIncomeViewController: UIViewController {
     }
     
     @IBAction func didTapCancel(_ sender: UIBarButtonItem) {
+        delegate?.addEditIncomeViewControllerWillDismiss(self)
         dismiss(animated: true, completion: nil)
     }
     
@@ -83,6 +89,7 @@ class AddEditIncomeViewController: UIViewController {
             } else if let income = income {
                 income.update()
             }
+            delegate?.addEditIncomeViewControllerWillDismiss(self)
             dismiss(animated: true, completion: nil)
         }
     }
