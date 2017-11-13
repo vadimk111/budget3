@@ -65,13 +65,9 @@ class AddEditExpenseViewController: UIViewController, AutoCompleteViewController
     }
     
     @objc func titleChanged() {
-        if o_titleField.text?.count == 0 {
-            autoCompleteViewController?.items = []
-            o_autoCompleteContainer.isHidden = true
-        } else {
-            autoCompleteViewController?.items = ["a", "b", "c", "d", "e"]
-            o_autoCompleteContainer.isHidden = false
-        }
+        let items = AutoCompleteHelper.getItems(for: o_titleField.text).prefix(5)
+        autoCompleteViewController?.items = Array(items)
+        o_autoCompleteContainer.isHidden = items.count == 0
     }
     
     @IBAction func dateChanged(_ sender: UIDatePicker) {
@@ -105,6 +101,8 @@ class AddEditExpenseViewController: UIViewController, AutoCompleteViewController
             } else if let expense = expense {
                 expense.update()
             }
+            
+            AutoCompleteHelper.saveText(title)
             delegate?.addEditExpenseViewControllerWillDismiss(self)
             dismiss(animated: true, completion: nil)
         }

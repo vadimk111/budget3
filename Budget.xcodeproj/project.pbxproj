@@ -22,6 +22,7 @@
 		BD589DF11E8451B200F0C9CD /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD589DF01E8451B200F0C9CD /* Authentication.swift */; };
 		BD6A1C9E1FB88721003148B7 /* AutoCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6A1C9D1FB88721003148B7 /* AutoCompleteViewController.swift */; };
 		BD6A1CA01FB88736003148B7 /* AutoComplete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD6A1C9F1FB88736003148B7 /* AutoComplete.storyboard */; };
+		BD6A1CA21FB97AA8003148B7 /* AutoCompleteHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6A1CA11FB97AA8003148B7 /* AutoCompleteHelper.swift */; };
 		BD6B69E41E79223400F7AF35 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD6B69E31E79223400F7AF35 /* iPad.storyboard */; };
 		BD6B69EA1E79544F00F7AF35 /* CategoriesPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B69E91E79544F00F7AF35 /* CategoriesPadViewController.swift */; };
 		BD82C7F31E8AF00D009EB6A6 /* MainPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD82C7F21E8AF00D009EB6A6 /* MainPadViewController.swift */; };
@@ -125,6 +126,7 @@
 		BD589DF01E8451B200F0C9CD /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		BD6A1C9D1FB88721003148B7 /* AutoCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteViewController.swift; sourceTree = "<group>"; };
 		BD6A1C9F1FB88736003148B7 /* AutoComplete.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AutoComplete.storyboard; sourceTree = "<group>"; };
+		BD6A1CA11FB97AA8003148B7 /* AutoCompleteHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteHelper.swift; sourceTree = "<group>"; };
 		BD6B69E31E79223400F7AF35 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
 		BD6B69E91E79544F00F7AF35 /* CategoriesPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesPadViewController.swift; sourceTree = "<group>"; };
 		BD82C7F21E8AF00D009EB6A6 /* MainPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPadViewController.swift; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 		BF25146D1E46610F00042FEF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BD6A1CA11FB97AA8003148B7 /* AutoCompleteHelper.swift */,
 				BF25146E1E46612200042FEF /* Category.swift */,
 				BF00F4911E4D348F00D5D743 /* Expense.swift */,
 				BFD5AA891E52E16100DE10E3 /* Extensions.swift */,
@@ -773,6 +776,7 @@
 				BD83837F1EDF24BA00E8B5B2 /* IncomesPhoneViewController.swift in Sources */,
 				BFCA1B7F1E4E3A450023AB55 /* ExpenseTableViewCell.swift in Sources */,
 				BF37924A1E09633C0060445D /* SettingsViewController.swift in Sources */,
+				BD6A1CA21FB97AA8003148B7 /* AutoCompleteHelper.swift in Sources */,
 				BDCDA0251F1756B2008AB2A6 /* FacebookHelper.swift in Sources */,
 				BD8383691EDD5FEF00E8B5B2 /* AddEditIncomeViewController.swift in Sources */,
 				BDFC60F61E914F3F00D77087 /* CategoryExpensesViewController+Firebase.swift in Sources */,
