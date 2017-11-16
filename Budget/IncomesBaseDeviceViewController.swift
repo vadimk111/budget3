@@ -35,13 +35,6 @@ class IncomesBaseDeviceViewController: UIViewController, DateChangerDelegate, In
         }
     }
     
-    func prepareForEditIncome(from segue: UIStoryboardSegue, sender: Any?) {
-        if let income = sender as? Income {
-            let vc: AddEditIncomeViewController? = segue.destinationController()
-            vc?.income = income
-        }
-    }
-    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }

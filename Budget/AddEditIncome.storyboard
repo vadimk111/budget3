@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Add Income-->
         <scene sceneID="jAp-bo-g2b">
@@ -134,6 +139,16 @@
                                     <constraint firstItem="3yW-2x-Vjx" firstAttribute="leading" secondItem="KIW-5S-XPk" secondAttribute="leading" id="p8m-Pt-ECM"/>
                                 </constraints>
                             </view>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lcZ-Rw-dAi">
+                                <rect key="frame" x="16" y="117" width="343" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="b8u-5S-S3x"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="x2i-Ci-tO4" kind="embed" identifier="autoComplete" id="PZ9-6a-cFc"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -143,6 +158,9 @@
                             <constraint firstItem="H79-xE-1xs" firstAttribute="leading" secondItem="ybl-bA-bDT" secondAttribute="leadingMargin" id="KMG-xK-LuA"/>
                             <constraint firstItem="0B9-TN-0gB" firstAttribute="leading" secondItem="ybl-bA-bDT" secondAttribute="leadingMargin" id="KMJ-bX-yg5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H79-xE-1xs" secondAttribute="trailing" id="Thf-X0-hXO"/>
+                            <constraint firstItem="lcZ-Rw-dAi" firstAttribute="leading" secondItem="H79-xE-1xs" secondAttribute="leading" id="bMX-M9-eia"/>
+                            <constraint firstItem="lcZ-Rw-dAi" firstAttribute="top" secondItem="H79-xE-1xs" secondAttribute="bottom" constant="-1" id="cWq-Ph-hjh"/>
+                            <constraint firstItem="lcZ-Rw-dAi" firstAttribute="trailing" secondItem="H79-xE-1xs" secondAttribute="trailing" id="knd-Q5-S64"/>
                             <constraint firstItem="KIW-5S-XPk" firstAttribute="leading" secondItem="ybl-bA-bDT" secondAttribute="leadingMargin" id="mmj-Fq-9I1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KIW-5S-XPk" secondAttribute="trailing" id="ob7-8f-3w9"/>
                             <constraint firstItem="KIW-5S-XPk" firstAttribute="top" secondItem="0B9-TN-0gB" secondAttribute="bottom" id="s0c-ZK-vGR"/>
@@ -164,6 +182,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="o_amountField" destination="YvK-TI-mc9" id="x0W-CD-JaV"/>
+                        <outlet property="o_autoCompleteContainer" destination="lcZ-Rw-dAi" id="7kr-P5-6Qc"/>
                         <outlet property="o_dateLabel" destination="K37-Vn-t2w" id="FVJ-4S-DLV"/>
                         <outlet property="o_datePicker" destination="yNb-Xv-zzO" id="wji-Df-77J"/>
                         <outlet property="o_dateViewConstraint" destination="Azb-dc-B93" id="FHS-mc-EMh"/>
@@ -179,13 +198,21 @@
             </objects>
             <point key="canvasLocation" x="2092" y="136.28185907046478"/>
         </scene>
+        <!--AutoComplete-->
+        <scene sceneID="auF-YS-nly">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AutoComplete" referencedIdentifier="AutoComplete" id="x2i-Ci-tO4" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qsn-4t-YIe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2628" y="142"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="iSD-FR-DDq">
             <objects>
                 <navigationController storyboardIdentifier="AddEditIncome" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="n8l-uK-IaU" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qLJ-TM-XTb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
