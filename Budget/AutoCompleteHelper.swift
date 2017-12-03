@@ -11,7 +11,7 @@ import Foundation
 class AutoCompleteHelper {
     static func getItems(for text: String?) -> [String] {
         if let text = text, text.count > 0, let key = getKey(), let arr = UserDefaults.standard.array(forKey: key) as? [String] {
-            return arr.filter({ $0.starts(with: text) })
+            return arr.filter({ $0.starts(with: text) && $0 != text })
         }
         return []
     }
