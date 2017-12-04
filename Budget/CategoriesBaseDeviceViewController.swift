@@ -32,6 +32,8 @@ class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderView
         o_categoriesHeaderView.fill(with: [], date: Date())
         
         reload()
+        
+        present(TipViewController.instantiate(), animated: false, completion: nil)
     }
     
     deinit {

@@ -46,6 +46,7 @@
 		BDCDA0251F1756B2008AB2A6 /* FacebookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA0241F1756B2008AB2A6 /* FacebookHelper.swift */; };
 		BDCDA0311F1CC9BA008AB2A6 /* ViewController+Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA0301F1CC9BA008AB2A6 /* ViewController+Picker.swift */; };
 		BDE175B71F7C298400CE6125 /* Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE175B61F7C298400CE6125 /* Sharing.swift */; };
+		BDF64A821FBDDC3700F584BB /* TipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF64A811FBDDC3700F584BB /* TipViewController.swift */; };
 		BDFC60E61E8CFF1D00D77087 /* Expenses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */; };
 		BDFC60E81E8D02D300D77087 /* ExpensesPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */; };
 		BDFC60EA1E8D036000D77087 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */; };
@@ -150,6 +151,7 @@
 		BDCDA0241F1756B2008AB2A6 /* FacebookHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookHelper.swift; sourceTree = "<group>"; };
 		BDCDA0301F1CC9BA008AB2A6 /* ViewController+Picker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+Picker.swift"; sourceTree = "<group>"; };
 		BDE175B61F7C298400CE6125 /* Sharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sharing.swift; sourceTree = "<group>"; };
+		BDF64A811FBDDC3700F584BB /* TipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipViewController.swift; sourceTree = "<group>"; };
 		BDFC60E51E8CFF1D00D77087 /* Expenses.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Expenses.storyboard; sourceTree = "<group>"; };
 		BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesPadViewController.swift; sourceTree = "<group>"; };
 		BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 				BF6BC8591E5ADB610052F4E8 /* Main */,
 				BD589DF41E8469B100F0C9CD /* Settings */,
 				BDCDA0301F1CC9BA008AB2A6 /* ViewController+Picker.swift */,
+				BDF64A811FBDDC3700F584BB /* TipViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -755,6 +758,7 @@
 				BD3D40761E87965800C3CCAF /* CategoryExpensesViewController+UITableView.swift in Sources */,
 				BDFC61441E97D7BA00D77087 /* Reminder.swift in Sources */,
 				BD589DF11E8451B200F0C9CD /* Authentication.swift in Sources */,
+				BDF64A821FBDDC3700F584BB /* TipViewController.swift in Sources */,
 				BDFC60EA1E8D036000D77087 /* ExpensesViewController.swift in Sources */,
 				BF37922E1E0933D00060445D /* AppDelegate.swift in Sources */,
 				BDCDA0311F1CC9BA008AB2A6 /* ViewController+Picker.swift in Sources */,
