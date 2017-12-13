@@ -6,7 +6,7 @@ target ‘Budget’ do
   use_frameworks!
 
   pod 'Firebase/Core'
-  pod 'Firebase/Database', '~> 4.0.0'
+  pod 'Firebase/Database'
   pod 'Firebase/Auth'
   
   pod 'FacebookCore'
