@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     var window: UIWindow?
     var user: User?
-    var automaticAuthenticationCompleted = false
     var notificationsAllowed = false
     var dbToShare: String?
 
@@ -90,10 +89,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
             
             if let _ = dbToShare {
-                if self.automaticAuthenticationCompleted {
-                    self.onSignInStateChanged()
+                if let _ = user {
+                    self.importSharedBudget()
                 } else {
-                    NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
+                    NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.importSharedBudget), name: signInStateChangedNotification, object: nil)
                 }
             }
             
@@ -109,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return window?.rootViewController
     }
     
-    @objc func onSignInStateChanged() {
+    @objc func importSharedBudget() {
         NotificationCenter.default.removeObserver(self, name: signInStateChangedNotification, object: nil)
         
         if let dbId = dbToShare {
@@ -132,10 +131,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     NotificationCenter.default.post(Notification(name: sharedBudgetAddedNotification))
                 }))
                 showSharingDialog(a)
-            } else {
-                let a = UIAlertController(title: "", message: "Budget sharing allowed only for signed-in users", preferredStyle: .alert)
-                a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in })
-                topViewController()?.present(a, animated: true, completion: nil)
             }
             dbToShare = nil
         }
@@ -144,7 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func showSharingDialog(_ dialog: UIAlertController) {
         let top = topViewController()
         if (top as? UINavigationController)?.viewControllers.first is LoginViewController {
-            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [unowned self] (timer) in
+            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (timer) in
                 self.showSharingDialog(dialog)
             })
         } else {

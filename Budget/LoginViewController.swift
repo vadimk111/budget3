@@ -21,6 +21,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var o_email: UITextField!
     @IBOutlet weak var o_password: UITextField!
     @IBOutlet weak var o_fbLoginButton: FBSDKLoginButton!
+    @IBOutlet weak var o_sigInButton: UIButton!
+    @IBOutlet weak var o_resetPasswordButton: UIButton!
+    @IBOutlet weak var o_skipButton: UIButton!
+    @IBOutlet weak var o_signInTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var o_resetTopConstraint: NSLayoutConstraint!
     
     weak var delegate: LoginViewControllerDelegate?
     weak var facebookLoginDelegate: FBSDKLoginButtonDelegate?
@@ -59,6 +64,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         o_fbLoginButton.readPermissions = facebookReadPermissions
         o_fbLoginButton.delegate = facebookLoginDelegate
+        
+        if let _ = APP.user {
+            o_sigInButton.isHidden = true
+            o_signInTopConstraint.constant = -o_sigInButton.frame.height
+            
+            o_resetPasswordButton.isHidden = true
+            o_resetTopConstraint.constant = -o_resetPasswordButton.frame.height
+            
+            o_skipButton.setTitle("Continue as Anonymous", for: .normal)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,12 +111,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapSkip(_ sender: UIButton) {
-        let a = UIAlertController(title: "Benefits of Registration", message: "Registered users are able to sync their data between devices and restore the data from the backup\nTransition from anonymous mode to registered will not copy your data", preferredStyle: UIAlertControllerStyle.alert)
-        a.addAction(UIAlertAction(title: "Back to Login", style: .default) { action -> Void in
-        })
-        a.addAction(UIAlertAction(title: "Skip", style: .destructive) { action -> Void in
-            self.delegate?.loginViewControllerSkip(self)
-        })
-        present(a, animated: true, completion: nil)
+        self.delegate?.loginViewControllerSkip(self)
     }
 }

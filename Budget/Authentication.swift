@@ -13,7 +13,6 @@ import FBSDKLoginKit
 
 let signInStateChangedNotification = Notification.Name(rawValue: "signInStateChanged")
 let facebookLinkedChangeNotification = Notification.Name(rawValue: "facebookLinkedChange")
-let anonymous = "-anonymous-"
 let facebookReadPermissions = ["public_profile", "email"]
 
 protocol AuthenticationDelegate: class {
@@ -29,6 +28,21 @@ class Authentication: NSObject {
     var loginViewController: LoginViewController?
     var linkAccountsViewController: LinkAccountsViewController?
     
+    public static let shared = Authentication()
+    
+    override init() {
+        super.init()
+        
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            APP.user = user
+            self.notifyStateChanged()
+
+            if user == nil {
+                self.showSignInView()
+            }
+        }
+    }
+    
     func notifyStateChanged() {
         NotificationCenter.default.post(Notification(name: signInStateChangedNotification))
     }
@@ -37,42 +51,7 @@ class Authentication: NSObject {
         NotificationCenter.default.post(Notification(name: facebookLinkedChangeNotification))
     }
     
-    func automaticSignIn() {
-        if let email = UserDefaults.standard.string(forKey: "email"), let password = UserDefaults.standard.string(forKey: "password") {
-            if email.contains(anonymous) {
-                notifyStateChanged()
-            } else {
-                Auth.auth().signIn(withEmail: email, password: password) { [weak self] (user, error) in
-                    if let error = error {
-                        self?.automaticSignInFailed(with: error)
-                    } else if let user = user {
-                        APP.user = user
-                        self?.notifyStateChanged()
-                    }
-                }
-            }
-        } else if let authMethod = UserDefaults.standard.string(forKey: "auth_method") {
-            if authMethod == "facebook" {
-                if let token = FBSDKAccessToken.current().tokenString {
-                    let credential = FacebookAuthProvider.credential(withAccessToken: token)
-                    Auth.auth().signIn(with: credential) { [weak self] (user, error) in
-                        if let error = error {
-                            self?.automaticSignInFailed(with: error)
-                        } else if let user = user {
-                            APP.user = user
-                            self?.notifyStateChanged()
-                        }
-                    }
-                }
-            } else {
-                self.manualSignIn()
-            }
-        } else {
-            self.manualSignIn()
-        }
-    }
-    
-    func manualSignIn() {
+    func showSignInView() {
         loginViewController = LoginViewController(delegate: self, facebookLoginDelegate: self)
         self.delegate?.authentication(self, shouldDisplayViewController: UINavigationController(rootViewController: loginViewController!))
     }
@@ -96,8 +75,6 @@ class Authentication: NSObject {
                 } else {
                     self?.notifyFacebookLinkedChange()
                     FBSDKLoginManager().logOut()
-                    UserDefaults.standard.removeObject(forKey: "auth_method")
-                    UserDefaults.standard.synchronize()
                 }
             }
         }
@@ -108,11 +85,14 @@ class Authentication: NSObject {
     }
     
     static func canDisconnectFacebookAccount() -> Bool {
-        return APP.user != nil && FBSDKAccessToken.current() != nil && APP.user!.providerData.count > 1
+        if let user = APP.user {
+            return FBSDKAccessToken.current() != nil && user.providerData.count > 1
+        }
+        return false
     }
     
     static func isOnlyFacebookAccountRegistered() -> Bool {
-        return isFacebookAccountConnected() && APP.user!.providerData.count == 1
+        return isFacebookAccountConnected() && APP.user?.providerData.count == 1
     }
     
     static func facebookProviderID() -> String? {
@@ -130,28 +110,11 @@ class Authentication: NSObject {
         do {
             try Auth.auth().signOut()
         } catch {
-            
         }
         
         FBSDKLoginManager().logOut()
-        
-        APP.user = nil
-        UserDefaults.standard.removeObject(forKey: "email")
-        UserDefaults.standard.removeObject(forKey: "password")
-        UserDefaults.standard.removeObject(forKey: "auth_method")
-        UserDefaults.standard.synchronize()
-        
-        notifyStateChanged()
     }
-    
-    func automaticSignInFailed(with error: Error) {
-        let a = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
-        a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in
-            self.manualSignIn()
-        })
-        delegate?.authentication(self, shouldDisplayAlert: a)
-    }
-    
+
     func showError(_ error: Error, on viewController: UIViewController) {
         let a = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
         a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in
@@ -165,35 +128,30 @@ class Authentication: NSObject {
         })
         delegate?.authentication(self, shouldDisplayAlert: a)
     }
-    
-    func passwordSignInSucceded(with user: User) {
-        APP.user = user
-        UserDefaults.standard.set(loginViewController?.email, forKey: "email")
-        UserDefaults.standard.set(loginViewController?.password, forKey: "password")
-        UserDefaults.standard.synchronize()
-        delegate?.authenticationShouldDismissViewController(self)
-        self.notifyStateChanged()
-    }
-    
-    func facebookSignInSucceded(with user: User) {
-        APP.user = user
-        UserDefaults.standard.set("facebook", forKey: "auth_method")
-        if let email = UserDefaults.standard.string(forKey: "email"), email.contains(anonymous) {
-            UserDefaults.standard.removeObject(forKey: "email")
-        }
-        UserDefaults.standard.synchronize()
-        delegate?.authenticationShouldDismissViewController(self)
-        self.notifyStateChanged()
-    }
 }
 
 extension Authentication: LoginViewControllerDelegate {
     func loginViewControllerCreate(_ loginViewController: LoginViewController) {
-        Auth.auth().createUser(withEmail: loginViewController.email, password: loginViewController.password) { (user, error) in
-            if let error = error {
-                self.showError(error, on: loginViewController)
-            } else if let user = user {
-                self.passwordSignInSucceded(with: user)
+        let email = loginViewController.email
+        let password = loginViewController.password
+
+        if let anonymousUser = APP.user {
+            let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+            anonymousUser.link(with: credential, completion: { (user, error) in
+                if let error = error {
+                    self.showError(error, on: loginViewController)
+                } else {
+                    self.notifyStateChanged()
+                    self.delegate?.authenticationShouldDismissViewController(self)
+                }
+            })
+        } else {
+            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+                if let error = error {
+                    self.showError(error, on: loginViewController)
+                } else {
+                    self.delegate?.authenticationShouldDismissViewController(self)
+                }
             }
         }
     }
@@ -202,8 +160,8 @@ extension Authentication: LoginViewControllerDelegate {
         Auth.auth().signIn(withEmail: loginViewController.email, password: loginViewController.password) { (user, error) in
             if let error = error {
                 self.showError(error, on: loginViewController)
-            } else if let user = user {
-                self.passwordSignInSucceded(with: user)
+            } else {
+                self.delegate?.authenticationShouldDismissViewController(self)
             }
         }
     }
@@ -222,12 +180,17 @@ extension Authentication: LoginViewControllerDelegate {
     }
     
     func loginViewControllerSkip(_ loginViewController: LoginViewController) {
-        UserDefaults.standard.set(anonymous + UUID().uuidString, forKey: "email")
-        UserDefaults.standard.set("-1", forKey: "password")
-        UserDefaults.standard.removeObject(forKey: "auth_method")
-        UserDefaults.standard.synchronize()
-        delegate?.authenticationShouldDismissViewController(self)
-        notifyStateChanged()
+        if APP.user == nil {
+            Auth.auth().signInAnonymously { (user, error) in
+                if let error = error {
+                    self.showError(error, on: loginViewController)
+                } else {
+                    self.delegate?.authenticationShouldDismissViewController(self)
+                }
+            }
+        } else {
+            self.delegate?.authenticationShouldDismissViewController(self)
+        }
     }
 }
 
@@ -239,21 +202,20 @@ extension Authentication: FBSDKLoginButtonDelegate {
             }
         } else if let token = result.token {
             let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
-            Auth.auth().signIn(with: credential) { [weak self] (user, error) in
-                guard let this = self else { return }
+            Auth.auth().signIn(with: credential) { (user, error) in
                 if let error = error {
                     if let error_name = (error as NSError?)?.userInfo["error_name"] as? String, error_name == "ERROR_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL" {
-                        this.linkAccountsViewController = LinkAccountsViewController()
-                        this.linkAccountsViewController?.delegate = this
-                        this.linkAccountsViewController?.email = (error as NSError?)?.userInfo["FIRAuthErrorUserInfoEmailKey"] as? String
-                        this.loginViewController?.navigationController?.pushViewController(this.linkAccountsViewController!, animated: true)
+                        self.linkAccountsViewController = LinkAccountsViewController()
+                        self.linkAccountsViewController?.delegate = self
+                        self.linkAccountsViewController?.email = (error as NSError?)?.userInfo["FIRAuthErrorUserInfoEmailKey"] as? String
+                        self.loginViewController?.navigationController?.pushViewController(self.linkAccountsViewController!, animated: true)
                     } else {
-                        if let _ = this.loginViewController {
-                            this.showError(error, on: this.loginViewController!)
+                        if let _ = self.loginViewController {
+                            self.showError(error, on: self.loginViewController!)
                         }
                     }
-                } else if let user = user {
-                    this.facebookSignInSucceded(with: user)
+                } else {
+                    self.delegate?.authenticationShouldDismissViewController(self)
                 }
             }
         }
@@ -272,11 +234,11 @@ extension Authentication: LinkAccountsViewControllerDelegate {
                 self.showError(error, on: linkAccountsViewController)
             } else if let user = user {
                 let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-                user.link(with: credential) { [weak self] (user, error) in
+                user.link(with: credential) { (user, error) in
                     if let error = error {
-                        self?.showError(error, on: linkAccountsViewController)
-                    } else if let user = user {
-                        self?.facebookSignInSucceded(with: user)
+                        self.showError(error, on: linkAccountsViewController)
+                    } else {
+                        self.delegate?.authenticationShouldDismissViewController(self)
                     }
                 }
             }

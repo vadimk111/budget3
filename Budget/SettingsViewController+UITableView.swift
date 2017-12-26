@@ -17,7 +17,7 @@ extension SettingsViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            if APP.user == nil {
+            if APP.user?.isAnonymous == true {
                 return 1
             }
             if !Authentication.isFacebookAccountConnected() {
@@ -173,17 +173,11 @@ extension SettingsViewController {
         } else if indexPath.section == 1 {
             if indexPath.row == 0 {
                 let share = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Share", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
-                    if let user = APP.user {
-                        if let url = URL(string: "\(appPrefix + user.uid)") {
-                            let objectsToShare = ["Join my Budget Doctor:", url] as [Any]
-                            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-                            activityVC.excludedActivityTypes = [.airDrop, .saveToCameraRoll, . addToReadingList, .openInIBooks]
-                            self.present(activityVC, animated: true, completion: nil)
-                        }
-                    } else {
-                        let a = UIAlertController(title: "Oops", message: "Sharing is available for signed-in users only", preferredStyle: .alert)
-                        a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in })
-                        self.present(a, animated: true, completion: nil)
+                    if let user = APP.user, let url = URL(string: "\(appPrefix + user.uid)") {
+                        let objectsToShare = ["Join my Budget Doctor:", url] as [Any]
+                        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                        activityVC.excludedActivityTypes = [.airDrop, .saveToCameraRoll, . addToReadingList, .openInIBooks]
+                        self.present(activityVC, animated: true, completion: nil)
                     }
                 })
                 return [share]

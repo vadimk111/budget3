@@ -15,16 +15,8 @@ let remindersDatakey = "remindersData"
 let reminderNotification = "REMINDERNOTIFICATION"
 let defaultBudgetId = "---default---"
 
-protocol SettingsViewControllerDelegate: class {
-    func settingsViewController(_ settingsViewController: SettingsViewController, shouldDisplayViewController viewController: UIViewController)
-    func settingsViewControllerShouldDismissViewController(_ settingsViewController: SettingsViewController)
-    func settingsViewController(_ settingsViewController: SettingsViewController, shouldDisplayAlert alert: UIAlertController)
-}
-
 class SettingsViewController: UITableViewController, AddEditReminderViewControllerDelegate {
 
-    weak var delegate: SettingsViewControllerDelegate?
-    var authentication: Authentication?
     var reminders: [ReminderData] = []
     var selectedReminderRow: IndexPath?
     var showReminders = UserDefaults.standard.bool(forKey: showReminderskey)
@@ -177,14 +169,6 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
             
             UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
             })
-        }
-    }
-    
-    func displayAlert(_ alert: UIAlertController) {
-        if let delegate = delegate {
-            delegate.settingsViewController(self, shouldDisplayAlert: alert)
-        } else {
-            present(alert, animated: true, completion: nil)
         }
     }
 }

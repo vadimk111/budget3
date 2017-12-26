@@ -21,9 +21,6 @@ class ModelHelper {
             dbId = sharingDB
         } else {
             dbId = APP.user?.uid
-            if dbId == nil && APP.automaticAuthenticationCompleted {
-                dbId = UserDefaults.standard.string(forKey: "email")
-            }
         }
         if let dbId = dbId {
             let calendar = Calendar.current
