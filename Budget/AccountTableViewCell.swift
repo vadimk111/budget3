@@ -8,16 +8,8 @@
 
 import UIKit
 
-protocol AccountTableViewCellDelegate: class {
-    func accountTableViewCellWillSignOut(_ accountTableViewCell: AccountTableViewCell)
-}
-
 class AccountTableViewCell: UITableViewCell {
-
-    weak var delegate: AccountTableViewCellDelegate?
-    
-    @IBOutlet weak var o_logoutButton: UIButton!
-    @IBOutlet weak var o_loginButton: UIButton!
+ 
     @IBOutlet weak var o_label: UILabel!
     @IBOutlet weak var o_facebookImage: UIImageView! {
         didSet {
@@ -50,23 +42,14 @@ class AccountTableViewCell: UITableViewCell {
                 o_imageLeadingConstraint.constant = -24
                 o_facebookImage.isHidden = true
             }
-            o_logoutButton.isHidden = false
-            o_loginButton.isHidden = true
         } else {
             o_label.text = "Anonymous"
-            o_loginButton.isHidden = false
-            o_logoutButton.isHidden = true
             o_imageLeadingConstraint.constant = -24
             o_facebookImage.isHidden = true
         }
     }
     
-    @IBAction func didTapLogin(_ sender: UIButton) {
-        Authentication.shared.showSignInView()
-    }
-    
     @IBAction func didTapLogout(_ sender: UIButton) {
-        delegate?.accountTableViewCellWillSignOut(self)
         Authentication.shared.signOut()
     }
 }

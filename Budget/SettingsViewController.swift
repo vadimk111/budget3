@@ -64,7 +64,11 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
     }
     
     @objc func onSignInStateChanged() {
-        loadSharings()
+        if let _ = APP.user {
+            loadSharings()
+        } else {
+            clearSharings()
+        }
         tableView.reloadSections([0], with: .none)
     }
     
@@ -91,6 +95,13 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
             
             self.tableView.reloadSections([1], with: .fade)
         })
+    }
+    
+    func clearSharings() {
+        sharings = []
+        sharings.append(defaultBudget)
+        selectedSharingRow = 0
+        tableView.reloadSections([1], with: .none)
     }
     
     func saveReminders() {

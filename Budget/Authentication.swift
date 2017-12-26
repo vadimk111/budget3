@@ -107,11 +107,23 @@ class Authentication: NSObject {
     }
     
     func signOut() {
+        if APP.user?.isAnonymous == true {
+            let a = UIAlertController(title: "Attention", message: "Sign out of anonymous account will loose all your data", preferredStyle: .alert)
+            a.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            a.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) in
+                self.signOutInt()
+            }))
+            self.delegate?.authentication(self, shouldDisplayAlert: a)
+        } else {
+            signOutInt()
+        }
+    }
+    
+    private func signOutInt() {
         do {
             try Auth.auth().signOut()
         } catch {
         }
-        
         FBSDKLoginManager().logOut()
     }
 
@@ -202,20 +214,31 @@ extension Authentication: FBSDKLoginButtonDelegate {
             }
         } else if let token = result.token {
             let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
-            Auth.auth().signIn(with: credential) { (user, error) in
-                if let error = error {
-                    if let error_name = (error as NSError?)?.userInfo["error_name"] as? String, error_name == "ERROR_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL" {
-                        self.linkAccountsViewController = LinkAccountsViewController()
-                        self.linkAccountsViewController?.delegate = self
-                        self.linkAccountsViewController?.email = (error as NSError?)?.userInfo["FIRAuthErrorUserInfoEmailKey"] as? String
-                        self.loginViewController?.navigationController?.pushViewController(self.linkAccountsViewController!, animated: true)
-                    } else {
+            if let anonymousUser = APP.user {
+                anonymousUser.link(with: credential, completion: { (user, error) in
+                    if let error = error {
                         if let _ = self.loginViewController {
                             self.showError(error, on: self.loginViewController!)
                         }
+                    } else {
+                        self.notifyStateChanged()
+                        self.delegate?.authenticationShouldDismissViewController(self)
                     }
-                } else {
-                    self.delegate?.authenticationShouldDismissViewController(self)
+                })
+            } else {
+                Auth.auth().signIn(with: credential) { (user, error) in
+                    if let error = error {
+                        if let error_name = (error as NSError?)?.userInfo["error_name"] as? String, error_name == "ERROR_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL" {
+                            self.linkAccountsViewController = LinkAccountsViewController()
+                            self.linkAccountsViewController?.delegate = self
+                            self.linkAccountsViewController?.email = (error as NSError?)?.userInfo["FIRAuthErrorUserInfoEmailKey"] as? String
+                            self.loginViewController?.navigationController?.pushViewController(self.linkAccountsViewController!, animated: true)
+                        } else if let _ = self.loginViewController {
+                            self.showError(error, on: self.loginViewController!)
+                        }
+                    } else {
+                        self.delegate?.authenticationShouldDismissViewController(self)
+                    }
                 }
             }
         }

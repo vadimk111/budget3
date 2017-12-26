@@ -18,7 +18,7 @@ extension SettingsViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             if APP.user?.isAnonymous == true {
-                return 1
+                return 2
             }
             if !Authentication.isFacebookAccountConnected() {
                 return 2
@@ -47,15 +47,18 @@ extension SettingsViewController {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "accountCells", for: indexPath) as! AccountTableViewCell
-                cell.delegate = self
                 cell.build()
                 return cell
             }
             if indexPath.row == 1 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "facebookCells", for: indexPath) as! FacebookTableViewCell
-                cell.delegate = self
-                cell.isConnected = Authentication.isFacebookAccountConnected()
-                return cell
+                if APP.user?.isAnonymous == true {
+                    return tableView.dequeueReusableCell(withIdentifier: "anonymousCells", for: indexPath) as! AnonymousTableViewCell
+                } else {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "facebookCells", for: indexPath) as! FacebookTableViewCell
+                    cell.delegate = self
+                    cell.isConnected = Authentication.isFacebookAccountConnected()
+                    return cell
+                }
             }
             return UITableViewCell()
         } else if indexPath.section == 1 {

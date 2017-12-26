@@ -10,15 +10,6 @@ import UIKit
 import UserNotifications
 import FBSDKLoginKit
 
-extension SettingsViewController: AccountTableViewCellDelegate {
-    func accountTableViewCellWillSignOut(_ accountTableViewCell: AccountTableViewCell) {
-        sharings = []
-        sharings.append(defaultBudget)
-        selectedSharingRow = 0
-        tableView.reloadSections([1], with: .none)
-    }
-}
-
 extension SettingsViewController: RemindersTableViewCellDelegate {
     func remindersTableViewCell(_ reminderTableViewCell: RemindersTableViewCell, didRequest showReminders: Bool) {
         self.showReminders = showReminders
