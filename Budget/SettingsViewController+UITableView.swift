@@ -12,6 +12,9 @@ import UserNotifications
 extension SettingsViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
+        if APP.user == nil {
+            return 0
+        }
         return 5
     }
     

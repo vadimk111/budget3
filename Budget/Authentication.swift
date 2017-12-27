@@ -16,9 +16,7 @@ let facebookLinkedChangeNotification = Notification.Name(rawValue: "facebookLink
 let facebookReadPermissions = ["public_profile", "email"]
 
 protocol AuthenticationDelegate: class {
-    func authentication(_ authentication: Authentication, shouldDisplayViewController viewController: UIViewController)
-    func authentication(_ authentication: Authentication, shouldDisplayAlert alert: UIAlertController)
-    func authenticationShouldDismissViewController(_ authentication: Authentication)
+    func authentication(_ authentication: Authentication, needsDisplay viewController: UIViewController)
 }
 
 class Authentication: NSObject {
@@ -53,7 +51,7 @@ class Authentication: NSObject {
     
     func showSignInView() {
         loginViewController = LoginViewController(delegate: self, facebookLoginDelegate: self)
-        self.delegate?.authentication(self, shouldDisplayViewController: UINavigationController(rootViewController: loginViewController!))
+        self.delegate?.authentication(self, needsDisplay: UINavigationController(rootViewController: loginViewController!))
     }
     
     func connectFacebookAccount(token: String) {
@@ -113,7 +111,7 @@ class Authentication: NSObject {
             a.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) in
                 self.signOutInt()
             }))
-            self.delegate?.authentication(self, shouldDisplayAlert: a)
+            self.delegate?.authentication(self, needsDisplay: a)
         } else {
             signOutInt()
         }
@@ -138,7 +136,7 @@ class Authentication: NSObject {
         let a = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
         a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in
         })
-        delegate?.authentication(self, shouldDisplayAlert: a)
+        delegate?.authentication(self, needsDisplay: a)
     }
 }
 
@@ -154,7 +152,7 @@ extension Authentication: LoginViewControllerDelegate {
                     self.showError(error, on: loginViewController)
                 } else {
                     self.notifyStateChanged()
-                    self.delegate?.authenticationShouldDismissViewController(self)
+                    loginViewController.dismiss(animated: true)
                 }
             })
         } else {
@@ -162,7 +160,7 @@ extension Authentication: LoginViewControllerDelegate {
                 if let error = error {
                     self.showError(error, on: loginViewController)
                 } else {
-                    self.delegate?.authenticationShouldDismissViewController(self)
+                    loginViewController.dismiss(animated: true)
                 }
             }
         }
@@ -173,7 +171,7 @@ extension Authentication: LoginViewControllerDelegate {
             if let error = error {
                 self.showError(error, on: loginViewController)
             } else {
-                self.delegate?.authenticationShouldDismissViewController(self)
+                loginViewController.dismiss(animated: true)
             }
         }
     }
@@ -197,11 +195,11 @@ extension Authentication: LoginViewControllerDelegate {
                 if let error = error {
                     self.showError(error, on: loginViewController)
                 } else {
-                    self.delegate?.authenticationShouldDismissViewController(self)
+                    loginViewController.dismiss(animated: true)
                 }
             }
         } else {
-            self.delegate?.authenticationShouldDismissViewController(self)
+            loginViewController.dismiss(animated: true)
         }
     }
 }
@@ -222,7 +220,7 @@ extension Authentication: FBSDKLoginButtonDelegate {
                         }
                     } else {
                         self.notifyStateChanged()
-                        self.delegate?.authenticationShouldDismissViewController(self)
+                        self.loginViewController?.dismiss(animated: true)
                     }
                 })
             } else {
@@ -237,7 +235,7 @@ extension Authentication: FBSDKLoginButtonDelegate {
                             self.showError(error, on: self.loginViewController!)
                         }
                     } else {
-                        self.delegate?.authenticationShouldDismissViewController(self)
+                        self.loginViewController?.dismiss(animated: true)
                     }
                 }
             }
@@ -261,7 +259,8 @@ extension Authentication: LinkAccountsViewControllerDelegate {
                     if let error = error {
                         self.showError(error, on: linkAccountsViewController)
                     } else {
-                        self.delegate?.authenticationShouldDismissViewController(self)
+                        self.notifyFacebookLinkedChange()
+                        self.loginViewController?.dismiss(animated: true)
                     }
                 }
             }

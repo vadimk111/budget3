@@ -26,20 +26,15 @@ class MainPadViewController: UIViewController, AuthenticationDelegate, UITabBarC
         }
     }
     
-    func authentication(_ authentication: Authentication, shouldDisplayAlert alert: UIAlertController) {
-        present(alert, animated: true, completion: nil)
+    func authentication(_ authentication: Authentication, needsDisplay viewController: UIViewController) {
+        if !(viewController is UIAlertController) {
+            viewController.modalPresentationStyle = .popover
+            viewController.isModalInPopover = true
+            viewController.popoverPresentationController?.sourceView = o_popoverSourceView
+        }
+        (presentedViewController ?? self).present(viewController, animated: true)
     }
-    
-    func authentication(_ authentication: Authentication, shouldDisplayViewController viewController: UIViewController) {
-        viewController.modalPresentationStyle = .popover
-        viewController.popoverPresentationController?.sourceView = o_popoverSourceView
-        present(viewController, animated: true, completion: nil)
-    }
-    
-    func authenticationShouldDismissViewController(_ authentication: Authentication) {
-        dismiss(animated: true, completion: nil)
-    }
-    
+
     //MARK - UITabBarControllerDelegate
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         o_navigationItem.title = viewController.title

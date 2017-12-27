@@ -27,15 +27,7 @@ class MainPhoneViewController: UITabBarController, AuthenticationDelegate {
         tabBar.isHidden = false
     }
     
-    func authentication(_ authentication: Authentication, shouldDisplayAlert alert: UIAlertController) {
-        present(alert, animated: true, completion: nil)
-    }
-    
-    func authentication(_ authentication: Authentication, shouldDisplayViewController viewController: UIViewController) {
+    func authentication(_ authentication: Authentication, needsDisplay viewController: UIViewController) {
         present(viewController, animated: true, completion: nil)
-    }
-    
-    func authenticationShouldDismissViewController(_ authentication: Authentication) {
-        dismiss(animated: true, completion: nil)
     }
 }
