@@ -36,7 +36,21 @@ class Authentication: NSObject {
             self.notifyStateChanged()
 
             if user == nil {
-                self.showSignInView()
+                if let email = UserDefaults.standard.string(forKey: "email"), email.contains("-anonymous-") {
+                    Auth.auth().signInAnonymously(completion: { (user, error) in
+                        if let _ = error {
+                            self.showSignInView()
+                        } else {
+                            APP.user = user
+                            self.notifyStateChanged()
+                            self.upgrade(with: email)
+                        }
+                    })
+                } else {
+                    self.showSignInView()
+                }
+            } else {
+                self.clearRudiments()
             }
         }
     }
@@ -47,6 +61,28 @@ class Authentication: NSObject {
     
     func notifyFacebookLinkedChange() {
         NotificationCenter.default.post(Notification(name: facebookLinkedChangeNotification))
+    }
+    
+    private func upgrade(with email: String) {
+        if let ref = ModelHelper.sharingReference() {
+            let sharing = Sharing()
+            sharing.dbId = email
+            sharing.title = "Unknown"
+            sharing.insert(into: ref)
+            
+            UserDefaults.standard.set(email, forKey: APP.currentBudgetKey)
+            clearRudiments()
+            
+            NotificationCenter.default.post(Notification(name: currentBudgetChangedNotification))
+            NotificationCenter.default.post(Notification(name: sharedBudgetAddedNotification))
+        }
+    }
+    
+    private func clearRudiments() {
+        UserDefaults.standard.removeObject(forKey: "email")
+        UserDefaults.standard.removeObject(forKey: "password")
+        UserDefaults.standard.removeObject(forKey: "auth_method")
+        UserDefaults.standard.synchronize()
     }
     
     func showSignInView() {
