@@ -35,7 +35,7 @@ extension SettingsViewController: FacebookTableViewCellDelegate {
                 let a = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
                 a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in
                 })
-                //TODO: self.displayAlert(a)
+                self.present(a, animated: true)
 
             } else if result?.isCancelled == true {
                 
