@@ -64,9 +64,10 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
     }
     
     @objc func onSignInStateChanged() {
-        tableView.reloadData()
         if let _ = APP.user {
             loadSharings()
+        } else {
+            tableView.reloadData()
         }
     }
     
@@ -91,7 +92,7 @@ class SettingsViewController: UITableViewController, AddEditReminderViewControll
                 self.sharings.append(Sharing(snapshot: child as! DataSnapshot))
             }
             
-            self.tableView.reloadSections([1], with: .fade)
+            self.tableView.reloadData()
         })
     }
     

@@ -67,11 +67,10 @@ class Authentication: NSObject {
         if let ref = ModelHelper.sharingReference() {
             let sharing = Sharing()
             sharing.dbId = email
-            sharing.title = "Unknown"
+            sharing.title = "Anonymous"
             sharing.insert(into: ref)
             
             UserDefaults.standard.set(email, forKey: APP.currentBudgetKey)
-            clearRudiments()
             
             NotificationCenter.default.post(Notification(name: currentBudgetChangedNotification))
             NotificationCenter.default.post(Notification(name: sharedBudgetAddedNotification))
@@ -142,7 +141,7 @@ class Authentication: NSObject {
     
     func signOut() {
         if APP.user?.isAnonymous == true {
-            let a = UIAlertController(title: "Attention", message: "Sign out of anonymous account will loose all your data", preferredStyle: .alert)
+            let a = UIAlertController(title: "Attention", message: "Sign out of anonymous account will loose all of your data", preferredStyle: .alert)
             a.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             a.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) in
                 self.signOutInt()
