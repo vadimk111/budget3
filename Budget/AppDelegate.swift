@@ -109,30 +109,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     @objc func importSharedBudget() {
-        NotificationCenter.default.removeObserver(self, name: signInStateChangedNotification, object: nil)
-        
-        if let dbId = dbToShare {
-            if let ref = ModelHelper.sharingReference() {
-                let a = UIAlertController(title: "You are about to import shared budget", message: "Please, provide a title for it", preferredStyle: .alert)
-                a.addTextField(configurationHandler: { (field) in
-                    field.placeholder = "Budget title"
-                })
-                a.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                a.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
-                    let sharing = Sharing()
-                    sharing.dbId = dbId
-                    sharing.title = a.textFields?.first?.text
-                    sharing.insert(into: ref)
-                    
-                    UserDefaults.standard.set(dbId, forKey: self.currentBudgetKey)
-                    UserDefaults.standard.synchronize()
-                    
-                    NotificationCenter.default.post(Notification(name: currentBudgetChangedNotification))
-                    NotificationCenter.default.post(Notification(name: sharedBudgetAddedNotification))
-                }))
-                showSharingDialog(a)
+        if let _ = user {
+            NotificationCenter.default.removeObserver(self, name: signInStateChangedNotification, object: nil)
+            
+            if let dbId = dbToShare {
+                if let ref = ModelHelper.sharingReference() {
+                    let a = UIAlertController(title: "You are about to import shared budget", message: "Please, provide a title for it", preferredStyle: .alert)
+                    a.addTextField(configurationHandler: { (field) in
+                        field.placeholder = "Budget title"
+                    })
+                    a.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    a.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                        let sharing = Sharing()
+                        sharing.dbId = dbId
+                        sharing.title = a.textFields?.first?.text
+                        sharing.insert(into: ref)
+                        
+                        UserDefaults.standard.set(dbId, forKey: self.currentBudgetKey)
+                        UserDefaults.standard.synchronize()
+                        
+                        NotificationCenter.default.post(Notification(name: currentBudgetChangedNotification))
+                        NotificationCenter.default.post(Notification(name: sharedBudgetAddedNotification))
+                    }))
+                    showSharingDialog(a)
+                }
+                dbToShare = nil
             }
-            dbToShare = nil
         }
     }
     
