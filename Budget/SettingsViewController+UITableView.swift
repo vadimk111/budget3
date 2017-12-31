@@ -12,13 +12,16 @@ import UserNotifications
 extension SettingsViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
+        if APP.user == nil {
+            return 0
+        }
         return 5
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            if APP.user == nil {
-                return 1
+            if APP.user?.isAnonymous == true {
+                return 2
             }
             if !Authentication.isFacebookAccountConnected() {
                 return 2
@@ -47,15 +50,18 @@ extension SettingsViewController {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "accountCells", for: indexPath) as! AccountTableViewCell
-                cell.delegate = self
                 cell.build()
                 return cell
             }
             if indexPath.row == 1 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "facebookCells", for: indexPath) as! FacebookTableViewCell
-                cell.delegate = self
-                cell.isConnected = Authentication.isFacebookAccountConnected()
-                return cell
+                if APP.user?.isAnonymous == true {
+                    return tableView.dequeueReusableCell(withIdentifier: "anonymousCells", for: indexPath) as! AnonymousTableViewCell
+                } else {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "facebookCells", for: indexPath) as! FacebookTableViewCell
+                    cell.delegate = self
+                    cell.isConnected = Authentication.isFacebookAccountConnected()
+                    return cell
+                }
             }
             return UITableViewCell()
         } else if indexPath.section == 1 {
@@ -173,17 +179,11 @@ extension SettingsViewController {
         } else if indexPath.section == 1 {
             if indexPath.row == 0 {
                 let share = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Share", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
-                    if let user = APP.user {
-                        if let url = URL(string: "\(appPrefix + user.uid)") {
-                            let objectsToShare = ["Join my Budget Doctor:", url] as [Any]
-                            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-                            activityVC.excludedActivityTypes = [.airDrop, .saveToCameraRoll, . addToReadingList, .openInIBooks]
-                            self.present(activityVC, animated: true, completion: nil)
-                        }
-                    } else {
-                        let a = UIAlertController(title: "Oops", message: "Sharing is available for signed-in users only", preferredStyle: .alert)
-                        a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in })
-                        self.present(a, animated: true, completion: nil)
+                    if let user = APP.user, let url = URL(string: "\(appPrefix + user.uid)") {
+                        let objectsToShare = ["Join my Budget Doctor:", url] as [Any]
+                        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                        activityVC.excludedActivityTypes = [.airDrop, .saveToCameraRoll, . addToReadingList, .openInIBooks]
+                        self.present(activityVC, animated: true, completion: nil)
                     }
                 })
                 return [share]

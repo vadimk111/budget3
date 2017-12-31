@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -51,23 +51,13 @@
                                                 <action selector="didTapLogout:" destination="dS8-Ko-3BC" eventType="touchUpInside" id="dBP-o9-E5S"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d7M-vu-uKH">
-                                            <rect key="frame" x="292" y="6" width="50" height="31"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                            <state key="normal" title="Sign In"/>
-                                            <connections>
-                                                <action selector="didTapLogin:" destination="dS8-Ko-3BC" eventType="touchUpInside" id="Vae-aV-Oac"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="sIx-4U-R2A" firstAttribute="centerY" secondItem="em7-yl-WKz" secondAttribute="centerY" id="7tC-fj-BCH"/>
-                                        <constraint firstItem="d7M-vu-uKH" firstAttribute="leading" secondItem="2bN-6E-7hP" secondAttribute="leading" id="Kc6-rW-3Ck"/>
                                         <constraint firstItem="QUY-mR-09S" firstAttribute="centerY" secondItem="em7-yl-WKz" secondAttribute="centerY" id="Lyd-R0-MHc"/>
                                         <constraint firstAttribute="trailing" secondItem="2bN-6E-7hP" secondAttribute="trailing" constant="20" id="YSt-xK-HV9"/>
                                         <constraint firstItem="QUY-mR-09S" firstAttribute="leading" secondItem="em7-yl-WKz" secondAttribute="leading" constant="-24" id="dSR-XM-u7t"/>
                                         <constraint firstItem="2bN-6E-7hP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sIx-4U-R2A" secondAttribute="trailing" constant="10" id="gpt-q5-fWz"/>
-                                        <constraint firstItem="d7M-vu-uKH" firstAttribute="top" secondItem="2bN-6E-7hP" secondAttribute="top" id="jzm-cU-WJo"/>
                                         <constraint firstItem="sIx-4U-R2A" firstAttribute="leading" secondItem="QUY-mR-09S" secondAttribute="trailing" constant="8" id="thA-ng-j31"/>
                                         <constraint firstItem="2bN-6E-7hP" firstAttribute="centerY" secondItem="em7-yl-WKz" secondAttribute="centerY" id="wgh-29-03c"/>
                                     </constraints>
@@ -76,8 +66,6 @@
                                     <outlet property="o_facebookImage" destination="QUY-mR-09S" id="v0w-Lg-IbK"/>
                                     <outlet property="o_imageLeadingConstraint" destination="dSR-XM-u7t" id="bKd-sF-yuz"/>
                                     <outlet property="o_label" destination="sIx-4U-R2A" id="oa6-0D-Biz"/>
-                                    <outlet property="o_loginButton" destination="d7M-vu-uKH" id="Zor-zS-nqi"/>
-                                    <outlet property="o_logoutButton" destination="2bN-6E-7hP" id="7yD-14-h1r"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="facebookCells" id="Roi-WU-Tum" customClass="FacebookTableViewCell" customModule="Budget" customModuleProvider="target">
@@ -161,8 +149,30 @@
                                     <outlet property="o_label" destination="rqS-H1-FhU" id="cYA-kk-gyS"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="remindersCells" id="BY0-Eh-NCG" customClass="RemindersTableViewCell" customModule="Budget" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="anonymousCells" id="89S-xp-CvQ" customClass="AnonymousTableViewCell" customModule="Budget" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="136" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="89S-xp-CvQ" id="KdG-cR-nJC">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PaU-de-R8E">
+                                            <rect key="frame" x="20" y="6.5" width="196" height="31"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                            <state key="normal" title="Sign Up and Link Accounts"/>
+                                            <connections>
+                                                <action selector="didTapSignUp:" destination="89S-xp-CvQ" eventType="touchUpInside" id="j6F-2M-ZvW"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="PaU-de-R8E" firstAttribute="leading" secondItem="KdG-cR-nJC" secondAttribute="leading" constant="20" id="9To-6f-0h6"/>
+                                        <constraint firstItem="PaU-de-R8E" firstAttribute="centerY" secondItem="KdG-cR-nJC" secondAttribute="centerY" id="rOy-wj-SzM"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="remindersCells" id="BY0-Eh-NCG" customClass="RemindersTableViewCell" customModule="Budget" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="180" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BY0-Eh-NCG" id="AEd-o6-qDU">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -203,7 +213,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="scheduledReminderCells" id="tgv-HS-t6a" customClass="ScheduledReminderTableViewCell" customModule="Budget" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="180" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="224" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tgv-HS-t6a" id="ANw-4C-jAR">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -238,7 +248,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addReminderCells" id="sl5-aR-6IX">
-                                <rect key="frame" x="0.0" y="224" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="268" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sl5-aR-6IX" id="iYz-J1-yub">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -265,7 +275,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="budgetCells" id="fB2-fs-zEc" customClass="BudgetTableViewCell" customModule="Budget" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="268" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="312" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fB2-fs-zEc" id="e9y-4E-fFu">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

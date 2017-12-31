@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     var window: UIWindow?
     var user: User?
-    var automaticAuthenticationCompleted = false
     var notificationsAllowed = false
     var dbToShare: String?
 
@@ -90,10 +89,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
             
             if let _ = dbToShare {
-                if self.automaticAuthenticationCompleted {
-                    self.onSignInStateChanged()
+                if let _ = user {
+                    self.importSharedBudget()
                 } else {
-                    NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.onSignInStateChanged), name: signInStateChangedNotification, object: nil)
+                    NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.importSharedBudget), name: signInStateChangedNotification, object: nil)
                 }
             }
             
@@ -109,42 +108,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return window?.rootViewController
     }
     
-    @objc func onSignInStateChanged() {
-        NotificationCenter.default.removeObserver(self, name: signInStateChangedNotification, object: nil)
-        
-        if let dbId = dbToShare {
-            if let ref = ModelHelper.sharingReference() {
-                let a = UIAlertController(title: "You are about to import shared budget", message: "Please, provide a title for it", preferredStyle: .alert)
-                a.addTextField(configurationHandler: { (field) in
-                    field.placeholder = "Budget title"
-                })
-                a.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                a.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
-                    let sharing = Sharing()
-                    sharing.dbId = dbId
-                    sharing.title = a.textFields?.first?.text
-                    sharing.insert(into: ref)
-                    
-                    UserDefaults.standard.set(dbId, forKey: self.currentBudgetKey)
-                    UserDefaults.standard.synchronize()
-                    
-                    NotificationCenter.default.post(Notification(name: currentBudgetChangedNotification))
-                    NotificationCenter.default.post(Notification(name: sharedBudgetAddedNotification))
-                }))
-                showSharingDialog(a)
-            } else {
-                let a = UIAlertController(title: "", message: "Budget sharing allowed only for signed-in users", preferredStyle: .alert)
-                a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in })
-                topViewController()?.present(a, animated: true, completion: nil)
+    @objc func importSharedBudget() {
+        if let _ = user {
+            NotificationCenter.default.removeObserver(self, name: signInStateChangedNotification, object: nil)
+            
+            if let dbId = dbToShare {
+                if let ref = ModelHelper.sharingReference() {
+                    let a = UIAlertController(title: "You are about to import shared budget", message: "Please, provide a title for it", preferredStyle: .alert)
+                    a.addTextField(configurationHandler: { (field) in
+                        field.placeholder = "Budget title"
+                    })
+                    a.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    a.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                        let sharing = Sharing()
+                        sharing.dbId = dbId
+                        sharing.title = a.textFields?.first?.text
+                        sharing.insert(into: ref)
+                        
+                        UserDefaults.standard.set(dbId, forKey: self.currentBudgetKey)
+                        UserDefaults.standard.synchronize()
+                        
+                        NotificationCenter.default.post(Notification(name: currentBudgetChangedNotification))
+                        NotificationCenter.default.post(Notification(name: sharedBudgetAddedNotification))
+                    }))
+                    showSharingDialog(a)
+                }
+                dbToShare = nil
             }
-            dbToShare = nil
         }
     }
     
     func showSharingDialog(_ dialog: UIAlertController) {
         let top = topViewController()
         if (top as? UINavigationController)?.viewControllers.first is LoginViewController {
-            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [unowned self] (timer) in
+            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (timer) in
                 self.showSharingDialog(dialog)
             })
         } else {

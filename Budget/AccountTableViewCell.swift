@@ -8,20 +8,8 @@
 
 import UIKit
 
-protocol AccountTableViewCellDelegate: class {
-    func accountTableViewCell(_ accountTableViewCell: AccountTableViewCell, shouldDisplayViewController viewController: UIViewController)
-    func accountTableViewCell(_ accountTableViewCell: AccountTableViewCell, shouldDisplayAlert alert: UIAlertController)
-    func accountTableViewCellShouldDismissViewController(_ accountTableViewCell: AccountTableViewCell)
-    func accountTableViewCellWillSignOut(_ accountTableViewCell: AccountTableViewCell)
-}
-
-class AccountTableViewCell: UITableViewCell, AuthenticationDelegate {
-
-    var authentication: Authentication?
-    weak var delegate: AccountTableViewCellDelegate?
-    
-    @IBOutlet weak var o_logoutButton: UIButton!
-    @IBOutlet weak var o_loginButton: UIButton!
+class AccountTableViewCell: UITableViewCell {
+ 
     @IBOutlet weak var o_label: UILabel!
     @IBOutlet weak var o_facebookImage: UIImageView! {
         didSet {
@@ -43,53 +31,25 @@ class AccountTableViewCell: UITableViewCell, AuthenticationDelegate {
     }
 
     func build() {
-        if let user = APP.user {
+        if APP.user?.isAnonymous == false {
             o_label.text = ""
             if Authentication.isOnlyFacebookAccountRegistered() {
                 FacebookHelper.loadUserData(onLabel: o_label, andImage: o_facebookImage)
                 o_imageLeadingConstraint.constant = 20
                 o_facebookImage.isHidden = false
             } else {
-                o_label.text = user.email
+                o_label.text = APP.user?.email
                 o_imageLeadingConstraint.constant = -24
                 o_facebookImage.isHidden = true
             }
-            o_logoutButton.isHidden = false
-            o_loginButton.isHidden = true
         } else {
             o_label.text = "Anonymous"
-            o_loginButton.isHidden = false
-            o_logoutButton.isHidden = true
             o_imageLeadingConstraint.constant = -24
             o_facebookImage.isHidden = true
         }
     }
     
-    @IBAction func didTapLogin(_ sender: UIButton) {
-        authentication = Authentication()
-        authentication?.delegate = self
-        authentication?.manualSignIn()
-    }
-    
     @IBAction func didTapLogout(_ sender: UIButton) {
-        delegate?.accountTableViewCellWillSignOut(self)
-        authentication = Authentication()
-        authentication?.delegate = self
-        authentication?.signOut()
-        authentication?.manualSignIn()
+        Authentication.shared.signOut()
     }
-
-    //MARK - AuthenticationDelegate
-    func authentication(_ authentication: Authentication, shouldDisplayViewController viewController: UIViewController) {
-        delegate?.accountTableViewCell(self, shouldDisplayViewController: viewController)
-    }
-    
-    func authentication(_ authentication: Authentication, shouldDisplayAlert alert: UIAlertController) {
-        delegate?.accountTableViewCell(self, shouldDisplayAlert: alert)
-    }
-    
-    func authenticationShouldDismissViewController(_ authentication: Authentication) {
-        delegate?.accountTableViewCellShouldDismissViewController(self)
-    }
-
 }

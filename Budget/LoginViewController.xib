@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Budget" customModuleProvider="target">
             <connections>
                 <outlet property="o_email" destination="XXT-P9-IKf" id="Xv5-l4-Vud"/>
                 <outlet property="o_fbLoginButton" destination="dwk-MJ-Tpc" id="01G-xm-cJR"/>
                 <outlet property="o_password" destination="U7i-2F-ACB" id="zZq-JY-zvJ"/>
+                <outlet property="o_resetPasswordButton" destination="BFn-eM-jwA" id="D6W-tg-TmN"/>
+                <outlet property="o_resetTopConstraint" destination="5PH-Vc-Czi" id="wFm-3f-p1G"/>
+                <outlet property="o_sigInButton" destination="KdR-Nw-DY7" id="E76-Q7-dAd"/>
+                <outlet property="o_signInTopConstraint" destination="gAF-ce-Xd5" id="e4x-ka-gnq"/>
+                <outlet property="o_skipButton" destination="S2a-oR-kUc" id="A2D-kK-1Sw"/>
                 <outlet property="view" destination="iN0-l3-epB" id="1ke-jB-xjO"/>
             </connections>
         </placeholder>

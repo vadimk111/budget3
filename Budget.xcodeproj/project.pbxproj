@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A56B6FD1FF283A5001810CA /* AnonymousTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A56B6FC1FF283A5001810CA /* AnonymousTableViewCell.swift */; };
 		6AA2CE85BAFB9541D811DABB /* Pods_Budget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 081C64756147318895C06760 /* Pods_Budget.framework */; };
 		BD138CB61F7EDD9B00CDA4DA /* NavBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD138CB51F7EDD9B00CDA4DA /* NavBalanceView.swift */; };
 		BD138CB81F7EDDB100CDA4DA /* NavBalanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD138CB71F7EDDB100CDA4DA /* NavBalanceView.xib */; };
@@ -111,6 +112,7 @@
 
 /* Begin PBXFileReference section */
 		081C64756147318895C06760 /* Pods_Budget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A56B6FC1FF283A5001810CA /* AnonymousTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousTableViewCell.swift; sourceTree = "<group>"; };
 		BBC9F6F964B24DE5B2DADBF3 /* Pods-Budget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Budget/Pods-Budget.release.xcconfig"; sourceTree = "<group>"; };
 		BD138CB51F7EDD9B00CDA4DA /* NavBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBalanceView.swift; sourceTree = "<group>"; };
 		BD138CB71F7EDDB100CDA4DA /* NavBalanceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavBalanceView.xib; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				BDFC61011E92989600D77087 /* AccountTableViewCell.swift */,
+				4A56B6FC1FF283A5001810CA /* AnonymousTableViewCell.swift */,
 				BD138CBD1F7FB5B400CDA4DA /* BudgetTableViewCell.swift */,
 				BDCDA01E1F13AAA0008AB2A6 /* FacebookTableViewCell.swift */,
 				BDFC61031E9298AC00D77087 /* RemindersTableViewCell.swift */,
@@ -763,6 +766,7 @@
 				BD83837B1EDF248900E8B5B2 /* IncomesBaseDeviceViewController.swift in Sources */,
 				BD83837D1EDF24A500E8B5B2 /* IncomesPadViewController.swift in Sources */,
 				BD82C7F31E8AF00D009EB6A6 /* MainPadViewController.swift in Sources */,
+				4A56B6FD1FF283A5001810CA /* AnonymousTableViewCell.swift in Sources */,
 				BD8383631EDD5E5400E8B5B2 /* Income.swift in Sources */,
 				BD138CB61F7EDD9B00CDA4DA /* NavBalanceView.swift in Sources */,
 				BF25146F1E46612200042FEF /* Category.swift in Sources */,
