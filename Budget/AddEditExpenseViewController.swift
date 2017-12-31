@@ -111,6 +111,10 @@ class AddEditExpenseViewController: UIViewController, AutoCompleteViewController
         }
     }
     
+    @IBAction func didTapOutsideAutocomplete(_ sender: UIButton) {
+        o_autoCompleteContainer.isHidden = true
+    }
+    
     func autoCompleteViewController(_ autoCompleteViewController: AutoCompleteViewController, didSelectItem item: String) {
         o_titleField.text = item
         o_autoCompleteContainer.isHidden = true

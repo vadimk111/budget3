@@ -118,6 +118,10 @@ class AddEditIncomeViewController: UIViewController, AutoCompleteViewControllerD
         }
     }
     
+    @IBAction func didTapOutsideAutocomplete(_ sender: UIButton) {
+        o_autoCompleteContainer.isHidden = true
+    }
+    
     func autoCompleteViewController(_ autoCompleteViewController: AutoCompleteViewController, didSelectItem item: String) {
         o_titleField.text = item
         o_autoCompleteContainer.isHidden = true
