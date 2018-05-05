@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DateChanger" customModule="Budget" customModuleProvider="target">
             <connections>
+                <outlet property="o_diff" destination="HVh-US-6qa" id="lgw-u4-Tsc"/>
                 <outlet property="o_title" destination="S4t-6a-y9h" id="07C-aS-hjo"/>
             </connections>
         </placeholder>
@@ -20,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="February 2017" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4t-6a-y9h">
-                    <rect key="frame" x="48" y="0.0" width="279" height="44"/>
+                    <rect key="frame" x="136" y="0.0" width="103.5" height="44"/>
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="6qL-HH-3u1"/>
@@ -31,6 +32,12 @@
                     <connections>
                         <outletCollection property="gestureRecognizers" destination="W77-LJ-RkA" appends="YES" id="1AN-lt-kgp"/>
                     </connections>
+                </label>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVh-US-6qa">
+                    <rect key="frame" x="212.5" y="29" width="27" height="13"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                    <color key="textColor" red="0.83921568627450982" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7s-wa-nB8">
                     <rect key="frame" x="0.0" y="-1.5" width="48" height="48"/>
@@ -58,16 +65,19 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Z7s-wa-nB8" firstAttribute="centerY" secondItem="S4t-6a-y9h" secondAttribute="centerY" id="3zd-Mf-Uzf"/>
+                <constraint firstItem="HVh-US-6qa" firstAttribute="trailing" secondItem="S4t-6a-y9h" secondAttribute="trailing" id="7rw-Tj-zMQ"/>
                 <constraint firstAttribute="trailing" secondItem="jn6-gu-2q9" secondAttribute="trailing" id="ADU-kS-HTF"/>
-                <constraint firstItem="jn6-gu-2q9" firstAttribute="leading" secondItem="S4t-6a-y9h" secondAttribute="trailing" id="Aaf-Tt-O5Q"/>
-                <constraint firstItem="S4t-6a-y9h" firstAttribute="leading" secondItem="Z7s-wa-nB8" secondAttribute="trailing" id="Fs3-Jo-bw2"/>
+                <constraint firstItem="jn6-gu-2q9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="S4t-6a-y9h" secondAttribute="trailing" id="Aaf-Tt-O5Q"/>
+                <constraint firstItem="HVh-US-6qa" firstAttribute="top" secondItem="S4t-6a-y9h" secondAttribute="bottom" constant="-15" id="CRp-Vr-NTk"/>
+                <constraint firstItem="S4t-6a-y9h" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Z7s-wa-nB8" secondAttribute="trailing" id="Fs3-Jo-bw2"/>
                 <constraint firstItem="Z7s-wa-nB8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="XIT-Ag-NA1"/>
                 <constraint firstItem="jn6-gu-2q9" firstAttribute="centerY" secondItem="S4t-6a-y9h" secondAttribute="centerY" id="cAF-VI-hbG"/>
+                <constraint firstItem="S4t-6a-y9h" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="tH1-Kg-0Ox"/>
                 <constraint firstItem="S4t-6a-y9h" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="yt4-Yp-Jxu"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="34.5" y="-62.5"/>
+            <point key="canvasLocation" x="-147" y="-64"/>
         </view>
         <tapGestureRecognizer id="W77-LJ-RkA">
             <connections>

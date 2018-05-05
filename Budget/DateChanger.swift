@@ -19,9 +19,11 @@ class DateChanger: CustomView, DatePickerViewDelegate {
 
     var dateText: String?
     var totalIncome: Float?
+    var totalBudget: Float?
     var datePicker: DatePickerView?
     
     @IBOutlet weak var o_title: UILabel!
+    @IBOutlet weak var o_diff: UILabel!
     
     weak var delegate: DateChangerDelegate?
     
@@ -37,6 +39,7 @@ class DateChanger: CustomView, DatePickerViewDelegate {
     }
     
     func updateTitle() {
+        o_diff.isHidden = true
         if let dateText = dateText {
             
             let attributedTitle = NSMutableAttributedString()
@@ -44,6 +47,11 @@ class DateChanger: CustomView, DatePickerViewDelegate {
             
             if let total = totalIncome {
                 attributedTitle.append(NSAttributedString(string: " • Income = \(total)", attributes: [NSAttributedStringKey.font: UIFont.init(name: "HelveticaNeue-Bold", size: 12)!, NSAttributedStringKey.foregroundColor: UIColor(red: 103 / 255, green: 171 / 255, blue: 87 / 255, alpha: 1)]))
+                
+                if let totalBudget = totalBudget, totalBudget > total {
+                    o_diff.isHidden = false
+                    o_diff.text = String(format: "%.2f", total - totalBudget)
+                }
             }
             o_title.attributedText = attributedTitle
         }

@@ -28,8 +28,6 @@ class CategoriesHeaderView: CustomView, DateChangerDelegate {
     }
     
     func fill(with data: [Category], date: Date) {
-        o_dateChanger.date = date
-        
         var amount: Float = 0.0
         var totalSpent: Float = 0.0
         
@@ -39,6 +37,9 @@ class CategoriesHeaderView: CustomView, DateChangerDelegate {
         }
         
         o_balanceView.populate(amount: amount, totalSpent: totalSpent)
+        
+        o_dateChanger.totalBudget = amount
+        o_dateChanger.date = date
     }
     
     func updateIncome(with incomes: [Income]) {
