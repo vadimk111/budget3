@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Add Expense-->
         <scene sceneID="106-0I-cs3">
@@ -59,11 +54,23 @@
                                 <rect key="frame" x="16" y="118" width="343" height="44"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amount" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Rig-KG-Les">
-                                        <rect key="frame" x="0.0" y="11.5" width="343" height="21"/>
+                                        <rect key="frame" x="0.0" y="11.5" width="311" height="21"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgb-eY-FgK">
+                                        <rect key="frame" x="311" y="0.0" width="32" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="aRK-4B-1hF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="-4" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="+"/>
+                                        <connections>
+                                            <action selector="didTapPlus:" destination="XPb-fl-jKM" eventType="touchUpInside" id="G0J-Kd-uo4"/>
+                                        </connections>
+                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JrF-Iv-hvO">
                                         <rect key="frame" x="0.0" y="43" width="343" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -74,11 +81,14 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Hgb-eY-FgK" secondAttribute="trailing" id="2BA-lt-hac"/>
                                     <constraint firstItem="Rig-KG-Les" firstAttribute="centerY" secondItem="9Vv-HS-0Nq" secondAttribute="centerY" id="6VD-7F-eVV"/>
                                     <constraint firstItem="Rig-KG-Les" firstAttribute="leading" secondItem="9Vv-HS-0Nq" secondAttribute="leading" id="FmC-Aw-34n"/>
-                                    <constraint firstAttribute="trailing" secondItem="Rig-KG-Les" secondAttribute="trailing" id="HfE-eS-3LK"/>
-                                    <constraint firstItem="JrF-Iv-hvO" firstAttribute="trailing" secondItem="Rig-KG-Les" secondAttribute="trailing" id="ava-MH-g0r"/>
+                                    <constraint firstItem="JrF-Iv-hvO" firstAttribute="trailing" secondItem="Hgb-eY-FgK" secondAttribute="trailing" id="JUy-Tj-dA8"/>
+                                    <constraint firstAttribute="bottom" secondItem="Hgb-eY-FgK" secondAttribute="bottom" id="OgJ-G6-CBU"/>
                                     <constraint firstAttribute="bottom" secondItem="JrF-Iv-hvO" secondAttribute="bottom" id="eaH-9F-Im4"/>
+                                    <constraint firstItem="Hgb-eY-FgK" firstAttribute="leading" secondItem="Rig-KG-Les" secondAttribute="trailing" id="kkU-lG-JKs"/>
+                                    <constraint firstItem="Hgb-eY-FgK" firstAttribute="top" secondItem="9Vv-HS-0Nq" secondAttribute="top" id="nMN-ls-Jz2"/>
                                     <constraint firstAttribute="height" constant="44" id="qSE-ca-BNf"/>
                                     <constraint firstItem="JrF-Iv-hvO" firstAttribute="leading" secondItem="Rig-KG-Les" secondAttribute="leading" id="rWg-Yd-gJD"/>
                                 </constraints>

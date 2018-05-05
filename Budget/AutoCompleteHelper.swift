@@ -22,7 +22,7 @@ class AutoCompleteHelper {
                 if arr.filter({ $0 == text }).count == 0 {
                     var newArr = Array(arr)
                     newArr.insert(text, at: 0)
-                    UserDefaults.standard.set(Array(newArr.prefix(100)), forKey: key)
+                    UserDefaults.standard.set(Array(newArr.prefix(200)), forKey: key)
                     UserDefaults.standard.synchronize()
                 }
             } else {

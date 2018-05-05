@@ -90,24 +90,50 @@ class AddEditExpenseViewController: UIViewController, AutoCompleteViewController
         })
     }
     
+    @IBAction func didTapPlus(_ sender: UIButton) {
+        o_amountField.text = (o_amountField.text ?? "") + "+"
+    }
+    
     @IBAction func didTapCancel(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func didTapSave(_ sender: UIBarButtonItem) {
-        if let title = o_titleField.text, let amountStr = o_amountField.text, let amount = Float(amountStr)  {
-            expense?.title = title
-            expense?.amount = amount
-            expense?.date = o_datePicker.date
-            
-            if let parentRef = parentRef {
-                expense?.insert(into: parentRef)
-            } else if let expense = expense {
-                expense.update()
+        if let title = o_titleField.text, let amountStr = o_amountField.text {
+            var amount: Float?
+            if let f_amount = Float(amountStr) {
+                amount = f_amount
+            } else {
+                amount = 0
+                let arr = amountStr.split(separator: "+")
+                for el in arr {
+                    if let f_amount = Float(el) {
+                        amount! += f_amount
+                    } else {
+                        amount = nil
+                        break
+                    }
+                }
             }
             
-            AutoCompleteHelper.saveText(title)
-            dismiss(animated: true, completion: nil)
+            if let _ = amount {
+                expense?.title = title
+                expense?.amount = amount
+                expense?.date = o_datePicker.date
+                
+                if let parentRef = parentRef {
+                    expense?.insert(into: parentRef)
+                } else if let expense = expense {
+                    expense.update()
+                }
+                
+                AutoCompleteHelper.saveText(title)
+                dismiss(animated: true, completion: nil)
+            } else {
+                let a = UIAlertController(title: "Amount is not a number", message: nil, preferredStyle: .alert)
+                a.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                present(a, animated: true, completion: nil)
+            }
         }
     }
     
