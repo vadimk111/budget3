@@ -34,7 +34,7 @@ class ModelBaseObject : NSObject {
     func insert(into parent: DatabaseReference) -> String {
         let child = parent.childByAutoId()
         child.setValue(toValues())
-        return child.key
+        return child.key!
     }
     
     func update() {

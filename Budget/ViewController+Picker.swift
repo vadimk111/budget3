@@ -81,7 +81,7 @@ extension UIViewController {
     }
     
     @objc func dismissViewAtBottom() {
-        if let constraint = view.constraints.first(where: { $0.identifier == "viewBottom" }), let viewToDismiss = constraint.secondItem {
+        if let constraint = view.constraints.first(where: { $0.identifier == "viewBottom" }), let viewToDismiss = constraint.secondItem as? UIView {
             UIView.animate(withDuration: 0.4, animations: {
                 constraint.constant = -viewToDismiss.frame.height
                 self.updateViewConstraints()

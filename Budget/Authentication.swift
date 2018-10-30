@@ -37,11 +37,11 @@ class Authentication: NSObject {
 
             if user == nil {
                 if let email = UserDefaults.standard.string(forKey: "email"), email.contains("-anonymous-") {
-                    Auth.auth().signInAnonymously(completion: { (user, error) in
+                    Auth.auth().signInAnonymously(completion: { (result, error) in
                         if let _ = error {
                             self.showSignInView()
                         } else {
-                            APP.user = user
+                            APP.user = result?.user
                             self.notifyStateChanged()
                             self.upgrade(with: email)
                         }
@@ -91,7 +91,7 @@ class Authentication: NSObject {
     
     func connectFacebookAccount(token: String) {
         let credential = FacebookAuthProvider.credential(withAccessToken: token)
-        APP.user?.link(with: credential) { [weak self] (user, error) in
+        APP.user?.linkAndRetrieveData(with: credential) { [weak self] (result, error) in
             if let error = error {
                 self?.showErrorOnDelegate(error)
             } else {
@@ -182,14 +182,14 @@ extension Authentication: LoginViewControllerDelegate {
 
         if let anonymousUser = APP.user {
             let credential = EmailAuthProvider.credential(withEmail: email, password: password)
-            anonymousUser.link(with: credential, completion: { (user, error) in
+            anonymousUser.linkAndRetrieveData(with: credential) { (result, error) in
                 if let error = error {
                     self.showError(error, on: loginViewController)
                 } else {
                     self.notifyStateChanged()
                     loginViewController.dismiss(animated: true)
                 }
-            })
+            }
         } else {
             Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
                 if let error = error {
@@ -248,7 +248,7 @@ extension Authentication: FBSDKLoginButtonDelegate {
         } else if let token = result.token {
             let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
             if let anonymousUser = APP.user {
-                anonymousUser.link(with: credential, completion: { (user, error) in
+                anonymousUser.linkAndRetrieveData(with: credential) { (result, error) in
                     if let error = error {
                         if let _ = self.loginViewController {
                             self.showError(error, on: self.loginViewController!)
@@ -257,9 +257,9 @@ extension Authentication: FBSDKLoginButtonDelegate {
                         self.notifyStateChanged()
                         self.loginViewController?.dismiss(animated: true)
                     }
-                })
+                }
             } else {
-                Auth.auth().signIn(with: credential) { (user, error) in
+                Auth.auth().signInAndRetrieveData(with: credential) { (result, error) in
                     if let error = error {
                         if let error_name = (error as NSError?)?.userInfo["error_name"] as? String, error_name == "ERROR_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL" {
                             self.linkAccountsViewController = LinkAccountsViewController()
@@ -285,12 +285,12 @@ extension Authentication: FBSDKLoginButtonDelegate {
 
 extension Authentication: LinkAccountsViewControllerDelegate {
     func linkAccountsViewController(_ linkAccountsViewController: LinkAccountsViewController, linkWithPassword password: String?) {
-        Auth.auth().signIn(withEmail: linkAccountsViewController.email ?? "", password: password ?? "") { (user, error) in
+        Auth.auth().signIn(withEmail: linkAccountsViewController.email ?? "", password: password ?? "") { (result, error) in
             if let error = error {
                 self.showError(error, on: linkAccountsViewController)
-            } else if let user = user {
+            } else if let result = result {
                 let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-                user.link(with: credential) { (user, error) in
+                result.user.linkAndRetrieveData(with: credential) { (result, error) in
                     if let error = error {
                         self.showError(error, on: linkAccountsViewController)
                     } else {
