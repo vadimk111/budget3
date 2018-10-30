@@ -34,9 +34,9 @@ extension UIViewController {
     }
     
     func presentViewAtBottom(_ view: UIView, height: CGFloat) {
-        createOverlay()
+        createOverlay(#selector(dismissViewAtBottom))
         
-        let bottomConstraint = addViewToHierarchy(view, height: height)
+        let bottomConstraint = addBottomViewToHierarchy(view, height: height)
         
         UIView.animate(withDuration: 0.4, animations: {
             bottomConstraint.constant = 0
@@ -47,10 +47,21 @@ extension UIViewController {
         })
     }
     
-    func createOverlay() {
+    func presentViewAtCenter(_ view: UIView) {
+        createOverlay(#selector(dismissViewAtCenter))
+        
+        view.alpha = 0
+        addCenterViewToHierarchy(view)
+        
+        UIView.animate(withDuration: 0.4, animations: {
+            view.alpha = 1
+        })
+    }
+    
+    func createOverlay(_ action: Selector?) {
         let overlay = UIView()
         overlay.tag = 999
-        overlay.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissViewAtBottom)))
+        overlay.addGestureRecognizer(UITapGestureRecognizer(target: self, action: action))
         view.addSubview(overlay)
         
         overlay.translatesAutoresizingMaskIntoConstraints = false
@@ -60,7 +71,7 @@ extension UIViewController {
         view.addConstraint(NSLayoutConstraint(item: view, attribute: .right, relatedBy: .equal, toItem: overlay, attribute: .right, multiplier: 1, constant: 0))
     }
     
-    func addViewToHierarchy(_ viewToAdd: UIView, height: CGFloat) -> NSLayoutConstraint {
+    func addBottomViewToHierarchy(_ viewToAdd: UIView, height: CGFloat) -> NSLayoutConstraint {
         viewToAdd.translatesAutoresizingMaskIntoConstraints = false
         
         viewToAdd.addConstraint(NSLayoutConstraint(item: viewToAdd, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: height))
@@ -80,6 +91,23 @@ extension UIViewController {
         return bottomConstraint
     }
     
+    func addCenterViewToHierarchy(_ viewToAdd: UIView) {
+        viewToAdd.tag = 888
+        viewToAdd.translatesAutoresizingMaskIntoConstraints = false
+        
+        viewToAdd.addConstraint(NSLayoutConstraint(item: viewToAdd, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: viewToAdd.frame.height))
+        
+        viewToAdd.addConstraint(NSLayoutConstraint(item: viewToAdd, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: viewToAdd.frame.width))
+        
+        view.addSubview(viewToAdd)
+        
+        view.addConstraint(NSLayoutConstraint(item: viewToAdd, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: viewToAdd, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0))
+        
+        updateViewConstraints()
+        view.layoutIfNeeded()
+    }
+    
     @objc func dismissViewAtBottom() {
         if let constraint = view.constraints.first(where: { $0.identifier == "viewBottom" }), let viewToDismiss = constraint.secondItem as? UIView {
             UIView.animate(withDuration: 0.4, animations: {
@@ -92,6 +120,19 @@ extension UIViewController {
                     overlay.removeFromSuperview()
                 }
                 NotificationCenter.default.post(Notification(name: viewRemovedAtBottomNotification))
+            })
+        }
+    }
+    
+    @objc func dismissViewAtCenter() {
+        if let viewToDismiss = view.subviews.first(where: { $0.tag == 888 }) {
+            UIView.animate(withDuration: 0.4, animations: {
+                viewToDismiss.alpha = 0
+            }, completion: { (finished) in
+                viewToDismiss.removeFromSuperview()
+                if let overlay = self.view.subviews.first(where: { $0.tag == 999 }) {
+                    overlay.removeFromSuperview()
+                }
             })
         }
     }

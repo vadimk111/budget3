@@ -31,37 +31,6 @@ extension CategoriesViewController {
         })
         actions.append(edit)
         
-        if categories[indexPath.row].isBill == true {
-            let pay = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Pay", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
-                self.tableView.setEditing(false, animated: true)
-                
-                let categoryToPay = self.categories[indexPath.row]
-                let expense = Expense()
-                expense.amount = categoryToPay.amount
-                expense.date = Date()
-                if let title = categoryToPay.title {
-                    expense.title = "\(title) - payment"
-                } else {
-                    expense.title = "Payment"
-                }
-                if let expensesRef = categoryToPay.getDatabaseReference()?.child("expenses") {
-                    expensesRef.observe(.childAdded, with: { snapshot in
-                        if categoryToPay.expenses == nil {
-                            categoryToPay.expenses = []
-                        }
-                        let expense = Expense(snapshot: snapshot)
-                        if !categoryToPay.expenses!.contains(where: { $0.id == expense.id } ) {
-                            categoryToPay.expenses!.append(expense)
-                        }
-                        expensesRef.removeAllObservers()
-                    })
-
-                    expense.insert(into: expensesRef)
-                }
-            })
-            actions.insert(pay, at: 0)
-        }
-        
         let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
             let title = self.categories[indexPath.row].subCategories != nil ? "Remove category, all its sub categories and all related expenses ?" : "Remove category and all related expenses ?"
             let a = UIAlertController(title: title, message: "", preferredStyle: .alert)
@@ -162,5 +131,56 @@ extension CategoriesViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.categoriesViewController(self, didSelect: categories[indexPath.row])
+    }
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let payAction = self.payAction(forRowAtIndexPath: indexPath)
+        let addExpenseAction = self.addExpenseAction(forRowAtIndexPath: indexPath)
+        let swipeConfig = UISwipeActionsConfiguration(actions: [addExpenseAction, payAction])
+        return swipeConfig
+    }
+
+    func payAction(forRowAtIndexPath indexPath: IndexPath) -> UIContextualAction {
+        let payAction = UIContextualAction(style: .normal, title: "Pay") { (action, view, (Bool) -> Void) in
+            self.tableView.setEditing(false, animated: true)
+            
+            let categoryToPay = self.categories[indexPath.row]
+            let expense = Expense()
+            expense.amount = categoryToPay.amount
+            expense.date = Date()
+            if let title = categoryToPay.title {
+                expense.title = "\(title) - payment"
+            } else {
+                expense.title = "Payment"
+            }
+            if let expensesRef = categoryToPay.getDatabaseReference()?.child("expenses") {
+                expensesRef.observe(.childAdded, with: { snapshot in
+                    if categoryToPay.expenses == nil {
+                        categoryToPay.expenses = []
+                    }
+                    let expense = Expense(snapshot: snapshot)
+                    if !categoryToPay.expenses!.contains(where: { $0.id == expense.id } ) {
+                        categoryToPay.expenses!.append(expense)
+                    }
+                    expensesRef.removeAllObservers()
+                })
+                
+                expense.insert(into: expensesRef)
+            }
+        }
+
+        return payAction
+    }
+    
+    func addExpenseAction(forRowAtIndexPath indexPath: IndexPath) -> UIContextualAction {
+        let addAction = UIContextualAction(style: .normal, title: "Add") { (action, view, (Bool) -> Void) in
+            self.tableView.setEditing(false, animated: true)
+            
+            let quickAdd = QuickAddExpense.loadFromXib()
+            quickAdd.o_amountField.becomeFirstResponder()
+            self.delegate?.categoriesViewController(self, didCreateQuickAdd: quickAdd)
+        }
+
+        return addAction
     }
 }

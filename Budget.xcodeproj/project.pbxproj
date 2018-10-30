@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4A56B6FD1FF283A5001810CA /* AnonymousTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A56B6FC1FF283A5001810CA /* AnonymousTableViewCell.swift */; };
+		4ABD8BA22188F7CC002C67AF /* QuickAddExpense.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ABD8BA12188F7CC002C67AF /* QuickAddExpense.xib */; };
+		4ABD8BA42188F7F7002C67AF /* QuickAddExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABD8BA32188F7F7002C67AF /* QuickAddExpense.swift */; };
 		6AA2CE85BAFB9541D811DABB /* Pods_Budget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 081C64756147318895C06760 /* Pods_Budget.framework */; };
 		BD138CB61F7EDD9B00CDA4DA /* NavBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD138CB51F7EDD9B00CDA4DA /* NavBalanceView.swift */; };
 		BD138CB81F7EDDB100CDA4DA /* NavBalanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD138CB71F7EDDB100CDA4DA /* NavBalanceView.xib */; };
@@ -126,6 +128,8 @@
 /* Begin PBXFileReference section */
 		081C64756147318895C06760 /* Pods_Budget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A56B6FC1FF283A5001810CA /* AnonymousTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousTableViewCell.swift; sourceTree = "<group>"; };
+		4ABD8BA12188F7CC002C67AF /* QuickAddExpense.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuickAddExpense.xib; sourceTree = "<group>"; };
+		4ABD8BA32188F7F7002C67AF /* QuickAddExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddExpense.swift; sourceTree = "<group>"; };
 		BBC9F6F964B24DE5B2DADBF3 /* Pods-Budget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Budget/Pods-Budget.release.xcconfig"; sourceTree = "<group>"; };
 		BD138CB51F7EDD9B00CDA4DA /* NavBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBalanceView.swift; sourceTree = "<group>"; };
 		BD138CB71F7EDDB100CDA4DA /* NavBalanceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavBalanceView.xib; sourceTree = "<group>"; };
@@ -543,6 +547,8 @@
 				BD138CB71F7EDDB100CDA4DA /* NavBalanceView.xib */,
 				BF00F4851E4D1F4300D5D743 /* ProgressBar.swift */,
 				BF00F4871E4D1F5200D5D743 /* ProgressBar.xib */,
+				4ABD8BA32188F7F7002C67AF /* QuickAddExpense.swift */,
+				4ABD8BA12188F7CC002C67AF /* QuickAddExpense.xib */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -629,6 +635,7 @@
 				BD138CB81F7EDDB100CDA4DA /* NavBalanceView.xib in Resources */,
 				BD1DF1861F1F7E8100E52C29 /* DatePickerView.xib in Resources */,
 				BDCDA0231F14F0D8008AB2A6 /* LinkAccountsViewController.xib in Resources */,
+				4ABD8BA22188F7CC002C67AF /* QuickAddExpense.xib in Resources */,
 				BD8383741EDD74DF00E8B5B2 /* Incomes.storyboard in Resources */,
 				BF00F48E1E4D331100D5D743 /* AddEditExpense.storyboard in Resources */,
 				BF2514711E46626F00042FEF /* GoogleService-Info.plist in Resources */,
@@ -724,6 +731,7 @@
 				BDFC60EE1E8D3CE800D77087 /* ExpensesViewController+Firebase.swift in Sources */,
 				BFD5AA8C1E52FDBC00DE10E3 /* Consts.swift in Sources */,
 				BD3D40721E853A4800C3CCAF /* CategoriesBaseDeviceViewController.swift in Sources */,
+				4ABD8BA42188F7F7002C67AF /* QuickAddExpense.swift in Sources */,
 				BDFC61021E92989600D77087 /* AccountTableViewCell.swift in Sources */,
 				BDFC61401E979A1F00D77087 /* AddEditReminderViewController.swift in Sources */,
 				BF6BC8551E5ADA4E0052F4E8 /* CategoriesViewController+TableViews.swift in Sources */,

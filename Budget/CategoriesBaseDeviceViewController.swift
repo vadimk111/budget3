@@ -116,6 +116,10 @@ class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderView
         performSegue(withIdentifier: "editCategory", sender: category)
     }
     
+    func categoriesViewController(_ categoriesViewController: CategoriesViewController, didCreateQuickAdd view: QuickAddExpense) {
+        
+    }
+    
     func categoriesViewControllerChanged(_ categoriesViewController: CategoriesViewController) {
         reloadIncomes()
         o_categoriesHeaderView?.fill(with: categoriesViewController.availableParents, date: categoriesViewController.date)

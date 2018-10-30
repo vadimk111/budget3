@@ -14,6 +14,7 @@ let budgetChangedNotification = Notification.Name(rawValue: "budgetChanged")
 protocol CategoriesViewControllerDelegate: class {
     func categoriesViewController(_ categoriesViewController: CategoriesViewController, didSelect category: Category)
     func categoriesViewController(_ categoriesViewController: CategoriesViewController, didEdit category: Category)
+    func categoriesViewController(_ categoriesViewController: CategoriesViewController, didCreateQuickAdd view: QuickAddExpense)
     func categoriesViewControllerChanged(_ categoriesViewController: CategoriesViewController)
     func categoriesViewControllerWillReload(_ categoriesViewController: CategoriesViewController)
     func categoriesViewControllerDidReload(_ categoriesViewController: CategoriesViewController)
