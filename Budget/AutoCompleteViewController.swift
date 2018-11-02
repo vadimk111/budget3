@@ -19,7 +19,7 @@ class AutoCompleteViewController: UITableViewController {
             tableView.reloadData()
         }
     }
-    var delegate: AutoCompleteViewControllerDelegate?
+    weak var delegate: AutoCompleteViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

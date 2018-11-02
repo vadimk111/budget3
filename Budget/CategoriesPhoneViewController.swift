@@ -81,6 +81,10 @@ class CategoriesPhoneViewController: CategoriesBaseDeviceViewController {
         presentViewAtCenter(view)
     }
     
+    override func categoriesViewControllerDidFinishQuickAdd(_ categoriesViewController: CategoriesViewController) {
+        dismissViewAtCenter()
+    }
+    
     override func categoriesViewControllerChanged(_ categoriesViewController: CategoriesViewController) {
         super.categoriesViewControllerChanged(categoriesViewController)
         o_editBarButton.isEnabled = categoriesViewController.categories.count > 0

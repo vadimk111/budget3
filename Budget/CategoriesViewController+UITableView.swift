@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension CategoriesViewController {
+extension CategoriesViewController: QuickAddExpenseDelegate {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
     }
@@ -177,10 +177,24 @@ extension CategoriesViewController {
             self.tableView.setEditing(false, animated: true)
             
             let quickAdd = QuickAddExpense.loadFromXib()
+            quickAdd.delegate = self
+            quickAdd.category = self.categories[indexPath.row]
             quickAdd.o_amountField.becomeFirstResponder()
             self.delegate?.categoriesViewController(self, didCreateQuickAdd: quickAdd)
         }
 
         return addAction
+    }
+    
+    func quickAddExpense(quickAddExpense: QuickAddExpense, didFinishWith data: Float) {
+        if let parentRef = quickAddExpense.category.getDatabaseReference()?.child("expenses") {
+            let expense = Expense()
+            expense.date = Date()
+            expense.title = (quickAddExpense.category.title ?? "") + " - quick"
+            expense.amount = data
+            expense.insert(into: parentRef)
+        }
+        
+        delegate?.categoriesViewControllerDidFinishQuickAdd(self)
     }
 }

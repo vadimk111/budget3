@@ -117,7 +117,9 @@ class CategoriesBaseDeviceViewController: UIViewController, CategoriesHeaderView
     }
     
     func categoriesViewController(_ categoriesViewController: CategoriesViewController, didCreateQuickAdd view: QuickAddExpense) {
-        
+    }
+    
+    func categoriesViewControllerDidFinishQuickAdd(_ categoriesViewController: CategoriesViewController) {
     }
     
     func categoriesViewControllerChanged(_ categoriesViewController: CategoriesViewController) {
