@@ -76,15 +76,6 @@ class CategoriesPhoneViewController: CategoriesBaseDeviceViewController {
         performSegue(withIdentifier: "drillDown", sender: category)
     }
     
-    override func categoriesViewController(_ categoriesViewController: CategoriesViewController, didCreateQuickAdd view: QuickAddExpense) {
-        view.backgroundColor = UIColor(red: 242 / 255, green: 242 / 255, blue: 242 / 255, alpha: 1)
-        presentViewAtCenter(view)
-    }
-    
-    override func categoriesViewControllerDidFinishQuickAdd(_ categoriesViewController: CategoriesViewController) {
-        dismissViewAtCenter()
-    }
-    
     override func categoriesViewControllerChanged(_ categoriesViewController: CategoriesViewController) {
         super.categoriesViewControllerChanged(categoriesViewController)
         o_editBarButton.isEnabled = categoriesViewController.categories.count > 0
