@@ -186,12 +186,12 @@ extension CategoriesViewController: QuickAddExpenseDelegate {
         return addAction
     }
     
-    func quickAddExpense(quickAddExpense: QuickAddExpense, didFinishWith data: Float) {
+    func quickAddExpense(_ quickAddExpense: QuickAddExpense, didFinishWith title: String, andAmount amount: Float) {
         if let parentRef = quickAddExpense.category.getDatabaseReference()?.child("expenses") {
             let expense = Expense()
             expense.date = Date()
-            expense.title = (quickAddExpense.category.title ?? "") + " - quick"
-            expense.amount = data
+            expense.title = title
+            expense.amount = amount
             expense.insert(into: parentRef)
         }
         

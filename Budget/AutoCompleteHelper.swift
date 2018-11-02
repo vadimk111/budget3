@@ -38,4 +38,18 @@ class AutoCompleteHelper {
         }
         return nil
     }
+    
+    static func getQuickTitleForCategory(_ category: Category) -> String {
+        if let id = category.id, let title = UserDefaults.standard.string(forKey: id) {
+            return title
+        }
+        return category.title ?? ""
+    }
+    
+    static func saveQuickTitle(_ title: String, forCategory category: Category) {
+        if let id = category.id {
+            UserDefaults.standard.set(title, forKey: id)
+            UserDefaults.standard.synchronize()
+        }
+    }
 }

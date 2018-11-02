@@ -9,13 +9,18 @@
 import UIKit
 
 protocol QuickAddExpenseDelegate: class {
-    func quickAddExpense(quickAddExpense: QuickAddExpense, didFinishWith data: Float)
+    func quickAddExpense(_ quickAddExpense: QuickAddExpense, didFinishWith title: String, andAmount amount: Float)
 }
 
 class QuickAddExpense: UIView {
     weak var delegate: QuickAddExpenseDelegate?
-    var category: Category!
+    var category: Category! {
+        didSet {
+            o_titleField.text = AutoCompleteHelper.getQuickTitleForCategory(category)
+        }
+    }
     @IBOutlet weak var o_amountField: UITextField!
+    @IBOutlet weak var o_titleField: UITextField!
     
     static func loadFromXib() -> QuickAddExpense {
         let view = Bundle.main.loadNibNamed("QuickAddExpense", owner: self, options: nil)?[0] as! QuickAddExpense
@@ -24,9 +29,10 @@ class QuickAddExpense: UIView {
     }
     
     @IBAction func didTapSave(_ sender: UIButton) {
-        if /*let title = o_titleField.text, */let amountStr = o_amountField.text {
+        if let title = o_titleField.text, let amountStr = o_amountField.text {
             if let amount = Float(amountStr) {
-                delegate?.quickAddExpense(quickAddExpense: self, didFinishWith: amount)
+                delegate?.quickAddExpense(self, didFinishWith: title, andAmount: amount)
+                AutoCompleteHelper.saveQuickTitle(title, forCategory: category)
             }
         }
     }
