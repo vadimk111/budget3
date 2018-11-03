@@ -12,11 +12,20 @@ class MainPadViewController: UIViewController, AuthenticationDelegate, UITabBarC
 
     @IBOutlet weak var o_popoverSourceView: UIView!
     @IBOutlet weak var o_navigationItem: UINavigationItem!
+    @IBOutlet weak var o_recordButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         Authentication.shared.delegate = self
+        
+        o_recordButton.tintColor = ExpensesRecorder.isRecording() ? recordingColor : nil
+    }
+    
+    @IBAction func didTapRecord(_ sender: UIBarButtonItem) {
+        let a = getRecordingAlert(button: o_recordButton)
+        a.popoverPresentationController?.barButtonItem = o_recordButton
+        present(a, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

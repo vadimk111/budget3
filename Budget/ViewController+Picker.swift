@@ -137,4 +137,28 @@ extension UIViewController {
             })
         }
     }
+    
+    func getRecordingAlert(button: UIBarButtonItem) -> UIAlertController {
+        let isRecording = ExpensesRecorder.isRecording()
+        let message = isRecording ? "Stop split recording?" : "Start recording expenses for split?"
+        
+        let a = UIAlertController(title: nil, message: message, preferredStyle: .actionSheet)
+        a.addAction(UIAlertAction(title: "Yes", style: .default) { (action) in
+            if isRecording {
+                let message = "Total recorded: \(ExpensesRecorder.getTotalRecorded())"
+                let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default) { (action) in
+                    ExpensesRecorder.stopRecording()
+                    button.tintColor = nil
+                })
+                self.present(alert, animated: true)
+            } else {
+                ExpensesRecorder.startRecording()
+                button.tintColor = recordingColor
+            }
+        })
+        a.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        return a
+    }
 }

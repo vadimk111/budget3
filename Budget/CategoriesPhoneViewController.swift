@@ -21,7 +21,7 @@ class CategoriesPhoneViewController: CategoriesBaseDeviceViewController {
             NotificationCenter.default.post(Notification(name: datePickerControllerDidDisappearNotification))
         })
         
-        o_recordButton.tintColor = ExpensesRecorder.isRecording() ? UIColor(red: 214 / 255, green: 74 / 255, blue: 74 / 255, alpha: 1) : nil
+        o_recordButton.tintColor = ExpensesRecorder.isRecording() ? recordingColor : nil
     }
 
     @IBAction func didTapEdit(_ sender: UIBarButtonItem) {
@@ -41,25 +41,7 @@ class CategoriesPhoneViewController: CategoriesBaseDeviceViewController {
     }
     
     @IBAction func didTapRecord(_ sender: UIBarButtonItem) {
-        let isRecording = ExpensesRecorder.isRecording()
-        let message = isRecording ? "Stop split recording?" : "Start recording expenses for split?"
-        
-        let a = UIAlertController(title: nil, message: message, preferredStyle: .actionSheet)
-        a.addAction(UIAlertAction(title: "Yes", style: .default) { (action) in
-            if isRecording {
-                let message = "Total recorded: \(ExpensesRecorder.getTotalRecorded())"
-                let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default) { (action) in
-                    ExpensesRecorder.stopRecording()
-                    self.o_recordButton.tintColor = nil
-                })
-                self.present(alert, animated: true)
-            } else {
-                ExpensesRecorder.startRecording()
-                self.o_recordButton.tintColor = UIColor(red: 214 / 255, green: 74 / 255, blue: 74 / 255, alpha: 1)
-            }
-        })
-        a.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        let a = getRecordingAlert(button: o_recordButton)
         present(a, animated: true)
     }
     
