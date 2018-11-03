@@ -27,27 +27,6 @@ class CategoryDetailPhoneViewController: UIViewController, CategoryExpensesViewC
         _ = navigationController?.popViewController(animated: false)
     }
     
-    @objc func longPressOnAddExpense() {
-        let isRecording = ExpensesRecorder.isRecording()
-        let message = isRecording ? "Stop split recording?" : "Start recording expenses for split?"
-        
-        let a = UIAlertController(title: nil, message: message, preferredStyle: .actionSheet)
-        a.addAction(UIAlertAction(title: "Yes", style: .default) { (action) in
-            if isRecording {
-                let message = "Total recorded: \(ExpensesRecorder.getTotalRecorded())"
-                let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default) { (action) in
-                    ExpensesRecorder.stopRecording()
-                })
-                self.present(alert, animated: true)
-            } else {
-                ExpensesRecorder.startRecording()
-            }
-        })
-        a.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(a, animated: true)
-    }
-    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -58,9 +37,6 @@ class CategoryDetailPhoneViewController: UIViewController, CategoryExpensesViewC
             balanceView.populate(amount: category.calculatedAmount, totalSpent: category.calculatedTotalSpent, title: category.title)
             balanceView.backgroundColor = UIColor.clear
             navigationItem.titleView = balanceView
-        
-            let gesture = UILongPressGestureRecognizer(target: self, action: #selector(CategoryDetailPhoneViewController.longPressOnAddExpense))
-            balanceView.addGestureRecognizer(gesture)
         }
     }
     
