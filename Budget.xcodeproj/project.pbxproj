@@ -10,6 +10,7 @@
 		4A56B6FD1FF283A5001810CA /* AnonymousTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A56B6FC1FF283A5001810CA /* AnonymousTableViewCell.swift */; };
 		4ABD8BA22188F7CC002C67AF /* QuickAddExpense.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ABD8BA12188F7CC002C67AF /* QuickAddExpense.xib */; };
 		4ABD8BA42188F7F7002C67AF /* QuickAddExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABD8BA32188F7F7002C67AF /* QuickAddExpense.swift */; };
+		4ABD8BA6218E3C34002C67AF /* ExpensesRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABD8BA5218E3C34002C67AF /* ExpensesRecorder.swift */; };
 		6AA2CE85BAFB9541D811DABB /* Pods_Budget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 081C64756147318895C06760 /* Pods_Budget.framework */; };
 		BD138CB61F7EDD9B00CDA4DA /* NavBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD138CB51F7EDD9B00CDA4DA /* NavBalanceView.swift */; };
 		BD138CB81F7EDDB100CDA4DA /* NavBalanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD138CB71F7EDDB100CDA4DA /* NavBalanceView.xib */; };
@@ -130,6 +131,7 @@
 		4A56B6FC1FF283A5001810CA /* AnonymousTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousTableViewCell.swift; sourceTree = "<group>"; };
 		4ABD8BA12188F7CC002C67AF /* QuickAddExpense.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuickAddExpense.xib; sourceTree = "<group>"; };
 		4ABD8BA32188F7F7002C67AF /* QuickAddExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddExpense.swift; sourceTree = "<group>"; };
+		4ABD8BA5218E3C34002C67AF /* ExpensesRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesRecorder.swift; sourceTree = "<group>"; };
 		BBC9F6F964B24DE5B2DADBF3 /* Pods-Budget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Budget/Pods-Budget.release.xcconfig"; sourceTree = "<group>"; };
 		BD138CB51F7EDD9B00CDA4DA /* NavBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBalanceView.swift; sourceTree = "<group>"; };
 		BD138CB71F7EDDB100CDA4DA /* NavBalanceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavBalanceView.xib; sourceTree = "<group>"; };
@@ -269,7 +271,6 @@
 		BD589DF21E8469A300F0C9CD /* Expenses */ = {
 			isa = PBXGroup;
 			children = (
-				BDFC60FB1E91944800D77087 /* ExpenseDetailsViewController.swift */,
 				BDFC60E91E8D036000D77087 /* ExpensesViewController.swift */,
 				BDFC60ED1E8D3CE800D77087 /* ExpensesViewController+Firebase.swift */,
 				BDFC60EB1E8D03A800D77087 /* ExpensesViewController+UITableView.swift */,
@@ -347,6 +348,7 @@
 		BD8383781EDF243400E8B5B2 /* Expense */ = {
 			isa = PBXGroup;
 			children = (
+				BDFC60FB1E91944800D77087 /* ExpenseDetailsViewController.swift */,
 				BDFC60F11E8D4A3900D77087 /* ExpensesBaseDeviceViewController.swift */,
 				BDFC60E71E8D02D300D77087 /* ExpensesPadViewController.swift */,
 				BFFCD70A1E73D4990030BD79 /* ExpensesPhoneViewController.swift */,
@@ -415,6 +417,7 @@
 				BD6A1CA11FB97AA8003148B7 /* AutoCompleteHelper.swift */,
 				BF25146E1E46612200042FEF /* Category.swift */,
 				BF00F4911E4D348F00D5D743 /* Expense.swift */,
+				4ABD8BA5218E3C34002C67AF /* ExpensesRecorder.swift */,
 				BFD5AA891E52E16100DE10E3 /* Extensions.swift */,
 				BD8383621EDD5E5400E8B5B2 /* Income.swift */,
 				BF00F4931E4D350C00D5D743 /* ModelBaseObject.swift */,
@@ -692,6 +695,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Budget/Pods-Budget-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Expression/Expression.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
@@ -704,6 +708,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Expression.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
@@ -787,6 +792,7 @@
 				BF2514811E48659400042FEF /* ModelHelper.swift in Sources */,
 				BD83837F1EDF24BA00E8B5B2 /* IncomesPhoneViewController.swift in Sources */,
 				BFCA1B7F1E4E3A450023AB55 /* ExpenseTableViewCell.swift in Sources */,
+				4ABD8BA6218E3C34002C67AF /* ExpensesRecorder.swift in Sources */,
 				BF37924A1E09633C0060445D /* SettingsViewController.swift in Sources */,
 				BD6A1CA21FB97AA8003148B7 /* AutoCompleteHelper.swift in Sources */,
 				BDCDA0251F1756B2008AB2A6 /* FacebookHelper.swift in Sources */,

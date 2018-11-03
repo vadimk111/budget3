@@ -96,7 +96,8 @@ class CategoriesPadViewController: CategoriesBaseDeviceViewController, CategoryE
     func prepareForEditExpense(from segue: UIStoryboardSegue, sender: Any?) {
         if let expense = sender as? Expense {
             let vc: AddEditExpenseViewController? = segue.destinationController()
-            vc?.expense = expense
+            vc?.expense = expense.makeCopy()
+            vc?.expense?.setDatabaseReference(ref: expense.getDatabaseReference())
             vc?.title = "Edit Expense"
             vc?.delegate = self
         }

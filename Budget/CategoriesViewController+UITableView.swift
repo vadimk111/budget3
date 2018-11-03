@@ -145,27 +145,18 @@ extension CategoriesViewController: QuickAddExpenseDelegate {
             self.tableView.setEditing(false, animated: true)
             
             let categoryToPay = self.categories[indexPath.row]
-            let expense = Expense()
-            expense.amount = categoryToPay.amount
-            expense.date = Date()
-            if let title = categoryToPay.title {
-                expense.title = "\(title) - payment"
-            } else {
-                expense.title = "Payment"
-            }
             if let expensesRef = categoryToPay.getDatabaseReference()?.child("expenses") {
-                expensesRef.observe(.childAdded, with: { snapshot in
-                    if categoryToPay.expenses == nil {
-                        categoryToPay.expenses = []
-                    }
-                    let expense = Expense(snapshot: snapshot)
-                    if !categoryToPay.expenses!.contains(where: { $0.id == expense.id } ) {
-                        categoryToPay.expenses!.append(expense)
-                    }
-                    expensesRef.removeAllObservers()
-                })
-                
+                let expense = Expense()
+                expense.amount = categoryToPay.amount
+                expense.date = Date()
+                if let title = categoryToPay.title {
+                    expense.title = "\(title) - payment"
+                } else {
+                    expense.title = "Payment"
+                }
                 expense.insert(into: expensesRef)
+                
+                ExpensesRecorder.recordExpense(amount: categoryToPay.amount ?? 0)
             }
         }
 
@@ -193,6 +184,8 @@ extension CategoriesViewController: QuickAddExpenseDelegate {
             expense.title = title
             expense.amount = amount
             expense.insert(into: parentRef)
+            
+            ExpensesRecorder.recordExpense(amount: amount)
         }
         
         delegate?.categoriesViewControllerDidFinishQuickAdd(self)
