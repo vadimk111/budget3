@@ -44,7 +44,7 @@ class ExpensesViewController: UITableViewController, OverviewTableViewCellDelega
 
     var groupedExpensesList: [GroupedExpneses]?
     var date: Date = Date()
-    var delegate: ExpensesViewControllerDelegate?
+    weak var delegate: ExpensesViewControllerDelegate?
     var isRefreshing: Bool = false
     
     var tableSeparatorInset: UIEdgeInsets? {

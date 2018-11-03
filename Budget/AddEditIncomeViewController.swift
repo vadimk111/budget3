@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-protocol AddEditIncomeViewControllerDelegate {
+protocol AddEditIncomeViewControllerDelegate: class {
     func addEditIncomeViewControllerWillDismiss(_ addEditIncomeViewController: AddEditIncomeViewController)
 }
 
@@ -17,7 +17,7 @@ class AddEditIncomeViewController: UIViewController, AutoCompleteViewControllerD
 
     var listRef: DatabaseReference?
     var income: Income?
-    var delegate: AddEditIncomeViewControllerDelegate?
+    weak var delegate: AddEditIncomeViewControllerDelegate?
     var autoCompleteViewController: AutoCompleteViewController?
     
     @IBOutlet weak var o_titleField: UITextField!

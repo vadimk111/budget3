@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-protocol AddEditExpenseViewControllerDelegate {
+protocol AddEditExpenseViewControllerDelegate: class {
     func addEditExpenseViewControllerWillDismiss(_ addEditExpenseViewController: AddEditExpenseViewController)
 }
 
@@ -18,7 +18,7 @@ class AddEditExpenseViewController: UIViewController, AutoCompleteViewController
     var parentRef: DatabaseReference?
     var expense: Expense?
     var autoCompleteViewController: AutoCompleteViewController?
-    var delegate: AddEditExpenseViewControllerDelegate?
+    weak var delegate: AddEditExpenseViewControllerDelegate?
     
     @IBOutlet weak var o_titleField: UITextField!
     @IBOutlet weak var o_amountField: UITextField!
