@@ -61,6 +61,7 @@ extension UIViewController {
     func createOverlay(_ action: Selector?) {
         let overlay = UIView()
         overlay.tag = 999
+        overlay.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         overlay.addGestureRecognizer(UITapGestureRecognizer(target: self, action: action))
         view.addSubview(overlay)
         
@@ -102,7 +103,7 @@ extension UIViewController {
         view.addSubview(viewToAdd)
         
         view.addConstraint(NSLayoutConstraint(item: viewToAdd, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0))
-        view.addConstraint(NSLayoutConstraint(item: viewToAdd, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: viewToAdd, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: -40))
         
         updateViewConstraints()
         view.layoutIfNeeded()
