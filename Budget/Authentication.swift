@@ -161,14 +161,14 @@ class Authentication: NSObject {
     }
 
     func showError(_ error: Error, on viewController: UIViewController) {
-        let a = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+        let a = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
         a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in
         })
         viewController.present(a, animated: true, completion: nil)
     }
     
     func showErrorOnDelegate(_ error: Error) {
-        let a = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+        let a = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
         a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in
         })
         delegate?.authentication(self, needsDisplay: a)
@@ -216,7 +216,7 @@ extension Authentication: LoginViewControllerDelegate {
             if let error = error {
                 self.showError(error, on: loginViewController)
             } else {
-                let a = UIAlertController(title: nil, message: "An email was sent to your mailbox from which you will be able to reset your password", preferredStyle: UIAlertControllerStyle.alert)
+                let a = UIAlertController(title: nil, message: "An email was sent to your mailbox from which you will be able to reset your password", preferredStyle: UIAlertController.Style.alert)
                 a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in
                 })
                 loginViewController.present(a, animated: true, completion: nil)

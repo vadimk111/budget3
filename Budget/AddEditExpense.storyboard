@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -109,7 +108,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="41"/>
                                         <subviews>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWd-XI-a1X">
-                                                <rect key="frame" x="0.0" y="9.5" width="343" height="21"/>
+                                                <rect key="frame" x="0.0" y="10" width="343" height="21"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
@@ -206,6 +205,7 @@
                         <outlet property="o_dateLabel" destination="dWd-XI-a1X" id="Z8A-Jr-y6M"/>
                         <outlet property="o_datePicker" destination="ZsI-nm-VfX" id="GEz-XY-HLe"/>
                         <outlet property="o_dateViewConstraint" destination="eyZ-Vg-Ghd" id="sZ6-NE-8RB"/>
+                        <outlet property="o_plusButton" destination="Hgb-eY-FgK" id="dzW-dp-OmK"/>
                         <outlet property="o_titleField" destination="9wc-S2-qve" id="Cnu-hi-rFY"/>
                     </connections>
                 </viewController>

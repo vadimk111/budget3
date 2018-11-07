@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vey-qs-9sv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vey-qs-9sv">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Tab Bar Controller-->
         <scene sceneID="3H1-Os-IIR">
@@ -63,6 +57,11 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
                                     <navigationItem title="Categories" id="3tb-VD-VhC">
+                                        <barButtonItem key="leftBarButtonItem" image="rec" id="vJH-74-7HT">
+                                            <connections>
+                                                <action selector="didTapRecord:" destination="vey-qs-9sv" id="4KD-YA-9qE"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" image="settings" id="LVr-Aj-67W">
                                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
@@ -75,7 +74,7 @@
                                 </items>
                             </navigationBar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YUb-7q-W7C">
-                                <rect key="frame" x="0.0" y="64" width="1024" height="660"/>
+                                <rect key="frame" x="0.0" y="64" width="1024" height="654"/>
                                 <connections>
                                     <segue destination="FIN-G9-C0l" kind="embed" identifier="tabbar" id="dhT-wX-cTY"/>
                                 </connections>
@@ -99,6 +98,7 @@
                     <connections>
                         <outlet property="o_navigationItem" destination="3tb-VD-VhC" id="gIf-Ax-fXf"/>
                         <outlet property="o_popoverSourceView" destination="FTD-Ac-QUv" id="8cw-Tp-AZq"/>
+                        <outlet property="o_recordButton" destination="vJH-74-7HT" id="O4w-Ky-IGw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g5J-Lx-duH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -114,7 +114,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hz3-6l-PGR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QHQ-5C-6al">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="660"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="654"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gGD-yE-Rz3">
@@ -192,17 +192,17 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RX3-Tf-5Un">
-                                <rect key="frame" x="408" y="165" width="616" height="446"/>
+                                <rect key="frame" x="408" y="165" width="616" height="439"/>
                                 <connections>
                                     <segue destination="41k-4q-Zmw" kind="embed" identifier="expenses" id="qbI-L8-9Fd"/>
                                 </connections>
                             </containerView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="UMm-eG-R9e">
-                                <rect key="frame" x="698" y="370" width="37" height="37"/>
+                                <rect key="frame" x="697.5" y="366" width="37" height="37"/>
                                 <color key="color" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYZ-WC-zhs">
-                                <rect key="frame" x="0.0" y="165" width="404" height="446"/>
+                                <rect key="frame" x="0.0" y="165" width="404" height="439"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="404" id="gW5-V3-ziP"/>
                                 </constraints>
@@ -211,7 +211,7 @@
                                 </connections>
                             </containerView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="3Yu-OA-bGL">
-                                <rect key="frame" x="184" y="370" width="37" height="37"/>
+                                <rect key="frame" x="183.5" y="366" width="37" height="37"/>
                                 <color key="color" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
@@ -280,7 +280,7 @@
                         <viewControllerLayoutGuide type="bottom" id="471-as-3ca"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Yx2-SL-jUh">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="660"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="654"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cSL-UV-f2I" customClass="DateChanger" customModule="Budget" customModuleProvider="target">
@@ -298,7 +298,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lRG-h9-8s1">
-                                <rect key="frame" x="0.0" y="65" width="404" height="546"/>
+                                <rect key="frame" x="0.0" y="65" width="404" height="539"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="404" id="OaO-J9-Z2I"/>
                                 </constraints>
@@ -307,11 +307,11 @@
                                 </connections>
                             </containerView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="IgJ-bE-NxM">
-                                <rect key="frame" x="184" y="320" width="37" height="37"/>
+                                <rect key="frame" x="183.5" y="316" width="37" height="37"/>
                                 <color key="color" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TUy-7E-toC">
-                                <rect key="frame" x="408" y="65" width="616" height="546"/>
+                                <rect key="frame" x="408" y="65" width="616" height="539"/>
                                 <connections>
                                     <segue destination="O6t-Bs-T12" kind="embed" identifier="expenseDetails" id="6hC-er-QQW"/>
                                 </connections>
@@ -396,7 +396,7 @@
                         <viewControllerLayoutGuide type="bottom" id="OaD-6q-AVe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="f5F-gg-dGr">
-                        <rect key="frame" x="0.0" y="0.0" width="616" height="546"/>
+                        <rect key="frame" x="0.0" y="0.0" width="616" height="539"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7X-Zq-T2P">
@@ -484,7 +484,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="gKk-KX-WLa">
-                                <rect key="frame" x="289" y="254" width="37" height="37"/>
+                                <rect key="frame" x="289.5" y="251" width="37" height="37"/>
                                 <color key="color" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
@@ -541,7 +541,7 @@
                         <viewControllerLayoutGuide type="bottom" id="eMP-dB-Sr4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ndX-kb-N5g">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="660"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="654"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1hr-ag-QQN">
@@ -583,7 +583,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yR1-WV-W6E">
-                                <rect key="frame" x="0.0" y="109" width="404" height="502"/>
+                                <rect key="frame" x="0.0" y="109" width="404" height="495"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="404" id="3Ka-Lz-B8L"/>
                                 </constraints>
@@ -592,11 +592,11 @@
                                 </connections>
                             </containerView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ew1-qi-Ul6">
-                                <rect key="frame" x="183.5" y="341.5" width="37" height="37"/>
+                                <rect key="frame" x="183.5" y="338" width="37" height="37"/>
                                 <color key="color" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MsI-fu-lQr">
-                                <rect key="frame" x="408" y="109" width="616" height="502"/>
+                                <rect key="frame" x="408" y="109" width="616" height="495"/>
                                 <connections>
                                     <segue destination="FOw-2m-hqc" kind="embed" identifier="incomeDetails" id="dIn-1z-Cze"/>
                                 </connections>
@@ -670,7 +670,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ysP-uw-4o6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Itu-ko-bg1">
-                        <rect key="frame" x="0.0" y="0.0" width="616" height="502"/>
+                        <rect key="frame" x="0.0" y="0.0" width="616" height="495"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hw-Wc-ux7">
@@ -705,7 +705,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdQ-DH-ZDU">
-                                <rect key="frame" x="241" y="137" width="56.5" height="19"/>
+                                <rect key="frame" x="241.5" y="137" width="56.5" height="19"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" red="0.1647058824" green="0.1647058824" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -723,7 +723,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rtU-pb-ZAO">
-                                <rect key="frame" x="264" y="166" width="33.5" height="19"/>
+                                <rect key="frame" x="264.5" y="166" width="33.5" height="19"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" red="0.1647058824" green="0.1647058824" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -741,7 +741,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="gRS-uU-6hF">
-                                <rect key="frame" x="289" y="232" width="37" height="37"/>
+                                <rect key="frame" x="289.5" y="229" width="37" height="37"/>
                                 <color key="color" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
@@ -795,6 +795,7 @@
         <image name="categories" width="24" height="24"/>
         <image name="coins" width="24" height="24"/>
         <image name="incomes" width="24" height="24"/>
+        <image name="rec" width="16" height="16"/>
         <image name="settings" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>

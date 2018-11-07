@@ -25,13 +25,13 @@ extension CategoriesViewController: QuickAddExpenseDelegate {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         var actions = [UITableViewRowAction]()
         
-        let edit = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Edit", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+        let edit = UITableViewRowAction.init(style: UITableViewRowAction.Style.normal, title: "Edit", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
             self.tableView.setEditing(false, animated: true)
             self.delegate?.categoriesViewController(self, didEdit: self.categories[indexPath.row])
         })
         actions.append(edit)
         
-        let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+        let delete = UITableViewRowAction.init(style: UITableViewRowAction.Style.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
             let title = self.categories[indexPath.row].subCategories != nil ? "Remove category, all its sub categories and all related expenses ?" : "Remove category and all related expenses ?"
             let a = UIAlertController(title: title, message: "", preferredStyle: .alert)
             a.addAction(UIAlertAction(title: "Remove", style: .default) { action -> Void in
@@ -145,27 +145,18 @@ extension CategoriesViewController: QuickAddExpenseDelegate {
             self.tableView.setEditing(false, animated: true)
             
             let categoryToPay = self.categories[indexPath.row]
-            let expense = Expense()
-            expense.amount = categoryToPay.amount
-            expense.date = Date()
-            if let title = categoryToPay.title {
-                expense.title = "\(title) - payment"
-            } else {
-                expense.title = "Payment"
-            }
             if let expensesRef = categoryToPay.getDatabaseReference()?.child("expenses") {
-                expensesRef.observe(.childAdded, with: { snapshot in
-                    if categoryToPay.expenses == nil {
-                        categoryToPay.expenses = []
-                    }
-                    let expense = Expense(snapshot: snapshot)
-                    if !categoryToPay.expenses!.contains(where: { $0.id == expense.id } ) {
-                        categoryToPay.expenses!.append(expense)
-                    }
-                    expensesRef.removeAllObservers()
-                })
-                
+                let expense = Expense()
+                expense.amount = categoryToPay.amount
+                expense.date = Date()
+                if let title = categoryToPay.title {
+                    expense.title = "\(title) - payment"
+                } else {
+                    expense.title = "Payment"
+                }
                 expense.insert(into: expensesRef)
+                
+                ExpensesRecorder.recordExpense(amount: categoryToPay.amount ?? 0)
             }
         }
 
@@ -193,6 +184,8 @@ extension CategoriesViewController: QuickAddExpenseDelegate {
             expense.title = title
             expense.amount = amount
             expense.insert(into: parentRef)
+            
+            ExpensesRecorder.recordExpense(amount: amount)
         }
         
         delegate?.categoriesViewControllerDidFinishQuickAdd(self)

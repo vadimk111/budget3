@@ -10,6 +10,7 @@ import UIKit
 
 class CategoriesPhoneViewController: CategoriesBaseDeviceViewController {
 
+    @IBOutlet weak var o_recordButton: UIBarButtonItem!
     @IBOutlet weak var o_editBarButton: UIBarButtonItem!
     @IBOutlet weak var o_addBarButton: UIBarButtonItem!
     
@@ -19,6 +20,8 @@ class CategoriesPhoneViewController: CategoriesBaseDeviceViewController {
         NotificationCenter.default.addObserver(forName: viewRemovedAtBottomNotification, object: nil, queue: nil, using: { (notification) -> Void in
             NotificationCenter.default.post(Notification(name: datePickerControllerDidDisappearNotification))
         })
+        
+        o_recordButton.tintColor = ExpensesRecorder.isRecording() ? recordingColor : nil
     }
 
     @IBAction func didTapEdit(_ sender: UIBarButtonItem) {
@@ -35,6 +38,11 @@ class CategoriesPhoneViewController: CategoriesBaseDeviceViewController {
                 o_addBarButton.tag = 1
             }
         }
+    }
+    
+    @IBAction func didTapRecord(_ sender: UIBarButtonItem) {
+        let a = getRecordingAlert(button: o_recordButton)
+        present(a, animated: true)
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {

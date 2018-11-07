@@ -44,7 +44,8 @@ class ExpenseDetailsViewController: UIViewController, AddEditExpenseViewControll
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editExpense" {
             let editVC: AddEditExpenseViewController? = segue.destinationController()
-            editVC?.expense = expenseData?.expense
+            editVC?.expense = expenseData?.expense.makeCopy()
+            editVC?.expense?.setDatabaseReference(ref: expenseData?.expense.getDatabaseReference())
             editVC?.title = "Edit Expense"
             editVC?.delegate = self
             o_activityIndicator.startAnimating()

@@ -93,7 +93,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     @IBAction func didTapForgot(_ sender: UIButton) {
         if o_email.text == "" {
-            let a = UIAlertController(title: "Error", message: "Please, fill up the email field", preferredStyle: UIAlertControllerStyle.alert)
+            let a = UIAlertController(title: "Error", message: "Please, fill up the email field", preferredStyle: UIAlertController.Style.alert)
             a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in
             })
             present(a, animated: true, completion: nil)

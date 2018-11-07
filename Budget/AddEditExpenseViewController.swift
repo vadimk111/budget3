@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import Expression
 
 protocol AddEditExpenseViewControllerDelegate: class {
     func addEditExpenseViewControllerWillDismiss(_ addEditExpenseViewController: AddEditExpenseViewController)
@@ -20,6 +21,7 @@ class AddEditExpenseViewController: UIViewController, AutoCompleteViewController
     var autoCompleteViewController: AutoCompleteViewController?
     weak var delegate: AddEditExpenseViewControllerDelegate?
     
+    @IBOutlet weak var o_plusButton: UIButton!
     @IBOutlet weak var o_titleField: UITextField!
     @IBOutlet weak var o_amountField: UITextField!
     @IBOutlet weak var o_dateLabel: UILabel!
@@ -42,6 +44,15 @@ class AddEditExpenseViewController: UIViewController, AutoCompleteViewController
         if let date = expense?.date {
             o_dateLabel.text = date.toString()
             o_datePicker.date = date
+        }
+        
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(AddEditExpenseViewController.longPressOnPlusButton))
+        o_plusButton.addGestureRecognizer(gesture)
+    }
+    
+    @objc func longPressOnPlusButton(sender: UILongPressGestureRecognizer) {
+        if sender.state == .ended {
+            o_amountField.text = (o_amountField.text ?? "") + "-"
         }
     }
     
@@ -100,25 +111,17 @@ class AddEditExpenseViewController: UIViewController, AutoCompleteViewController
     
     @IBAction func didTapSave(_ sender: UIBarButtonItem) {
         if let title = o_titleField.text, let amountStr = o_amountField.text {
-            var amount: Float?
-            if let f_amount = Float(amountStr) {
-                amount = f_amount
-            } else {
-                amount = 0
-                let arr = amountStr.split(separator: "+")
-                for el in arr {
-                    if let f_amount = Float(el) {
-                        amount! += f_amount
-                    } else {
-                        amount = nil
-                        break
-                    }
-                }
+            var amount: Double?
+            let expression = Expression(amountStr)
+            do {
+                amount = try expression.evaluate()
+            } catch {
+                amount = nil
             }
             
             if let _ = amount {
                 expense?.title = title
-                expense?.amount = amount
+                expense?.amount = Float(amount!)
                 expense?.date = o_datePicker.date
                 
                 if let parentRef = parentRef {

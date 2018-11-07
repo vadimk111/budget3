@@ -41,7 +41,7 @@ class LinkAccountsViewController: UIViewController {
     }
 
     @IBAction func didTapLink(_ sender: UIButton) {
-        let a = UIAlertController(title: "Budget Doctor", message: "Please, enter password for \(email ?? "")", preferredStyle: UIAlertControllerStyle.alert)
+        let a = UIAlertController(title: "Budget Doctor", message: "Please, enter password for \(email ?? "")", preferredStyle: UIAlertController.Style.alert)
         a.addTextField(configurationHandler: { (textField) -> Void in
             textField.isSecureTextEntry = true
         })

@@ -20,3 +20,5 @@ let months: [String] = ["January", "February", "March", "April", "May", "June",
 
 let datePickerControllerWillAppearNotification = Notification.Name(rawValue: "datePickerControllerWillAppearNotification")
 let datePickerControllerDidDisappearNotification = Notification.Name(rawValue: "datePickerControllerDidDisappearNotification")
+
+let recordingColor =  UIColor(red: 214 / 255, green: 74 / 255, blue: 74 / 255, alpha: 1)
