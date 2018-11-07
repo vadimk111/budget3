@@ -25,13 +25,13 @@ extension CategoriesViewController: QuickAddExpenseDelegate {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         var actions = [UITableViewRowAction]()
         
-        let edit = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Edit", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+        let edit = UITableViewRowAction.init(style: UITableViewRowAction.Style.normal, title: "Edit", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
             self.tableView.setEditing(false, animated: true)
             self.delegate?.categoriesViewController(self, didEdit: self.categories[indexPath.row])
         })
         actions.append(edit)
         
-        let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+        let delete = UITableViewRowAction.init(style: UITableViewRowAction.Style.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
             let title = self.categories[indexPath.row].subCategories != nil ? "Remove category, all its sub categories and all related expenses ?" : "Remove category and all related expenses ?"
             let a = UIAlertController(title: title, message: "", preferredStyle: .alert)
             a.addAction(UIAlertAction(title: "Remove", style: .default) { action -> Void in

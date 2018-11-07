@@ -157,7 +157,7 @@ extension SettingsViewController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         if indexPath.section == 3 {
-            let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+            let delete = UITableViewRowAction.init(style: UITableViewRowAction.Style.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
                 
                 if let id = self.reminders[indexPath.row].id {
                     UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
@@ -178,17 +178,17 @@ extension SettingsViewController {
             return [delete]
         } else if indexPath.section == 1 {
             if indexPath.row == 0 {
-                let share = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Share", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+                let share = UITableViewRowAction.init(style: UITableViewRowAction.Style.normal, title: "Share", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
                     if let user = APP.user, let url = URL(string: "\(appPrefix + user.uid)") {
                         let objectsToShare = ["Join my Budget Doctor:", url] as [Any]
                         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-                        activityVC.excludedActivityTypes = [.airDrop, .saveToCameraRoll, . addToReadingList, .openInIBooks]
+                        activityVC.excludedActivityTypes = [.airDrop, .saveToCameraRoll, .addToReadingList, .openInIBooks]
                         self.present(activityVC, animated: true, completion: nil)
                     }
                 })
                 return [share]
             } else {
-                let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+                let delete = UITableViewRowAction.init(style: UITableViewRowAction.Style.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
                     let sharingToDelete = self.sharings[indexPath.row]
                     sharingToDelete.delete()
                     self.sharings.remove(at: indexPath.row)
