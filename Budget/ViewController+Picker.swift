@@ -148,7 +148,7 @@ extension UIViewController {
                 UIPasteboard.general.string = "\(ExpensesRecorder.getTotalRecorded())"
                 let message = "Total recorded of \(ExpensesRecorder.getTotalRecorded()) is copied to clipboard"
                 let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default) { (action) in
+                alert.addAction(UIAlertAction(title: "Close", style: .default) { (action) in
                     ExpensesRecorder.stopRecording()
                     button.tintColor = nil
                 })

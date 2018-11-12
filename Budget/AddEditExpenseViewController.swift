@@ -120,14 +120,18 @@ class AddEditExpenseViewController: UIViewController, AutoCompleteViewController
             }
             
             if let _ = amount {
+                let oldAmount = expense?.amount
+                
                 expense?.title = title
                 expense?.amount = Float(amount!)
                 expense?.date = o_datePicker.date
                 
                 if let parentRef = parentRef {
                     expense?.insert(into: parentRef)
+                    ExpensesRecorder.recordExpense(amount: expense?.amount ?? 0)
                 } else if let expense = expense {
                     expense.update()
+                    ExpensesRecorder.recordExpense(amount: expense.amount! - (oldAmount ?? 0))
                 }
                 
                 AutoCompleteHelper.saveText(title)

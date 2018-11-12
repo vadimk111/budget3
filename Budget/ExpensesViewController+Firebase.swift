@@ -18,25 +18,20 @@ extension ExpensesViewController {
             if self.group(for: expense.id) == nil {
                 self.addExpenseToModel(expense, category: category)
                 self.tableView.reloadData()
-                ExpensesRecorder.recordExpense(amount: expense.amount ?? 0)
             }
         })
         
         listRef?.observe(.childChanged, with: { [unowned self] snapshot in
             let expense = Expense(snapshot: snapshot)
-            let expenseWith = self.removeExpenseFromModel(expense)
+            self.removeExpenseFromModel(expense)
             self.addExpenseToModel(expense, category: category)
             self.tableView.reloadData()
-            ExpensesRecorder.recordExpense(amount: (expense.amount ?? 0) - (expenseWith?.expense.amount ?? 0))
         })
         
         listRef?.observe(.childRemoved, with: { [unowned self] snapshot in
             let expense = Expense(snapshot: snapshot)
             self.removeExpenseFromModel(expense)
             self.tableView.reloadData()
-            if let amount = expense.amount {
-                ExpensesRecorder.recordExpense(amount: -amount)
-            }
         })
     }
     
@@ -50,14 +45,12 @@ extension ExpensesViewController {
         }
     }
     
-    @discardableResult
-    func removeExpenseFromModel(_ expense: Expense) -> ExpenseWithCategoryData? {
+    func removeExpenseFromModel(_ expense: Expense) {
         if let group = self.group(for: expense.id) {
             if let index = group.expenses.index(where: { $0.expense.id == expense.id }) {
-                return group.expenses.remove(at: index)
+                group.expenses.remove(at: index)
             }
         }
-        return nil
     }
     
     func unregisterFromUpdates() {

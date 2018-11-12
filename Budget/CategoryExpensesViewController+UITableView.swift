@@ -71,7 +71,10 @@ extension CategoryExpensesViewController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction.init(style: UITableViewRowAction.Style.normal, title: "Remove", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
-            self.expense(for: indexPath)?.delete()
+            if let expense = self.expense(for: indexPath) {
+                expense.delete()
+                ExpensesRecorder.recordExpense(amount: -(expense.amount ?? 0))
+            }
         })
         return [delete]
     }

@@ -44,7 +44,6 @@ extension CategoryExpensesViewController {
                     category.expenses!.append(expense)
                     self.tableView.insertRows(at: [IndexPath.init(row: category.expenses!.count - 1, section: section)], with: .fade)
                     self.delegate?.categoryExpensesViewControllerChanged(self)
-                    ExpensesRecorder.recordExpense(amount: expense.amount ?? 0)
                 }
             })
             
@@ -52,13 +51,12 @@ extension CategoryExpensesViewController {
                 let category = section == 0 ? self.category! : self.category!.subCategories![section - 1]
                 let expense = Expense(snapshot: snapshot)
                 if let index = category.expenses?.index(where: { $0.id == expense.id } ) {
-                    let oldExpense = category.expenses?.remove(at: index)
+                    category.expenses?.remove(at: index)
                     category.expenses?.insert(expense, at: index)
                     if let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: section)) as? ExpenseTableViewCell {
                         cell.update(with: expense)
                     }
                     self.delegate?.categoryExpensesViewControllerChanged(self)
-                    ExpensesRecorder.recordExpense(amount: (expense.amount ?? 0) - (oldExpense?.amount ?? 0))
                 }
             })
             
@@ -69,9 +67,6 @@ extension CategoryExpensesViewController {
                     category.expenses?.remove(at: index)
                     self.tableView.deleteRows(at: [IndexPath.init(row: index, section: section)], with: .fade)
                     self.delegate?.categoryExpensesViewControllerChanged(self)
-                    if let amount = expense.amount {
-                        ExpensesRecorder.recordExpense(amount: -amount)
-                    }
                 }
             })
         }
