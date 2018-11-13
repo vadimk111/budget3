@@ -129,6 +129,7 @@
 /* Begin PBXFileReference section */
 		081C64756147318895C06760 /* Pods_Budget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A56B6FC1FF283A5001810CA /* AnonymousTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousTableViewCell.swift; sourceTree = "<group>"; };
+		4A832187219A232700180D47 /* Budget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Budget.entitlements; sourceTree = "<group>"; };
 		4ABD8BA12188F7CC002C67AF /* QuickAddExpense.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuickAddExpense.xib; sourceTree = "<group>"; };
 		4ABD8BA32188F7F7002C67AF /* QuickAddExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddExpense.swift; sourceTree = "<group>"; };
 		4ABD8BA5218E3C34002C67AF /* ExpensesRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesRecorder.swift; sourceTree = "<group>"; };
@@ -453,6 +454,7 @@
 				BF37922D1E0933D00060445D /* AppDelegate.swift */,
 				BF3792341E0933D00060445D /* Assets.xcassets */,
 				BF6BC8581E5ADAE60052F4E8 /* Authentication */,
+				4A832187219A232700180D47 /* Budget.entitlements */,
 				BF00F4821E4D1EFB00D5D743 /* Cells */,
 				BF6BC85A1E5ADB780052F4E8 /* Common */,
 				BF9687C21E58DBB0001CD715 /* Custom Views */,
@@ -595,6 +597,11 @@
 						DevelopmentTeam = C57Q64SZ95;
 						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -936,6 +943,7 @@
 			baseConfigurationReference = CBC31ECB1F88C7F0356DFED8 /* Pods-Budget.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Budget/Budget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -957,6 +965,7 @@
 			baseConfigurationReference = BBC9F6F964B24DE5B2DADBF3 /* Pods-Budget.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Budget/Budget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = C57Q64SZ95;
