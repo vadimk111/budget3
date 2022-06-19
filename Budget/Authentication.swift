@@ -85,7 +85,7 @@ class Authentication: NSObject {
     }
     
     func showSignInView() {
-        loginViewController = LoginViewController(delegate: self, facebookLoginDelegate: self)
+        loginViewController = LoginViewController(delegate: self)
         self.delegate?.authentication(self, needsDisplay: UINavigationController(rootViewController: loginViewController!))
     }
     
@@ -107,7 +107,7 @@ class Authentication: NSObject {
                     self?.showErrorOnDelegate(error)
                 } else {
                     self?.notifyFacebookLinkedChange()
-                    FBSDKLoginManager().logOut()
+                    LoginManager().logOut()
                 }
             }
         }
@@ -119,7 +119,7 @@ class Authentication: NSObject {
     
     static func canDisconnectFacebookAccount() -> Bool {
         if let user = APP.user {
-            return FBSDKAccessToken.current() != nil && user.providerData.count > 1
+            return AccessToken.current != nil && user.providerData.count > 1
         }
         return false
     }
@@ -157,7 +157,7 @@ class Authentication: NSObject {
             try Auth.auth().signOut()
         } catch {
         }
-        FBSDKLoginManager().logOut()
+        LoginManager().logOut()
     }
 
     func showError(_ error: Error, on viewController: UIViewController) {
@@ -239,8 +239,8 @@ extension Authentication: LoginViewControllerDelegate {
     }
 }
 
-extension Authentication: FBSDKLoginButtonDelegate {
-    public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+extension Authentication: LoginButtonDelegate {
+    public func loginButton(_ loginButton: FBLoginButton!, didCompleteWith result: LoginManagerLoginResult!, error: Error!) {
         if let error = error {
             if let _ = loginViewController {
                 showError(error, on: loginViewController!)
@@ -277,7 +277,7 @@ extension Authentication: FBSDKLoginButtonDelegate {
         }
     }
     
-    public func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+    public func loginButtonDidLogOut(_ loginButton: FBLoginButton!) {
         
     }
 
@@ -289,7 +289,7 @@ extension Authentication: LinkAccountsViewControllerDelegate {
             if let error = error {
                 self.showError(error, on: linkAccountsViewController)
             } else if let result = result {
-                let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
                 result.user.linkAndRetrieveData(with: credential) { (result, error) in
                     if let error = error {
                         self.showError(error, on: linkAccountsViewController)

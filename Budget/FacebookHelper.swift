@@ -10,7 +10,7 @@ import FBSDKLoginKit
 
 class FacebookHelper {
     static func loadUserData(onLabel label: UILabel, andImage image: UIImageView) {
-        FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields" : "picture, name"]).start(completionHandler: { (connection, result, error) in
+        GraphRequest.init(graphPath: "me", parameters: ["fields" : "picture, name"]).start(completionHandler: { (connection, result, error) in
             if let result = result as? NSDictionary {
                 label.text = result["name"] as? String
                 

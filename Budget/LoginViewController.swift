@@ -20,7 +20,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var o_email: UITextField!
     @IBOutlet weak var o_password: UITextField!
-    @IBOutlet weak var o_fbLoginButton: FBSDKLoginButton!
+    @IBOutlet weak var o_fbLoginButton: FBLoginButton!
     @IBOutlet weak var o_sigInButton: UIButton!
     @IBOutlet weak var o_resetPasswordButton: UIButton!
     @IBOutlet weak var o_skipButton: UIButton!
@@ -28,7 +28,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var o_resetTopConstraint: NSLayoutConstraint!
     
     weak var delegate: LoginViewControllerDelegate?
-    weak var facebookLoginDelegate: FBSDKLoginButtonDelegate?
+    weak var facebookLoginDelegate: LoginButtonDelegate?
     
     var email: String {
         get {
@@ -42,10 +42,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    init(delegate: LoginViewControllerDelegate, facebookLoginDelegate: FBSDKLoginButtonDelegate) {
+    init(delegate: LoginViewControllerDelegate) {
         super.init(nibName: nil, bundle: nil)
         self.delegate = delegate
-        self.facebookLoginDelegate = facebookLoginDelegate
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -62,7 +61,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         o_email.delegate = self
         o_password.delegate = self
         
-        o_fbLoginButton.readPermissions = facebookReadPermissions
+        //o_fbLoginButton.readPermissions = facebookReadPermissions
         o_fbLoginButton.delegate = facebookLoginDelegate
         
         if let _ = APP.user {

@@ -29,8 +29,8 @@ extension SettingsViewController: RemindersTableViewCellDelegate {
 
 extension SettingsViewController: FacebookTableViewCellDelegate {
     func facebookTableViewCellDidTapConnect(_ facebookTableViewCell: FacebookTableViewCell) {
-        let fbm = FBSDKLoginManager()
-        fbm.logIn(withReadPermissions: facebookReadPermissions, from: self) { (result: FBSDKLoginManagerLoginResult?, error: Error?) in
+        let fbm = LoginManager()
+        fbm.logIn(permissions: facebookReadPermissions, from: self) { (result: LoginManagerLoginResult?, error: Error?) in
             if let error = error {
                 let a = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
                 a.addAction(UIAlertAction(title: "Ok", style: .default) { action -> Void in

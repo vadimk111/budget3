@@ -11,7 +11,7 @@
 		4ABD8BA22188F7CC002C67AF /* QuickAddExpense.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ABD8BA12188F7CC002C67AF /* QuickAddExpense.xib */; };
 		4ABD8BA42188F7F7002C67AF /* QuickAddExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABD8BA32188F7F7002C67AF /* QuickAddExpense.swift */; };
 		4ABD8BA6218E3C34002C67AF /* ExpensesRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABD8BA5218E3C34002C67AF /* ExpensesRecorder.swift */; };
-		6AA2CE85BAFB9541D811DABB /* Pods_Budget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 081C64756147318895C06760 /* Pods_Budget.framework */; };
+		8AA1A7C60CC75FE63387FC50 /* Pods_Budget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46921DC00C54B6A8800D4178 /* Pods_Budget.framework */; };
 		BD138CB61F7EDD9B00CDA4DA /* NavBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD138CB51F7EDD9B00CDA4DA /* NavBalanceView.swift */; };
 		BD138CB81F7EDDB100CDA4DA /* NavBalanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD138CB71F7EDDB100CDA4DA /* NavBalanceView.xib */; };
 		BD138CBE1F7FB5B400CDA4DA /* BudgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD138CBD1F7FB5B400CDA4DA /* BudgetTableViewCell.swift */; };
@@ -127,13 +127,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		081C64756147318895C06760 /* Pods_Budget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17B47BB19C2D32530790134D /* Pods-Budget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.debug.xcconfig"; path = "Target Support Files/Pods-Budget/Pods-Budget.debug.xcconfig"; sourceTree = "<group>"; };
+		46921DC00C54B6A8800D4178 /* Pods_Budget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A56B6FC1FF283A5001810CA /* AnonymousTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousTableViewCell.swift; sourceTree = "<group>"; };
 		4A832187219A232700180D47 /* Budget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Budget.entitlements; sourceTree = "<group>"; };
 		4ABD8BA12188F7CC002C67AF /* QuickAddExpense.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuickAddExpense.xib; sourceTree = "<group>"; };
 		4ABD8BA32188F7F7002C67AF /* QuickAddExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddExpense.swift; sourceTree = "<group>"; };
 		4ABD8BA5218E3C34002C67AF /* ExpensesRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesRecorder.swift; sourceTree = "<group>"; };
-		BBC9F6F964B24DE5B2DADBF3 /* Pods-Budget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Budget/Pods-Budget.release.xcconfig"; sourceTree = "<group>"; };
 		BD138CB51F7EDD9B00CDA4DA /* NavBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBalanceView.swift; sourceTree = "<group>"; };
 		BD138CB71F7EDDB100CDA4DA /* NavBalanceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavBalanceView.xib; sourceTree = "<group>"; };
 		BD138CBD1F7FB5B400CDA4DA /* BudgetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTableViewCell.swift; sourceTree = "<group>"; };
@@ -235,7 +235,7 @@
 		BFFCD70A1E73D4990030BD79 /* ExpensesPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesPhoneViewController.swift; sourceTree = "<group>"; };
 		BFFCD70C1E73D8C70030BD79 /* OverviewHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewHeaderView.swift; sourceTree = "<group>"; };
 		BFFCD70E1E73D8D50030BD79 /* OverviewHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewHeaderView.xib; sourceTree = "<group>"; };
-		CBC31ECB1F88C7F0356DFED8 /* Pods-Budget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Budget/Pods-Budget.debug.xcconfig"; sourceTree = "<group>"; };
+		CB160473D3D26C4002660758 /* Pods-Budget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.release.xcconfig"; path = "Target Support Files/Pods-Budget/Pods-Budget.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,7 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDFC60FE1E928D0B00D77087 /* UserNotifications.framework in Frameworks */,
-				6AA2CE85BAFB9541D811DABB /* Pods_Budget.framework in Frameworks */,
+				8AA1A7C60CC75FE63387FC50 /* Pods_Budget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,18 +255,9 @@
 			isa = PBXGroup;
 			children = (
 				BDFC60FD1E928D0B00D77087 /* UserNotifications.framework */,
-				081C64756147318895C06760 /* Pods_Budget.framework */,
+				46921DC00C54B6A8800D4178 /* Pods_Budget.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9607D13F820696108E9CDC8B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				CBC31ECB1F88C7F0356DFED8 /* Pods-Budget.debug.xcconfig */,
-				BBC9F6F964B24DE5B2DADBF3 /* Pods-Budget.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		BD589DF21E8469A300F0C9CD /* Expenses */ = {
@@ -435,8 +426,8 @@
 			children = (
 				BF37922C1E0933D00060445D /* Budget */,
 				BF37922B1E0933D00060445D /* Products */,
-				9607D13F820696108E9CDC8B /* Pods */,
 				19A62780CECEACE074109F6F /* Frameworks */,
+				E6858462411F23EE9F063C44 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -558,6 +549,15 @@
 			name = "Custom Views";
 			sourceTree = "<group>";
 		};
+		E6858462411F23EE9F063C44 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				17B47BB19C2D32530790134D /* Pods-Budget.debug.xcconfig */,
+				CB160473D3D26C4002660758 /* Pods-Budget.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -565,13 +565,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF37923C1E0933D00060445D /* Build configuration list for PBXNativeTarget "Budget" */;
 			buildPhases = (
-				A3541DC216DAF1A5CD231F48 /* [CP] Check Pods Manifest.lock */,
+				E394A220AB849D12451EB162 /* [CP] Check Pods Manifest.lock */,
 				BF3792261E0933D00060445D /* Sources */,
 				BF3792271E0933D00060445D /* Frameworks */,
 				BF3792281E0933D00060445D /* Resources */,
-				CBE41AB7F80B3333D91E3614 /* [CP] Embed Pods Frameworks */,
-				54CE19FF21A3A130036D34DB /* [CP] Copy Pods Resources */,
 				4AF118D7209E2917002E4357 /* Embed App Extensions */,
+				E9C711C8F2A6462CC43039E7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -610,6 +609,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -661,31 +661,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		54CE19FF21A3A130036D34DB /* [CP] Copy Pods Resources */ = {
+		E394A220AB849D12451EB162 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Budget/Pods-Budget-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A3541DC216DAF1A5CD231F48 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Budget-checkManifestLockResult.txt",
 			);
@@ -694,14 +683,13 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CBE41AB7F80B3333D91E3614 /* [CP] Embed Pods Frameworks */ = {
+		E9C711C8F2A6462CC43039E7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Budget/Pods-Budget-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Budget/Pods-Budget-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Expression/Expression.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -709,12 +697,12 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Expression.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
@@ -722,12 +710,13 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Budget/Pods-Budget-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Budget/Pods-Budget-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -940,7 +929,7 @@
 		};
 		BF37923D1E0933D00060445D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CBC31ECB1F88C7F0356DFED8 /* Pods-Budget.debug.xcconfig */;
+			baseConfigurationReference = 17B47BB19C2D32530790134D /* Pods-Budget.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Budget/Budget.entitlements;
@@ -949,8 +938,9 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = C57Q64SZ95;
 				INFOPLIST_FILE = Budget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 9.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.home.Budget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -962,7 +952,7 @@
 		};
 		BF37923E1E0933D00060445D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BBC9F6F964B24DE5B2DADBF3 /* Pods-Budget.release.xcconfig */;
+			baseConfigurationReference = CB160473D3D26C4002660758 /* Pods-Budget.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Budget/Budget.entitlements;
@@ -970,8 +960,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = C57Q64SZ95;
 				INFOPLIST_FILE = Budget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 9.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.home.Budget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
